@@ -2,9 +2,12 @@
 #include <iostream>
 #include <OpenGl/gl.h>
 
+#include "mainLoop.hpp"
+
 
 int main()
 {
+    
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_CreateWindow(
                      "",             // window title
@@ -15,24 +18,7 @@ int main()
                      SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE           // flags
                      );
     
-    std::cout << "Windows in initialized...";
-    
-    SDL_Event e;
-    bool quit = false;
-    while (!quit){
-        while (SDL_PollEvent(&e)){
-            if (e.type == SDL_QUIT){
-                quit = true;
-            }
-            if (e.type == SDL_KEYDOWN){
-                quit = true;
-            }
-            if (e.type == SDL_MOUSEBUTTONDOWN){
-                quit = true;
-            }
-        }
-    }
-
-    
-    return 0;
+  std::cout << "Windows in initialized...";
+  MainLoop::run();
+  return 0;
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6322FC64215031D800BC8C72 /* mainLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6322FC62215031D800BC8C72 /* mainLoop.cpp */; };
 		6391BFEA214D81200047EDB8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6391BFE9214D81200047EDB8 /* main.cpp */; };
 		6391BFF5214DC02D0047EDB8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6391BFF4214DC02D0047EDB8 /* OpenGL.framework */; };
 		6391BFFB214F1CA90047EDB8 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6391BFFA214F1CA90047EDB8 /* SDL2.framework */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6322FC62215031D800BC8C72 /* mainLoop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mainLoop.cpp; sourceTree = "<group>"; };
+		6322FC63215031D800BC8C72 /* mainLoop.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mainLoop.hpp; sourceTree = "<group>"; };
 		6391BFE6214D81200047EDB8 /* shaders */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = shaders; sourceTree = BUILT_PRODUCTS_DIR; };
 		6391BFE9214D81200047EDB8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6391BFF4214DC02D0047EDB8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -65,6 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				6391BFE9214D81200047EDB8 /* main.cpp */,
+				6322FC62215031D800BC8C72 /* mainLoop.cpp */,
+				6322FC63215031D800BC8C72 /* mainLoop.hpp */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6322FC64215031D800BC8C72 /* mainLoop.cpp in Sources */,
 				6391BFEA214D81200047EDB8 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
