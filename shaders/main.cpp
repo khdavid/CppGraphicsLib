@@ -16,6 +16,7 @@ int main()
                      );
     
     std::cout << "Windows in initialized...";
+    
     SDL_Event e;
     bool quit = false;
     while (!quit){
