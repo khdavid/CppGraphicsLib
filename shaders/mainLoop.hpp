@@ -10,12 +10,25 @@
 #define mainLoop_hpp
 
 #include <stdio.h>
+#include <vector>
+
+class
+  MouseListener;
 
 class MainLoop
 {
 public:
-  static void run();
+  bool run();
+  void addMouseListener(MouseListener* mouselistener);
+  void removeMouseListener(MouseListener* mouselistener);
+
+private:
+  void processMouseButton_(const SDL_MouseButtonEvent& event);
+  void processMouseMotion_(const SDL_MouseMotionEvent& event);
+
+  std::vector<MouseListener*> mouseListeners_;
 };
+
 
 
 #endif /* mainLoop_hpp */
