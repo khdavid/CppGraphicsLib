@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-class MouseListener
+class MouseEventListener
 {
 public:
   virtual void onMouseRelease();

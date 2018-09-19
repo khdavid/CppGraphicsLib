@@ -9,24 +9,27 @@
 #ifndef mouseEventObservable_hpp
 #define mouseEventObservable_hpp
 
-#include <sdl2/sdl.h>
-
 #include <stdio.h>
 #include <vector>
-class MouseListener;
 
+class MouseEventListener;
+class SDL_MouseButtonEvent;
+struct SDL_MouseMotionEvent;
+union SDL_Event;
 
 class MouseEventObservable
 {
 public:
-  void addMouseListener(MouseListener* mouselistener);
-  void removeMouseListener(MouseListener* mouselistener);
-  void notifyMouseEvent(const SDL_Event& mouseEvent);
+  MouseEventObservable(const MouseEventObservable&) = delete;
+  MouseEventObservable() = default;
+  void addMouseListener(MouseEventListener* mouselistener);
+  void removeMouseListener(MouseEventListener* mouselistener);
+  void notifyMouseEvent(const SDL_Event& mouseEvent) const;
 private:
-  void processMouseButton_(const SDL_MouseButtonEvent& event);
-  void processMouseMotion_(const SDL_MouseMotionEvent& event);
+  void processMouseButton_(const SDL_MouseButtonEvent& event) const;
+  void processMouseMotion_(const SDL_MouseMotionEvent& event) const;
 
-  std::vector<MouseListener*> mouseListeners_;
+  std::vector<MouseEventListener*> mouseEventListeners_;
 };
 
 #endif /* mouseEventObservable_hpp */

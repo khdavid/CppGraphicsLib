@@ -2,6 +2,8 @@
 #include <iostream>
 #include <OpenGl/gl.h>
 
+#include "contextProvider.hpp"
+#include "contextBuilder.hpp"
 #include "mainLoop.hpp"
 
 
@@ -17,6 +19,8 @@ int main()
       SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);        // flags
   
   std::cout << "Windows in initialized...";
-  MainLoop().run();
+  ContextProvider contextProvider;
+  ContextBuilder contextBuilder(contextProvider);
+  MainLoop(contextProvider).run();
   return 0;
 }

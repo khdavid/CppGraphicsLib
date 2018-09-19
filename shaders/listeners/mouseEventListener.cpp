@@ -6,24 +6,24 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include "mouseListener.hpp"
+#include "mouseEventListener.hpp"
 
-void MouseListener::onMouseRelease()
+void MouseEventListener::onMouseRelease()
 {
   //should be implemented in a child class;
 }
 
-void MouseListener::onMouseMove(int x, int y)
+void MouseEventListener::onMouseMove(int x, int y)
 {
   //should be implemented in a child class;
 }
 
-void MouseListener::onMouseClick()
+void MouseEventListener::onMouseClick()
 {
   //should be implemented in a child class;
 }
 
-void MouseListener::onMouseMovePassive(int x, int y)
+void MouseEventListener::onMouseMovePassive(int x, int y)
 {
   //should be implemented in a child class;
 }

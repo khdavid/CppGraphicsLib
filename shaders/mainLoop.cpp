@@ -7,7 +7,13 @@
 //
 #include <sdl2/sdl.h>
 
+#include "contextProvider.hpp"
 #include "mainLoop.hpp"
+
+MainLoop::MainLoop(const ContextProvider& contextProvider):
+  contextProvider_(contextProvider)
+{
+}
 
 void MainLoop::run()
 {
@@ -18,9 +24,10 @@ void MainLoop::run()
   {
     while (SDL_PollEvent(&event))
     {
+      contextProvider_.getMouseEventObservable_().notifyMouseEvent(event);
       if (event.type == SDL_QUIT)
       {
-        quit = true;
+        quit = false;
       }
     }
   }

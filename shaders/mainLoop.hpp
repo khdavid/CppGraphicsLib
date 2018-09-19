@@ -11,13 +11,16 @@
 
 #include <stdio.h>
 
-class
-  MouseListener;
+class MouseEventListener;
+class ContextProvider;
 
 class MainLoop
 {
 public:
+  MainLoop(const ContextProvider& contextProvider);
   void run();
+private:
+  const ContextProvider& contextProvider_;
 };
 
 
