@@ -17,5 +17,6 @@ int main()
       SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);        // flags
   
   std::cout << "Windows in initialized...";
-  return  MainLoop().run();
+  MainLoop().run();
+  return 0;
 }
