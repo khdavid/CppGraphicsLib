@@ -27,7 +27,7 @@ void MainLoop::run()
       contextProvider_.getMouseEventObservable_().notifyMouseEvent(event);
       if (event.type == SDL_QUIT)
       {
-        quit = false;
+        quit = true;
       }
     }
   }
