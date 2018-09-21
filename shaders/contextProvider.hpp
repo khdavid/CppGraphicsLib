@@ -17,6 +17,7 @@ class MouseEventLogger;
 class SDL_WindowWrapper;
 class SDL_GLContextWrapper;
 class MouseEventObservable;
+class MainScene;
 
 
 class ContextProvider
@@ -27,12 +28,14 @@ public:
   ContextProvider(const ContextProvider&) = delete;
   ContextProvider& operator=(const ContextProvider&) = delete;
   void notifyEvent(const SDL_Event& event) const;
+  SDL_Window* getWindow() const;
 
 private:
   std::unique_ptr<MouseEventObservable> mouseEventObservable_;
   std::unique_ptr<MouseEventLogger> mouseEventLogger_;
   std::unique_ptr<SDL_WindowWrapper> window_;
   std::unique_ptr<SDL_GLContextWrapper> context_;
+  std::unique_ptr<MainScene> mainScene_;
 };
   
 

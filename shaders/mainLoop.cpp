@@ -23,10 +23,6 @@ void MainLoop::run()
   bool quit = false;
   while (!quit)
   {
-    glClearDepth(1);
-    glClearDepth(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //SDL_GL_SwapWindow(window);
-
     while (SDL_PollEvent(&event))
     {
       contextProvider_.notifyEvent(event);

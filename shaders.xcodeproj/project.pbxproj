@@ -352,6 +352,7 @@
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Frameworks/SDL/Versions/A",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

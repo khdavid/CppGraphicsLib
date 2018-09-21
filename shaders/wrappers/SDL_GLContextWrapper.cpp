@@ -13,8 +13,7 @@
  SDL_GLContextWrapper::SDL_GLContextWrapper(SDL_Window* window)
  {
    SDLGLContext_ = SDL_GL_CreateContext(window);
-   glClearColor(1.0, 1.0, 1.0, 1.0);
-}
+ }
 
  SDL_GLContextWrapper::~SDL_GLContextWrapper()
  {

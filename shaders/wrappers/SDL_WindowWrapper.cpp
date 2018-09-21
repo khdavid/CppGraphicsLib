@@ -7,13 +7,14 @@
 //
 #include <sdl2/sdl.h>
 
+#include <opengl/gl3.h>
+
 #include "SDL_WindowWrapper.hpp"
 
 SDL_WindowWrapper::SDL_WindowWrapper()
 {
   SDL_Init(SDL_INIT_EVERYTHING);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-  //glClearColor(1.0, 1.0, 1.0, 1.0);
 
   SDLWindow_ = SDL_CreateWindow(
     "",                         // window title
@@ -21,7 +22,7 @@ SDL_WindowWrapper::SDL_WindowWrapper()
     SDL_WINDOWPOS_CENTERED,     // y position, centered
     640,                        // width, in pixels
     480,                        // height, in pixels
-    SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);        // flags
+    SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE); // flags
 }
 
 SDL_WindowWrapper::~SDL_WindowWrapper()

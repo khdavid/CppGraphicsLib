@@ -12,6 +12,7 @@
 #include "wrappers/SDL_WindowWrapper.hpp"
 #include "wrappers/SDL_GLContextWrapper.hpp"
 #include "observables/mouseEventObservable.hpp"
+#include "mainScene.hpp"
 
 #include "contextProvider.hpp"
 
@@ -21,13 +22,21 @@ ContextProvider::ContextProvider()
   window_ = std::make_unique<SDL_WindowWrapper>();
   context_ = std::make_unique<SDL_GLContextWrapper>(window_->getNative());
   mouseEventLogger_ = std::make_unique<MouseEventLogger>();
+  mainScene_ = std::make_unique<MainScene>(*window_->getNative());
   mouseEventObservable_->addMouseListener(mouseEventLogger_.get());
+  mouseEventObservable_->addMouseListener(mainScene_.get());
 }
 
 void ContextProvider::notifyEvent(const SDL_Event& event) const
 {
   mouseEventObservable_->notifyMouseEvent(event);
 }
+
+SDL_Window* ContextProvider::getWindow() const
+{
+  return window_->getNative();
+}
+
 
 
 ContextProvider::~ContextProvider() = default;

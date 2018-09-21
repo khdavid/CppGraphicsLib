@@ -12,13 +12,19 @@
 #include <stdio.h>
 
 #include "listeners/mouseEventListener.hpp"
+class SDL_Window;
 
 class MainScene : public MouseEventListener
 {
+public:
+  MainScene(SDL_Window& window);
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseRelease(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
   virtual void onMouseMovePassive(int x, int y) override;
+
+private:
+  SDL_Window& window_;
 };
 
 #endif /* mainScene_hpp */
