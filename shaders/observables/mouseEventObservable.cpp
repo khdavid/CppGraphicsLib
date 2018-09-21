@@ -36,11 +36,11 @@ void MouseEventObservable::processMouseButton_(const SDL_MouseButtonEvent& event
     {
       if (event.state == SDL_PRESSED)
       {
-        mouseListener->onMouseClick();
+        mouseListener->onMouseClick(event.x, event.y);
       }
       else
       {
-        mouseListener->onMouseRelease();
+        mouseListener->onMouseRelease(event.x, event.y);
       }
     }
   }

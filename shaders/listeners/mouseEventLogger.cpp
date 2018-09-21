@@ -10,14 +10,14 @@
 
 #include "mouseEventLogger.hpp"
 
-void MouseEventLogger::onMouseClick()
+void MouseEventLogger::onMouseClick(int x, int y)
 {
-  std::cout << "mouse click" << std::endl;
+  std::cout << "mouse click: " << x << " " << y << std::endl;
 }
 
-void MouseEventLogger::onMouseRelease()
+void MouseEventLogger::onMouseRelease(int x, int y)
 {
-  std::cout << "mouse release" << std::endl;
+  std::cout << "mouse release: " << x << " " << y << std::endl;
 }
 
 void MouseEventLogger::onMouseMove(int x, int y)

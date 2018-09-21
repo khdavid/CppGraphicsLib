@@ -8,7 +8,7 @@
 
 #include "mouseEventListener.hpp"
 
-void MouseEventListener::onMouseRelease()
+void MouseEventListener::onMouseRelease(int x, int y)
 {
   //should be implemented in a child class;
 }
@@ -18,7 +18,7 @@ void MouseEventListener::onMouseMove(int x, int y)
   //should be implemented in a child class;
 }
 
-void MouseEventListener::onMouseClick()
+void MouseEventListener::onMouseClick(int x, int y)
 {
   //should be implemented in a child class;
 }

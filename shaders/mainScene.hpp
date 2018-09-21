@@ -1,26 +1,24 @@
 //
-//  mouseEventLogger.hpp
+//  mainScene.hpp
 //  shaders
 //
 //  Created by David Khudaverdyan on 20/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#ifndef mouseEventLogger_hpp
-#define mouseEventLogger_hpp
+#ifndef mainScene_hpp
+#define mainScene_hpp
 
 #include <stdio.h>
 
-#include "mouseEventListener.hpp"
+#include "listeners/mouseEventListener.hpp"
 
-class MouseEventLogger: public MouseEventListener
+class MainScene : public MouseEventListener
 {
-public:
+  virtual void onMouseClick(int x, int y) override;
   virtual void onMouseRelease(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
-  virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMovePassive(int x, int y) override;
-  virtual ~MouseEventLogger() = default;
 };
 
-#endif /* mouseEventLogger_hpp */
+#endif /* mainScene_hpp */

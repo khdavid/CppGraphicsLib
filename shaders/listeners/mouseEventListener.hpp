@@ -14,9 +14,9 @@
 class MouseEventListener
 {
 public:
-  virtual void onMouseRelease();
+  virtual void onMouseClick(int x, int y);
+  virtual void onMouseRelease(int x, int y);
   virtual void onMouseMove(int x, int y);
-  virtual void onMouseClick();
   virtual void onMouseMovePassive(int x, int y);
 };
 

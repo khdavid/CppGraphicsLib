@@ -10,19 +10,29 @@
 #define contextProvider_hpp
 
 #include <stdio.h>
+#include <memory>
+#include <sdl2/sdl.h>
 
-#include "observables/mouseEventObservable.hpp"
+class MouseEventLogger;
+class SDL_WindowWrapper;
+class SDL_GLContextWrapper;
+class MouseEventObservable;
+
 
 class ContextProvider
 {
 public:
+  ContextProvider();
+  ~ContextProvider();
   ContextProvider(const ContextProvider&) = delete;
-  ContextProvider() = default;
-  MouseEventObservable& getMouseEventObservable_();
-  const MouseEventObservable& getMouseEventObservable_() const;
+  ContextProvider& operator=(const ContextProvider&) = delete;
+  void notifyEvent(const SDL_Event& event) const;
 
 private:
-  MouseEventObservable mouseEventObservable_;
+  std::unique_ptr<MouseEventObservable> mouseEventObservable_;
+  std::unique_ptr<MouseEventLogger> mouseEventLogger_;
+  std::unique_ptr<SDL_WindowWrapper> window_;
+  std::unique_ptr<SDL_GLContextWrapper> context_;
 };
   
 
