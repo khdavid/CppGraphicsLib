@@ -6,61 +6,43 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 #include <algorithm>
-
 #include <sdl2/sdl.h>
 
 #include "mouseEventListener.hpp"
 #include "mouseEventObservable.hpp"
+#include "../eventHandlers/eventClassifier.hpp"
 
-void MouseEventObservable::notifyMouseEvent(const SDL_Event& mouseEvent) const
+
+void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
 {
-  switch (mouseEvent.type)
+  auto type = EventClassifier::classify(event);
+  switch (type)
   {
-    case SDL_MOUSEBUTTONDOWN:
-    case SDL_MOUSEBUTTONUP:
-      processMouseButton_(mouseEvent.button);
+    case EventType::MouseClick:
+      applyMouseEvent_(&MouseEventListener::onMouseClick, event.button);
       break;
-    case SDL_MOUSEMOTION:
-      processMouseMotion_(mouseEvent.motion);
+    case EventType::MouseRelease:
+      applyMouseEvent_(&MouseEventListener::onMouseRelease, event.button);
+      break;
+    case EventType::MouseMove:
+      applyMouseEvent_(&MouseEventListener::onMouseMove, event.button);
+      break;
+    case EventType::MouseMovePassive:
+      applyMouseEvent_(&MouseEventListener::onMouseMovePassive, event.button);
+      break;
     default:
       //do nothing;
       break;
   }
 }
 
-void MouseEventObservable::processMouseButton_(const SDL_MouseButtonEvent& event) const
+void MouseEventObservable::applyMouseEvent_(
+  std::function<void(MouseEventListener&, int, int)> func,
+  const SDL_MouseButtonEvent& event) const
 {
-  if (event.button == SDL_BUTTON_LEFT)
-  {
-    for (auto& mouseListener: mouseEventListeners_)
-    {
-      if (event.state == SDL_PRESSED)
-      {
-        mouseListener->onMouseClick(event.x, event.y);
-      }
-      else
-      {
-        mouseListener->onMouseRelease(event.x, event.y);
-      }
-    }
-  }
-}
-
-void MouseEventObservable::processMouseMotion_(const SDL_MouseMotionEvent& event) const
-{
-  bool leftKeyPressed = SDL_BUTTON(SDL_GetMouseState(nullptr, nullptr)) &
-    SDL_BUTTON_LMASK;
-  
   for (auto& mouseListener: mouseEventListeners_)
   {
-    if (leftKeyPressed)
-    {
-      mouseListener->onMouseMove(event.x, event.y);
-    }
-    else
-    {
-      mouseListener->onMouseMovePassive(event.x, event.y);
-    }
+    func(*mouseListener, event.x, event.y);
   }
 }
 

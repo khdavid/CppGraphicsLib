@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <functional>
 
 class MouseEventListener;
 class SDL_MouseButtonEvent;
@@ -26,8 +27,12 @@ public:
   void removeMouseListener(MouseEventListener* mouselistener);
   void notifyMouseEvent(const SDL_Event& mouseEvent) const;
 private:
-  void processMouseButton_(const SDL_MouseButtonEvent& event) const;
-  void processMouseMotion_(const SDL_MouseMotionEvent& event) const;
+  void applyMouseEvent_(std::function<void(MouseEventListener&, int, int)> func,
+    const SDL_MouseButtonEvent&) const;
+  void onMouseClick_(const SDL_MouseButtonEvent& mouseEvent) const;
+  void onMouseRelease_(const SDL_MouseButtonEvent& mouseEvent) const;
+  void onMouseMove_(const SDL_MouseMotionEvent& mouseEvent) const;
+  void onMouseMovePassive_(const SDL_MouseMotionEvent& mouseEvent) const;
 
   std::vector<MouseEventListener*> mouseEventListeners_;
 };

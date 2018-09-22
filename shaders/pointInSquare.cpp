@@ -51,7 +51,7 @@ void PointInSquare::onMouseMovePassive(int x, int y)
     glVertex2f(1, 1);
     glVertex2f(xMouse, yMouse);
 
-    glColor3f(0, 1, 1);
+    glColor3f(0, 0, 1);
     glVertex2f(-1, -1);
     glVertex2f(-1, 1);
     glVertex2f(xMouse, yMouse);

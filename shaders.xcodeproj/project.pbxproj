@@ -15,6 +15,7 @@
 		6322FC7A2153B21600BC8C72 /* pointInSquare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6322FC782153B21600BC8C72 /* pointInSquare.cpp */; };
 		6322FC7E2153DC4900BC8C72 /* SDL_WindowWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6322FC7C2153DC4900BC8C72 /* SDL_WindowWrapper.cpp */; };
 		6322FC812153E4AE00BC8C72 /* SDL_GLContextWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6322FC7F2153E4AE00BC8C72 /* SDL_GLContextWrapper.cpp */; };
+		6322FC8521559A5F00BC8C72 /* eventClassifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6322FC8321559A5F00BC8C72 /* eventClassifier.cpp */; };
 		6391BFEA214D81200047EDB8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6391BFE9214D81200047EDB8 /* main.cpp */; };
 		6391BFF5214DC02D0047EDB8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6391BFF4214DC02D0047EDB8 /* OpenGL.framework */; };
 		6391BFFB214F1CA90047EDB8 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6391BFFA214F1CA90047EDB8 /* SDL2.framework */; };
@@ -49,6 +50,8 @@
 		6322FC7D2153DC4900BC8C72 /* SDL_WindowWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SDL_WindowWrapper.hpp; sourceTree = "<group>"; };
 		6322FC7F2153E4AE00BC8C72 /* SDL_GLContextWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_GLContextWrapper.cpp; sourceTree = "<group>"; };
 		6322FC802153E4AE00BC8C72 /* SDL_GLContextWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SDL_GLContextWrapper.hpp; sourceTree = "<group>"; };
+		6322FC8321559A5F00BC8C72 /* eventClassifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = eventClassifier.cpp; sourceTree = "<group>"; };
+		6322FC8421559A5F00BC8C72 /* eventClassifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = eventClassifier.hpp; sourceTree = "<group>"; };
 		6391BFE6214D81200047EDB8 /* shaders */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = shaders; sourceTree = BUILT_PRODUCTS_DIR; };
 		6391BFE9214D81200047EDB8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6391BFF4214DC02D0047EDB8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -99,6 +102,17 @@
 			path = wrappers;
 			sourceTree = "<group>";
 		};
+		6322FC82215598F400BC8C72 /* eventHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				6322FC63215031D800BC8C72 /* mainLoop.hpp */,
+				6322FC62215031D800BC8C72 /* mainLoop.cpp */,
+				6322FC8321559A5F00BC8C72 /* eventClassifier.cpp */,
+				6322FC8421559A5F00BC8C72 /* eventClassifier.hpp */,
+			);
+			path = eventHandlers;
+			sourceTree = "<group>";
+		};
 		6391BFDD214D81200047EDB8 = {
 			isa = PBXGroup;
 			children = (
@@ -119,12 +133,11 @@
 		6391BFE8214D81200047EDB8 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				6322FC82215598F400BC8C72 /* eventHandlers */,
 				6322FC7B2153DC2000BC8C72 /* wrappers */,
 				6322FC692152ECA800BC8C72 /* observables */,
 				6322FC6521516B9F00BC8C72 /* listeners */,
 				6391BFE9214D81200047EDB8 /* main.cpp */,
-				6322FC62215031D800BC8C72 /* mainLoop.cpp */,
-				6322FC63215031D800BC8C72 /* mainLoop.hpp */,
 				6322FC782153B21600BC8C72 /* pointInSquare.cpp */,
 				6322FC792153B21600BC8C72 /* pointInSquare.hpp */,
 				6322FC6F2152FB2F00BC8C72 /* contextProvider.cpp */,
@@ -199,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6322FC6821516BD500BC8C72 /* mouseEventListener.cpp in Sources */,
+				6322FC8521559A5F00BC8C72 /* eventClassifier.cpp in Sources */,
 				6322FC7E2153DC4900BC8C72 /* SDL_WindowWrapper.cpp in Sources */,
 				6322FC7A2153B21600BC8C72 /* pointInSquare.cpp in Sources */,
 				6322FC772153101E00BC8C72 /* mouseEventLogger.cpp in Sources */,
