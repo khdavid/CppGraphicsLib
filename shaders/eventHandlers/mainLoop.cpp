@@ -9,6 +9,8 @@
 #include <opengl/gl.h>
 
 #include "contextProvider.hpp"
+#include "eventsManager.hpp"
+#include "eventClassifier.hpp"
 #include "mainLoop.hpp"
 
 MainLoop::MainLoop(const ContextProvider& contextProvider):
@@ -23,7 +25,7 @@ void MainLoop::run()
   bool quit = false;
   while (!quit)
   {
-    while (SDL_PollEvent(&event))
+    while (EventsManager::popEvent(event))
     {
       contextProvider_.notifyEvent(event);
       if (event.type == SDL_QUIT)
