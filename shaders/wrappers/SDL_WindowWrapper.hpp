@@ -9,7 +9,7 @@
 #ifndef SDLWindowWrapper_hpp
 #define SDLWindowWrapper_hpp
 
-#include <stdio.h>
+#include <stdio.h>  
 
 struct SDL_Window;
 

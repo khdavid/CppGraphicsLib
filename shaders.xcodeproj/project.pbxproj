@@ -55,6 +55,8 @@
 		6322FC8421559A5F00BC8C72 /* eventClassifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = eventClassifier.hpp; sourceTree = "<group>"; };
 		6322FC8B2156DA5000BC8C72 /* eventsManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = eventsManager.cpp; sourceTree = "<group>"; };
 		6322FC8C2156DA5000BC8C72 /* eventsManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = eventsManager.hpp; sourceTree = "<group>"; };
+		6325F3A5215EC6AE001FFF17 /* vertexShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vertexShader.hpp; sourceTree = "<group>"; };
+		6325F3A8215ECB60001FFF17 /* fragmentShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fragmentShader.hpp; sourceTree = "<group>"; };
 		6391BFE6214D81200047EDB8 /* shaders */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = shaders; sourceTree = BUILT_PRODUCTS_DIR; };
 		6391BFE9214D81200047EDB8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6391BFF4214DC02D0047EDB8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -118,6 +120,15 @@
 			path = eventHandlers;
 			sourceTree = "<group>";
 		};
+		6325F3A2215EC491001FFF17 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				6325F3A5215EC6AE001FFF17 /* vertexShader.hpp */,
+				6325F3A8215ECB60001FFF17 /* fragmentShader.hpp */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
 		6391BFDD214D81200047EDB8 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +149,7 @@
 		6391BFE8214D81200047EDB8 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				6325F3A2215EC491001FFF17 /* shaders */,
 				6322FC82215598F400BC8C72 /* eventHandlers */,
 				6322FC7B2153DC2000BC8C72 /* wrappers */,
 				6322FC692152ECA800BC8C72 /* observables */,
