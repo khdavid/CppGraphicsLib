@@ -8,6 +8,5 @@ int main()
 {
   ContextProvider contextProvider;
   MainLoop(contextProvider).run();
-  
   return 0;
 }
