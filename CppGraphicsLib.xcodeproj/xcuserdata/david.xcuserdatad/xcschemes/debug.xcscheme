@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6391BFE5214D81200047EDB8"
-               BuildableName = "shaders"
-               BlueprintName = "shaders"
-               ReferencedContainer = "container:shaders.xcodeproj">
+               BuildableName = "CppGraphicsLib"
+               BlueprintName = "CppGraphicsLib"
+               ReferencedContainer = "container:CppGraphicsLib.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6391BFE5214D81200047EDB8"
-            BuildableName = "shaders"
-            BlueprintName = "shaders"
-            ReferencedContainer = "container:shaders.xcodeproj">
+            BuildableName = "CppGraphicsLib"
+            BlueprintName = "CppGraphicsLib"
+            ReferencedContainer = "container:CppGraphicsLib.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6391BFE5214D81200047EDB8"
-            BuildableName = "shaders"
-            BlueprintName = "shaders"
-            ReferencedContainer = "container:shaders.xcodeproj">
+            BuildableName = "CppGraphicsLib"
+            BlueprintName = "CppGraphicsLib"
+            ReferencedContainer = "container:CppGraphicsLib.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6391BFE5214D81200047EDB8"
-            BuildableName = "shaders"
-            BlueprintName = "shaders"
-            ReferencedContainer = "container:shaders.xcodeproj">
+            BuildableName = "CppGraphicsLib"
+            BlueprintName = "CppGraphicsLib"
+            ReferencedContainer = "container:CppGraphicsLib.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

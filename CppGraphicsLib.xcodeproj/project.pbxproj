@@ -57,7 +57,7 @@
 		6322FC8C2156DA5000BC8C72 /* eventsManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = eventsManager.hpp; sourceTree = "<group>"; };
 		6325F3A5215EC6AE001FFF17 /* vertexShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vertexShader.hpp; sourceTree = "<group>"; };
 		6325F3A8215ECB60001FFF17 /* fragmentShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fragmentShader.hpp; sourceTree = "<group>"; };
-		6391BFE6214D81200047EDB8 /* shaders */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = shaders; sourceTree = BUILT_PRODUCTS_DIR; };
+		6391BFE6214D81200047EDB8 /* CppGraphicsLib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CppGraphicsLib; sourceTree = BUILT_PRODUCTS_DIR; };
 		6391BFE9214D81200047EDB8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6391BFF4214DC02D0047EDB8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		6391BFFA214F1CA90047EDB8 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		6391BFDD214D81200047EDB8 = {
 			isa = PBXGroup;
 			children = (
-				6391BFE8214D81200047EDB8 /* shaders */,
+				6391BFE8214D81200047EDB8 /* source */,
 				6391BFE7214D81200047EDB8 /* Products */,
 				6391BFF3214DC02D0047EDB8 /* Frameworks */,
 			);
@@ -141,12 +141,12 @@
 		6391BFE7214D81200047EDB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6391BFE6214D81200047EDB8 /* shaders */,
+				6391BFE6214D81200047EDB8 /* CppGraphicsLib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6391BFE8214D81200047EDB8 /* shaders */ = {
+		6391BFE8214D81200047EDB8 /* source */ = {
 			isa = PBXGroup;
 			children = (
 				6325F3A2215EC491001FFF17 /* shaders */,
@@ -160,7 +160,7 @@
 				6322FC6F2152FB2F00BC8C72 /* contextProvider.cpp */,
 				6322FC702152FB2F00BC8C72 /* contextProvider.hpp */,
 			);
-			path = shaders;
+			path = source;
 			sourceTree = "<group>";
 		};
 		6391BFF3214DC02D0047EDB8 /* Frameworks */ = {
@@ -175,9 +175,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6391BFE5214D81200047EDB8 /* shaders */ = {
+		6391BFE5214D81200047EDB8 /* CppGraphicsLib */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6391BFED214D81200047EDB8 /* Build configuration list for PBXNativeTarget "shaders" */;
+			buildConfigurationList = 6391BFED214D81200047EDB8 /* Build configuration list for PBXNativeTarget "CppGraphicsLib" */;
 			buildPhases = (
 				6391BFE2214D81200047EDB8 /* Sources */,
 				6391BFE3214D81200047EDB8 /* Frameworks */,
@@ -187,9 +187,9 @@
 			);
 			dependencies = (
 			);
-			name = shaders;
+			name = CppGraphicsLib;
 			productName = shaders;
-			productReference = 6391BFE6214D81200047EDB8 /* shaders */;
+			productReference = 6391BFE6214D81200047EDB8 /* CppGraphicsLib */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +206,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6391BFE1214D81200047EDB8 /* Build configuration list for PBXProject "shaders" */;
+			buildConfigurationList = 6391BFE1214D81200047EDB8 /* Build configuration list for PBXProject "CppGraphicsLib" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -218,7 +218,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6391BFE5214D81200047EDB8 /* shaders */,
+				6391BFE5214D81200047EDB8 /* CppGraphicsLib */,
 			);
 		};
 /* End PBXProject section */
@@ -392,7 +392,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6391BFE1214D81200047EDB8 /* Build configuration list for PBXProject "shaders" */ = {
+		6391BFE1214D81200047EDB8 /* Build configuration list for PBXProject "CppGraphicsLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6391BFEB214D81200047EDB8 /* Debug */,
@@ -401,7 +401,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6391BFED214D81200047EDB8 /* Build configuration list for PBXNativeTarget "shaders" */ = {
+		6391BFED214D81200047EDB8 /* Build configuration list for PBXNativeTarget "CppGraphicsLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6391BFEE214D81200047EDB8 /* Debug */,
