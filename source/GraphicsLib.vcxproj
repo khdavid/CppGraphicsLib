@@ -66,16 +66,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget);$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platform)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget);$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platform)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget);$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platform)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget);$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platform)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
