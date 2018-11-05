@@ -82,7 +82,8 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <EntryPointSymbol>main</EntryPointSymbol>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
       <AdditionalDependencies>$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform)\glew32.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
@@ -102,7 +103,8 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <EntryPointSymbol>main</EntryPointSymbol>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
       <AdditionalDependencies>$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform)\glew32.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
@@ -113,8 +115,9 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\ext\glew-2.1.0\include\GL;$(ProjectDir)..\ext\SDL2-2.0.9\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <EntryPointSymbol>main</EntryPointSymbol>
-      <AdditionalDependencies>$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform)\glew32.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalDependencies>$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform)\glew32.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2main.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17134.0\um\x64\opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
       <SubSystem>Console</SubSystem>
@@ -125,8 +128,9 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\ext\glew-2.1.0\include\GL;$(ProjectDir)..\ext\SDL2-2.0.9\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <EntryPointSymbol>main</EntryPointSymbol>
-      <AdditionalDependencies>$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform)\glew32.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalDependencies>$(ProjectDir)..\ext\glew-2.1.0\lib\Release\$(Platform)\glew32.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2.lib;$(ProjectDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget)\SDL2main.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17134.0\um\x64\opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
       <SubSystem>Console</SubSystem>
