@@ -6,7 +6,7 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include "opengl/gl.h"
+#include <sdl_opengl.h>
 
 #include "SDL_GLContextWrapper.hpp"
 

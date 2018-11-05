@@ -1,9 +1,9 @@
 #include <iostream>
 
 #include "contextProvider.hpp"
-#include "mainLoop.hpp"
+#include "eventHandlers/mainLoop.hpp"
 
-
+#undef main
 int main()
 {
   ContextProvider contextProvider;

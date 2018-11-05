@@ -10,7 +10,7 @@
 #define eventsManager_hpp
 
 #include <stdio.h>
-#include <sdl2/sdl.h>
+#include <sdl.h>
 
 class EventsManager
 {

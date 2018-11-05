@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <memory>
-#include <sdl2/sdl.h>
+#include <sdl.h>
 
 class MouseEventLogger;
 class SDL_WindowWrapper;

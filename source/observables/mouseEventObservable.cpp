@@ -6,9 +6,9 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 #include <algorithm>
-#include <sdl2/sdl.h>
+#include <sdl.h>
 
-#include "mouseEventListener.hpp"
+#include "listeners/mouseEventListener.hpp"
 #include "mouseEventObservable.hpp"
 #include "../eventHandlers/eventClassifier.hpp"
 

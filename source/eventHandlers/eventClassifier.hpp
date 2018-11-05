@@ -10,7 +10,7 @@
 #define eventClassifier_hpp
 
 #include <stdio.h>
-#include <sdl2/sdl.h>
+#include <sdl.h>
 
 enum class EventType
 {

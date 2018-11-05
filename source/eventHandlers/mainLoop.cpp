@@ -5,8 +5,8 @@
 //  Created by David Khudaverdyan on 17/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-#include <sdl2/sdl.h>
-#include <opengl/gl.h>
+#include <sdl.h>
+#include <sdl_opengl.h>
 
 #include "contextProvider.hpp"
 #include "eventsManager.hpp"

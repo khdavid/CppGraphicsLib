@@ -6,8 +6,8 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include <opengl/gl.h>
-#include <sdl2/sdl.h>
+#include <sdl_opengl.h>
+#include <sdl.h>
 #include "pointInSquare.hpp"
 
 PointInSquare::PointInSquare(SDL_Window& window):

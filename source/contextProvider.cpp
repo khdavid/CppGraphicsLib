@@ -6,8 +6,8 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include <sdl2/sdl.h>
-
+#include <sdl.h>
+ 
 #include "listeners/mouseEventLogger.hpp"
 #include "wrappers/SDL_WindowWrapper.hpp"
 #include "wrappers/SDL_GLContextWrapper.hpp"
