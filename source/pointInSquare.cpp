@@ -6,7 +6,7 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include <sdl_opengl.h>
+#include <glew.h>
 #include <sdl.h>
 #include "pointInSquare.hpp"
 
