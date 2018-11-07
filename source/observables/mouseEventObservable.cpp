@@ -37,12 +37,12 @@ void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
 }
 
 void MouseEventObservable::applyMouseEvent_(
-  std::function<void(MouseEventListener&, int, int)> func,
+  void(MouseEventListener::* func)(int, int),
   const SDL_MouseButtonEvent& event) const
 {
-  for (auto& mouseListener: mouseEventListeners_)
+  for (auto& mouseListener : mouseEventListeners_)
   {
-    func(*mouseListener, event.x, event.y);
+    (mouseListener->*func)(event.x, event.y);
   }
 }
 
