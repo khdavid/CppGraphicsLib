@@ -101,7 +101,7 @@
       </IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y  $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
+      <Command>xcopy /y  /d $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -132,7 +132,7 @@
       </IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y  $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
+      <Command>xcopy /y  /d $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -155,7 +155,7 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y  $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
+      <Command>xcopy /y  /d $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -178,7 +178,7 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y  $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
+      <Command>xcopy /y  /d $(ProjectDir)..\ext\bin\$(platformtarget)\*.dll $(ProjectDir)..\exe\$(Configuration)\$(platformtarget)</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
