@@ -8,13 +8,13 @@
 
 #include <sdl.h>
  
-#include "listeners/mouseEventLogger.hpp"
-#include "wrappers/SDL_WindowWrapper.hpp"
-#include "wrappers/SDL_GLContextWrapper.hpp"
-#include "observables/mouseEventObservable.hpp"
-#include "pointInSquare.hpp"
+#include "listeners/mouseEventLogger.h"
+#include "wrappers/SDL_WindowWrapper.h"
+#include "wrappers/SDL_GLContextWrapper.h"
+#include "observables/mouseEventObservable.h"
+#include "pointInSquare.h"
 
-#include "contextProvider.hpp"
+#include "contextProvider.h"
 
 ContextProvider::ContextProvider()
 {

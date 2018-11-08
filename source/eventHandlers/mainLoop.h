@@ -1,5 +1,5 @@
 //
-//  mainLoop.hpp
+//  mainLoop.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 17/09/2018.

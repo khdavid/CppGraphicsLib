@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "mouseEventLogger.hpp"
+#include "mouseEventLogger.h"
 
 void MouseEventLogger::onMouseClick(int x, int y)
 {

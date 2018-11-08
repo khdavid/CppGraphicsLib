@@ -1,5 +1,5 @@
 //
-//  SDLGLContextWrapper.hpp
+//  SDLGLContextWrapper.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 20/09/2018.

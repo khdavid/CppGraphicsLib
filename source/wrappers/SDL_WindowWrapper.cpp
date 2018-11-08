@@ -9,7 +9,7 @@
 
 #include <glew.h>
 
-#include "SDL_WindowWrapper.hpp"
+#include "SDL_WindowWrapper.h"
 
 SDL_WindowWrapper::SDL_WindowWrapper()
 {

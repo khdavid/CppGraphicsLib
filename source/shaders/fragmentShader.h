@@ -1,5 +1,5 @@
 //
-//  fragmentShader.hpp
+//  fragmentShader.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 28/09/2018.

@@ -8,9 +8,9 @@
 #include <algorithm>
 #include <sdl.h>
 
-#include "listeners/mouseEventListener.hpp"
-#include "mouseEventObservable.hpp"
-#include "../eventHandlers/eventClassifier.hpp"
+#include "listeners/mouseEventListener.h"
+#include "mouseEventObservable.h"
+#include "../eventHandlers/eventClassifier.h"
 
 void abra(int x, int y)
 {

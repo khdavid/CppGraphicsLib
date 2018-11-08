@@ -1,5 +1,5 @@
 //
-//  mouseListener.hpp
+//  mouseListener.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 18/09/2018.

@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "contextProvider.hpp"
-#include "eventHandlers/mainLoop.hpp"
+#include "contextProvider.h"
+#include "eventHandlers/mainLoop.h"
 
 
 int main(int argc, char** argv)

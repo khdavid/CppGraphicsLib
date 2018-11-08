@@ -6,7 +6,7 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include "eventClassifier.hpp"
+#include "eventClassifier.h"
 
 namespace
 {

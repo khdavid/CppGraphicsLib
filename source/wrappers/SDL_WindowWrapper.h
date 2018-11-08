@@ -1,5 +1,5 @@
 //
-//  SDLWindowWrapper.hpp
+//  SDLWindowWrapper.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 20/09/2018.

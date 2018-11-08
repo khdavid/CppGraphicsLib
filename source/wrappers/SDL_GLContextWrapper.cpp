@@ -8,7 +8,7 @@
 
 #include <glew.h>
 
-#include "SDL_GLContextWrapper.hpp"
+#include "SDL_GLContextWrapper.h"
 
  SDL_GLContextWrapper::SDL_GLContextWrapper(SDL_Window* window)
  {

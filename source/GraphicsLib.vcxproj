@@ -202,18 +202,18 @@
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="contextProvider.hpp" />
-    <ClInclude Include="eventhandlers\eventClassifier.hpp" />
-    <ClInclude Include="eventhandlers\eventsManager.hpp" />
-    <ClInclude Include="eventhandlers\mainLoop.hpp" />
-    <ClInclude Include="listeners\mouseEventListener.hpp" />
-    <ClInclude Include="listeners\mouseEventLogger.hpp" />
-    <ClInclude Include="observables\mouseEventObservable.hpp" />
-    <ClInclude Include="pointInSquare.hpp" />
-    <ClInclude Include="shaders\fragmentShader.hpp" />
-    <ClInclude Include="shaders\vertexShader.hpp" />
-    <ClInclude Include="wrappers\SDL_GLContextWrapper.hpp" />
-    <ClInclude Include="wrappers\SDL_WindowWrapper.hpp" />
+    <ClInclude Include="contextProvider.h" />
+    <ClInclude Include="eventhandlers\eventClassifier.h" />
+    <ClInclude Include="eventhandlers\eventsManager.h" />
+    <ClInclude Include="eventhandlers\mainLoop.h" />
+    <ClInclude Include="listeners\mouseEventListener.h" />
+    <ClInclude Include="listeners\mouseEventLogger.h" />
+    <ClInclude Include="observables\mouseEventObservable.h" />
+    <ClInclude Include="pointInSquare.h" />
+    <ClInclude Include="shaders\fragmentShader.h" />
+    <ClInclude Include="shaders\vertexShader.h" />
+    <ClInclude Include="wrappers\SDL_GLContextWrapper.h" />
+    <ClInclude Include="wrappers\SDL_WindowWrapper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

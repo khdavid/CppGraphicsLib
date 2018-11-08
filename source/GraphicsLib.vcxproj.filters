@@ -47,37 +47,37 @@
     <ClCompile Include="pointInSquare.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="eventhandlers\eventClassifier.hpp">
+    <ClInclude Include="eventhandlers\eventClassifier.h">
       <Filter>eventHandlers</Filter>
     </ClInclude>
-    <ClInclude Include="eventhandlers\eventsManager.hpp">
-      <Filter>eventHandlers</Filter>
-    </ClInclude>
-    <ClInclude Include="eventhandlers\mainLoop.hpp">
-      <Filter>eventHandlers</Filter>
-    </ClInclude>
-    <ClInclude Include="listeners\mouseEventListener.hpp">
+    <ClInclude Include="listeners\mouseEventListener.h">
       <Filter>listeners</Filter>
     </ClInclude>
-    <ClInclude Include="listeners\mouseEventLogger.hpp">
+    <ClInclude Include="listeners\mouseEventLogger.h">
       <Filter>listeners</Filter>
     </ClInclude>
-    <ClInclude Include="observables\mouseEventObservable.hpp">
+    <ClInclude Include="observables\mouseEventObservable.h">
       <Filter>observables</Filter>
     </ClInclude>
-    <ClInclude Include="shaders\fragmentShader.hpp">
+    <ClInclude Include="shaders\fragmentShader.h">
       <Filter>shaders</Filter>
     </ClInclude>
-    <ClInclude Include="shaders\vertexShader.hpp">
+    <ClInclude Include="shaders\vertexShader.h">
       <Filter>shaders</Filter>
     </ClInclude>
-    <ClInclude Include="wrappers\SDL_GLContextWrapper.hpp">
+    <ClInclude Include="wrappers\SDL_GLContextWrapper.h">
       <Filter>wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="wrappers\SDL_WindowWrapper.hpp">
+    <ClInclude Include="wrappers\SDL_WindowWrapper.h">
       <Filter>wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="contextProvider.hpp" />
-    <ClInclude Include="pointInSquare.hpp" />
+    <ClInclude Include="contextProvider.h" />
+    <ClInclude Include="pointInSquare.h" />
+    <ClInclude Include="eventhandlers\eventsManager.h">
+      <Filter>eventHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="eventhandlers\mainLoop.h">
+      <Filter>eventHandlers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

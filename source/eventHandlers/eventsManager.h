@@ -1,5 +1,5 @@
 //
-//  eventsManager.hpp
+//  eventsManager.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 22/09/2018.

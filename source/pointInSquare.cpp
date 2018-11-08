@@ -8,7 +8,7 @@
 
 #include <glew.h>
 #include <sdl.h>
-#include "pointInSquare.hpp"
+#include "pointInSquare.h"
 
 PointInSquare::PointInSquare(SDL_Window& window):
   window_(window)

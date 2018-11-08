@@ -1,5 +1,5 @@
 //
-//  eventClassifier.hpp
+//  eventClassifier.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 21/09/2018.

@@ -6,7 +6,7 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include "mouseEventListener.hpp"
+#include "mouseEventListener.h"
 
 void MouseEventListener::onMouseRelease(int x, int y)
 {

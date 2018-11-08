@@ -1,5 +1,5 @@
 //
-//  contextProvider.hpp
+//  contextProvider.h
 //  shaders
 //
 //  Created by David Khudaverdyan on 19/09/2018.

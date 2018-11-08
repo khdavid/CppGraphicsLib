@@ -8,10 +8,10 @@
 #include <sdl.h>
 #include <glew.h>
 
-#include "contextProvider.hpp"
-#include "eventsManager.hpp"
-#include "eventClassifier.hpp"
-#include "mainLoop.hpp"
+#include "contextProvider.h"
+#include "eventsManager.h"
+#include "eventClassifier.h"
+#include "mainLoop.h"
 
 MainLoop::MainLoop(const ContextProvider& contextProvider):
   contextProvider_(contextProvider)

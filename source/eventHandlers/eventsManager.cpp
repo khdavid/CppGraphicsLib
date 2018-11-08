@@ -10,8 +10,8 @@
 #include <set>
 #include <vector>
 
-#include "eventClassifier.hpp"
-#include "eventsManager.hpp"
+#include "eventClassifier.h"
+#include "eventsManager.h"
 
 namespace
 {
