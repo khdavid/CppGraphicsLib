@@ -16,6 +16,9 @@
     <Filter Include="wrappers">
       <UniqueIdentifier>{01b5d2c0-67bc-4128-b0f3-0491b6879b95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sprites">
+      <UniqueIdentifier>{65458949-3fe9-467d-9944-c5162ae28190}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
@@ -45,6 +48,9 @@
     <ClCompile Include="contextProvider.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pointInSquare.cpp" />
+    <ClCompile Include="sprites\triangleSprite.cpp">
+      <Filter>sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -78,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="eventhandlers\mainLoop.h">
       <Filter>eventHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="sprites\triangleSprite.h">
+      <Filter>sprites</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
