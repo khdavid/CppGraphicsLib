@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="geometryObjects">
+      <UniqueIdentifier>{7ec4caa3-9787-48ef-941f-da264f255464}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="geometryObjects\point2D.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="geometryObjects\point2D.cpp">
+      <Filter>geometryObjects</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

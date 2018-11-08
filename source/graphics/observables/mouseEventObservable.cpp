@@ -12,10 +12,6 @@
 #include "mouseEventObservable.h"
 #include "../eventHandlers/eventClassifier.h"
 
-void abra(int x, int y)
-{
-
-}
 void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
 {
 

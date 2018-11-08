@@ -67,23 +67,23 @@
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platformtarget)</OutDir>
-    <IntDir>$(SolutionDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platformtarget)</OutDir>
-    <IntDir>$(SolutionDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platformtarget)</OutDir>
-    <IntDir>$(SolutionDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\exe\$(Configuration)\$(Platformtarget)</OutDir>
-    <IntDir>$(SolutionDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -224,6 +224,11 @@
     <ClInclude Include="shaders\vertexShader.h" />
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h" />
     <ClInclude Include="wrappers\SDL_WindowWrapper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\geometry\geometry.vcxproj">
+      <Project>{01971f68-e447-4739-9f7e-91873126db52}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
