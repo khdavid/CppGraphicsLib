@@ -5,9 +5,7 @@
 //  Created by David Khudaverdyan on 28/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-
-#ifndef vertexShader_hpp
-#define vertexShader_hpp
+#pragma once
 
 #include <stdio.h>
 
@@ -24,6 +22,3 @@ void main
 }
 
 )";
-
-
-#endif /* vertexShader_hpp */

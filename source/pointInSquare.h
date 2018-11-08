@@ -5,9 +5,7 @@
 //  Created by David Khudaverdyan on 20/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-
-#ifndef mainScene_hpp
-#define mainScene_hpp
+#pragma once
 
 #include <stdio.h>
 
@@ -26,5 +24,3 @@ public:
 private:
   SDL_Window& window_;
 };
-
-#endif /* mainScene_hpp */

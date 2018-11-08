@@ -5,9 +5,7 @@
 //  Created by David Khudaverdyan on 17/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-
-#ifndef mainLoop_hpp
-#define mainLoop_hpp
+#pragma once
 
 #include <stdio.h>
 
@@ -22,7 +20,3 @@ public:
 private:
   const ContextProvider& contextProvider_;
 };
-
-
-
-#endif /* mainLoop_hpp */

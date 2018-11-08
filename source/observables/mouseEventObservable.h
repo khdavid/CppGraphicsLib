@@ -5,9 +5,7 @@
 //  Created by David Khudaverdyan on 19/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-
-#ifndef mouseEventObservable_hpp
-#define mouseEventObservable_hpp
+#pragma once
 
 #include <stdio.h>
 #include <vector>
@@ -36,5 +34,3 @@ private:
 
   std::vector<MouseEventListener*> mouseEventListeners_;
 };
-
-#endif /* mouseEventObservable_hpp */

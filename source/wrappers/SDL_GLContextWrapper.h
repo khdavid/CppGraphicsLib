@@ -5,9 +5,7 @@
 //  Created by David Khudaverdyan on 20/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-
-#ifndef SDLGLContextWrapper_hpp
-#define SDLGLContextWrapper_hpp
+#pragma once
 
 #include <stdio.h>
 #include <sdl.h>
@@ -26,5 +24,3 @@ private:
   SDL_GLContext SDLGLContext_;
   
 };
-
-#endif /* SDLGLContextWrapper_hpp */

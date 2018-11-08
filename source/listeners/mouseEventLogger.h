@@ -5,9 +5,7 @@
 //  Created by David Khudaverdyan on 20/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-
-#ifndef mouseEventLogger_hpp
-#define mouseEventLogger_hpp
+#pragma once
 
 #include <stdio.h>
 
@@ -22,5 +20,3 @@ public:
   virtual void onMouseMovePassive(int x, int y) override;
   virtual ~MouseEventLogger() = default;
 };
-
-#endif /* mouseEventLogger_hpp */

@@ -5,9 +5,7 @@
 //  Created by David Khudaverdyan on 19/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
-
-#ifndef contextProvider_hpp
-#define contextProvider_hpp
+#pragma once
 
 #include <stdio.h>
 #include <memory>
@@ -37,6 +35,3 @@ private:
   std::unique_ptr<SDL_GLContextWrapper> context_;
   std::unique_ptr<PointInSquare> mainScene_;
 };
-  
-
-#endif /* contextProvider_hpp */
