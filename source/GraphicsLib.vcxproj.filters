@@ -1,90 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="eventHandlers">
+      <UniqueIdentifier>{c708ef8c-fac6-416b-b7cc-d18b2b36bed7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="listeners">
+      <UniqueIdentifier>{ce2545a1-ccd9-490f-a2d0-9388afb7dba9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    <Filter Include="observables">
+      <UniqueIdentifier>{182263bd-e914-43e2-b131-8f8d1b4f748c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{c4e2d7c5-7948-48d1-bab8-f2d88ce1c812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrappers">
+      <UniqueIdentifier>{01b5d2c0-67bc-4128-b0f3-0491b6879b95}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="contextProvider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="pointInSquare.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>eventHandlers</Filter>
     </ClCompile>
     <ClCompile Include="eventhandlers\eventsManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>eventHandlers</Filter>
     </ClCompile>
     <ClCompile Include="eventhandlers\mainLoop.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>eventHandlers</Filter>
     </ClCompile>
     <ClCompile Include="listeners\mouseEventListener.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>listeners</Filter>
     </ClCompile>
     <ClCompile Include="listeners\mouseEventLogger.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>listeners</Filter>
     </ClCompile>
     <ClCompile Include="observables\mouseEventObservable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="wrappers\SDL_GLContextWrapper.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>observables</Filter>
     </ClCompile>
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>wrappers</Filter>
     </ClCompile>
+    <ClCompile Include="wrappers\SDL_GLContextWrapper.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="contextProvider.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pointInSquare.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="contextProvider.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pointInSquare.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="eventhandlers\eventClassifier.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>eventHandlers</Filter>
     </ClInclude>
     <ClInclude Include="eventhandlers\eventsManager.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>eventHandlers</Filter>
     </ClInclude>
     <ClInclude Include="eventhandlers\mainLoop.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>eventHandlers</Filter>
     </ClInclude>
     <ClInclude Include="listeners\mouseEventListener.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>listeners</Filter>
     </ClInclude>
     <ClInclude Include="listeners\mouseEventLogger.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>listeners</Filter>
     </ClInclude>
     <ClInclude Include="observables\mouseEventObservable.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>observables</Filter>
     </ClInclude>
     <ClInclude Include="shaders\fragmentShader.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>shaders</Filter>
     </ClInclude>
     <ClInclude Include="shaders\vertexShader.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>shaders</Filter>
     </ClInclude>
     <ClInclude Include="wrappers\SDL_GLContextWrapper.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>wrappers</Filter>
     </ClInclude>
     <ClInclude Include="wrappers\SDL_WindowWrapper.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>wrappers</Filter>
     </ClInclude>
+    <ClInclude Include="contextProvider.hpp" />
+    <ClInclude Include="pointInSquare.hpp" />
   </ItemGroup>
 </Project>

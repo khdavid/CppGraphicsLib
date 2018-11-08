@@ -12,9 +12,14 @@
 #include "mouseEventObservable.hpp"
 #include "../eventHandlers/eventClassifier.hpp"
 
+void abra(int x, int y)
+{
 
+}
 void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
 {
+
+  std::function<void(MouseEventListener, int, int)> func = &MouseEventListener::onMouseClick;
   auto type = EventClassifier::classify(event);
   switch (type)
   {
