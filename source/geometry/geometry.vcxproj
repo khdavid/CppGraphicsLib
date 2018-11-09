@@ -78,20 +78,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir>$(ProjectDir)intermidiate\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\intermidiate\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
