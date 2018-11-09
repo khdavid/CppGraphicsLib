@@ -28,7 +28,7 @@ Global
 		{01971F68-E447-4739-9F7E-91873126DB52}.Debug|x64.ActiveCfg = Debug|x64
 		{01971F68-E447-4739-9F7E-91873126DB52}.Release|Win32.ActiveCfg = Release|Win32
 		{01971F68-E447-4739-9F7E-91873126DB52}.Release|Win32.Build.0 = Release|Win32
-		{01971F68-E447-4739-9F7E-91873126DB52}.Release|x64.ActiveCfg = Release|Win32
+		{01971F68-E447-4739-9F7E-91873126DB52}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
