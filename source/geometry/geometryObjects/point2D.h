@@ -6,6 +6,7 @@
 class Point2D : public Coord2D
 {
 public:
+  Point2D() = default;
   Point2D(double x, double y);
 };
 

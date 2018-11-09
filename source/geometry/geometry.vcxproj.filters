@@ -12,12 +12,18 @@
     <ClInclude Include="geometryObjects\coord2D.h">
       <Filter>geometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="geometryObjects\vector2D.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="geometryObjects\point2D.cpp">
       <Filter>geometryObjects</Filter>
     </ClCompile>
     <ClCompile Include="geometryObjects\coord2D.cpp">
+      <Filter>geometryObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="geometryObjects\vector2D.cpp">
       <Filter>geometryObjects</Filter>
     </ClCompile>
   </ItemGroup>

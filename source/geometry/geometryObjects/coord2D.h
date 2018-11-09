@@ -16,6 +16,6 @@ public:
   double& operator[](size_t index);
   const double& operator[](size_t index) const;
 private:
-  std::array<double, 2> arr_;
+  std::array<double, 2> arr_ = {0, 0};
 };
 
