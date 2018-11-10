@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="operations\operations.h" />
     <ClInclude Include="geometryObjects\coord2D.h" />
     <ClInclude Include="geometryObjects\point2D.h" />
     <ClInclude Include="geometryObjects\vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="operations\operations.cpp" />
     <ClCompile Include="geometryObjects\coord2D.cpp" />
     <ClCompile Include="geometryObjects\point2D.cpp" />
     <ClCompile Include="geometryObjects\vector2D.cpp" />

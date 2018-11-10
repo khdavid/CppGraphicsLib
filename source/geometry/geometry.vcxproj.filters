@@ -4,6 +4,9 @@
     <Filter Include="geometryObjects">
       <UniqueIdentifier>{7ec4caa3-9787-48ef-941f-da264f255464}</UniqueIdentifier>
     </Filter>
+    <Filter Include="operations">
+      <UniqueIdentifier>{952cd94f-f5fe-4d05-b39a-23825d44d253}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="geometryObjects\point2D.h">
@@ -15,6 +18,9 @@
     <ClInclude Include="geometryObjects\vector2D.h">
       <Filter>geometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="operations\operations.h">
+      <Filter>operations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="geometryObjects\point2D.cpp">
@@ -25,6 +31,9 @@
     </ClCompile>
     <ClCompile Include="geometryObjects\vector2D.cpp">
       <Filter>geometryObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="operations\operations.cpp">
+      <Filter>operations</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
