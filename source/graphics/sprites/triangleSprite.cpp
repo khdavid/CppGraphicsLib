@@ -1,6 +1,7 @@
 #include "triangleSprite.h"
 
 
-TriangleSprite::TriangleSprite()
+TriangleSprite::TriangleSprite(Triangle2D triangle):
+  triangle_(triangle)
 {
 }
