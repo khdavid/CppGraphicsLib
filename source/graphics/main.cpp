@@ -7,14 +7,10 @@
 
 void test()
 {
-  std::array<int, 2> rr = { 2.3 };
-  rr.size();
-  const Vector2D aa(1, 2);
-  auto bb = aa * aa*aa / 7;
-  bb[0] = 10;
-  auto cc = 2 * bb * 2;
-  auto tt = Point2D(1, 2);
-  auto ttt = Triangle2D(tt, tt, tt);
+  int tt[33];
+  std::array<int, 4> rr = { 23, 3, 4, 5 };
+
+  auto aa = sizeof(tt);
   int x = 5;
 }
 

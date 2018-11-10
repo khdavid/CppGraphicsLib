@@ -9,11 +9,11 @@ public:
   {
 
   }
-  double& operator[](size_t index)
+  T& operator[](size_t index)
   {
     return arr_[index];
   }
-  const double& operator[](size_t index) const
+  const T& operator[](size_t index) const
   {
     return arr_[index];
   }
