@@ -7,6 +7,7 @@ class TriangleSprite
 {
 public:
   TriangleSprite(Triangle2D triangle);
+  ~TriangleSprite();
   void draw();
 
 private:
