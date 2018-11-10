@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
-  <!--from winuser.h -->
+
+  <Type Name="IndexAccessor&lt;*,*&gt;">
+    <DisplayString>{{ size={$T2} }}</DisplayString>
+    <Expand>
+      <ArrayItems>
+        <Size>$T2</Size>
+        <ValuePointer>arr_._Elems</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
   <Type Name="Coord2D">
-    <DisplayString>{{x={arr_[0]}, y={arr_[1]}}</DisplayString>
+    <DisplayString>{{ {arr_[0]},{arr_[1]} }}</DisplayString>
   </Type>
 
 
