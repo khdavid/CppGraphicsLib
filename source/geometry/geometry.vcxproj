@@ -33,6 +33,9 @@
     <ClCompile Include="operations\operations.cpp" />
     <ClCompile Include="geometryObjects\triangle2D.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="natvis\cppgraphicslib.natvis" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{01971F68-E447-4739-9F7E-91873126DB52}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

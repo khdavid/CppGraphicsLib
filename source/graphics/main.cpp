@@ -13,12 +13,12 @@ void test()
   auto cc = 2 * bb * 2;
   auto tt = Point2D(1, 2);
   auto ttt = Triangle2D(tt, tt, tt);
-
 }
 
 int main(int argc, char** argv)
 {
   
+  test();
   ContextProvider contextProvider;
   MainLoop(contextProvider).run();
   return 0;

@@ -45,4 +45,7 @@
       <Filter>geometryObjects</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="natvis\cppgraphicslib.natvis" />
+  </ItemGroup>
 </Project>
