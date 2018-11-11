@@ -34,6 +34,6 @@ private:
   std::unique_ptr<MouseEventLogger> mouseEventLogger_;
   std::unique_ptr<SDL_WindowWrapper> window_;
   std::unique_ptr<SDL_GLContextWrapper> context_;
-  std::unique_ptr<PointInSquare> mainScene_;
+  std::unique_ptr<PointInSquare> pointInSquare_;
   std::unique_ptr<SpriteManager> spriteManager_;
 };

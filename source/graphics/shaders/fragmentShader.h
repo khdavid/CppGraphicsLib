@@ -8,13 +8,14 @@
 #pragma once
 
 #include <stdio.h>
+#include <string>
 
-const std::string shaper = R"(
+const std::string cFragmentShaderCode = R"(
 #version 130
 
 out vec3 color;
 
-void main
+void main()
 {
   color = vec3(1.0, 0.0, 0.0);
 }

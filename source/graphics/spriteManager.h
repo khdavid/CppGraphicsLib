@@ -1,6 +1,7 @@
 #pragma once
 #include "sprites/triangleSprite.h"
 #include "listeners/mouseEventListener.h"
+#include "shaders/GLSLShaders.h"
 
 
 class SDL_Window;
@@ -12,6 +13,7 @@ public:
 private:
   SDL_Window& window_;
   TriangleSprite sprite_;
+  GLSLShaders shaders_;
 
 };
 

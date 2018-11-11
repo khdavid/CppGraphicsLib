@@ -52,6 +52,9 @@
       <Filter>sprites</Filter>
     </ClCompile>
     <ClCompile Include="spriteManager.cpp" />
+    <ClCompile Include="shaders\GLSLShaders.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -90,5 +93,8 @@
       <Filter>sprites</Filter>
     </ClInclude>
     <ClInclude Include="spriteManager.h" />
+    <ClInclude Include="shaders\GLSLShaders.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

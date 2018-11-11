@@ -5,9 +5,6 @@
 TriangleSprite::TriangleSprite(Triangle2D triangle):
   triangle_(triangle)
 {
-  std::array<float, 6> vertexData1;
-  std::array<float, 6> vertexData2;
-
   glGenBuffers(1, &vboId_);
   std::array<float, 6> vertexData;
   auto aa = triangle[0];

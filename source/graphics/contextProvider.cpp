@@ -23,10 +23,10 @@ ContextProvider::ContextProvider()
   window_ = std::make_unique<SDL_WindowWrapper>();
   context_ = std::make_unique<SDL_GLContextWrapper>(window_->getNative());
   mouseEventLogger_ = std::make_unique<MouseEventLogger>();
-  mainScene_ = std::make_unique<PointInSquare>(*window_->getNative());
+  pointInSquare_ = std::make_unique<PointInSquare>(*window_->getNative());
   spriteManager_ = std::make_unique<SpriteManager>(*window_->getNative());
   mouseEventObservable_->addMouseListener(mouseEventLogger_.get());
-  mouseEventObservable_->addMouseListener(mainScene_.get());
+  //mouseEventObservable_->addMouseListener(pointInSquare_.get());
   mouseEventObservable_->addMouseListener(spriteManager_.get());
 
 }
