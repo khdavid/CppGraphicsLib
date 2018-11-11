@@ -7,12 +7,19 @@
 //
 
 #include <glew.h>
+#include <iostream>
 
 #include "SDL_GLContextWrapper.h"
 
  SDL_GLContextWrapper::SDL_GLContextWrapper(SDL_Window* window)
  {
    SDLGLContext_ = SDL_GL_CreateContext(window);
+   auto errorCode = glewInit();
+   if (errorCode != GLEW_OK)
+   {
+     std::cout << "Can't init glew" << std::endl;
+   }
+
  }
 
  SDL_GLContextWrapper::~SDL_GLContextWrapper()

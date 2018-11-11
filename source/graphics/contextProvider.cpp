@@ -12,6 +12,7 @@
 #include "wrappers/SDL_WindowWrapper.h"
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/mouseEventObservable.h"
+#include "spriteManager.h"
 #include "pointInSquare.h"
 
 #include "contextProvider.h"
@@ -23,8 +24,11 @@ ContextProvider::ContextProvider()
   context_ = std::make_unique<SDL_GLContextWrapper>(window_->getNative());
   mouseEventLogger_ = std::make_unique<MouseEventLogger>();
   mainScene_ = std::make_unique<PointInSquare>(*window_->getNative());
+  spriteManager_ = std::make_unique<SpriteManager>(*window_->getNative());
   mouseEventObservable_->addMouseListener(mouseEventLogger_.get());
   mouseEventObservable_->addMouseListener(mainScene_.get());
+  mouseEventObservable_->addMouseListener(spriteManager_.get());
+
 }
 
 void ContextProvider::notifyEvent(const SDL_Event& event) const

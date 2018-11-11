@@ -51,6 +51,7 @@
     <ClCompile Include="sprites\triangleSprite.cpp">
       <Filter>sprites</Filter>
     </ClCompile>
+    <ClCompile Include="spriteManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -88,5 +89,6 @@
     <ClInclude Include="sprites\triangleSprite.h">
       <Filter>sprites</Filter>
     </ClInclude>
+    <ClInclude Include="spriteManager.h" />
   </ItemGroup>
 </Project>

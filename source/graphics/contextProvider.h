@@ -16,6 +16,7 @@ class SDL_WindowWrapper;
 class SDL_GLContextWrapper;
 class MouseEventObservable;
 class PointInSquare;
+class SpriteManager;
 
 
 class ContextProvider
@@ -34,4 +35,5 @@ private:
   std::unique_ptr<SDL_WindowWrapper> window_;
   std::unique_ptr<SDL_GLContextWrapper> context_;
   std::unique_ptr<PointInSquare> mainScene_;
+  std::unique_ptr<SpriteManager> spriteManager_;
 };

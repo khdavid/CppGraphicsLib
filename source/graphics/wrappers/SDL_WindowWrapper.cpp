@@ -5,8 +5,8 @@
 //  Created by David Khudaverdyan on 20/09/2018.
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
+#include <iostream>
 #include <sdl.h>
-
 #include <glew.h>
 
 #include "SDL_WindowWrapper.h"
@@ -23,6 +23,7 @@ SDL_WindowWrapper::SDL_WindowWrapper()
     640,                        // width, in pixels
     480,                        // height, in pixels
     SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE); // flags
+
 }
 
 SDL_WindowWrapper::~SDL_WindowWrapper()

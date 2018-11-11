@@ -14,20 +14,6 @@ PointInSquare::PointInSquare(SDL_Window& window):
   window_(window)
 {
 }
-
-void PointInSquare::onMouseClick(int x, int y)
-{
-
-}
-void PointInSquare::onMouseRelease(int x, int y)
-{
-
-}
-void PointInSquare::onMouseMove(int x, int y)
-{
-
-}
-
 void PointInSquare::onMouseMovePassive(int x, int y)
 {
   int xMax, yMax;
