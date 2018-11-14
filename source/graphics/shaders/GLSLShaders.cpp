@@ -6,6 +6,8 @@
 
 GLSLShaders::GLSLShaders()
 {
+  programId_ = glCreateProgram();
+
   compileShader_(vertexShaderId_, GL_VERTEX_SHADER, cVertexShaderCode);
   compileShader_(fragmentShaderId_, GL_FRAGMENT_SHADER, cFragmentShaderCode);
   addAttribute_("vertexPosition");
@@ -62,7 +64,6 @@ void GLSLShaders::compileShader_(GLuint& id, GLuint type, const std::string& sha
 
 void GLSLShaders::linkShaders_()
 {
-  programId_ = glCreateProgram();
 
   glAttachShader(programId_, vertexShaderId_);
   glAttachShader(programId_, fragmentShaderId_);
