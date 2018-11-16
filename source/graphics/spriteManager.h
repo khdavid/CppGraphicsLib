@@ -13,8 +13,6 @@ public:
 private:
   SDL_Window& window_;
   TriangleSprite sprite_;
-  GLSLShaders shaders_;
   GLSLShaders shaderProgram_;
-
 };
 
