@@ -161,6 +161,7 @@
       </IgnoreAllDefaultLibraries>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)..\ext\SDL2-2.0.9\lib\$(PlatformTarget);$(SolutionDir)..\ext\glew-2.1.0\lib\Release\$(Platform);</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y  /d $(SolutionDir)..\ext\bin\$(platformtarget)\*.dll $(SolutionDir)..\exe\$(Configuration)\$(platformtarget)</Command>
