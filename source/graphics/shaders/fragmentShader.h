@@ -17,7 +17,7 @@ out vec3 color;
 
 void main()
 {
-  color = vec3(gl_FragCoord.x/ 640, 1 - gl_FragCoord.y / 480, 1.0);
+  color = vec3(gl_FragCoord.x/ 640, 1 - gl_FragCoord.y / 480, gl_FragCoord.x/ 640);
 }
 
 )";

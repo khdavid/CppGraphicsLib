@@ -5,7 +5,7 @@
 
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window),
-  sprite_(Triangle2D{ Point2D(0,0), Point2D(0, 0.3), Point2D(0.3, 0.4) })
+  sprite_(Triangle2D{ Point2D(0,0), Point2D(-1, -1), Point2D(1, -1) })
 {
 
 }
