@@ -12,11 +12,11 @@ SpriteManager::SpriteManager(SDL_Window& window) :
 
 void SpriteManager::onMouseMovePassive(int x, int y)
 {
-  glClearDepth(1);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  //glClearDepth(1);
+  glClear(GL_COLOR_BUFFER_BIT);
   glClearColor(1.0, 1.0, 1.0, 1.0);
   shaderProgram_.use();
-  sprite_.draw();
+  sprite_.draw(x, y);
   shaderProgram_.unuse();
 
   SDL_GL_SwapWindow(&window_);
