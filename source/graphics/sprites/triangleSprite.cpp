@@ -14,6 +14,10 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   vertexData_[4] = triangle[2].x();
   vertexData_[5] = triangle[2].y();
 
+  // Enable alpha
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
   glGenBuffers(1, &vboId_);
   glBindBuffer(GL_ARRAY_BUFFER, vboId_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData_), vertexData_.data(), GL_STATIC_DRAW);
