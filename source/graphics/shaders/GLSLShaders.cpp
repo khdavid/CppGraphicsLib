@@ -14,6 +14,12 @@ GLSLShaders::GLSLShaders()
   linkShaders_();
 }
 
+GLSLShaders::~GLSLShaders()
+{
+  glDeleteProgram(programId_);
+}
+
+
 void GLSLShaders::use()
 {
   glUseProgram(programId_);

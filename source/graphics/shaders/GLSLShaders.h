@@ -6,6 +6,8 @@ class GLSLShaders
 {
 public:
   GLSLShaders();
+  ~GLSLShaders();
+
   void use();
   void unuse();
 private:

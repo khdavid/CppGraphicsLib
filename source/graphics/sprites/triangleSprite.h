@@ -8,7 +8,7 @@ class TriangleSprite
 public:
   TriangleSprite(Triangle2D triangle);
   ~TriangleSprite();
-  void draw(int x, int y);
+  void render(int x, int y);
 
 private:
   Triangle2D triangle_;

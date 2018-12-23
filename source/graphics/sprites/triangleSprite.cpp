@@ -17,11 +17,10 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   glGenBuffers(1, &vboId_);
   glBindBuffer(GL_ARRAY_BUFFER, vboId_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData_), vertexData_.data(), GL_STATIC_DRAW);
-  //glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 }
 
-TriangleSprite::~TriangleSprite()
+ TriangleSprite::~TriangleSprite()
 {
   if (vboId_)
   {
@@ -30,24 +29,23 @@ TriangleSprite::~TriangleSprite()
 }
 
 
-void TriangleSprite::draw(int x, int y)
+void TriangleSprite::render(int x, int y)
 {
   vertexData_[0] = float(x) / 320 - 1;
   vertexData_[1] = 1 - float(y) / 240;
   const char* name = "vertexPosition";
   auto attribute_coord2d = glGetAttribLocation(1, name);
-  //glEnableVertexAttribArray(attribute_coord2d);
-  {
-    const int cDim = 2;
-    glVertexAttribPointer(
-      attribute_coord2d,
-      cDim, 
-      GL_FLOAT, 
-      GL_FALSE, 
-      0, 
-      0);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-  } 
-  //glDisableVertexAttribArray(attribute_coord2d);
+  const int cDim = 2;
+
+  glVertexAttribPointer(
+    attribute_coord2d, // attribute
+    cDim,              // number of elements per vertex, here (x,y)
+    GL_FLOAT,          // the type of each element
+    GL_FALSE,          // take our values as-is
+    0,                 // no extra data between each position
+    0);                // offset of first element
+  glDrawArrays(GL_TRIANGLES, 0, 3);
 
 }
+
+
