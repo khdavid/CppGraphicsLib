@@ -16,5 +16,6 @@ private:
   GLint vertexPositionAttr_ = 0;
   GLuint vboColor_ = 0;
   GLint vertexColorAttr_ = 0;
+  GLint fadeUniform_ = 0;
 };
 

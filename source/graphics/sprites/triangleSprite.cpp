@@ -41,6 +41,11 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   const char* vertexColorName = "vertexColor";
   vertexColorAttr_ = glGetAttribLocation(1, vertexColorName);
 
+
+  const char* fadeName = "fade";
+  fadeUniform_ = glGetUniformLocation(1, fadeName);
+  glUniform1f(fadeUniform_, 0.1);
+
  }
 
  TriangleSprite::~TriangleSprite()
@@ -77,6 +82,9 @@ void TriangleSprite::render(int x, int y)
     GL_FALSE,          // take our values as-is
     0,                 // no extra data between each position
     0);                // offset of first element
+
+  glUniform1f(fadeUniform_, y / 480);
+
   glDrawArrays(GL_TRIANGLES, 0, 3);
 
   glDisableVertexAttribArray(vertexColorAttr_);
