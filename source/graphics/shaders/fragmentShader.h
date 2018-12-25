@@ -14,10 +14,11 @@ const std::string cFragmentShaderCode = R"(
 #version 130
 
 out vec4 color;
+varying vec3 varyingColor;
 
 void main()
 {
-  color = vec4(gl_FragCoord.x/ 640, 1 - gl_FragCoord.y / 480, gl_FragCoord.x/ 640, sin(gl_FragCoord.y / 10) );
+  color = vec4(varyingColor.r, varyingColor.g, varyingColor.b,  1.0);
 }
 
 )";

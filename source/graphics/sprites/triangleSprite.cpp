@@ -16,16 +16,12 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   vertexData[4] = triangle[2].x();
   vertexData[5] = triangle[2].y();
 
-  std::array<float, 6> colorData;
+  std::array<float, 9> colorData = {
+    1.0, 0.0, 0.0,
+    0.0, 1.0, 0.0,
+    0.0, 0.0, 1.0
+  };
 
-  colorData[0] = triangle[0].x();
-  colorData[1] = -0.5;
-
-  colorData[2] = triangle[1].x();
-  colorData[3] = 0;
-
-  colorData[4] = triangle[2].x();
-  colorData[5] = 0.5;
 
   // Enable alpha
   glEnable(GL_BLEND);
@@ -62,10 +58,10 @@ void TriangleSprite::render(int x, int y)
   glEnableVertexAttribArray(vertexColorAttr_);
 
   glBindBuffer(GL_ARRAY_BUFFER, vboPosition_);
-  const int cDim = 2;
+  const int cVertexPositionDim = 2;
   glVertexAttribPointer(
     vertexPositionAttr_, // attribute
-    cDim,              // number of elements per vertex, here (x,y)
+    cVertexPositionDim,              // number of elements per vertex, here (x,y)
     GL_FLOAT,          // the type of each element
     GL_FALSE,          // take our values as-is
     0,                 // no extra data between each position
@@ -73,9 +69,10 @@ void TriangleSprite::render(int x, int y)
 
 
   glBindBuffer(GL_ARRAY_BUFFER, vboColor_);
+  const int cVertexColorDim = 3;
   glVertexAttribPointer(
     vertexColorAttr_, // attribute
-    cDim,              // number of elements per vertex, here (x,y)
+    cVertexColorDim,              // number of elements per vertex, here (x,y)
     GL_FLOAT,          // the type of each element
     GL_FALSE,          // take our values as-is
     0,                 // no extra data between each position
