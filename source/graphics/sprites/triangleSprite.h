@@ -12,7 +12,6 @@ public:
 
 private:
   Triangle2D triangle_;
-  std::array<float, 6> vertexData_;
   GLuint vboId_ = 0;
 };
 
