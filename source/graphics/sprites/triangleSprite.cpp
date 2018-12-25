@@ -27,7 +27,7 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   const char* vertexPositionName = "vertexPosition";
   vertexPositionAttr_ = glGetAttribLocation(1, vertexPositionName);
 
-}
+ }
 
  TriangleSprite::~TriangleSprite()
 {
@@ -40,6 +40,8 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
 
 void TriangleSprite::render(int x, int y)
 {
+  glEnableVertexAttribArray(vertexPositionAttr_);
+
   const int cDim = 2;
   glVertexAttribPointer(
     vertexPositionAttr_, // attribute
@@ -49,6 +51,8 @@ void TriangleSprite::render(int x, int y)
     0,                 // no extra data between each position
     0);                // offset of first element
   glDrawArrays(GL_TRIANGLES, 0, 3);
+  glDisableVertexAttribArray(vertexPositionAttr_);
+
 }
 
 

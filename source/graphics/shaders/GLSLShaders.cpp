@@ -25,7 +25,7 @@ void GLSLShaders::use()
   glUseProgram(programId_);
   for (int i = 0; i < numAttributes_; ++i)
   {
-    glEnableVertexAttribArray(i);
+    //glEnableVertexAttribArray(i);
   }
 }
 void GLSLShaders::unuse()
@@ -33,7 +33,7 @@ void GLSLShaders::unuse()
   glUseProgram(0);
   for (int i = 0; i < numAttributes_; ++i)
   {
-    glDisableVertexAttribArray(i);
+    //glDisableVertexAttribArray(i);
   }
 
 }
@@ -99,6 +99,6 @@ void GLSLShaders::linkShaders_()
 
 void GLSLShaders::addAttribute_(const std::string & name)
 {
-  glBindAttribLocation(programId_, numAttributes_++, name.c_str());
+  //glBindAttribLocation(programId_, numAttributes_++, name.c_str());
 }
 
