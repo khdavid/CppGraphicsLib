@@ -14,5 +14,7 @@ private:
   Triangle2D triangle_;
   GLuint vboPosition_ = 0;
   GLint vertexPositionAttr_ = 0;
+  GLuint vboColor_ = 0;
+  GLint vertexColorAttr_ = 0;
 };
 

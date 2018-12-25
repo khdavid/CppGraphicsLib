@@ -14,12 +14,13 @@ const std::string cVertexShaderCode = R"(
 #version 130
 
 in vec2 vertexPosition;
-in vec2 colorPosition;
+in vec2 vertexColor;
 
 void main()
 {
   gl_Position.x = vertexPosition[0];
-  gl_Position.y = vertexPosition[1];
+  gl_Position.y = vertexColor[1];
+  //gl_Position.y = vertexPosition[1];
   gl_Position.z = 0.0;
   gl_Position.w = 1.0;
 }
