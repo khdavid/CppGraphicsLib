@@ -12,7 +12,7 @@ public:
 
 private:
   Triangle2D triangle_;
-  GLuint vboId_ = 0;
-  GLuint vertexPositionAttr_ = 0;
+  GLuint vboPosition_ = 0;
+  GLint vertexPositionAttr_ = 0;
 };
 

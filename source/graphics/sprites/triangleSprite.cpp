@@ -20,26 +20,26 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-  glGenBuffers(1, &vboId_);
-  glBindBuffer(GL_ARRAY_BUFFER, vboId_);
+  glGenBuffers(1, &vboPosition_);
+  glBindBuffer(GL_ARRAY_BUFFER, vboPosition_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData.data(), GL_STATIC_DRAW);
+
+  const char* vertexPositionName = "vertexPosition";
+  vertexPositionAttr_ = glGetAttribLocation(1, vertexPositionName);
 
 }
 
  TriangleSprite::~TriangleSprite()
 {
-  if (vboId_)
+  if (vboPosition_)
   {
-    glDeleteBuffers(1, &vboId_);
+    glDeleteBuffers(1, &vboPosition_);
   }
 }
 
 
 void TriangleSprite::render(int x, int y)
 {
-  const char* vertexPositionName = "vertexPosition";
-  vertexPositionAttr_ = glGetAttribLocation(1, vertexPositionName);
-
   const int cDim = 2;
   glVertexAttribPointer(
     vertexPositionAttr_, // attribute
@@ -49,7 +49,6 @@ void TriangleSprite::render(int x, int y)
     0,                 // no extra data between each position
     0);                // offset of first element
   glDrawArrays(GL_TRIANGLES, 0, 3);
-
 }
 
 
