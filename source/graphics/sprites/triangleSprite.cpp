@@ -83,7 +83,7 @@ void TriangleSprite::render(int x, int y)
     0,                 // no extra data between each position
     0);                // offset of first element
 
-  glUniform1f(fadeUniform_, y / 480);
+  glUniform1f(fadeUniform_, y / 480.0);
 
   glDrawArrays(GL_TRIANGLES, 0, 3);
 
