@@ -13,5 +13,6 @@ public:
 private:
   Triangle2D triangle_;
   GLuint vboId_ = 0;
+  GLuint vertexPositionAttr_ = 0;
 };
 

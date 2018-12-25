@@ -37,13 +37,12 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
 
 void TriangleSprite::render(int x, int y)
 {
+  const char* vertexPositionName = "vertexPosition";
+  vertexPositionAttr_ = glGetAttribLocation(1, vertexPositionName);
 
-  const char* name = "vertexPosition";
-  auto attribute_coord2d = glGetAttribLocation(1, name);
   const int cDim = 2;
-
   glVertexAttribPointer(
-    attribute_coord2d, // attribute
+    vertexPositionAttr_, // attribute
     cDim,              // number of elements per vertex, here (x,y)
     GL_FLOAT,          // the type of each element
     GL_FALSE,          // take our values as-is
