@@ -17,9 +17,10 @@ out vec4 color;
 varying vec3 varyingColor;
 uniform float fade;
 
+
 void main()
 {
-  color = vec4(varyingColor.r, varyingColor.g, varyingColor.b,  fade);
+  color = vec4(varyingColor.r, varyingColor.g, varyingColor.b, fade);
 }
 
 )";
