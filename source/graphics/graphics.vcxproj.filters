@@ -19,6 +19,9 @@
     <Filter Include="sprites">
       <UniqueIdentifier>{65458949-3fe9-467d-9944-c5162ae28190}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{44460d8a-607a-42b2-813c-ca55fd00eccc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
@@ -52,8 +55,8 @@
       <Filter>sprites</Filter>
     </ClCompile>
     <ClCompile Include="spriteManager.cpp" />
-    <ClCompile Include="shaders\GLSLShaders.cpp">
-      <Filter>shaders</Filter>
+    <ClCompile Include="tools\GLSLShaderToolBase.cpp">
+      <Filter>tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,8 +96,8 @@
       <Filter>sprites</Filter>
     </ClInclude>
     <ClInclude Include="spriteManager.h" />
-    <ClInclude Include="shaders\GLSLShaders.h">
-      <Filter>shaders</Filter>
+    <ClInclude Include="tools\GLSLShaderToolBase.h">
+      <Filter>tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

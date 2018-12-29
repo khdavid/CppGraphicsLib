@@ -2,11 +2,13 @@
 
 #include <glew.h>
 
-class GLSLShaders
+#include "listeners/mouseEventListener.h"
+
+class GLSLShaderToolBase : public MouseEventListener
 {
 public:
-  GLSLShaders();
-  ~GLSLShaders();
+  GLSLShaderToolBase();
+  ~GLSLShaderToolBase();
 
   void use();
   void unuse();

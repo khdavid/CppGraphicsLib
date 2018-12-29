@@ -203,7 +203,7 @@
     <ClCompile Include="eventhandlers\eventClassifier.cpp" />
     <ClCompile Include="eventhandlers\eventsManager.cpp" />
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
-    <ClCompile Include="shaders\GLSLShaders.cpp" />
+    <ClCompile Include="tools\GLSLShaderToolBase.cpp" />
     <ClCompile Include="listeners\mouseEventListener.cpp" />
     <ClCompile Include="listeners\mouseEventLogger.cpp" />
     <ClCompile Include="main.cpp" />
@@ -219,7 +219,7 @@
     <ClInclude Include="eventhandlers\eventClassifier.h" />
     <ClInclude Include="eventhandlers\eventsManager.h" />
     <ClInclude Include="eventhandlers\mainLoop.h" />
-    <ClInclude Include="shaders\GLSLShaders.h" />
+    <ClInclude Include="tools\GLSLShaderToolBase.h" />
     <ClInclude Include="listeners\mouseEventListener.h" />
     <ClInclude Include="listeners\mouseEventLogger.h" />
     <ClInclude Include="observables\mouseEventObservable.h" />
