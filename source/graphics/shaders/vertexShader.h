@@ -21,7 +21,7 @@ uniform float fade;
 
 void main()
 {
-  gl_Position.x = vertexPosition[0] * fade;
+  gl_Position.x = vertexPosition[0];
   //gl_Position.y = vertexColor[1];
   gl_Position.y = vertexPosition[1];
   gl_Position.z = 0.0;

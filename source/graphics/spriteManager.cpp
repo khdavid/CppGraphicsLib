@@ -5,7 +5,7 @@
 
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window),
-  sprite_(Triangle2D{ Point2D(0,0), Point2D(-1, -1), Point2D(1, -1) })
+  sprite_(Triangle2D{ Point2D(0,5), Point2D(-5, -5), Point2D(5, -5) })
 {
   // It is a hack to draw everything during initialization
   onMouseMovePassive(0, 0);
