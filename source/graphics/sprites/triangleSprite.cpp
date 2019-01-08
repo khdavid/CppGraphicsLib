@@ -7,7 +7,7 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
 {
   std::array<float, 6> vertexData;
 
-  vertexData[0] = triangle[0][2];
+  vertexData[0] = triangle[0][0];
   vertexData[1] = triangle[0][1];
 
   vertexData[2] = triangle[1][0];
