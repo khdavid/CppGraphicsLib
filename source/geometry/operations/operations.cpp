@@ -1,5 +1,5 @@
-#include "geometryObjects/vector2D.h"
-#include "geometryObjects/point2D.h"
+#include "geometryObjects/vector.h"
+#include "geometryObjects/point.h"
 #include "operations.h"
 
 Vector2D operator+(const Vector2D& first, const Vector2D& second)

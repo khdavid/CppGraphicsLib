@@ -9,40 +9,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="geometryObjects\point2D.h">
-      <Filter>geometryObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="geometryObjects\coord2D.h">
-      <Filter>geometryObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="geometryObjects\vector2D.h">
-      <Filter>geometryObjects</Filter>
-    </ClInclude>
     <ClInclude Include="operations\operations.h">
       <Filter>operations</Filter>
-    </ClInclude>
-    <ClInclude Include="geometryObjects\triangle2D.h">
-      <Filter>geometryObjects</Filter>
     </ClInclude>
     <ClInclude Include="geometryObjects\indexAccessor.h">
       <Filter>geometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="geometryObjects\point.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="geometryObjects\vector.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="geometryObjects\triangle.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="geometryObjects\point2D.cpp">
-      <Filter>geometryObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="geometryObjects\coord2D.cpp">
-      <Filter>geometryObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="geometryObjects\vector2D.cpp">
-      <Filter>geometryObjects</Filter>
-    </ClCompile>
     <ClCompile Include="operations\operations.cpp">
       <Filter>operations</Filter>
-    </ClCompile>
-    <ClCompile Include="geometryObjects\triangle2D.cpp">
-      <Filter>geometryObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

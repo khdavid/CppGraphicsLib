@@ -19,19 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="geometryObjects\coord2D.h" />
-    <ClInclude Include="geometryObjects\point2D.h" />
-    <ClInclude Include="geometryObjects\vector2D.h" />
+    <ClInclude Include="geometryObjects\point.h" />
+    <ClInclude Include="geometryObjects\vector.h" />
     <ClInclude Include="geometryObjects\indexAccessor.h" />
     <ClInclude Include="operations\operations.h" />
-    <ClInclude Include="geometryObjects\triangle2D.h" />
+    <ClInclude Include="geometryObjects\triangle.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="geometryObjects\coord2D.cpp" />
-    <ClCompile Include="geometryObjects\point2D.cpp" />
-    <ClCompile Include="geometryObjects\vector2D.cpp" />
     <ClCompile Include="operations\operations.cpp" />
-    <ClCompile Include="geometryObjects\triangle2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="natvis\cppgraphicslib.natvis" />

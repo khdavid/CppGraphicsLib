@@ -7,14 +7,14 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
 {
   std::array<float, 6> vertexData;
 
-  vertexData[0] = triangle[0].x();
-  vertexData[1] = triangle[0].y();
+  vertexData[0] = triangle[0][2];
+  vertexData[1] = triangle[0][1];
 
-  vertexData[2] = triangle[1].x();
-  vertexData[3] = triangle[1].y();
+  vertexData[2] = triangle[1][0];
+  vertexData[3] = triangle[1][1];
 
-  vertexData[4] = triangle[2].x();
-  vertexData[5] = triangle[2].y();
+  vertexData[4] = triangle[2][0];
+  vertexData[5] = triangle[2][1];
 
   std::array<float, 9> colorData = {
     1.0, 0.0, 0.0,

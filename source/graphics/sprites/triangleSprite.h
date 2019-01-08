@@ -1,7 +1,7 @@
 #pragma once
 
 #include <glew.h>
-#include <geometryObjects/triangle2D.h>
+#include <geometryObjects/triangle.h>
 
 class TriangleSprite
 {

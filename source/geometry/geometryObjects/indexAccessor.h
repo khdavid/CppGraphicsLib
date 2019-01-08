@@ -1,4 +1,6 @@
 #pragma once
+#include <array>
+
 template <class T, size_t N>
 
 class IndexAccessor
