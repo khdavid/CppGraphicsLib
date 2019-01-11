@@ -2,8 +2,8 @@
 
 #include "contextProvider.h"
 #include "eventHandlers/mainLoop.h"
-#include "geometryObjects/point2D.h"
-#include "geometryObjects/triangle2D.h"
+#include "geometryObjects/point.h"
+#include "geometryObjects/triangle.h"
 
 void test()
 {

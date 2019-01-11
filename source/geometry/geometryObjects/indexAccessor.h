@@ -1,11 +1,17 @@
 #pragma once
 #include <array>
 
-template <class T, size_t N>
+enum class GeomEntityType
+{
+  Point,
+  Vector
+};
 
+template <class T, size_t N>
 class IndexAccessor
 {
 public:
+  IndexAccessor() = default;
   IndexAccessor(std::array<T, N> arr) :
     arr_(arr)
   {
@@ -21,5 +27,5 @@ public:
   }
 
 private:
-  std::array<T, N> arr_;
+  std::array<T, N> arr_{};
 };
