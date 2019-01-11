@@ -2,55 +2,31 @@
 #include "geometryObjects/point.h"
 #include "operations.h"
 
-//Vector2D operator+(const Vector2D& first, const Vector2D& second)
-//{
-//  return Vector2D{ first[0] + second[0], first[1] + second[1] };
-//}
-//
-//Vector2D operator-(const Vector2D& first, const Vector2D& second)
-//{
-//  return Vector2D{ first[0] - second[0], first[1] - second[1] };
-//}
-//
-//Vector2D operator*(const Vector2D& first, double multiplier)
-//{
-//  return Vector2D{ first[0] * multiplier, first[1] * multiplier };
-//}
-//
-//Vector2D operator*(double multiplier, const Vector2D& second)
-//{
-//  return second * multiplier;
-//}
-//
-//Vector2D operator/(const Vector2D& first, double divisor)
-//{
-//  return first * (1 / divisor);
-//}
-//
-//Point2D operator+(const Point2D& first, const Vector2D& second)
-//{
-//  return Point2D{ first[0] + second[0], first[1] + second[1] };
-//}
-//
-//Point2D operator-(const Point2D& first, const Vector2D& second)
-//{
-//  return Point2D{ first[0] - second[0], first[1] - second[1] };
-//}
-//
-//Vector2D operator-(const Point2D& first, const Point2D& second)
-//{
-//  return Vector2D{ first[0] - second[0], first[1] - second[1] };
-//}
-//
-//double operator*(const Vector2D& first, const Vector2D& second)
-//{
-//  return first[0] * second[0] + first[1] * second[1];
-//}
-//
-//
+Vector2D operator-(const Point2D& first, const Point2D& second)
+{
+  return Vector2D{ first[0] - second[0], first[1] - second[1] };
+}
+
+Vector3D operator-(const Point3D& first, const Point3D& second)
+{
+  return Vector3D{ first[0] - second[0], first[1] - second[1], first[2] - second[2]};
+}
+
 void test()
 {
-  Vector2D aa;
-  aa + aa;
+  Vector3D aa(1, 2, 3);
+  aa = aa + aa;
+  aa = aa * 2;
+  aa = 2 * aa;
+  aa = -aa;
+  aa = aa / 3;
 
+  Point3D bb;
+  bb + aa;
+
+
+  Point2D cc;
+
+  aa - aa;
+  cc - cc;
 }

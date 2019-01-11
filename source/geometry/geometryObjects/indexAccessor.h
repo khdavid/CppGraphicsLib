@@ -11,6 +11,7 @@ template <class T, size_t N>
 class IndexAccessor
 {
 public:
+  static constexpr size_t dim = N;
   IndexAccessor() = default;
   IndexAccessor(std::array<T, N> arr) :
     arr_(arr)
@@ -25,7 +26,10 @@ public:
   {
     return arr_[index];
   }
-
+  constexpr size_t size() const
+  {
+    return arr_.size();
+  }
 private:
   std::array<T, N> arr_{};
 };
