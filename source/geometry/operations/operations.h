@@ -1,8 +1,11 @@
 #pragma once
 #include <type_traits>
+#include "geometryObjects/indexAccessor.h"
 
 struct Vector2D;
+struct Vector3D;
 struct Point2D;
+struct Point3D;
 
 template <class T>
 using enable_if_vector_t = std::enable_if_t<T::geom_type == GeomEntityType::Vector, T>;
@@ -12,7 +15,7 @@ using enable_if_vector_t = std::enable_if_t<T::geom_type == GeomEntityType::Vect
 template <class T, class K>
 std::enable_if_t<K::geom_type == GeomEntityType::Vector, T> operator+(T first, const K& second)
 {
-  static_assert(K::dim == T::dim, "Fuck you. Dimensions are not the same.");
+  static_assert(K::dim == T::dim, "Dimensions are not the same.");
   T result = first;
   for (int i = 0; i < result.size(); ++i)
   {

@@ -2,6 +2,7 @@
 
 #include <type_traits>
 
+#include "operations/operations.h"
 #include "indexAccessor.h"
 
 struct Vector2D : public IndexAccessor<double, 2>

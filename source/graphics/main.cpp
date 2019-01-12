@@ -3,15 +3,27 @@
 #include "contextProvider.h"
 #include "eventHandlers/mainLoop.h"
 #include "geometryObjects/point.h"
+#include "geometryObjects/vector.h"
 #include "geometryObjects/triangle.h"
 
 void test()
 {
-  int tt[33];
-  std::array<int, 4> rr = { 23, 3, 4, 5 };
+  Vector3D aa(1, 2, 3);
+  aa = aa + aa;
+  aa = aa * 2;
+  aa = 2 * aa;
+  aa = -aa;
+  aa = aa / 3;
 
-  auto aa = sizeof(tt);
-  int x = 5;
+  Point3D bb;
+  bb + aa;
+
+
+  Point2D cc;
+
+  aa - aa;
+  cc - cc;
+
 }
 
 int main(int argc, char** argv)
