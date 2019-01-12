@@ -8,6 +8,8 @@
 
 void test()
 {
+  Vector3D zero;
+
   Vector3D aa(1, 2, 3);
   aa = aa + aa;
   aa = aa * 2;

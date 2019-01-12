@@ -21,7 +21,7 @@ std::enable_if_t<K::geom_type == GeomEntityType::Vector, T> operator+(T first, c
   {
     result[i] += second[i];
   }
-  return first;
+  return result;
 }
 
 template <class T>
