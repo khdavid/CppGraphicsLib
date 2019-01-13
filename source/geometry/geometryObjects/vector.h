@@ -5,18 +5,28 @@
 #include "operations/operations.h"
 #include "indexAccessor.h"
 
-struct Vector2D : public IndexAccessor<double, 2>
+template <size_t n>
+struct Vector : IndexAccessor<double, n>
 {
   static constexpr GeomEntityType geom_type = GeomEntityType::Vector;
 
-  explicit Vector2D(double x, double y) : IndexAccessor({ x, y }) {}
+  template <class ...E>
+  Vector(E&&...args) : IndexAccessor({ double(std::forward<E>(args))... })
+  {
+  }
+  
+  Vector() = default;
+};
+
+
+struct Vector2D : public Vector<2>
+{
+  explicit Vector2D(double x, double y) : Vector({ x, y }) {}
   explicit Vector2D() = default;
 };
 
-struct Vector3D : public IndexAccessor<double, 3>
+struct Vector3D : public Vector<3>
 {
-  static constexpr GeomEntityType geom_type = GeomEntityType::Vector;
-
-  explicit Vector3D(double x, double y, double z) : IndexAccessor({ x, y, z }) {}
+  explicit Vector3D(double x, double y, double z) : Vector({ x, y, z }) {}
   explicit Vector3D() = default;
 };

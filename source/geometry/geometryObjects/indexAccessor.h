@@ -32,4 +32,4 @@ public:
   }
 private:
   std::array<T, N> arr_{}; //{} assures that arr_ is initialized with zeros
-};
+ };

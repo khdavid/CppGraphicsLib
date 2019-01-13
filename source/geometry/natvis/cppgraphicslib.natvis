@@ -12,8 +12,20 @@
     </Expand>
   </Type>
 
-  <Type Name="Coord2D">
+  <Type Name="Point2D">
     <DisplayString>{{ {arr_[0]},{arr_[1]} }}</DisplayString>
+  </Type>
+
+  <Type Name="Point3D">
+    <DisplayString>{{ {arr_[0]},{arr_[1]},{arr_[2]} }}</DisplayString>
+  </Type>
+
+  <Type Name="Vector2D">
+    <DisplayString>{{ {arr_[0]},{arr_[1]} }}</DisplayString>
+  </Type>
+
+  <Type Name="Vector3D">
+    <DisplayString>{{ {arr_[0]},{arr_[1]},{arr_[2]} }}</DisplayString>
   </Type>
 
 
