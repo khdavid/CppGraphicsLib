@@ -11,7 +11,7 @@ struct Vector : IndexAccessor<double, n>
   static constexpr GeomEntityType geom_type = GeomEntityType::Vector;
 
   template <class ...E>
-  Vector(E&&...args) : IndexAccessor({ double(std::forward<E>(args))... })
+  Vector(E&&...args) : IndexAccessor({ std::forward<E>(args)... })
   {
   }
   
