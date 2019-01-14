@@ -12,9 +12,8 @@ class IndexAccessor
 {
 public:
   static constexpr size_t dim = N;
-  //IndexAccessor() = default;
   template <class ...E>
-  IndexAccessor(const E&...args) : arr_{T(args)...}
+  IndexAccessor(const E&...args) : arr_  {T(args)...}
   {
   }
 
