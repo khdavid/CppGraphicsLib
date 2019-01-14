@@ -12,12 +12,12 @@ class IndexAccessor
 {
 public:
   static constexpr size_t dim = N;
-  IndexAccessor() = default;
-  IndexAccessor(std::array<T, N> arr) :
-    arr_(arr)
+  //IndexAccessor() = default;
+  template <class ...E>
+  IndexAccessor(const E&...args) : arr_{T(args)...}
   {
-
   }
+
   T& operator[](size_t index)
   {
     return arr_[index];
