@@ -5,6 +5,7 @@
 #include "geometryObjects/point.h"
 #include "geometryObjects/vector.h"
 #include "geometryObjects/triangle.h"
+#include "geometryObjects/matrix.h"
 
 #include <initializer_list>
 #include <vector>
@@ -36,7 +37,9 @@ struct TestClass : BaseTestClass
 
 void test()
 {
+  Vector2D tv(7);
   Vector<4> aaa{ 1.0,2.0 };
+  IndexAccessor<double, 4> aaab;
   TestClass tClass{2,3,4};
   Vector3D zero;
   Vector3D aa(1, 2, 3);
@@ -54,6 +57,9 @@ void test()
 
   aa - aa;
   cc - cc;
+
+  Matrix<double, 2> m;
+  
 
 }
 

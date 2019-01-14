@@ -24,10 +24,16 @@
     <ClInclude Include="geometryObjects\triangle.h">
       <Filter>geometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="geometryObjects\matrix.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operations\operations.cpp">
       <Filter>operations</Filter>
+    </ClCompile>
+    <ClCompile Include="geometryObjects\matrix.cpp">
+      <Filter>geometryObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
