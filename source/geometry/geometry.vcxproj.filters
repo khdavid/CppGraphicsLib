@@ -27,6 +27,9 @@
     <ClInclude Include="geometryObjects\matrix.h">
       <Filter>geometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="operations\operations.hpp">
+      <Filter>operations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operations\operations.cpp">

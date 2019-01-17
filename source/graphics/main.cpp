@@ -59,6 +59,7 @@ void test()
   cc - cc;
 
   Matrix<double, 2> m {1,2,3};
+  m[7];
 
 }
 
