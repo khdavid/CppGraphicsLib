@@ -3,17 +3,13 @@
 #include <array>
 
 template <class T, size_t n>
-class Matrix
+class Matrix : public std::array<std::array<T, n>, n>
 {
 public:
-  std::array<T,n>& operator[](size_t index)
+  template <class ...E>
+  Matrix(const E&...args) : std::array<std::array<T, n>, n>{T(args)...}
   {
-    return arr_[index];
+
   }
-  const std::array<T,n>& operator[](size_t index) const
-  {
-    return arr_[index];
-  }
-private:
-  std::array<std::array<T, n>, n> arr_{};
+
 };

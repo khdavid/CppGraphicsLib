@@ -58,8 +58,7 @@ void test()
   aa - aa;
   cc - cc;
 
-  Matrix<double, 2> m;
-  
+  Matrix<double, 2> m {1,2,3};
 
 }
 
