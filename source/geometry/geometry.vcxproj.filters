@@ -30,6 +30,9 @@
     <ClInclude Include="operations\operations.hpp">
       <Filter>operations</Filter>
     </ClInclude>
+    <ClInclude Include="geometryObjects\geomEntityType.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operations\operations.cpp">

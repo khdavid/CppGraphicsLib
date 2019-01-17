@@ -1,11 +1,7 @@
 #pragma once
 #include <array>
 
-enum class GeomEntityType
-{
-  Point,
-  Vector
-};
+#include "geomEntityType.h"
 
 template <class T, size_t N>
 class IndexAccessor : public std::array<T, N>

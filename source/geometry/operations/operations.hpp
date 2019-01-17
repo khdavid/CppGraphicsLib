@@ -1,7 +1,7 @@
 template <class T, class K>
 enable_if_vector_t<T, K> operator+(const K& first, const T& second)
 {
-  static_assert(K::dim == T::dim, "Dimensions are not the same.");
+  static_assert(K::dim == T::dim, "Dimensions are not the same");
   K result = first;
   for (int i = 0; i < result.size(); ++i)
   {

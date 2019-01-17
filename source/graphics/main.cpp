@@ -60,6 +60,9 @@ void test()
 
   Matrix<double, 2> m {1,2,3};
   m[7];
+  Vector2D a1, a2, a3;
+  a1 = a2 = a3;
+
 
 }
 

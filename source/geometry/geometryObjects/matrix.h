@@ -7,7 +7,7 @@
 template <class T, size_t n>
 struct Matrix : std::array<std::array<T, n>, n>
 {
-public:
+  constexpr static size_t dim = n;
   template <class ...E>
   Matrix(const E&...args) : std::array<std::array<T, n>, n>{T(args)...}
   {
