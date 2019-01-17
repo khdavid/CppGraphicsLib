@@ -8,6 +8,7 @@ template <class T, size_t n>
 struct Matrix : std::array<std::array<T, n>, n>
 {
   constexpr static size_t dim = n;
+  constexpr static GeomEntityType geom_type = GeomEntityType::Matrix;
   template <class ...E>
   Matrix(const E&...args) : std::array<std::array<T, n>, n>{T(args)...}
   {

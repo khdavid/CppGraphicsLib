@@ -62,6 +62,8 @@ void test()
   m[7];
   Vector2D a1, a2, a3;
   a1 = a2 = a3;
+  Matrix2D m2 = { 1,2,3 };
+  m2 + m2;
 
 
 }

@@ -37,9 +37,10 @@ enable_if_matrix_t<T> operator+(const T& m1, const T& m2)
   {
     for (size_t j = 0; j < m2.size(); ++j)
     {
-      res[i][j] += m2[i][j];
+      result[i][j] += m2[i][j];
     }
   }
+  return result;
 }
 
 #include "operations.hpp"
