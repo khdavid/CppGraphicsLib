@@ -59,11 +59,18 @@ void test()
   cc - cc;
 
   Matrix<double, 2> m {1,2,3};
-  m[7];
   Vector2D a1, a2, a3;
   a1 = a2 = a3;
   Matrix2D m2 = { 1,2,3 };
-  m2 + m2;
+  m2 + 2 * m2 * 2 * 2 / 2;
+  -m2;
+  m2 - m2;
+  Matrix2D m3 = { 3,4,5 };
+  Matrix2D m4 = m2 * m3;
+
+  Vector3D v1, v2;
+  double n1 = v1 * v2;
+
 
 
 }
