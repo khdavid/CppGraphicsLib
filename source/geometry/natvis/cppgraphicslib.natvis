@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
-
-  <Type Name="IndexAccessor&lt;*,*&gt;">
-    <DisplayString>{{ size={$T2} }}</DisplayString>
-    <Expand>
-      <ArrayItems>
-        <Size>$T2</Size>
-        <ValuePointer>arr_._Elems</ValuePointer>
-      </ArrayItems>
-    </Expand>
-  </Type>
-
   <Type Name="Point2D">
-    <DisplayString>{{ {arr_[0]},{arr_[1]} }}</DisplayString>
+    <DisplayString>{{ {_Elems[0]},{_Elems[1]} }}</DisplayString>
   </Type>
 
   <Type Name="Point3D">
-    <DisplayString>{{ {arr_[0]},{arr_[1]},{arr_[2]} }}</DisplayString>
+    <DisplayString>{{ {_Elems[0]},{_Elems[1]},{_Elems[2]}}}</DisplayString>
   </Type>
 
   <Type Name="Vector2D">
-    <DisplayString>{{ {arr_[0]},{arr_[1]} }}</DisplayString>
+    <DisplayString>{{ {_Elems[0]},{_Elems[1]} }}</DisplayString>
   </Type>
 
   <Type Name="Vector3D">
-    <DisplayString>{{ {arr_[0]},{arr_[1]},{arr_[2]} }}</DisplayString>
+    <DisplayString>{{ {_Elems[0]},{_Elems[1]},{_Elems[2]}}}</DisplayString>
   </Type>
 
 
