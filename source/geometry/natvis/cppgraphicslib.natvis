@@ -2,45 +2,45 @@
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
   <Type Name="Point2D">
-    <DisplayString>{{ x = {_Elems[0], g}, y = {_Elems[1], g} }}</DisplayString>
+    <DisplayString>{{ x = {_Elems[0]}, y = {_Elems[1]} }}</DisplayString>
   </Type>
 
   <Type Name="Point3D">
-    <DisplayString>{{ x = {_Elems[0], g}, y = {_Elems[1], g}, z = {_Elems[2], g} }}</DisplayString>
+    <DisplayString>{{ x = {_Elems[0]}, y = {_Elems[1]}, z = {_Elems[2]} }}</DisplayString>
   </Type>
 
   <Type Name="Vector2D">
-    <DisplayString>{{ i = {_Elems[0], g}, j = {_Elems[1], g} }}</DisplayString>
+    <DisplayString>{{ i = {_Elems[0]}, j = {_Elems[1]} }}</DisplayString>
   </Type>
 
   <Type Name="Vector3D">
-    <DisplayString>{{ i = {_Elems[0], g}, j = {_Elems[1], g}, k = {_Elems[2], g} }}</DisplayString>
+    <DisplayString>{{ i = {_Elems[0]}, j = {_Elems[1]}, k = {_Elems[2]} }}</DisplayString>
   </Type>
   
   <Type Name="Matrix2D">
     <DisplayString>{{ dimensions = {dim} x {dim} }}</DisplayString>
     <Expand>
-      <Item Name="row1">_Elems[0]._Elems, g</Item>
-      <Item Name="row2">_Elems[1]._Elems, g</Item>
+      <Item Name="row1">_Elems[0]._Elems</Item>
+      <Item Name="row2">_Elems[1]._Elems</Item>
     </Expand>
   </Type>
  
   <Type Name="Matrix3D">
     <DisplayString>{{ dimensions = {dim} x {dim} }}</DisplayString>
     <Expand>
-      <Item Name="row1">_Elems[0]._Elems, g</Item>
-      <Item Name="row2">_Elems[1]._Elems, g</Item>
-      <Item Name="row3">_Elems[2]._Elems, g</Item>
+      <Item Name="row1">_Elems[0]._Elems</Item>
+      <Item Name="row2">_Elems[1]._Elems</Item>
+      <Item Name="row3">_Elems[2]._Elems</Item>
     </Expand>
   </Type>
   
   <Type Name="Matrix4D">
     <DisplayString>{{ dimensions = {dim} x {dim} }}</DisplayString>
     <Expand>
-      <Item Name="row1">_Elems[0]._Elems, g</Item>
-      <Item Name="row2">_Elems[1]._Elems, g</Item>
-      <Item Name="row3">_Elems[2]._Elems, g</Item>
-      <Item Name="row4">_Elems[3]._Elems, g</Item>
+      <Item Name="row1">_Elems[0]._Elems</Item>
+      <Item Name="row2">_Elems[1]._Elems</Item>
+      <Item Name="row3">_Elems[2]._Elems</Item>
+      <Item Name="row4">_Elems[3]._Elems</Item>
     </Expand>
   </Type>
 
