@@ -7,6 +7,11 @@ struct Vector3D;
 struct Point2D;
 struct Point3D;
 
+template<size_t n>
+struct Vector;
+
+template<class T,size_t n>
+struct Matrix;
 
 template <class T, class K>
 enable_if_vector_t<T, K> operator+(const K& first, const T& second);
@@ -40,6 +45,9 @@ enable_if_vector_t<T, double> operator*(const T& v1, const T& v2);
 
 template <class T>
 enable_if_matrix_t<T> operator*(const T& m1, const T& m2);
+
+template <size_t n>
+Vector<n> operator*(const Matrix<double, n>& m, const Vector<n>& v);
 
 #include "operations.hpp"
 

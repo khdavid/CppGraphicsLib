@@ -64,6 +64,8 @@ void test()
   Matrix2D m2 = { 1.2344353453453534,2e-5,3 };
   Matrix3D m3d = { 1.2344353453453534,2e-5,3 };
   Vector3D v3d = { 1.2344353453453534,2e-5,3 };
+  auto res = m3d * v3d;
+
   m2 + 2 * m2 * 2 * 2 / 2;
   -m2;
   m2 - m2;
@@ -79,7 +81,6 @@ void test()
 
 int main(int argc, char** argv)
 {
-  
   test();
   ContextProvider contextProvider;
   MainLoop(contextProvider).run();
