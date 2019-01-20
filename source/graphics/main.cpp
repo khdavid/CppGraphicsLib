@@ -61,7 +61,8 @@ void test()
   Matrix<double, 2> m {1,2,3};
   Vector2D a1, a2, a3;
   a1 = a2 = a3;
-  Matrix2D m2 = { 1,2,3 };
+  Matrix2D m2 = { 1.2344353453453534,2e-5,3 };
+  Matrix3D m3d = { 1.2344353453453534,2e-5,3 };
   m2 + 2 * m2 * 2 * 2 / 2;
   -m2;
   m2 - m2;
