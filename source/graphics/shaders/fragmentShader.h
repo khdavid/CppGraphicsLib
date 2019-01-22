@@ -51,21 +51,23 @@ float length2(ComplexNumber number)
 
 void main()
 {
-  ComplexNumber z;
-     z.Real = 0;
-     z.Imagine = 0;
+  //ComplexNumber z;
+  //   z.Real = 0;
+  //   z.Imagine = 0;
 
-  for (int i = 0; i < 100; i++)
-  {
-     ComplexNumber c;
-     c.Real = (gl_FragCoord.x - 320 ) / 640 * fade;
-     c.Imagine = (gl_FragCoord.y -900) / 320 * fade; 
-     z = Add (Product(Product(z,z),z), Product(c,c));
-     if (length2(z) < 0.001) break;
-     if (length2(z) > 100) break;
-  }
-  float len = length(z);
-  color = vec4(100 + len*len, sqrt(len), len, 1);
+  //for (int i = 0; i < 100; i++)
+  //{
+  //   ComplexNumber c;
+  //   c.Real = (gl_FragCoord.x - 320 ) / 640 * fade;
+  //   c.Imagine = (gl_FragCoord.y -900) / 320 * fade; 
+  //   z = Add (Product(Product(z,z),z), Product(c,c));
+  //   if (length2(z) < 0.001) break;
+  //   if (length2(z) > 100) break;
+  //}
+  //float len = length(z);
+  //color = vec4(100 + len*len, sqrt(len), len, 1);
+  color.xyz = varyingColor.rgb;
+  color.w = 1;
 }
 
 )";

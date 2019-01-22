@@ -13,7 +13,7 @@
 const std::string cVertexShaderCode = R"(
 #version 130
 
-in vec2 vertexPosition;
+in vec3 vertexPosition;
 in vec3 vertexColor;
 varying vec3 varyingColor;
 uniform float fade;
@@ -22,9 +22,8 @@ uniform float fade;
 void main()
 {
   gl_Position.x = vertexPosition[0];
-  //gl_Position.y = vertexColor[1];
   gl_Position.y = vertexPosition[1];
-  gl_Position.z = 0.0;
+  gl_Position.z = vertexPosition[2];
   gl_Position.w = 1.0;
 
   varyingColor = vertexColor;

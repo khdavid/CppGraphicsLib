@@ -5,27 +5,50 @@
 TriangleSprite::TriangleSprite(Triangle2D triangle):
   triangle_(triangle)
 {
-  std::array<float, 6> vertexData;
+  std::array<float, 6 * 3> vertexData;
+  const auto depth1 = 0.2;
+  const auto depth2 = 0.3;
+  vertexData[0] = -1;
+  vertexData[1] = -1;
+  vertexData[2] = 0.1;
 
-  vertexData[0] = triangle[0][0];
-  vertexData[1] = triangle[0][1];
+  vertexData[3] = 0;
+  vertexData[4] = 1;
+  vertexData[5] = 0.2;
 
-  vertexData[2] = triangle[1][0];
-  vertexData[3] = triangle[1][1];
+  vertexData[6] = 1;
+  vertexData[7] = -1;
+  vertexData[8] = 0.3;
 
-  vertexData[4] = triangle[2][0];
-  vertexData[5] = triangle[2][1];
 
-  std::array<float, 9> colorData = {
+  vertexData[9] = -1;
+  vertexData[10] = 1;
+  vertexData[11] = 0.2;
+
+  vertexData[12] = 0;
+  vertexData[13] = -1;
+  vertexData[14] = 0.2;
+
+  vertexData[15] = 1;
+  vertexData[16] = 1;
+  vertexData[17] = 0.2;
+
+  std::array<float, 9 * 2> colorData = {
+    1.0, 0.0, 0.0,
+    0.0, 1.0, 0.0,
+    0.0, 0.0, 1.0,
     1.0, 0.0, 0.0,
     0.0, 1.0, 0.0,
     0.0, 0.0, 1.0
+
   };
 
 
   // Enable alpha
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+  glEnable(GL_DEPTH_TEST);
 
   glGenBuffers(1, &vboPosition_);
   glBindBuffer(GL_ARRAY_BUFFER, vboPosition_);
@@ -63,7 +86,7 @@ void TriangleSprite::render(int x, int y)
   glEnableVertexAttribArray(vertexColorAttr_);
 
   glBindBuffer(GL_ARRAY_BUFFER, vboPosition_);
-  const int cVertexPositionDim = 2;
+  const int cVertexPositionDim = 3;
   glVertexAttribPointer(
     vertexPositionAttr_, // attribute
     cVertexPositionDim,              // number of elements per vertex, here (x,y)
@@ -85,7 +108,7 @@ void TriangleSprite::render(int x, int y)
 
   glUniform1f(fadeUniform_, y / 480.0);
 
-  glDrawArrays(GL_TRIANGLES, 0, 3);
+  glDrawArrays(GL_TRIANGLES, 0, 6);
 
   glDisableVertexAttribArray(vertexColorAttr_);
   glDisableVertexAttribArray(vertexPositionAttr_);
