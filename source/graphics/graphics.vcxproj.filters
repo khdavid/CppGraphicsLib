@@ -22,6 +22,9 @@
     <Filter Include="tools">
       <UniqueIdentifier>{44460d8a-607a-42b2-813c-ca55fd00eccc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="nodes">
+      <UniqueIdentifier>{d36b69f6-b8f0-4e85-b524-79d253a2e9fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
@@ -98,6 +101,9 @@
     <ClInclude Include="spriteManager.h" />
     <ClInclude Include="tools\GLSLShaderToolBase.h">
       <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="nodes\graphicsNode.h">
+      <Filter>nodes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

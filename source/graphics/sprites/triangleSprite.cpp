@@ -1,10 +1,20 @@
 #include <array>
+
+#include "nodes/graphicsNode.h"
 #include "triangleSprite.h"
+
 
 
 TriangleSprite::TriangleSprite(Triangle2D triangle):
   triangle_(triangle)
 {
+  std::array<Vertex, 3> vertices=
+  {
+    Vertex{Position{-1, -1, 0}, Material{Color{255, 0, 0, 1}}},
+    Vertex{Position{0, 1, 0}, Material{Color{0, 255, 0, 1}}},
+    Vertex{Position{1, -1, 0}, Material{Color{0, 0, 255, 1}}}
+  };
+
   std::array<float, 6 * 3> vertexData;
   const auto depth1 = 0.2;
   const auto depth2 = 0.3;
