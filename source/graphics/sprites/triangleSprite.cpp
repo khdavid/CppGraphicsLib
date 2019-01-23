@@ -79,22 +79,9 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   fadeUniform_ = glGetUniformLocation(1, fadeName);
   glUniform1f(fadeUniform_, 0.1);
 
- }
 
- TriangleSprite::~TriangleSprite()
-{
-  if (vboPosition_)
-  {
-    glDeleteBuffers(1, &vboPosition_);
-  }
-}
-
-
-void TriangleSprite::render(int x, int y)
-{
   glEnableVertexAttribArray(vertexPositionAttr_);
   glEnableVertexAttribArray(vertexColorAttr_);
-
   glBindBuffer(GL_ARRAY_BUFFER, vboPosition_);
   const int cVertexPositionDim = 3;
   glVertexAttribPointer(
@@ -116,13 +103,24 @@ void TriangleSprite::render(int x, int y)
     0,                 // no extra data between each position
     0);                // offset of first element
 
+ }
+
+ TriangleSprite::~TriangleSprite()
+{
+   glDisableVertexAttribArray(vertexColorAttr_);
+   glDisableVertexAttribArray(vertexPositionAttr_);
+
+   if (vboPosition_)
+  {
+    glDeleteBuffers(1, &vboPosition_);
+  }
+}
+
+
+void TriangleSprite::render(int x, int y)
+{
   glUniform1f(fadeUniform_, y / 480.0);
-
   glDrawArrays(GL_TRIANGLES, 0, 6);
-
-  glDisableVertexAttribArray(vertexColorAttr_);
-  glDisableVertexAttribArray(vertexPositionAttr_);
-
 }
 
 
