@@ -5,7 +5,7 @@
 
 
 
-TriangleSprite::TriangleSprite(Triangle2D triangle):
+TriangleSprite::TriangleSprite(Triangle2D triangle, GLuint programId):
   triangle_(triangle)
 {
   std::array<Vertex, 3> vertices=
@@ -68,15 +68,19 @@ TriangleSprite::TriangleSprite(Triangle2D triangle):
   glBindBuffer(GL_ARRAY_BUFFER, vboColor_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(colorData), colorData.data(), GL_STATIC_DRAW);
 
+  glGenBuffers(1, &vboVertices_);
+  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices.data(), GL_STATIC_DRAW);
+
   const char* vertexPositionName = "vertexPosition";
-  vertexPositionAttr_ = glGetAttribLocation(1, vertexPositionName);
+  vertexPositionAttr_ = glGetAttribLocation(programId, vertexPositionName);
 
   const char* vertexColorName = "vertexColor";
-  vertexColorAttr_ = glGetAttribLocation(1, vertexColorName);
+  vertexColorAttr_ = glGetAttribLocation(programId, vertexColorName);
 
 
   const char* fadeName = "fade";
-  fadeUniform_ = glGetUniformLocation(1, fadeName);
+  fadeUniform_ = glGetUniformLocation(programId, fadeName);
   glUniform1f(fadeUniform_, 0.1);
 
 

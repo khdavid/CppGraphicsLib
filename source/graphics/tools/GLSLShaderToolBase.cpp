@@ -102,3 +102,9 @@ void GLSLShaderToolBase::addAttribute_(const std::string & name)
   //glBindAttribLocation(programId_, numAttributes_++, name.c_str());
 }
 
+GLuint GLSLShaderToolBase::getProgramId() const
+{
+  return programId_;
+}
+
+

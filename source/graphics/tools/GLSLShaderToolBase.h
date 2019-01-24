@@ -12,6 +12,7 @@ public:
 
   void use();
   void unuse();
+  GLuint getProgramId() const;
 private:
   GLuint programId_ = 0;
   GLuint vertexShaderId_ = 0;
