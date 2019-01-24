@@ -66,7 +66,7 @@ void main()
   //}
   //float len = length(z);
   //color = vec4(100 + len*len, sqrt(len), len, 1);
-  color.xyz = varyingColor.rgb * fade;
+  color.xyz = varyingColor.rgb * fade * 20;
   color.w = 1;
 }
 

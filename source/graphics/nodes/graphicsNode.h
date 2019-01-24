@@ -1,13 +1,14 @@
 #pragma once
 
 #include <glew.h>
+#pragma  pack(push, 1)
 
 struct Color
 {
   GLubyte r;
   GLubyte g;
   GLubyte b;
-  GLubyte alpha;
+  //GLubyte alpha;
 };
 
 struct Material
@@ -28,3 +29,4 @@ struct Vertex
   Material material;
 };
 
+#pragma (pop)

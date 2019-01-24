@@ -26,7 +26,7 @@ void main()
   gl_Position.z = vertexPosition[2];
   gl_Position.w = 1.0;
 
-  varyingColor = vertexColor;
+  varyingColor = vertexColor / 256.0;
 }
 
 )";
