@@ -10,9 +10,6 @@
     <Filter Include="observables">
       <UniqueIdentifier>{182263bd-e914-43e2-b131-8f8d1b4f748c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shaders">
-      <UniqueIdentifier>{c4e2d7c5-7948-48d1-bab8-f2d88ce1c812}</UniqueIdentifier>
-    </Filter>
     <Filter Include="wrappers">
       <UniqueIdentifier>{01b5d2c0-67bc-4128-b0f3-0491b6879b95}</UniqueIdentifier>
     </Filter>
@@ -74,12 +71,6 @@
     </ClInclude>
     <ClInclude Include="observables\mouseEventObservable.h">
       <Filter>observables</Filter>
-    </ClInclude>
-    <ClInclude Include="shaders\fragmentShader.h">
-      <Filter>shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="shaders\vertexShader.h">
-      <Filter>shaders</Filter>
     </ClInclude>
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h">
       <Filter>wrappers</Filter>

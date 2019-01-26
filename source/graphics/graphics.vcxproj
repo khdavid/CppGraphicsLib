@@ -227,8 +227,6 @@
     <ClInclude Include="pointInSquare.h" />
     <ClInclude Include="spriteManager.h" />
     <ClInclude Include="sprites\triangleSprite.h" />
-    <ClInclude Include="shaders\fragmentShader.h" />
-    <ClInclude Include="shaders\vertexShader.h" />
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h" />
     <ClInclude Include="wrappers\SDL_WindowWrapper.h" />
   </ItemGroup>

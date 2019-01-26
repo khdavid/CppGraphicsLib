@@ -1,8 +1,6 @@
 #include <glew.h>
 
 #include "wrappers/SDL_GLContextWrapper.h"
-#include "shaders/vertexShader.h"
-#include "shaders/fragmentShader.h"
 
 #include "spriteManager.h"
 

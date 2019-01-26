@@ -1,8 +1,6 @@
 #include <array>
 
 #include "nodes/graphicsNode.h"
-#include "shaders/fragmentShader.h"
-#include "shaders/vertexShader.h"
 #include "tools/GLSLShaderToolBase.h"
 #include "triangleSprite.h"
 
@@ -10,7 +8,7 @@
 
 TriangleSprite::TriangleSprite()
 {
-  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(cVertexShaderCode, cFragmentShaderCode);
+  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(getVertexShaderCode_(), getFragmentShaderCode_());
   auto programId = shaderProgram_->getProgramId();
   std::array<Vertex, 12> vertices=
   {
@@ -74,6 +72,12 @@ TriangleSprite::TriangleSprite()
 
  }
 
+void TriangleSprite::init()
+{
+
+}
+
+
  TriangleSprite::~TriangleSprite()
 {
    glDisableVertexAttribArray(vertexColorAttr_);
@@ -90,6 +94,51 @@ void TriangleSprite::render(int x, int y)
 {
   glUniform1f(fadeUniform_, y / 480.0);
   glDrawArrays(GL_TRIANGLES, 0, 12);
+}
+
+std::string TriangleSprite::getVertexShaderCode_() const
+{
+  return R"(
+
+  #version 130
+  
+  in vec3 vertexPosition;
+  in vec3 vertexColor;
+  varying vec3 varyingColor;
+  uniform float fade;
+  
+  
+  void main()
+  {
+    gl_Position.x = vertexPosition[0];
+    gl_Position.y = vertexPosition[1];
+    gl_Position.z = vertexPosition[2];
+    gl_Position.w = 1.0;
+  
+    varyingColor = vertexColor / 256.0;
+  }
+
+  )";
+}
+
+std::string TriangleSprite::getFragmentShaderCode_() const
+{
+  return R"(
+
+  #version 130
+  
+  out vec4 color;
+  varying vec3 varyingColor;
+  uniform float fade;
+  
+  
+  void main()
+  {
+    color.xyz = varyingColor.rgb * fade * 20;
+    color.w = 0.6f;
+  }
+  
+  )";
 }
 
 
