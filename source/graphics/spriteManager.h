@@ -12,6 +12,6 @@ public:
   virtual void onMouseMovePassive(int x, int y) override;
 private:
   SDL_Window& window_;
-  std::unique_ptr<TriangleSprite> sprite_;
+  TriangleSprite sprite_;
 };
 

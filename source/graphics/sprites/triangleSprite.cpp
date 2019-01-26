@@ -4,13 +4,11 @@
 #include "tools/GLSLShaderToolBase.h"
 #include "triangleSprite.h"
 
-
-
-TriangleSprite::TriangleSprite()
+void TriangleSprite::init()
 {
   shaderProgram_ = std::make_unique<GLSLShaderToolBase>(getVertexShaderCode_(), getFragmentShaderCode_());
   auto programId = shaderProgram_->getProgramId();
-  std::array<Vertex, 12> vertices=
+  std::array<Vertex, 12> vertices =
   {
     Vertex{Position{-1, -1, 0.1}, Material{Color{255, 0, 0}}},
     Vertex{Position{0, 1, 0.2}, Material{Color{0, 255, 0}}},
@@ -31,8 +29,8 @@ TriangleSprite::TriangleSprite()
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_DEPTH_TEST);
 
-  glGenBuffers(1, &vboVertices_);
-  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
+  glGenBuffers(1, &*vboVertices_);
+  glBindBuffer(GL_ARRAY_BUFFER, *vboVertices_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices.data(), GL_STATIC_DRAW);
 
   const char* vertexPositionName = "vertexPosition";
@@ -50,7 +48,7 @@ TriangleSprite::TriangleSprite()
   glEnableVertexAttribArray(vertexPositionAttr_);
   glEnableVertexAttribArray(vertexColorAttr_);
 
-  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
+  glBindBuffer(GL_ARRAY_BUFFER, *vboVertices_);
   const int cVertexPositionDim = 3;
   glVertexAttribPointer(
     vertexPositionAttr_, // attribute
@@ -70,11 +68,6 @@ TriangleSprite::TriangleSprite()
     sizeof(Vertex),                 // no extra data between each position
     (const void *)offsetof(Vertex, material));                // offset of first element
 
- }
-
-void TriangleSprite::init()
-{
-
 }
 
 
@@ -85,7 +78,7 @@ void TriangleSprite::init()
 
    if (vboVertices_)
   {
-    glDeleteBuffers(1, &vboVertices_);
+    glDeleteBuffers(1, &*vboVertices_);
   }
 }
 

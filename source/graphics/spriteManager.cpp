@@ -7,7 +7,7 @@
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window)
 {
-  sprite_ = std::make_unique<TriangleSprite>();
+  sprite_.init();
   onMouseMovePassive(0,0);
 }
 
@@ -17,7 +17,7 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   glClearDepth(1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  sprite_->render(x, y);
+  sprite_.render(x, y);
 
   SDL_GL_SwapWindow(&window_);
 }
