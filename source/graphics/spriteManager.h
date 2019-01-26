@@ -12,7 +12,7 @@ public:
   virtual void onMouseMovePassive(int x, int y) override;
 private:
   SDL_Window& window_;
-  GLSLShaderToolBase shaderProgram_;
-  TriangleSprite sprite_;
+  std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
+  std::unique_ptr<TriangleSprite> sprite_;
 };
 

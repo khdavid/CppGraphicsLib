@@ -21,7 +21,7 @@ TriangleSprite::TriangleSprite(Triangle2D triangle, GLuint programId):
     Vertex{Position{-1, -1, 0.1}, Material{Color{0, 255, 0}}},
     Vertex{Position{1, 1, 0.1}, Material{Color{0, 0, 255}}},
     Vertex{Position{-1, 0, 0.2}, Material{Color{255, 0, 0}}},
-    Vertex{Position{1, -1, 0.3}, Material{Color{0, 255, 0}}}
+    Vertex{Position{1, -1, 0.3}, Material{Color{255, 255, 255}}}
   };
 
   // Enable alpha
@@ -42,7 +42,7 @@ TriangleSprite::TriangleSprite(Triangle2D triangle, GLuint programId):
 
   const char* fadeName = "fade";
   fadeUniform_ = glGetUniformLocation(programId, fadeName);
-  glUniform1f(fadeUniform_, 0.1);
+  glUniform1f(fadeUniform_, 1);
 
 
   glEnableVertexAttribArray(vertexPositionAttr_);

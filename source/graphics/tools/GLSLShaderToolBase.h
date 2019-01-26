@@ -7,20 +7,18 @@
 class GLSLShaderToolBase : public MouseEventListener
 {
 public:
-  GLSLShaderToolBase();
-  ~GLSLShaderToolBase();
+  GLSLShaderToolBase::GLSLShaderToolBase(
+    const std::string& vertexShaderCode,
+    const std::string& fragmentShaderCode);
+    ~GLSLShaderToolBase();
 
-  void use();
-  void unuse();
   GLuint getProgramId() const;
 private:
   GLuint programId_ = 0;
   GLuint vertexShaderId_ = 0;
   GLuint fragmentShaderId_ = 0;
-  GLuint numAttributes_ = 0;
   
   void compileShader_(GLuint& id, GLuint type, const std::string& shaderCode);
   void linkShaders_();
-  void addAttribute_(const std::string& name);
 };
 

@@ -1,15 +1,18 @@
 #include <glew.h>
 
 #include "wrappers/SDL_GLContextWrapper.h"
+#include "shaders/vertexShader.h"
+#include "shaders/fragmentShader.h"
+
 #include "spriteManager.h"
 
 SpriteManager::SpriteManager(SDL_Window& window) :
-  window_(window),
-  sprite_(Triangle2D{ Point2D(0,5), Point2D(-5, -5), Point2D(5, -5) }, shaderProgram_.getProgramId())
+  window_(window)
 {
-  // It is a hack to draw everything during initialization
-  onMouseMovePassive(0, 0);
-  onMouseMovePassive(0, 0);
+  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(cVertexShaderCode, cFragmentShaderCode);
+  sprite_ = std::make_unique<TriangleSprite>(
+    Triangle2D{ Point2D(0,5), Point2D(-5, -5), Point2D(5, -5) }, 
+    shaderProgram_->getProgramId());
 }
 
 void SpriteManager::onMouseMovePassive(int x, int y)
@@ -18,9 +21,7 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   glClearDepth(1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  shaderProgram_.use();
-  sprite_.render(x, y);
-  shaderProgram_.unuse();
+  sprite_->render(x, y);
 
   SDL_GL_SwapWindow(&window_);
 }

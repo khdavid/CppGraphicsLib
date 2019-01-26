@@ -1,44 +1,22 @@
 #include <vector>
 #include <iostream>
 #include "GLSLShaderToolBase.h"
-#include "shaders/vertexShader.h"
-#include "shaders/fragmentShader.h"
 
-GLSLShaderToolBase::GLSLShaderToolBase()
+GLSLShaderToolBase::GLSLShaderToolBase(
+  const std::string& vertexShaderCode,
+  const std::string& fragmentShaderCode)
 {
   programId_ = glCreateProgram();
-
-  compileShader_(vertexShaderId_, GL_VERTEX_SHADER, cVertexShaderCode);
-  compileShader_(fragmentShaderId_, GL_FRAGMENT_SHADER, cFragmentShaderCode);
-  addAttribute_("vertexPosition");
+  compileShader_(vertexShaderId_, GL_VERTEX_SHADER, vertexShaderCode);
+  compileShader_(fragmentShaderId_, GL_FRAGMENT_SHADER, fragmentShaderCode);
   linkShaders_();
+  glUseProgram(programId_);
 }
 
 GLSLShaderToolBase::~GLSLShaderToolBase()
 {
   glDeleteProgram(programId_);
 }
-
-
-void GLSLShaderToolBase::use()
-{
-  glUseProgram(programId_);
-  for (int i = 0; i < numAttributes_; ++i)
-  {
-    //glEnableVertexAttribArray(i);
-  }
-}
-void GLSLShaderToolBase::unuse()
-{
-  glUseProgram(0);
-  for (int i = 0; i < numAttributes_; ++i)
-  {
-    //glDisableVertexAttribArray(i);
-  }
-
-}
-
-
 
 void GLSLShaderToolBase::compileShader_(GLuint& id, GLuint type, const std::string& shaderCode)
 {
@@ -95,11 +73,6 @@ void GLSLShaderToolBase::linkShaders_()
   }
   glDeleteShader(vertexShaderId_);
   glDeleteShader(fragmentShaderId_);
-}
-
-void GLSLShaderToolBase::addAttribute_(const std::string & name)
-{
-  //glBindAttribLocation(programId_, numAttributes_++, name.c_str());
 }
 
 GLuint GLSLShaderToolBase::getProgramId() const
