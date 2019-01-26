@@ -29,4 +29,4 @@ struct Vertex
   Material material;
 };
 
-#pragma (pop)
+#pragma pack(pop)

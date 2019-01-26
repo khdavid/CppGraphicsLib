@@ -13,9 +13,6 @@ public:
   void render(int x, int y);
 
 private:
-  Triangle2D triangle_;
-  GLuint vboPosition_ = 0;
-  GLuint vboColor_ = 0;
   GLuint vboVertices_ = 0;
 
   GLint vertexPositionAttr_ = 0;

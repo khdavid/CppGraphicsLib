@@ -79,9 +79,9 @@ TriangleSprite::TriangleSprite()
    glDisableVertexAttribArray(vertexColorAttr_);
    glDisableVertexAttribArray(vertexPositionAttr_);
 
-   if (vboPosition_)
+   if (vboVertices_)
   {
-    glDeleteBuffers(1, &vboPosition_);
+    glDeleteBuffers(1, &vboVertices_);
   }
 }
 
