@@ -1,13 +1,17 @@
 #include <array>
 
 #include "nodes/graphicsNode.h"
+#include "shaders/fragmentShader.h"
+#include "shaders/vertexShader.h"
+#include "tools/GLSLShaderToolBase.h"
 #include "triangleSprite.h"
 
 
 
-TriangleSprite::TriangleSprite(Triangle2D triangle, GLuint programId):
-  triangle_(triangle)
+TriangleSprite::TriangleSprite()
 {
+  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(cVertexShaderCode, cFragmentShaderCode);
+  auto programId = shaderProgram_->getProgramId();
   std::array<Vertex, 12> vertices=
   {
     Vertex{Position{-1, -1, 0.1}, Material{Color{255, 0, 0}}},

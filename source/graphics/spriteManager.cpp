@@ -9,10 +9,8 @@
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window)
 {
-  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(cVertexShaderCode, cFragmentShaderCode);
-  sprite_ = std::make_unique<TriangleSprite>(
-    Triangle2D{ Point2D(0,5), Point2D(-5, -5), Point2D(5, -5) }, 
-    shaderProgram_->getProgramId());
+  sprite_ = std::make_unique<TriangleSprite>();
+  onMouseMovePassive(0,0);
 }
 
 void SpriteManager::onMouseMovePassive(int x, int y)

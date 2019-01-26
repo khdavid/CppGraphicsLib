@@ -3,10 +3,12 @@
 #include <glew.h>
 #include <geometryObjects/triangle.h>
 
+class GLSLShaderToolBase;
+
 class TriangleSprite
 {
 public:
-  TriangleSprite(Triangle2D triangle, GLuint programId);
+  TriangleSprite();
   ~TriangleSprite();
   void render(int x, int y);
 
@@ -19,5 +21,6 @@ private:
   GLint vertexPositionAttr_ = 0;
   GLint vertexColorAttr_ = 0;
   GLint fadeUniform_ = 0;
+  std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
 };
 
