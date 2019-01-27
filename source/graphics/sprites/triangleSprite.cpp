@@ -21,7 +21,6 @@ void TriangleSprite::init(const std::vector<Vertex>& vertices)
   glEnableVertexAttribArray(vertexPositionAttr_);
   glEnableVertexAttribArray(vertexColorAttr_);
 
-  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
   const int cVertexPositionDim = 3;
   glVertexAttribPointer(
     vertexPositionAttr_, // attribute
