@@ -96,8 +96,7 @@ std::string TriangleSprite::getVertexShaderCode_() const
   
   in vec3 vertexPosition;
   in vec3 vertexColor;
-  varying vec3 varyingColor;
-  uniform float fade;
+  out vec3 varyingColor;
   
   
   void main()
@@ -120,7 +119,7 @@ std::string TriangleSprite::getFragmentShaderCode_() const
   #version 130
   
   out vec4 color;
-  varying vec3 varyingColor;
+  in vec3 varyingColor;
   uniform float fade;
   
   

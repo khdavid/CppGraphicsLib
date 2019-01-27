@@ -29,4 +29,9 @@ struct Vertex
   Material material;
 };
 
+struct GLTriangle
+{
+  Vertex vertices[3];
+};
+
 #pragma pack(pop)
