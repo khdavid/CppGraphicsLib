@@ -10,3 +10,8 @@ void SpriteBase::init()
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_DEPTH_TEST);
 }
+
+void SpriteBase::enable()
+{
+  glUseProgram(programId_);
+}

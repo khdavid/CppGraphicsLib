@@ -44,6 +44,8 @@ void TriangleSprite::init(const std::vector<Vertex>& vertices)
 
 void TriangleSprite::render(int x, int y)
 {
+  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
+
   glDrawArrays(GL_TRIANGLES, 0, numOfVertices_);
 }
 

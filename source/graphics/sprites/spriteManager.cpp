@@ -26,8 +26,8 @@ namespace
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window)
 {
+  coloringSprite_.init(cColoringSpriteVertices);
   mondSprite_.init();
-  //coloringSprite_.init(cColoringSpriteVertices);
 
   onMouseMovePassive(0,0);
 }
@@ -38,7 +38,18 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   glClearDepth(1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  //coloringSprite_.render(x, y);
-  mondSprite_.render(x, y);
+  static size_t itr = 0;
+  itr++;
+  
+  if ((itr % 100) < 50 )
+  {
+    coloringSprite_.enable();
+    coloringSprite_.render(x, y);
+  }
+  else
+  {
+    mondSprite_.enable();
+    mondSprite_.render(x, y);
+  }
   SDL_GL_SwapWindow(&window_);
 }
