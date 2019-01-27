@@ -30,12 +30,7 @@ namespace
 void TriangleSprite::init()
 {
   SpriteBase::init();
-
-  // Enable alpha
-  glEnable(GL_BLEND);
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glEnable(GL_DEPTH_TEST);
-
+  
   glGenBuffers(1, &vboVertices_);
   glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(cVertices), cVertices.data(), GL_STATIC_DRAW);
@@ -43,8 +38,6 @@ void TriangleSprite::init()
   vertexPositionAttr_ = glGetAttribLocation(programId_, cVertexPositionName);
   vertexColorAttr_ = glGetAttribLocation(programId_, cVertexColorName);
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
-  glUniform1f(fadeUniform_, 1);
-
 
   glEnableVertexAttribArray(vertexPositionAttr_);
   glEnableVertexAttribArray(vertexColorAttr_);

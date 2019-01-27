@@ -58,7 +58,12 @@
     <ClCompile Include="tools\GLSLShaderToolBase.cpp">
       <Filter>tools</Filter>
     </ClCompile>
-    <ClCompile Include="sprites\spriteBase.cpp" />
+    <ClCompile Include="sprites\mondelbrotSprite.cpp">
+      <Filter>sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="sprites\spriteBase.cpp">
+      <Filter>sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -97,6 +102,11 @@
     <ClInclude Include="nodes\graphicsNode.h">
       <Filter>nodes</Filter>
     </ClInclude>
-    <ClInclude Include="sprites\spriteBase.h" />
+    <ClInclude Include="sprites\mondelbrotSprite.h">
+      <Filter>sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="sprites\spriteBase.h">
+      <Filter>sprites</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

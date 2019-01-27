@@ -10,6 +10,7 @@ public:
   virtual ~SpriteBase() = default;
 
   virtual void init();
+  virtual void render(int x, int y) = 0;
 protected:
   std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
   GLuint programId_;
