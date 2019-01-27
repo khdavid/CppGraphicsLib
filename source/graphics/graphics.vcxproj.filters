@@ -58,6 +58,7 @@
     <ClCompile Include="tools\GLSLShaderToolBase.cpp">
       <Filter>tools</Filter>
     </ClCompile>
+    <ClCompile Include="sprites\spriteBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -96,5 +97,6 @@
     <ClInclude Include="nodes\graphicsNode.h">
       <Filter>nodes</Filter>
     </ClInclude>
+    <ClInclude Include="sprites\spriteBase.h" />
   </ItemGroup>
 </Project>

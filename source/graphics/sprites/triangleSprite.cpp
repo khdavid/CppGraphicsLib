@@ -29,8 +29,7 @@ namespace
 }
 void TriangleSprite::init()
 {
-  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(getVertexShaderCode_(), getFragmentShaderCode_());
-  auto programId = shaderProgram_->getProgramId();
+  SpriteBase::init();
 
   // Enable alpha
   glEnable(GL_BLEND);
@@ -41,9 +40,9 @@ void TriangleSprite::init()
   glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(cVertices), cVertices.data(), GL_STATIC_DRAW);
 
-  vertexPositionAttr_ = glGetAttribLocation(programId, cVertexPositionName);
-  vertexColorAttr_ = glGetAttribLocation(programId, cVertexColorName);
-  fadeUniform_ = glGetUniformLocation(programId, cFadeName);
+  vertexPositionAttr_ = glGetAttribLocation(programId_, cVertexPositionName);
+  vertexColorAttr_ = glGetAttribLocation(programId_, cVertexColorName);
+  fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
   glUniform1f(fadeUniform_, 1);
 
 

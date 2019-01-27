@@ -1,15 +1,17 @@
 #pragma once
 
 #include <glew.h>
-#include <geometryObjects/triangle.h>
+
+#include "geometryObjects/triangle.h"
+#include "spriteBase.h"
 
 class GLSLShaderToolBase;
 
-class TriangleSprite
+class TriangleSprite : public SpriteBase
 {
 public:
   ~TriangleSprite();
-  void init();
+  virtual void init() override;
   void render(int x, int y);
 
 private:
