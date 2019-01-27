@@ -1,26 +1,25 @@
 #pragma once
 
+#include <vector>
 #include <glew.h>
 
+#include "nodes/graphicsNode.h"
 #include "geometryObjects/triangle.h"
 #include "spriteBase.h"
+#include "triangleSprite.h"
 
 class GLSLShaderToolBase;
 
-class ColoringSprite : public SpriteBase
+class ColoringSprite : public TriangleSprite
 {
 public:
-  ~ColoringSprite(); 
-  virtual void init() override;
   virtual void render(int x, int y) override;
+  virtual void init(const std::vector<Vertex>& vertices) override;
 
 private:
   virtual std::string getVertexShaderCode_() const;
   virtual std::string getFragmentShaderCode_() const;
 
-  GLuint vboVertices_ = 0;
-  GLint vertexPositionAttr_ = 0;
-  GLint vertexColorAttr_ = 0;
   GLint fadeUniform_ = 0;
 };
 

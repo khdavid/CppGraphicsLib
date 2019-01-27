@@ -12,7 +12,7 @@
 #include "wrappers/SDL_WindowWrapper.h"
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/mouseEventObservable.h"
-#include "spriteManager.h"
+#include "sprites/spriteManager.h"
 #include "pointInSquare.h"
 
 #include "contextProvider.h"

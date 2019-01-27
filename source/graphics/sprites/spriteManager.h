@@ -14,7 +14,7 @@ public:
   virtual void onMouseMovePassive(int x, int y) override;
 private:
   SDL_Window& window_;
-  ColoringSprite sprite_;
+  ColoringSprite coloringSprite_;
   MondelbrotSprite mondSprite_;
 };
 
