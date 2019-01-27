@@ -216,7 +216,7 @@
     <ClCompile Include="observables\mouseEventObservable.cpp" />
     <ClCompile Include="pointInSquare.cpp" />
     <ClCompile Include="spriteManager.cpp" />
-    <ClCompile Include="sprites\triangleSprite.cpp" />
+    <ClCompile Include="sprites\coloringSprite.cpp" />
     <ClCompile Include="wrappers\SDL_GLContextWrapper.cpp" />
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp" />
   </ItemGroup>
@@ -234,7 +234,7 @@
     <ClInclude Include="observables\mouseEventObservable.h" />
     <ClInclude Include="pointInSquare.h" />
     <ClInclude Include="spriteManager.h" />
-    <ClInclude Include="sprites\triangleSprite.h" />
+    <ClInclude Include="sprites\coloringSprite.h" />
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h" />
     <ClInclude Include="wrappers\SDL_WindowWrapper.h" />
   </ItemGroup>

@@ -51,9 +51,6 @@
     <ClCompile Include="contextProvider.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pointInSquare.cpp" />
-    <ClCompile Include="sprites\triangleSprite.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
     <ClCompile Include="spriteManager.cpp" />
     <ClCompile Include="tools\GLSLShaderToolBase.cpp">
       <Filter>tools</Filter>
@@ -62,6 +59,9 @@
       <Filter>sprites</Filter>
     </ClCompile>
     <ClCompile Include="sprites\spriteBase.cpp">
+      <Filter>sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="sprites\coloringSprite.cpp">
       <Filter>sprites</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,9 +92,6 @@
     <ClInclude Include="eventhandlers\mainLoop.h">
       <Filter>eventHandlers</Filter>
     </ClInclude>
-    <ClInclude Include="sprites\triangleSprite.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
     <ClInclude Include="spriteManager.h" />
     <ClInclude Include="tools\GLSLShaderToolBase.h">
       <Filter>tools</Filter>
@@ -106,6 +103,9 @@
       <Filter>sprites</Filter>
     </ClInclude>
     <ClInclude Include="sprites\spriteBase.h">
+      <Filter>sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="sprites\coloringSprite.h">
       <Filter>sprites</Filter>
     </ClInclude>
   </ItemGroup>

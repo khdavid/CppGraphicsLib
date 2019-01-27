@@ -7,10 +7,10 @@
 
 class GLSLShaderToolBase;
 
-class TriangleSprite : public SpriteBase
+class ColoringSprite : public SpriteBase
 {
 public:
-  ~TriangleSprite();
+  ~ColoringSprite(); 
   virtual void init() override;
   virtual void render(int x, int y) override;
 

@@ -2,7 +2,7 @@
 
 #include "nodes/graphicsNode.h"
 #include "tools/GLSLShaderToolBase.h"
-#include "triangleSprite.h"
+#include "coloringSprite.h"
 
 namespace
 {
@@ -27,7 +27,7 @@ namespace
   };
 
 }
-void TriangleSprite::init()
+void ColoringSprite::init()
 {
   SpriteBase::init();
   
@@ -65,7 +65,7 @@ void TriangleSprite::init()
 }
 
 
- TriangleSprite::~TriangleSprite()
+ ColoringSprite::~ColoringSprite()
 {
    if (shaderProgram_)
   {
@@ -76,13 +76,13 @@ void TriangleSprite::init()
 }
 
 
-void TriangleSprite::render(int x, int y)
+void ColoringSprite::render(int x, int y)
 {
   glUniform1f(fadeUniform_, y / 480.0);
   glDrawArrays(GL_TRIANGLES, 0, 12);
 }
 
-std::string TriangleSprite::getVertexShaderCode_() const
+std::string ColoringSprite::getVertexShaderCode_() const
 {
   return R"(
 
@@ -106,7 +106,7 @@ std::string TriangleSprite::getVertexShaderCode_() const
   )";
 }
 
-std::string TriangleSprite::getFragmentShaderCode_() const
+std::string ColoringSprite::getFragmentShaderCode_() const
 {
   return R"(
 
