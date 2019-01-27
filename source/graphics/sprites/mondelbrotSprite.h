@@ -1,14 +1,12 @@
 #pragma once
-#include "spriteBase.h"
+#include "triangleSprite.h"
 
-class MondelbrotSprite : public SpriteBase
+class MondelbrotSprite : public TriangleSprite
 {
 public:
   virtual void init() override;
   virtual void render(int x, int y);
 private:
-  GLuint vboVertices_ = 0;
-  GLint vertexPositionAttr_ = 0;
   GLint fadeUniform_ = 0;
 
   virtual std::string getVertexShaderCode_() const;

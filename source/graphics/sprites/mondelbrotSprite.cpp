@@ -1,4 +1,4 @@
-#include <array>
+#include <vector>
 
 #include "nodes/graphicsNode.h"
 #include "mondelbrotSprite.h"
@@ -6,11 +6,9 @@
 
 namespace
 {
-  const char* cVertexPositionName = "vertexPosition";
-  const char* cVertexColorName = "vertexColor";
   const char* cFadeName = "fade";
 
-  std::array<Vertex, 12> cVertices =
+  std::vector<Vertex> cVertices =
   {
     Vertex{Position{-1, 1, 0}, Material{Color{0, 0, 0}}},
     Vertex{Position{1, -1, 0}, Material{Color{0, 0, 0}}},
@@ -24,34 +22,14 @@ namespace
 
 void MondelbrotSprite::init()
 {
-  SpriteBase::init();
-
-  glGenBuffers(1, &vboVertices_);
-  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(cVertices), cVertices.data(), GL_STATIC_DRAW);
-
-  vertexPositionAttr_ = glGetAttribLocation(programId_, cVertexPositionName);
+  TriangleSprite::init(cVertices);
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
-
-  glEnableVertexAttribArray(vertexPositionAttr_);
-
-  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
-  const int cVertexPositionDim = 2;
-  glVertexAttribPointer(
-    vertexPositionAttr_, // attribute
-    cVertexPositionDim,              // number of elements per vertex, here (x, y)
-    GL_FLOAT,          // the type of each element
-    GL_FALSE,          // take our values as-is
-    sizeof(Vertex),                 // extra data between each position
-    (const void *)offsetof(Vertex, position));                // offset of first element
-
 }
 
 void MondelbrotSprite::render(int x, int y)
 {
   glUniform1f(fadeUniform_, y / 480.0);
-  glDrawArrays(GL_TRIANGLES, 0, 6);
-
+  TriangleSprite::render(x, y);
 }
 
 std::string MondelbrotSprite::getVertexShaderCode_() const
@@ -60,7 +38,7 @@ std::string MondelbrotSprite::getVertexShaderCode_() const
 
   #version 130
   
-  in vec2 vertexPosition;  
+  in vec3 vertexPosition;  
   
   void main()
   {
