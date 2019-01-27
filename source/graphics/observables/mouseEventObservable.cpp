@@ -14,8 +14,6 @@
 
 void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
 {
-
-  std::function<void(MouseEventListener, int, int)> func = &MouseEventListener::onMouseClick;
   auto type = EventClassifier::classify(event);
   switch (type)
   {
@@ -38,12 +36,12 @@ void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
 }
 
 void MouseEventObservable::applyMouseEvent_(
-  void(MouseEventListener::* func)(int, int),
+  std::function<void(MouseEventListener&, int, int)> func,
   const SDL_MouseButtonEvent& event) const
 {
   for (auto& mouseListener : mouseEventListeners_)
   {
-    (mouseListener->*func)(event.x, event.y);
+    func(*mouseListener, event.x, event.y);
   }
 }
 

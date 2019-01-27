@@ -25,7 +25,7 @@ public:
   void removeMouseListener(MouseEventListener* mouselistener);
   void notifyMouseEvent(const SDL_Event& mouseEvent) const;
 private:
-  void applyMouseEvent_(void(MouseEventListener::* func)(int, int),
+  void applyMouseEvent_(std::function<void(MouseEventListener&, int, int)> func,
     const SDL_MouseButtonEvent&) const;
   void onMouseClick_(const SDL_MouseButtonEvent& mouseEvent) const;
   void onMouseRelease_(const SDL_MouseButtonEvent& mouseEvent) const;
