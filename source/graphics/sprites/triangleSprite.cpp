@@ -4,11 +4,13 @@
 #include "tools/GLSLShaderToolBase.h"
 #include "triangleSprite.h"
 
-void TriangleSprite::init()
+namespace
 {
-  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(getVertexShaderCode_(), getFragmentShaderCode_());
-  auto programId = shaderProgram_->getProgramId();
-  std::array<Vertex, 12> vertices =
+  const char* cVertexPositionName = "vertexPosition";
+  const char* cVertexColorName = "vertexColor";
+  const char* cFadeName = "fade";
+
+  std::array<Vertex, 12> cVertices =
   {
     Vertex{Position{-1, -1, 0.1}, Material{Color{255, 0, 0}}},
     Vertex{Position{0, 1, 0.2}, Material{Color{0, 255, 0}}},
@@ -24,6 +26,12 @@ void TriangleSprite::init()
     Vertex{Position{1, -1, 0.3}, Material{Color{255, 255, 255}}}
   };
 
+}
+void TriangleSprite::init()
+{
+  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(getVertexShaderCode_(), getFragmentShaderCode_());
+  auto programId = shaderProgram_->getProgramId();
+
   // Enable alpha
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -31,17 +39,11 @@ void TriangleSprite::init()
 
   glGenBuffers(1, &vboVertices_);
   glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices.data(), GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(cVertices), cVertices.data(), GL_STATIC_DRAW);
 
-  const char* vertexPositionName = "vertexPosition";
-  vertexPositionAttr_ = glGetAttribLocation(programId, vertexPositionName);
-
-  const char* vertexColorName = "vertexColor";
-  vertexColorAttr_ = glGetAttribLocation(programId, vertexColorName);
-
-
-  const char* fadeName = "fade";
-  fadeUniform_ = glGetUniformLocation(programId, fadeName);
+  vertexPositionAttr_ = glGetAttribLocation(programId, cVertexPositionName);
+  vertexColorAttr_ = glGetAttribLocation(programId, cVertexColorName);
+  fadeUniform_ = glGetUniformLocation(programId, cFadeName);
   glUniform1f(fadeUniform_, 1);
 
 
