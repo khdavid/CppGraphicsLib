@@ -1,6 +1,6 @@
 #include "SpriteBase.h"
 
-void SpriteBase::init()
+void SpriteBase::init_()
 {
   shaderProgram_ = std::make_unique<GLSLShaderToolBase>(getVertexShaderCode_(), getFragmentShaderCode_());
   programId_ = shaderProgram_->getProgramId();
@@ -9,9 +9,4 @@ void SpriteBase::init()
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_DEPTH_TEST);
-}
-
-void SpriteBase::enable()
-{
-  glUseProgram(programId_);
 }

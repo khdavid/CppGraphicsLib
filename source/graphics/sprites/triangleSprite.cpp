@@ -8,7 +8,7 @@ namespace
 }
 void TriangleSprite::init(const std::vector<Vertex>& vertices)
 {
-  SpriteBase::init();
+  init_();
   numOfVertices_ = vertices.size();
 
   glGenBuffers(1, &vboVertices_);

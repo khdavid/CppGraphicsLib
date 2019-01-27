@@ -4,7 +4,7 @@
 class MondelbrotSprite : public TriangleSprite
 {
 public:
-  virtual void init() override;
+  void init();
   virtual void render(int x, int y);
 private:
   GLint fadeUniform_ = 0;

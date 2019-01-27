@@ -39,17 +39,19 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   static size_t itr = 0;
   itr++;
   
-  if ((itr % 100) == 0 )
+  if ((itr % 10) == 1 )
   {
     activeSprite_ = nullptr;
     auto sprite = std::make_unique<ColoringSprite>();
     sprite->init(cColoringSpriteVertices);
     activeSprite_ = std::move(sprite);
   }
-  else if ((itr % 100) == 50)
+  else if ((itr % 10) == 5)
   {
-    activeSprite_ = std::make_unique<MondelbrotSprite>();
-    activeSprite_->init();
+    activeSprite_ = nullptr;
+    auto sprite = std::make_unique<MondelbrotSprite>();
+    sprite->init();
+    activeSprite_ = std::move(sprite);
   }
   activeSprite_->render(x, y);
 

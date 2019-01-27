@@ -8,10 +8,9 @@ class SpriteBase
 {
 public:
   virtual ~SpriteBase() = default;
-  virtual void init();
   virtual void render(int x, int y) = 0;
-  void enable();
 protected:
+  void init_();
   std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
   GLuint programId_;
 private:
