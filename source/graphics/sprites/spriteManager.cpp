@@ -26,9 +26,7 @@ namespace
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window)
 {
-  coloringSprite_.init(cColoringSpriteVertices);
-  mondSprite_.init();
-
+  activeSprite_ = std::make_unique<MondelbrotSprite>();
   onMouseMovePassive(0,0);
 }
 
@@ -41,15 +39,19 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   static size_t itr = 0;
   itr++;
   
-  if ((itr % 100) < 50 )
+  if ((itr % 100) == 0 )
   {
-    coloringSprite_.enable();
-    coloringSprite_.render(x, y);
+    activeSprite_ = nullptr;
+    auto sprite = std::make_unique<ColoringSprite>();
+    sprite->init(cColoringSpriteVertices);
+    activeSprite_ = std::move(sprite);
   }
-  else
+  else if ((itr % 100) == 50)
   {
-    mondSprite_.enable();
-    mondSprite_.render(x, y);
+    activeSprite_ = std::make_unique<MondelbrotSprite>();
+    activeSprite_->init();
   }
+  activeSprite_->render(x, y);
+
   SDL_GL_SwapWindow(&window_);
 }
