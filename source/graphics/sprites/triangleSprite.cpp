@@ -29,8 +29,8 @@ void TriangleSprite::init()
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_DEPTH_TEST);
 
-  glGenBuffers(1, &*vboVertices_);
-  glBindBuffer(GL_ARRAY_BUFFER, *vboVertices_);
+  glGenBuffers(1, &vboVertices_);
+  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices.data(), GL_STATIC_DRAW);
 
   const char* vertexPositionName = "vertexPosition";
@@ -48,7 +48,7 @@ void TriangleSprite::init()
   glEnableVertexAttribArray(vertexPositionAttr_);
   glEnableVertexAttribArray(vertexColorAttr_);
 
-  glBindBuffer(GL_ARRAY_BUFFER, *vboVertices_);
+  glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
   const int cVertexPositionDim = 3;
   glVertexAttribPointer(
     vertexPositionAttr_, // attribute
@@ -73,12 +73,11 @@ void TriangleSprite::init()
 
  TriangleSprite::~TriangleSprite()
 {
-   glDisableVertexAttribArray(vertexColorAttr_);
-   glDisableVertexAttribArray(vertexPositionAttr_);
-
-   if (vboVertices_)
+   if (shaderProgram_)
   {
-    glDeleteBuffers(1, &*vboVertices_);
+    glDeleteBuffers(1, &vboVertices_);
+    glDisableVertexAttribArray(vertexColorAttr_);
+    glDisableVertexAttribArray(vertexPositionAttr_);
   }
 }
 
