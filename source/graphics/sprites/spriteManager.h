@@ -5,7 +5,7 @@
 #include "sprites/mondelbrotSprite.h"
 
 
-class SDL_Window;
+struct SDL_Window;
 
 class SpriteManager : public MouseEventListener
 {

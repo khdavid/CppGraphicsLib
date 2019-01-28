@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 #include "listeners/mouseEventListener.h"
-class SDL_Window;
+struct SDL_Window;
 
 class PointInSquare : public MouseEventListener
 {

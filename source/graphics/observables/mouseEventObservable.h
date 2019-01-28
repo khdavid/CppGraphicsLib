@@ -12,7 +12,7 @@
 #include <functional>
 
 class MouseEventListener;
-class SDL_MouseButtonEvent;
+struct SDL_MouseButtonEvent;
 struct SDL_MouseMotionEvent;
 union SDL_Event;
 

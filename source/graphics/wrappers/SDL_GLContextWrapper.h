@@ -11,7 +11,7 @@
 #include <sdl.h>
 
 
-class SDL_Window;
+struct SDL_Window;
 
 class SDL_GLContextWrapper
 {

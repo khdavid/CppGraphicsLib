@@ -8,18 +8,18 @@ namespace
 {
   std::vector<Vertex> cColoringSpriteVertices =
   {
-    Vertex{Position{-1, -1, 0.1}, Material{Color{255, 0, 0}}},
-    Vertex{Position{0, 1, 0.2}, Material{Color{0, 255, 0}}},
-    Vertex{Position{1, -1, 0.3}, Material{Color{0, 0, 255}}},
-    Vertex{Position{-1, 1, 0.3}, Material{Color{0, 0, 255}}},
-    Vertex{Position{0, -1, 0.2}, Material{Color{255, 0, 0}}},
-    Vertex{Position{1, 1, 0.1}, Material{Color{0, 255, 0}}},
-    Vertex{Position{-1, 1, 0.3}, Material{Color{0, 0, 255}}},
-    Vertex{Position{1, 0, 0.2}, Material{Color{255, 0, 0}}},
-    Vertex{Position{-1, -1, 0.1}, Material{Color{0, 255, 0}}},
-    Vertex{Position{1, 1, 0.1}, Material{Color{0, 0, 255}}},
-    Vertex{Position{-1, 0, 0.2}, Material{Color{255, 0, 0}}},
-    Vertex{Position{1, -1, 0.3}, Material{Color{255, 255, 255}}}
+    Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{255, 0, 0}}},
+    Vertex{Position{0.f, 1.f, 0.2f}, Material{Color{0, 255, 0}}},
+    Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{0, 0, 255}}},
+    Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
+    Vertex{Position{0.f, -1.f, 0.2f}, Material{Color{255, 0, 0}}},
+    Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 255, 0}}},
+    Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
+    Vertex{Position{1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
+    Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{0, 255, 0}}},
+    Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 0, 255}}},
+    Vertex{Position{-1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
+    Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{255, 255, 255}}}
   };
 
 }
