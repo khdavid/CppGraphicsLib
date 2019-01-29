@@ -12,7 +12,7 @@ public:
 protected:
   void init_();
   std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
-  GLuint programId_;
+  GLuint programId_ = 0;
 private:
   virtual std::string getVertexShaderCode_() const = 0;
   virtual std::string getFragmentShaderCode_() const = 0;

@@ -28,7 +28,7 @@ void MondelbrotSprite::init()
 
 void MondelbrotSprite::render(int x, int y)
 {
-  glUniform1f(fadeUniform_, y / 480.0);
+  glUniform1f(fadeUniform_, y / 480.0f);
   TriangleSprite::render(x, y);
 }
 

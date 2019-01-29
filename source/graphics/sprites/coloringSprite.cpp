@@ -17,7 +17,7 @@ void ColoringSprite::init(const std::vector<Vertex>& vertices)
 
 void ColoringSprite::render(int x, int y)
 {
-  glUniform1f(fadeUniform_, y / 480.0);
+  glUniform1f(fadeUniform_, y / 480.0f);
   TriangleSprite::render(x, y);
 }
 

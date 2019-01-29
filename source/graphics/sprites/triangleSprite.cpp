@@ -45,7 +45,7 @@ void TriangleSprite::render(int x, int y)
 {
   glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
 
-  glDrawArrays(GL_TRIANGLES, 0, numOfVertices_);
+  glDrawArrays(GL_TRIANGLES, 0, GLsizei(numOfVertices_));
 }
 
 TriangleSprite::~TriangleSprite()
