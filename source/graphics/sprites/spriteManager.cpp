@@ -1,5 +1,6 @@
 #include <glew.h>
 
+#include <iostream>
 #include <vector>
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "spriteManager.h"
@@ -26,7 +27,9 @@ namespace
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window)
 {
-  activeSprite_ = std::make_unique<MondelbrotSprite>();
+  auto sprite = std::make_unique<MondelbrotSprite>();
+  sprite->init();
+  activeSprite_ = std::move(sprite);
   onMouseMovePassive(0,0);
 }
 
@@ -36,24 +39,29 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   glClearDepth(1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  static size_t itr = 0;
-  itr++;
-  
-  if ((itr % 10) == 1 )
+  activeSprite_->render(x, y);
+
+  SDL_GL_SwapWindow(&window_);
+}
+
+void SpriteManager::onKeyPress(SDL_Keycode keyCode)
+{
+  if (keyCode == SDLK_1)
   {
     activeSprite_ = nullptr;
     auto sprite = std::make_unique<ColoringSprite>();
     sprite->init(cColoringSpriteVertices);
     activeSprite_ = std::move(sprite);
   }
-  else if ((itr % 10) == 5)
+  else if (keyCode == SDLK_2)
   {
     activeSprite_ = nullptr;
     auto sprite = std::make_unique<MondelbrotSprite>();
     sprite->init();
     activeSprite_ = std::move(sprite);
   }
-  activeSprite_->render(x, y);
-
-  SDL_GL_SwapWindow(&window_);
+  int x = 0;
+  int y = 0;
+  SDL_GetMouseState(&x, &y);
+  onMouseMovePassive(x, y);
 }

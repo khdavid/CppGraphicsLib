@@ -12,6 +12,8 @@ class SpriteManager : public InputEventListener
 public:
   SpriteManager(SDL_Window& window);
   virtual void onMouseMovePassive(int x, int y) override;
+  virtual void onKeyPress(SDL_Keycode keyCode) override;
+
 private:
   SDL_Window& window_;
   ColoringSprite coloringSprite_;
