@@ -18,8 +18,8 @@ void PointInSquare::onMouseMovePassive(int x, int y)
 {
   int xMax, yMax;
   SDL_GetWindowSize(&window_, &xMax, &yMax);
-  float xMouse = (float) x / (0.5 * xMax) - 1.0;
-  float yMouse = 1.0 - (float) y / (0.5 * yMax);
+  float xMouse = (float) x / (0.5f * xMax) - 1.0f;
+  float yMouse = 1.0f - (float) y / (0.5f * yMax);
 
   glClearDepth(1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

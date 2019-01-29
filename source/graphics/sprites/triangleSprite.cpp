@@ -41,7 +41,7 @@ void TriangleSprite::init(const std::vector<Vertex>& vertices)
     (const void *)offsetof(Vertex, material));                // offset of first element
 }
 
-void TriangleSprite::render(int x, int y)
+void TriangleSprite::render(int, int)
 {
   glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
 

@@ -8,22 +8,22 @@
 
 #include "mouseEventListener.h"
 
-void MouseEventListener::onMouseRelease(int x, int y)
+void MouseEventListener::onMouseRelease(int, int)
 {
   //should be implemented in a child class;
 }
 
-void MouseEventListener::onMouseMove(int x, int y)
+void MouseEventListener::onMouseMove(int, int)
 {
   //should be implemented in a child class;
 }
 
-void MouseEventListener::onMouseClick(int x, int y)
+void MouseEventListener::onMouseClick(int, int)
 {
   //should be implemented in a child class;
 }
 
-void MouseEventListener::onMouseMovePassive(int x, int y)
+void MouseEventListener::onMouseMovePassive(int, int)
 {
   //should be implemented in a child class;
 }

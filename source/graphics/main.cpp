@@ -49,13 +49,13 @@ void test()
   Matrix2D m4 = m2 * m3;
 
   Vector3D v1, v2;
-  double n1 = v1 * v2;
+  double n1 = v1 * v2; n1;
 
 
 
 }
 
-int main(int argc, char** argv)
+int main(int, char**)
 {
   test();
   ContextProvider contextProvider;
