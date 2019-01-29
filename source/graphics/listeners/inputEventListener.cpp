@@ -13,6 +13,12 @@ void InputEventListener::onKeyPress(SDL_Keycode)
   //should be implemented in a child class;
 }
 
+void InputEventListener::onWindowsResized(int, int)
+{
+  //should be implemented in a child class;
+}
+
+
 void InputEventListener::onMouseRelease(int, int)
 {
   //should be implemented in a child class;

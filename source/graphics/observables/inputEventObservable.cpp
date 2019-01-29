@@ -26,6 +26,14 @@ void InputEventObservable::notifyMouseEvent(const SDL_Event& event) const
       }
       break;
     }
+    case EventType::WindowsResized:
+    {
+      for (auto& mouseListener : mouseEventListeners_)
+      {
+        mouseListener->onWindowsResized(event.window.data1, event.window.data2);
+      }
+      break;
+    }
     case EventType::MouseClick:
       applyMouseEvent_(&InputEventListener::onMouseClick, event.button);
       break;

@@ -44,6 +44,12 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   SDL_GL_SwapWindow(&window_);
 }
 
+void SpriteManager::onWindowsResized(int x, int y)
+{
+  glViewport(0, 0, x, y);
+  std::cout << "width: " << x << "height: " << y << std::endl;
+}
+
 void SpriteManager::onKeyPress(SDL_Keycode keyCode)
 {
   if (keyCode == SDLK_1)

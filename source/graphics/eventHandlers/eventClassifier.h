@@ -17,6 +17,7 @@ enum class EventType
   MouseMove,
   MouseMovePassive,
   KeyDown,
+  WindowsResized,
   Unknown
 };
 

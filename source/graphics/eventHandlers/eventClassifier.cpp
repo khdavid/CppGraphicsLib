@@ -40,19 +40,32 @@ EventType classifyMouseMotion()
 {
   bool leftKeyPressed = SDL_BUTTON(SDL_GetMouseState(nullptr, nullptr)) &
     SDL_BUTTON_LMASK;
-  
+
   if (leftKeyPressed)
   {
     return EventType::MouseMove;
   }
-  
+
   return EventType::MouseMovePassive;
 }
+
+EventType classifyWindowEvent(const SDL_WindowEvent& event)
+{
+  if (event.event == SDL_WINDOWEVENT_RESIZED)
+  {
+    return EventType::WindowsResized;
+  }
+
+  return EventType::Unknown;
 }
+}
+
 EventType EventClassifier::classify(const SDL_Event& event)
 {
   switch (event.type)
   {
+  case SDL_WINDOWEVENT:
+    return classifyWindowEvent(event.window);
   case SDL_KEYDOWN:
     return classifyKeyDown(event.key);
   case SDL_MOUSEBUTTONDOWN:

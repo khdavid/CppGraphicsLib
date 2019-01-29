@@ -14,6 +14,7 @@ class InputEventListener
 {
 public:
   virtual void onKeyPress(SDL_Keycode keyCode);
+  virtual void onWindowsResized(int x, int y);
   virtual void onMouseClick(int x, int y);
   virtual void onMouseRelease(int x, int y);
   virtual void onMouseMove(int x, int y);
