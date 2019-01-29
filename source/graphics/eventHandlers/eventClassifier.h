@@ -16,6 +16,7 @@ enum class EventType
   MouseRelease,
   MouseMove,
   MouseMovePassive,
+  KeyDown,
   Unknown
 };
 

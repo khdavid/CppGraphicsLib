@@ -10,6 +10,16 @@
 
 namespace
 {
+EventType classifyKeyDown(const SDL_KeyboardEvent& event)
+{
+  if (event.repeat == 0)
+  {
+    return EventType::KeyDown;
+  }
+
+  return EventType::Unknown;
+}
+
 EventType classifyMouseButton(const SDL_MouseButtonEvent& event)
 {
   if (event.button == SDL_BUTTON_LEFT)
@@ -43,13 +53,15 @@ EventType EventClassifier::classify(const SDL_Event& event)
 {
   switch (event.type)
   {
-    case SDL_MOUSEBUTTONDOWN:
-    case SDL_MOUSEBUTTONUP:
-      return classifyMouseButton(event.button);
-    case SDL_MOUSEMOTION:
-      return classifyMouseMotion();
-    default:
-      return EventType::Unknown;
+  case SDL_KEYDOWN:
+    return classifyKeyDown(event.key);
+  case SDL_MOUSEBUTTONDOWN:
+  case SDL_MOUSEBUTTONUP:
+    return classifyMouseButton(event.button);
+  case SDL_MOUSEMOTION:
+    return classifyMouseMotion();
+  default:
+    return EventType::Unknown;
   }
 }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 #include <algorithm>
+#include <iostream>
 #include <sdl.h>
 
 #include "listeners/mouseEventListener.h"
@@ -17,6 +18,11 @@ void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
   auto type = EventClassifier::classify(event);
   switch (type)
   {
+    case EventType::KeyDown:
+    {
+      std::cout << event.key.keysym.sym << std::endl;
+      break;
+    }
     case EventType::MouseClick:
       applyMouseEvent_(&MouseEventListener::onMouseClick, event.button);
       break;
