@@ -8,10 +8,10 @@
 
 #include <sdl.h>
  
-#include "listeners/mouseEventLogger.h"
+#include "listeners/inputEventLogger.h"
 #include "wrappers/SDL_WindowWrapper.h"
 #include "wrappers/SDL_GLContextWrapper.h"
-#include "observables/mouseEventObservable.h"
+#include "observables/inputEventObservable.h"
 #include "sprites/spriteManager.h"
 #include "pointInSquare.h"
 
@@ -19,21 +19,20 @@
 
 ContextProvider::ContextProvider()
 {
-  mouseEventObservable_ = std::make_unique<MouseEventObservable>();
+  inputEventObservable_ = std::make_unique<InputEventObservable>();
   window_ = std::make_unique<SDL_WindowWrapper>();
   context_ = std::make_unique<SDL_GLContextWrapper>(window_->getNative());
-  mouseEventLogger_ = std::make_unique<MouseEventLogger>();
+  inputEventLogger_ = std::make_unique<InputEventLogger>();
   pointInSquare_ = std::make_unique<PointInSquare>(*window_->getNative());
   spriteManager_ = std::make_unique<SpriteManager>(*window_->getNative());
-  mouseEventObservable_->addMouseListener(mouseEventLogger_.get());
-  //mouseEventObservable_->addMouseListener(pointInSquare_.get());
-  mouseEventObservable_->addMouseListener(spriteManager_.get());
+  inputEventObservable_->addInputListener(inputEventLogger_.get());
+  inputEventObservable_->addInputListener(spriteManager_.get());
 
 }
 
 void ContextProvider::notifyEvent(const SDL_Event& event) const
 {
-  mouseEventObservable_->notifyMouseEvent(event);
+  inputEventObservable_->notifyMouseEvent(event);
 }
 
 SDL_Window* ContextProvider::getWindow() const

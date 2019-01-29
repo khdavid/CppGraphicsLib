@@ -1,13 +1,13 @@
 #pragma once
 #include "sprites/coloringSprite.h"
-#include "listeners/mouseEventListener.h"
+#include "listeners/inputEventListener.h"
 #include "tools/GLSLShaderToolBase.h"
 #include "sprites/mondelbrotSprite.h"
 
 
 struct SDL_Window;
 
-class SpriteManager : public MouseEventListener
+class SpriteManager : public InputEventListener
 {
 public:
   SpriteManager(SDL_Window& window);

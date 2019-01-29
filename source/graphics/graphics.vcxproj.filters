@@ -33,15 +33,6 @@
     <ClCompile Include="eventhandlers\mainLoop.cpp">
       <Filter>eventHandlers</Filter>
     </ClCompile>
-    <ClCompile Include="listeners\mouseEventListener.cpp">
-      <Filter>listeners</Filter>
-    </ClCompile>
-    <ClCompile Include="listeners\mouseEventLogger.cpp">
-      <Filter>listeners</Filter>
-    </ClCompile>
-    <ClCompile Include="observables\mouseEventObservable.cpp">
-      <Filter>observables</Filter>
-    </ClCompile>
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp">
       <Filter>wrappers</Filter>
     </ClCompile>
@@ -69,19 +60,19 @@
     <ClCompile Include="sprites\spriteManager.cpp">
       <Filter>sprites</Filter>
     </ClCompile>
+    <ClCompile Include="observables\inputEventObservable.cpp">
+      <Filter>observables</Filter>
+    </ClCompile>
+    <ClCompile Include="listeners\inputEventListener.cpp">
+      <Filter>listeners</Filter>
+    </ClCompile>
+    <ClCompile Include="listeners\inputEventLogger.cpp">
+      <Filter>listeners</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
       <Filter>eventHandlers</Filter>
-    </ClInclude>
-    <ClInclude Include="listeners\mouseEventListener.h">
-      <Filter>listeners</Filter>
-    </ClInclude>
-    <ClInclude Include="listeners\mouseEventLogger.h">
-      <Filter>listeners</Filter>
-    </ClInclude>
-    <ClInclude Include="observables\mouseEventObservable.h">
-      <Filter>observables</Filter>
     </ClInclude>
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h">
       <Filter>wrappers</Filter>
@@ -117,6 +108,15 @@
     </ClInclude>
     <ClInclude Include="sprites\spriteManager.h">
       <Filter>sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="observables\inputEventObservable.h">
+      <Filter>observables</Filter>
+    </ClInclude>
+    <ClInclude Include="listeners\inputEventListener.h">
+      <Filter>listeners</Filter>
+    </ClInclude>
+    <ClInclude Include="listeners\inputEventLogger.h">
+      <Filter>listeners</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

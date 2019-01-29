@@ -11,10 +11,10 @@
 #include <memory>
 #include <sdl.h>
 
-class MouseEventLogger;
+class InputEventLogger;
 class SDL_WindowWrapper;
 class SDL_GLContextWrapper;
-class MouseEventObservable;
+class InputEventObservable;
 class PointInSquare;
 class SpriteManager;
 
@@ -30,8 +30,8 @@ public:
   SDL_Window* getWindow() const;
 
 private:
-  std::unique_ptr<MouseEventObservable> mouseEventObservable_;
-  std::unique_ptr<MouseEventLogger> mouseEventLogger_;
+  std::unique_ptr<InputEventObservable> inputEventObservable_;
+  std::unique_ptr<InputEventLogger> inputEventLogger_;
   std::unique_ptr<SDL_WindowWrapper> window_;
   std::unique_ptr<SDL_GLContextWrapper> context_;
   std::unique_ptr<PointInSquare> pointInSquare_;

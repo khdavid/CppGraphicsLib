@@ -216,10 +216,10 @@
     <ClCompile Include="sprites\mondelbrotSprite.cpp" />
     <ClCompile Include="sprites\spriteBase.cpp" />
     <ClCompile Include="tools\GLSLShaderToolBase.cpp" />
-    <ClCompile Include="listeners\mouseEventListener.cpp" />
-    <ClCompile Include="listeners\mouseEventLogger.cpp" />
+    <ClCompile Include="listeners\inputEventListener.cpp" />
+    <ClCompile Include="listeners\inputEventLogger.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="observables\mouseEventObservable.cpp" />
+    <ClCompile Include="observables\inputEventObservable.cpp" />
     <ClCompile Include="pointInSquare.cpp" />
     <ClCompile Include="sprites\spriteManager.cpp" />
     <ClCompile Include="sprites\coloringSprite.cpp" />
@@ -236,9 +236,9 @@
     <ClInclude Include="nodes\graphicsNode.h" />
     <ClInclude Include="sprites\spriteBase.h" />
     <ClInclude Include="tools\GLSLShaderToolBase.h" />
-    <ClInclude Include="listeners\mouseEventListener.h" />
-    <ClInclude Include="listeners\mouseEventLogger.h" />
-    <ClInclude Include="observables\mouseEventObservable.h" />
+    <ClInclude Include="listeners\inputEventListener.h" />
+    <ClInclude Include="listeners\inputEventLogger.h" />
+    <ClInclude Include="observables\inputEventObservable.h" />
     <ClInclude Include="pointInSquare.h" />
     <ClInclude Include="sprites\spriteManager.h" />
     <ClInclude Include="sprites\coloringSprite.h" />

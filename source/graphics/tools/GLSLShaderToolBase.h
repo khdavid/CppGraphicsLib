@@ -2,9 +2,9 @@
 
 #include <glew.h>
 
-#include "listeners/mouseEventListener.h"
+#include "listeners/inputEventListener.h"
 
-class GLSLShaderToolBase : public MouseEventListener
+class GLSLShaderToolBase : public InputEventListener
 {
 public:
   GLSLShaderToolBase::GLSLShaderToolBase(

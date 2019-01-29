@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 
-class MouseEventListener;
+class InputEventListener;
 class ContextProvider;
 
 class MainLoop
