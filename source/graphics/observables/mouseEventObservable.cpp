@@ -20,7 +20,10 @@ void MouseEventObservable::notifyMouseEvent(const SDL_Event& event) const
   {
     case EventType::KeyDown:
     {
-      std::cout << event.key.keysym.sym << std::endl;
+      for (auto& mouseListener : mouseEventListeners_)
+      {
+        mouseListener->onKeyPress(event.key.keysym.sym);
+      }
       break;
     }
     case EventType::MouseClick:

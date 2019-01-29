@@ -8,10 +8,12 @@
 #pragma once
 
 #include <stdio.h>
+#include <SDL.h>
 
 class MouseEventListener
 {
 public:
+  virtual void onKeyPress(SDL_Keycode keyCode);
   virtual void onMouseClick(int x, int y);
   virtual void onMouseRelease(int x, int y);
   virtual void onMouseMove(int x, int y);

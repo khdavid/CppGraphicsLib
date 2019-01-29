@@ -8,6 +8,11 @@
 
 #include "mouseEventListener.h"
 
+void MouseEventListener::onKeyPress(SDL_Keycode)
+{
+  //should be implemented in a child class;
+}
+
 void MouseEventListener::onMouseRelease(int, int)
 {
   //should be implemented in a child class;
