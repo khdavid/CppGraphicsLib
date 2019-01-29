@@ -26,7 +26,7 @@ EventType classifyMouseButton(const SDL_MouseButtonEvent& event)
   return EventType::Unknown;
 }
 
-EventType classifyMouseMotion(const SDL_MouseMotionEvent& event)
+EventType classifyMouseMotion()
 {
   bool leftKeyPressed = SDL_BUTTON(SDL_GetMouseState(nullptr, nullptr)) &
     SDL_BUTTON_LMASK;
@@ -35,11 +35,8 @@ EventType classifyMouseMotion(const SDL_MouseMotionEvent& event)
   {
     return EventType::MouseMove;
   }
-  else
-  {
-    return EventType::MouseMovePassive;
-  }
-  return EventType::Unknown;
+  
+  return EventType::MouseMovePassive;
 }
 }
 EventType EventClassifier::classify(const SDL_Event& event)
@@ -50,7 +47,7 @@ EventType EventClassifier::classify(const SDL_Event& event)
     case SDL_MOUSEBUTTONUP:
       return classifyMouseButton(event.button);
     case SDL_MOUSEMOTION:
-      return classifyMouseMotion(event.motion);
+      return classifyMouseMotion();
     default:
       return EventType::Unknown;
   }

@@ -97,7 +97,7 @@ bool EventsManager::popEvent(SDL_Event& event, bool allowSwallowing /* = true */
       std::vector<SDL_Event> eventsToSwallow;
       int numEventsToSwallow = lastElement.idx;
       eventsToSwallow.reserve(numEventsToSwallow);
-      auto swallowed = SDL_PeepEvents(eventsToSwallow.data(), numEventsToSwallow, SDL_GETEVENT, SDL_FIRSTEVENT, SDL_LASTEVENT);
+      SDL_PeepEvents(eventsToSwallow.data(), numEventsToSwallow, SDL_GETEVENT, SDL_FIRSTEVENT, SDL_LASTEVENT);
     }
   }
   
