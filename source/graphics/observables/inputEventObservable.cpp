@@ -34,6 +34,15 @@ void InputEventObservable::notifyMouseEvent(const SDL_Event& event) const
       }
       break;
     }
+    case EventType::MouseScrolling:
+    {
+      for (auto& mouseListener : mouseEventListeners_)
+      {
+        mouseListener->onMouseScrolling(event.wheel.y);
+      }
+      break;
+    }
+
     case EventType::MouseClick:
       applyMouseEvent_(&InputEventListener::onMouseClick, event.button);
       break;

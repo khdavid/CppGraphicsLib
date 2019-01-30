@@ -25,3 +25,8 @@ void SpriteBase::onMouseMove(int, int)
 {
   //Should be implemented in the child if necessary
 }
+
+void SpriteBase::onMouseScrolling(int)
+{
+  //Should be implemented in the child if necessary
+}

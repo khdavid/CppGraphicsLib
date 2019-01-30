@@ -39,4 +39,9 @@ void InputEventListener::onMouseMovePassive(int, int)
   //should be implemented in a child class;
 }
 
+void InputEventListener::onMouseScrolling(int)
+{
+  //should be implemented in a child class;
+}
+
 

@@ -52,7 +52,6 @@ void SpriteManager::onMouseMove(int x, int y)
 
   activeSprite_->onMouseMove(x, y);
   SDL_GL_SwapWindow(&window_);
-
 }
 
 void SpriteManager::onMouseClick(int x, int y)
@@ -69,6 +68,17 @@ void SpriteManager::onWindowsResized(int x, int y)
 {
   glViewport(0, 0, x, y);
   std::cout << "width: " << x << "height: " << y << std::endl;
+}
+
+void SpriteManager::onMouseScrolling(int velocity)
+{
+  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+  glClearDepth(1.0f);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  activeSprite_->onMouseScrolling(velocity);
+  SDL_GL_SwapWindow(&window_);
+
 }
 
 void SpriteManager::onKeyPress(SDL_Keycode keyCode)

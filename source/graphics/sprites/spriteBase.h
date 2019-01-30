@@ -12,6 +12,8 @@ public:
   virtual void onMouseClick(int x, int y);
   virtual void onMouseRelease(int x, int y);
   virtual void onMouseMove(int x, int y);
+  virtual void onMouseScrolling(int velocity);
+
 
 protected:
   void init_();

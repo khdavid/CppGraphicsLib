@@ -18,6 +18,7 @@ public:
 
   virtual void onKeyPress(SDL_Keycode keyCode) override;
   virtual void onWindowsResized(int, int) override;
+  virtual void onMouseScrolling(int) override;
 
 private:
   SDL_Window& window_;

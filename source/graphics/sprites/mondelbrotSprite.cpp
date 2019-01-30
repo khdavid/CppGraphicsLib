@@ -29,11 +29,11 @@ void MondelbrotSprite::init()
   xShiftUniform_ = glGetUniformLocation(programId_, cXShift);
   yShiftUniform_ = glGetUniformLocation(programId_, cYShift);
 
+  glUniform1f(fadeUniform_, fade_);
 }
 
 void MondelbrotSprite::render(int x, int y)
 {
-  glUniform1f(fadeUniform_, y / 480.0f);
   TriangleSprite::render(x, y);
 }
 
@@ -54,6 +54,13 @@ void MondelbrotSprite::onMouseMove(int x, int y)
   glUniform1i(yShiftUniform_, yShift_);
   TriangleSprite::render(x, y);
 
+}
+
+void MondelbrotSprite::onMouseScrolling(int velocity)
+{
+  fade_ += velocity / 50.f;
+  glUniform1f(fadeUniform_, fade_);
+  TriangleSprite::render(0, 0);
 }
 
 std::string MondelbrotSprite::getVertexShaderCode_() const

@@ -58,7 +58,12 @@ EventType classifyWindowEvent(const SDL_WindowEvent& event)
 
   return EventType::Unknown;
 }
+
+EventType classifyMouseWheel()
+{
+  return EventType::MouseScrolling;
 }
+}//end of empty namespace
 
 EventType EventClassifier::classify(const SDL_Event& event)
 {
@@ -73,6 +78,8 @@ EventType EventClassifier::classify(const SDL_Event& event)
     return classifyMouseButton(event.button);
   case SDL_MOUSEMOTION:
     return classifyMouseMotion();
+  case SDL_MOUSEWHEEL:
+    return classifyMouseWheel();
   default:
     return EventType::Unknown;
   }
