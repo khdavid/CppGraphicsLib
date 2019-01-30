@@ -10,3 +10,18 @@ void SpriteBase::init_()
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_DEPTH_TEST);
 }
+
+void SpriteBase::onMouseClick(int, int)
+{
+  //Should be implemented in the child if necessary
+}
+
+void SpriteBase::onMouseRelease(int, int)
+{
+  //Should be implemented in the child if necessary
+}
+
+void SpriteBase::onMouseMove(int, int)
+{
+  //Should be implemented in the child if necessary
+}

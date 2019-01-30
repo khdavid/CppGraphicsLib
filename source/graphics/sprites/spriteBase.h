@@ -9,6 +9,10 @@ class SpriteBase
 public:
   virtual ~SpriteBase() = default;
   virtual void render(int x, int y) = 0;
+  virtual void onMouseClick(int x, int y);
+  virtual void onMouseRelease(int x, int y);
+  virtual void onMouseMove(int x, int y);
+
 protected:
   void init_();
   std::unique_ptr<GLSLShaderToolBase> shaderProgram_;

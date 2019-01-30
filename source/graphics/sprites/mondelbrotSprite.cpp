@@ -7,6 +7,8 @@
 namespace
 {
   const char* cFadeName = "fade";
+  const char* cXShift = "xShift";
+  const char* cYShift = "yShift";
 
   std::vector<Vertex> cVertices =
   {
@@ -24,12 +26,34 @@ void MondelbrotSprite::init()
 {
   TriangleSprite::init(cVertices);
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
+  xShiftUniform_ = glGetUniformLocation(programId_, cXShift);
+  yShiftUniform_ = glGetUniformLocation(programId_, cYShift);
+
 }
 
 void MondelbrotSprite::render(int x, int y)
 {
   glUniform1f(fadeUniform_, y / 480.0f);
   TriangleSprite::render(x, y);
+}
+
+void MondelbrotSprite::onMouseClick(int x, int y)
+{
+  xPrev_ = x;
+  yPrev_ = y;
+}
+
+void MondelbrotSprite::onMouseMove(int x, int y)
+{
+  xShift_ += (x - xPrev_);
+  yShift_ += (y - yPrev_);
+  xPrev_ = x;
+  yPrev_ = y;
+  
+  glUniform1i(xShiftUniform_, xShift_);
+  glUniform1i(yShiftUniform_, yShift_);
+  TriangleSprite::render(x, y);
+
 }
 
 std::string MondelbrotSprite::getVertexShaderCode_() const
@@ -59,7 +83,10 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
   
   out vec4 color;
   uniform float fade;
-  
+  uniform int xShift;
+  uniform int yShift;
+
+
   struct ComplexNumber
   {
     float Real;
@@ -101,9 +128,9 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     for (int i = 0; i < 100; i++)
     {
        ComplexNumber c;
-       c.Real = (gl_FragCoord.x - 320 ) / 640 * fade;
-       c.Imagine = (gl_FragCoord.y -900) / 320 * fade; 
-       z = Add (Product(Product(z,z),z), Product(c,c));
+       c.Real = (gl_FragCoord.x - xShift ) / 640 * fade;
+       c.Imagine = (gl_FragCoord.y + yShift) / 320 * fade; 
+       z = Add (Product(z,z), c);
        if (length2(z) < 0.001) break;
        if (length2(z) > 100) break;
     }

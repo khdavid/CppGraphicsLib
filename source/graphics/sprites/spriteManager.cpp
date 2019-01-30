@@ -44,6 +44,27 @@ void SpriteManager::onMouseMovePassive(int x, int y)
   SDL_GL_SwapWindow(&window_);
 }
 
+void SpriteManager::onMouseMove(int x, int y)
+{
+  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+  glClearDepth(1.0f);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  activeSprite_->onMouseMove(x, y);
+  SDL_GL_SwapWindow(&window_);
+
+}
+
+void SpriteManager::onMouseClick(int x, int y)
+{
+  activeSprite_->onMouseClick(x, y);
+}
+
+void SpriteManager::onMouseRelease(int x, int y)
+{
+  activeSprite_->onMouseRelease(x, y);
+}
+
 void SpriteManager::onWindowsResized(int x, int y)
 {
   glViewport(0, 0, x, y);
