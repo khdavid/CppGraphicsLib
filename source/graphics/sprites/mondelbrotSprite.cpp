@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "nodes/graphicsNode.h"
+#include "utils/SDLUtils.h"
 #include "mondelbrotSprite.h"
 
 
@@ -58,11 +59,14 @@ void MondelbrotSprite::onMouseMove(int x, int y)
 
 void MondelbrotSprite::onMouseScrolling(int velocity)
 {
-  int x = 0;
-  int y = 0;
-  SDL_GetMouseState(&x, &y);
-  std::cout << "scrolling " << "x " << x << "y " << y << std::endl;
-  y = height_ - y;
+  auto mouseCoord = SDLUtils::getMouseXY();
+  auto x = mouseCoord.first;
+  auto y = mouseCoord.second;
+  std::cout << "scrolling " << "x " << mouseCoord.first << "y " << mouseCoord.second << std::endl;
+  
+  auto sizes = SDLUtils::getScreenSizes();
+  y = sizes.second - y;
+
   auto fadeOld = fade_;
 
   fade_ *= (1 + velocity / 50.f);
@@ -78,13 +82,6 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
 
   render();
 }
-
-void MondelbrotSprite::onWindowsResized(int x, int y)
-{
-  width_ = x;
-  height_ = y;
-}
-
 
 std::string MondelbrotSprite::getVertexShaderCode_() const
 {

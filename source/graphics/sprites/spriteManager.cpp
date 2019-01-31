@@ -57,7 +57,7 @@ void SpriteManager::onWindowsResized(int x, int y)
 {
   glViewport(0, 0, x, y);
   std::cout << "width: " << x << "height: " << y << std::endl;
-  activeSprite_->onWindowsResized(x, y);
+  activeSprite_->render();
 }
 
 void SpriteManager::onMouseScrolling(int velocity)
