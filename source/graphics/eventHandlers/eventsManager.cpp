@@ -18,7 +18,8 @@ namespace
 const std::set<EventType> TYPES_TO_SWALLOW =
 {
   EventType::MouseMovePassive,
-  EventType::MouseMove
+  EventType::MouseMove,
+  EventType::MouseScrolling
 };
 
 struct EventInfo

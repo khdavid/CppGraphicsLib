@@ -152,17 +152,28 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
        z.Real = 0;
        z.Imagine = 0;
   
-    for (int i = 0; i < 100; i++)
+    const int nMax = 1000;
+    int i = 0;
+    for (i = 0; i < nMax; i++)
     {
        ComplexNumber c;
        c.Real = (gl_FragCoord.x - xShift ) * fade;
        c.Imagine = (gl_FragCoord.y - yShift) * fade; 
        z = Add (Product(z,z), c);
-       if (length2(z) < 0.001) break;
-       if (length2(z) > 100) break;
+       if (length2(z) > 4) break;
     }
-    float len = length(z);
-    color = vec4(100 + len*len, sqrt(len), len, 1);
+    if (i < nMax / 3)
+    {
+       color = vec4(1. - 2. * i / nMax, 1. - 2. * i / nMax, 2. * i / nMax, 1);
+    }
+    else if (i < 2 * nMax / 3)
+    {
+       color = vec4(1.0 - 0.2 * i / nMax, 0.5 * i / nMax, 1. - 0.3 * i / nMax, 1);
+    }
+    else
+    {
+       color = vec4(1. - 2. * i / nMax, 1. - 2. * i / nMax, 2. * i / nMax, 1);
+    }
   }
   
   )";
