@@ -27,31 +27,20 @@ namespace
 SpriteManager::SpriteManager(SDL_Window& window) :
   window_(window)
 {
-  auto sprite = std::make_unique<MondelbrotSprite>();
+  auto sprite = std::make_unique<MondelbrotSprite>(window_);
   sprite->init();
   activeSprite_ = std::move(sprite);
-  onMouseMovePassive(0,0);
+  activeSprite_->render();
 }
 
 void SpriteManager::onMouseMovePassive(int x, int y)
 {
-  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-  glClearDepth(1.0f);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  activeSprite_->render(x, y);
-
-  SDL_GL_SwapWindow(&window_);
+  activeSprite_->onMouseMovePassive(x, y);
 }
 
 void SpriteManager::onMouseMove(int x, int y)
 {
-  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-  glClearDepth(1.0f);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
   activeSprite_->onMouseMove(x, y);
-  SDL_GL_SwapWindow(&window_);
 }
 
 void SpriteManager::onMouseClick(int x, int y)
@@ -72,13 +61,7 @@ void SpriteManager::onWindowsResized(int x, int y)
 
 void SpriteManager::onMouseScrolling(int velocity)
 {
-  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-  glClearDepth(1.0f);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
   activeSprite_->onMouseScrolling(velocity);
-  SDL_GL_SwapWindow(&window_);
-
 }
 
 void SpriteManager::onKeyPress(SDL_Keycode keyCode)
@@ -86,19 +69,19 @@ void SpriteManager::onKeyPress(SDL_Keycode keyCode)
   if (keyCode == SDLK_1)
   {
     activeSprite_ = nullptr;
-    auto sprite = std::make_unique<ColoringSprite>();
+    auto sprite = std::make_unique<ColoringSprite>(window_);
     sprite->init(cColoringSpriteVertices);
     activeSprite_ = std::move(sprite);
   }
   else if (keyCode == SDLK_2)
   {
     activeSprite_ = nullptr;
-    auto sprite = std::make_unique<MondelbrotSprite>();
+    auto sprite = std::make_unique<MondelbrotSprite>(window_);
     sprite->init();
     activeSprite_ = std::move(sprite);
   }
   int x = 0;
   int y = 0;
   SDL_GetMouseState(&x, &y);
-  onMouseMovePassive(x, y);
+  activeSprite_->render();
 }

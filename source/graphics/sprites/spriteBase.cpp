@@ -11,22 +11,6 @@ void SpriteBase::init_()
   glEnable(GL_DEPTH_TEST);
 }
 
-void SpriteBase::onMouseClick(int, int)
-{
-  //Should be implemented in the child if necessary
-}
-
-void SpriteBase::onMouseRelease(int, int)
-{
-  //Should be implemented in the child if necessary
-}
-
-void SpriteBase::onMouseMove(int, int)
-{
-  //Should be implemented in the child if necessary
-}
-
-void SpriteBase::onMouseScrolling(int)
-{
-  //Should be implemented in the child if necessary
-}
+SpriteBase::SpriteBase(SDL_Window& window):
+  window_(window)
+{}

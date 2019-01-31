@@ -32,15 +32,11 @@ void MondelbrotSprite::init()
   glUniform1f(fadeUniform_, fade_);
 }
 
-void MondelbrotSprite::render(int x, int y)
-{
-  TriangleSprite::render(x, y);
-}
-
 void MondelbrotSprite::onMouseClick(int x, int y)
 {
   xPrev_ = x;
   yPrev_ = y;
+  render();
 }
 
 void MondelbrotSprite::onMouseMove(int x, int y)
@@ -52,7 +48,7 @@ void MondelbrotSprite::onMouseMove(int x, int y)
   
   glUniform1i(xShiftUniform_, xShift_);
   glUniform1i(yShiftUniform_, yShift_);
-  TriangleSprite::render(x, y);
+  render();
 
 }
 
@@ -60,7 +56,7 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
 {
   fade_ += velocity / 50.f;
   glUniform1f(fadeUniform_, fade_);
-  TriangleSprite::render(0, 0);
+  render();
 }
 
 std::string MondelbrotSprite::getVertexShaderCode_() const
@@ -135,8 +131,8 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     for (int i = 0; i < 100; i++)
     {
        ComplexNumber c;
-       c.Real = (gl_FragCoord.x - xShift ) / 640 * fade;
-       c.Imagine = (gl_FragCoord.y + yShift) / 320 * fade; 
+       c.Real = (gl_FragCoord.x - xShift ) * fade;
+       c.Imagine = (gl_FragCoord.y + yShift) * fade; 
        z = Add (Product(z,z), c);
        if (length2(z) < 0.001) break;
        if (length2(z) > 100) break;

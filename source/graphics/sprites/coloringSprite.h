@@ -13,7 +13,8 @@ class GLSLShaderToolBase;
 class ColoringSprite : public TriangleSprite
 {
 public:
-  virtual void render(int x, int y) override;
+  using TriangleSprite::TriangleSprite;
+  virtual void onMouseMovePassive(int x, int y) override;
   virtual void init(const std::vector<Vertex>& vertices) override;
 
 private:

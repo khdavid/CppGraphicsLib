@@ -22,8 +22,6 @@ public:
 
 private:
   SDL_Window& window_;
-  ColoringSprite coloringSprite_;
-  MondelbrotSprite mondSprite_;
   std::unique_ptr<SpriteBase> activeSprite_;
 };
 

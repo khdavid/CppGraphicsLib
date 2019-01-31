@@ -1,24 +1,26 @@
 #pragma once
 
 #include <string>
+#include <SDL.h>
 #include <glew.h>
+
+#include "listeners/inputEventListener.h"
 #include "tools/GLSLShaderToolBase.h"
 
-class SpriteBase
+class SpriteBase : public InputEventListener
 {
 public:
+  SpriteBase(SDL_Window& window);
   virtual ~SpriteBase() = default;
-  virtual void render(int x, int y) = 0;
-  virtual void onMouseClick(int x, int y);
-  virtual void onMouseRelease(int x, int y);
-  virtual void onMouseMove(int x, int y);
-  virtual void onMouseScrolling(int velocity);
-
+  virtual void render() = 0;
 
 protected:
   void init_();
+
   std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
   GLuint programId_ = 0;
+  SDL_Window& window_;
+
 private:
   virtual std::string getVertexShaderCode_() const = 0;
   virtual std::string getFragmentShaderCode_() const = 0;

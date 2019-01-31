@@ -8,9 +8,10 @@
 class TriangleSprite : public SpriteBase
 {
 public:
+  using SpriteBase::SpriteBase;
   ~TriangleSprite();
   virtual void init(const std::vector<Vertex>& vertices);
-  virtual void render(int x, int y) override;
+  virtual void render() override;
 private:
   size_t numOfVertices_ = 0;
   GLuint vboVertices_ = 0;

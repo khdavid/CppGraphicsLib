@@ -15,10 +15,10 @@ void ColoringSprite::init(const std::vector<Vertex>& vertices)
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
 }
 
-void ColoringSprite::render(int x, int y)
+void ColoringSprite::onMouseMovePassive(int, int y)
 {
   glUniform1f(fadeUniform_, y / 480.0f);
-  TriangleSprite::render(x, y);
+  render();
 }
 
 std::string ColoringSprite::getVertexShaderCode_() const
