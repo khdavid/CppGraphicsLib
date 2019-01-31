@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 #include "nodes/graphicsNode.h"
 #include "mondelbrotSprite.h"
@@ -30,6 +31,9 @@ void MondelbrotSprite::init()
   yShiftUniform_ = glGetUniformLocation(programId_, cYShift);
 
   glUniform1f(fadeUniform_, fade_);
+  glUniform1f(xShiftUniform_, xShift_);
+  glUniform1f(yShiftUniform_, yShift_);
+
 }
 
 void MondelbrotSprite::onMouseClick(int x, int y)
@@ -42,22 +46,45 @@ void MondelbrotSprite::onMouseClick(int x, int y)
 void MondelbrotSprite::onMouseMove(int x, int y)
 {
   xShift_ += (x - xPrev_);
-  yShift_ += (y - yPrev_);
+  yShift_ += -(y - yPrev_);
   xPrev_ = x;
   yPrev_ = y;
   
-  glUniform1i(xShiftUniform_, xShift_);
-  glUniform1i(yShiftUniform_, yShift_);
+  glUniform1f(xShiftUniform_, xShift_);
+  glUniform1f(yShiftUniform_, yShift_);
   render();
 
 }
 
 void MondelbrotSprite::onMouseScrolling(int velocity)
 {
-  fade_ += velocity / 50.f;
+  int x = 0;
+  int y = 0;
+  SDL_GetMouseState(&x, &y);
+  std::cout << "scrolling " << "x " << x << "y " << y << std::endl;
+  y = height_ - y;
+  auto fadeOld = fade_;
+
+  fade_ *= (1 + velocity / 50.f);
+
+  //(x-xs)f = (x-XS)F
+  //XS = x - (x-xs)f/F
+  xShift_ = x - (x - xShift_) * fadeOld / fade_;
+  yShift_ = y - (y - yShift_) * fadeOld / fade_;
+
   glUniform1f(fadeUniform_, fade_);
+  glUniform1f(xShiftUniform_, xShift_);
+  glUniform1f(yShiftUniform_, yShift_);
+
   render();
 }
+
+void MondelbrotSprite::onWindowsResized(int x, int y)
+{
+  width_ = x;
+  height_ = y;
+}
+
 
 std::string MondelbrotSprite::getVertexShaderCode_() const
 {
@@ -86,8 +113,8 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
   
   out vec4 color;
   uniform float fade;
-  uniform int xShift;
-  uniform int yShift;
+  uniform float xShift;
+  uniform float yShift;
 
 
   struct ComplexNumber
@@ -132,7 +159,7 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     {
        ComplexNumber c;
        c.Real = (gl_FragCoord.x - xShift ) * fade;
-       c.Imagine = (gl_FragCoord.y + yShift) * fade; 
+       c.Imagine = (gl_FragCoord.y - yShift) * fade; 
        z = Add (Product(z,z), c);
        if (length2(z) < 0.001) break;
        if (length2(z) > 100) break;

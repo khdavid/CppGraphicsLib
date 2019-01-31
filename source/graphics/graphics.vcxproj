@@ -213,6 +213,7 @@
     <ClCompile Include="eventhandlers\eventClassifier.cpp" />
     <ClCompile Include="eventhandlers\eventsManager.cpp" />
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
+    <ClCompile Include="utils\SDLUtils.cpp" />
     <ClCompile Include="sprites\mondelbrotSprite.cpp" />
     <ClCompile Include="sprites\spriteBase.cpp" />
     <ClCompile Include="tools\GLSLShaderToolBase.cpp" />
@@ -232,6 +233,7 @@
     <ClInclude Include="eventhandlers\eventClassifier.h" />
     <ClInclude Include="eventhandlers\eventsManager.h" />
     <ClInclude Include="eventhandlers\mainLoop.h" />
+    <ClInclude Include="utils\SDLUtils.h" />
     <ClInclude Include="sprites\mondelbrotSprite.h" />
     <ClInclude Include="nodes\graphicsNode.h" />
     <ClInclude Include="sprites\spriteBase.h" />

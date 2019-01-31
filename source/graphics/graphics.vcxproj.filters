@@ -22,6 +22,9 @@
     <Filter Include="nodes">
       <UniqueIdentifier>{d36b69f6-b8f0-4e85-b524-79d253a2e9fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{47a5f65c-e24c-4759-b3ba-e93c42e5248e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
@@ -68,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="listeners\inputEventLogger.cpp">
       <Filter>listeners</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\SDLUtils.cpp">
+      <Filter>utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="listeners\inputEventLogger.h">
       <Filter>listeners</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SDLUtils.h">
+      <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
