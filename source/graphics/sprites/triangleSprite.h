@@ -8,7 +8,7 @@
 class TriangleSprite : public SpriteBase
 {
 public:
-  using SpriteBase::SpriteBase;
+  TriangleSprite(SDL_Window& window);
   ~TriangleSprite();
   virtual void init(const std::vector<Vertex>& vertices);
   virtual void render() override;
@@ -17,6 +17,7 @@ private:
   GLuint vboVertices_ = 0;
   GLint vertexPositionAttr_ = 0;
   GLint vertexColorAttr_ = 0;
+  SDL_Window& window_;
 
 };
 

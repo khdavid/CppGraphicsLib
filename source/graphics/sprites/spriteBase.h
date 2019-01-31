@@ -10,7 +10,6 @@
 class SpriteBase : public InputEventListener
 {
 public:
-  SpriteBase(SDL_Window& window);
   virtual ~SpriteBase() = default;
   virtual void render() = 0;
 
@@ -19,7 +18,6 @@ protected:
 
   std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
   GLuint programId_ = 0;
-  SDL_Window& window_;
 
 private:
   virtual std::string getVertexShaderCode_() const = 0;

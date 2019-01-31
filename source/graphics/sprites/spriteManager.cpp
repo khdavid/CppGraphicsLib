@@ -83,5 +83,6 @@ void SpriteManager::onKeyPress(SDL_Keycode keyCode)
   int x = 0;
   int y = 0;
   SDL_GetMouseState(&x, &y);
+  activeSprite_->onMouseMovePassive(x, y);
   activeSprite_->render();
 }

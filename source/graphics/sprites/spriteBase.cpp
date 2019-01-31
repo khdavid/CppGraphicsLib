@@ -10,7 +10,3 @@ void SpriteBase::init_()
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_DEPTH_TEST);
 }
-
-SpriteBase::SpriteBase(SDL_Window& window):
-  window_(window)
-{}

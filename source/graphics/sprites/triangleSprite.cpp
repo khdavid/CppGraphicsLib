@@ -53,6 +53,10 @@ void TriangleSprite::render()
   SDL_GL_SwapWindow(&window_);
 }
 
+TriangleSprite::TriangleSprite(SDL_Window & window):
+  window_(window)
+{}
+
 TriangleSprite::~TriangleSprite()
 {
   if (shaderProgram_)
