@@ -162,17 +162,18 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
        z = Add (Product(z,z), c);
        if (length2(z) > 4) break;
     }
+    float k = float (i) / nMax;
     if (i < nMax / 3)
     {
-       color = vec4(1. - 2. * i / nMax, 1. - 2. * i / nMax, 2. * i / nMax, 1);
+       color = vec4(1. - 2. * k * k , 1. - 2. * k, 2. * k, 1);
     }
     else if (i < 2 * nMax / 3)
     {
-       color = vec4(1.0 - 0.2 * i / nMax, 0.5 * i / nMax, 1. - 0.3 * i / nMax, 1);
+       color = vec4(1.0 - 0.2 * k, 0.5 * k, 1. - 0.3 * k, 1);
     }
     else
     {
-       color = vec4(1. - 2. * i / nMax, 1. - 2. * i / nMax, 2. * i / nMax, 1);
+       color = vec4(1. - 2. * k , 1. - 2. * k, 2. * k, 1);
     }
   }
   
