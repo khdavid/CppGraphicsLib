@@ -6,12 +6,27 @@
 
 namespace
 {
-  const char* cFadeName = "fade";
+const char* cFadeName = "fade";
+std::vector<Vertex> cColoringSpriteVertices =
+{
+  Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{255, 0, 0}}},
+  Vertex{Position{0.f, 1.f, 0.2f}, Material{Color{0, 255, 0}}},
+  Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{0, 0, 255}}},
+  Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
+  Vertex{Position{0.f, -1.f, 0.2f}, Material{Color{255, 0, 0}}},
+  Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 255, 0}}},
+  Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
+  Vertex{Position{1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
+  Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{0, 255, 0}}},
+  Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 0, 255}}},
+  Vertex{Position{-1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
+  Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{255, 255, 255}}}
+};
 }
 
-void ColoringSprite::init(const std::vector<Vertex>& vertices)
+void ColoringSprite::init()
 {
-  TriangleSprite::init(vertices);
+  init_(cColoringSpriteVertices);
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
 }
 
@@ -20,6 +35,7 @@ void ColoringSprite::onMouseMovePassive(int, int y)
   glUniform1f(fadeUniform_, y / 480.0f);
   render();
 }
+
 
 std::string ColoringSprite::getVertexShaderCode_() const
 {

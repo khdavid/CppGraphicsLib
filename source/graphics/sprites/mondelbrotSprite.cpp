@@ -26,7 +26,7 @@ namespace
 
 void MondelbrotSprite::init()
 {
-  TriangleSprite::init(cVertices);
+  init_(cVertices);
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
   xShiftUniform_ = glGetUniformLocation(programId_, cXShift);
   yShiftUniform_ = glGetUniformLocation(programId_, cYShift);

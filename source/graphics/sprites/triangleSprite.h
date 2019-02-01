@@ -10,8 +10,10 @@ class TriangleSprite : public SpriteBase
 public:
   TriangleSprite(SDL_Window& window);
   ~TriangleSprite();
-  virtual void init(const std::vector<Vertex>& vertices);
   virtual void render() override;
+protected:
+    void init_(const std::vector<Vertex>& vertices);
+
 private:
   size_t numOfVertices_ = 0;
   GLuint vboVertices_ = 0;

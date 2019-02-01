@@ -5,7 +5,7 @@ class MondelbrotSprite : public TriangleSprite
 {
 public:
   using TriangleSprite::TriangleSprite;
-  void init();
+  virtual void init() override;
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
   virtual void onMouseScrolling(int velocity) override;

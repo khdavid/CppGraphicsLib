@@ -15,7 +15,7 @@ class ColoringSprite : public TriangleSprite
 public:
   using TriangleSprite::TriangleSprite;
   virtual void onMouseMovePassive(int x, int y) override;
-  virtual void init(const std::vector<Vertex>& vertices) override;
+  virtual void init() override;
 
 private:
   virtual std::string getVertexShaderCode_() const;

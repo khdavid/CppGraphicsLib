@@ -12,6 +12,7 @@ class SpriteBase : public InputEventListener
 public:
   virtual ~SpriteBase() = default;
   virtual void render() = 0;
+  virtual void init() = 0;
 
 protected:
   void init_();

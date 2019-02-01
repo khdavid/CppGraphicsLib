@@ -6,35 +6,12 @@
 #include "observables/inputEventObservable.h"
 #include "spriteManager.h"
 
-namespace
-{
-  std::vector<Vertex> cColoringSpriteVertices =
-  {
-    Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{255, 0, 0}}},
-    Vertex{Position{0.f, 1.f, 0.2f}, Material{Color{0, 255, 0}}},
-    Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{0, 0, 255}}},
-    Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
-    Vertex{Position{0.f, -1.f, 0.2f}, Material{Color{255, 0, 0}}},
-    Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 255, 0}}},
-    Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
-    Vertex{Position{1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
-    Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{0, 255, 0}}},
-    Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 0, 255}}},
-    Vertex{Position{-1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
-    Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{255, 255, 255}}}
-  };
-
-}
 SpriteManager::SpriteManager(SDL_Window& window, InputEventObservable& inputEventObservable) :
   window_(window),
   inputEventObservable_(inputEventObservable)
 {
-  auto sprite = std::make_unique<MondelbrotSprite>(window_);
-  sprite->init();
-  activeSprite_ = std::move(sprite);
-  activeSprite_->render();
-  inputEventObservable_.addInputListener(activeSprite_.get());
   inputEventObservable_.addInputListener(this);
+  setActivateSprite_<MondelbrotSprite>();
 }
 
 void SpriteManager::onWindowsResized(int x, int y)
@@ -49,30 +26,33 @@ void SpriteManager::onMouseScrolling(int velocity)
   activeSprite_->onMouseScrolling(velocity);
 }
 
-void SpriteManager::onKeyPress(SDL_Keycode keyCode)
+template <class T>
+void SpriteManager::setActivateSprite_()
 {
-  if (keyCode == SDLK_1)
+  if (activeSprite_)
   {
     inputEventObservable_.removeMouseListener(activeSprite_.get());
-    activeSprite_ = nullptr;
-    auto sprite = std::make_unique<ColoringSprite>(window_);
-    sprite->init(cColoringSpriteVertices);
-    activeSprite_ = std::move(sprite);
-    inputEventObservable_.addInputListener(activeSprite_.get());
   }
-  else if (keyCode == SDLK_2)
-  {
-    inputEventObservable_.removeMouseListener(activeSprite_.get());
-    activeSprite_ = nullptr;
-    auto sprite = std::make_unique<MondelbrotSprite>(window_);
-    sprite->init();
-    activeSprite_ = std::move(sprite);
-    inputEventObservable_.addInputListener(activeSprite_.get());
-  }
+
+  activeSprite_ = std::make_unique<T>(window_);
+  activeSprite_->init();
+  inputEventObservable_.addInputListener(activeSprite_.get());
+
   int x = 0;
   int y = 0;
   SDL_GetMouseState(&x, &y);
   activeSprite_->onMouseMovePassive(x, y);
   activeSprite_->render();
+}
 
+void SpriteManager::onKeyPress(SDL_Keycode keyCode)
+{
+  if (keyCode == SDLK_1)
+  {
+    setActivateSprite_<ColoringSprite>();
+  }
+  else if (keyCode == SDLK_2)
+  {
+    setActivateSprite_<MondelbrotSprite>();
+  }
 }

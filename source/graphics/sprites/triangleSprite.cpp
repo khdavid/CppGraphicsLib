@@ -6,9 +6,9 @@ namespace
   const char* cVertexPositionName = "vertexPosition";
   const char* cVertexColorName = "vertexColor";
 }
-void TriangleSprite::init(const std::vector<Vertex>& vertices)
+void TriangleSprite::init_(const std::vector<Vertex>& vertices)
 {
-  init_();
+  SpriteBase::init_();
   numOfVertices_ = vertices.size();
 
   glGenBuffers(1, &vboVertices_);
