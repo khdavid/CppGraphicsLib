@@ -69,7 +69,7 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
 
   auto fadeOld = fade_;
 
-  auto alpha = std::max(-0.5f, velocity / 5.f);
+  auto alpha = std::max(-0.5f, velocity / 50.f);
   fade_ *= (1 + alpha);
 
   //(x-xs)f = (x-XS)F
@@ -147,13 +147,18 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
      return number.Real * number.Real + number.Imagine * number.Imagine;
   }
   
+  vec4 linearExtrapolation(const vec4 first, const vec4 last, float min, float max, float x)
+  {
+    return first + (x - min) * (last - first) / (max - min);
+  }
+  
   void main()
   {
     ComplexNumber z;
        z.Real = 0;
        z.Imagine = 0;
   
-    const int nMax = 1000;
+    const int nMax = 500;
     int i = 0;
 
     ComplexNumber c;
@@ -165,23 +170,37 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
        z = Add (Product(z,z), c);
        if (length2(z) > 4) break;
     }
+    
     float k = float (i) / nMax;
 
-    if (i < nMax / 20)
+    const vec4 blue = vec4(166, 202, 240, 255) / 255;
+    const vec4 biruz = vec4(123, 228, 209, 255) / 255;
+    const vec4 red = vec4(255, 0, 0, 255) / 255;
+    const vec4 green = vec4(0, 255, 0, 255) / 255;
+    const vec4 black = vec4(0, 0, 0, 255) / 255;
+     
+    
+    const float kThreshold0 = 0.0;
+    const float kThreshold1 = 0.1;
+    const float kThreshold2 = 0.15;
+    const float kThreshold3 = 1;
+
+    if (k < kThreshold1)
     {
-       color = vec4(1 - 10 * k , 1 - 20 * k, 20 * k, 1);
+       color = linearExtrapolation(biruz, blue, kThreshold0, kThreshold1, k);
     }
-    else if (i < nMax / 5)
+    else if (k < kThreshold2)
     {
-       color = vec4( 1 - 5 * k, 5 * k, 1 - 5 * k, 1);
+       color = linearExtrapolation(red, green, kThreshold1, kThreshold2, k);
     }
-    else if (i < 2 * nMax / 3)
+    else if (k < kThreshold3)
     {
-       color = vec4(0.8 - 1.1 * k, 0.3 + 1 * k, 1 - 1.5 * k, 1);
+       color = linearExtrapolation(biruz, black, kThreshold2, kThreshold3, k);
     }
+
     else
     {
-       color = vec4(k , 0.9 - k, 0.7 - 0.5 * k, 1);
+       color = black;  
     }
   }
   
