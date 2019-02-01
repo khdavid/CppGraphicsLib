@@ -6,15 +6,12 @@
 
 
 struct SDL_Window;
+class InputEventObservable;
 
 class SpriteManager : public InputEventListener
 {
 public:
-  SpriteManager(SDL_Window& window);
-  virtual void onMouseMovePassive(int x, int y) override;
-  virtual void onMouseMove(int x, int y) override;
-  virtual void onMouseClick(int x, int y) override;
-  virtual void onMouseRelease(int x, int y) override;
+  SpriteManager(SDL_Window& window, InputEventObservable& inputEventObservable);
 
   virtual void onKeyPress(SDL_Keycode keyCode) override;
   virtual void onWindowsResized(int, int) override;
@@ -22,6 +19,7 @@ public:
 
 private:
   SDL_Window& window_;
+  InputEventObservable& inputEventObservable_;
   std::unique_ptr<SpriteBase> activeSprite_;
 };
 

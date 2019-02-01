@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "wrappers/SDL_GLContextWrapper.h"
+#include "observables/inputEventObservable.h"
 #include "spriteManager.h"
 
 namespace
@@ -24,33 +25,16 @@ namespace
   };
 
 }
-SpriteManager::SpriteManager(SDL_Window& window) :
-  window_(window)
+SpriteManager::SpriteManager(SDL_Window& window, InputEventObservable& inputEventObservable) :
+  window_(window),
+  inputEventObservable_(inputEventObservable)
 {
   auto sprite = std::make_unique<MondelbrotSprite>(window_);
   sprite->init();
   activeSprite_ = std::move(sprite);
   activeSprite_->render();
-}
-
-void SpriteManager::onMouseMovePassive(int x, int y)
-{
-  activeSprite_->onMouseMovePassive(x, y);
-}
-
-void SpriteManager::onMouseMove(int x, int y)
-{
-  activeSprite_->onMouseMove(x, y);
-}
-
-void SpriteManager::onMouseClick(int x, int y)
-{
-  activeSprite_->onMouseClick(x, y);
-}
-
-void SpriteManager::onMouseRelease(int x, int y)
-{
-  activeSprite_->onMouseRelease(x, y);
+  inputEventObservable_.addInputListener(activeSprite_.get());
+  inputEventObservable_.addInputListener(this);
 }
 
 void SpriteManager::onWindowsResized(int x, int y)
@@ -69,21 +53,26 @@ void SpriteManager::onKeyPress(SDL_Keycode keyCode)
 {
   if (keyCode == SDLK_1)
   {
+    inputEventObservable_.removeMouseListener(activeSprite_.get());
     activeSprite_ = nullptr;
     auto sprite = std::make_unique<ColoringSprite>(window_);
     sprite->init(cColoringSpriteVertices);
     activeSprite_ = std::move(sprite);
+    inputEventObservable_.addInputListener(activeSprite_.get());
   }
   else if (keyCode == SDLK_2)
   {
+    inputEventObservable_.removeMouseListener(activeSprite_.get());
     activeSprite_ = nullptr;
     auto sprite = std::make_unique<MondelbrotSprite>(window_);
     sprite->init();
     activeSprite_ = std::move(sprite);
+    inputEventObservable_.addInputListener(activeSprite_.get());
   }
   int x = 0;
   int y = 0;
   SDL_GetMouseState(&x, &y);
   activeSprite_->onMouseMovePassive(x, y);
   activeSprite_->render();
+
 }
