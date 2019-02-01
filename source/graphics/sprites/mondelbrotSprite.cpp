@@ -69,7 +69,8 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
 
   auto fadeOld = fade_;
 
-  fade_ *= (1 + velocity / 50.f);
+  auto alpha = std::max(-0.5f, velocity / 20.f);
+  fade_ *= (1 + alpha);
 
   //(x-xs)f = (x-XS)F
   //XS = x - (x-xs)f/F
