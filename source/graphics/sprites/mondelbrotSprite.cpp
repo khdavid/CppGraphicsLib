@@ -69,7 +69,7 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
 
   auto fadeOld = fade_;
 
-  auto alpha = std::max(-0.5f, velocity / 20.f);
+  auto alpha = std::max(-0.5f, velocity / 5.f);
   fade_ *= (1 + alpha);
 
   //(x-xs)f = (x-XS)F
@@ -155,26 +155,33 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
   
     const int nMax = 1000;
     int i = 0;
+
+    ComplexNumber c;
+    c.Real = (gl_FragCoord.x - xShift ) * fade;
+    c.Imagine = (gl_FragCoord.y - yShift) * fade; 
+
     for (i = 0; i < nMax; i++)
     {
-       ComplexNumber c;
-       c.Real = (gl_FragCoord.x - xShift ) * fade;
-       c.Imagine = (gl_FragCoord.y - yShift) * fade; 
        z = Add (Product(z,z), c);
        if (length2(z) > 4) break;
     }
     float k = float (i) / nMax;
-    if (i < nMax / 3)
+
+    if (i < nMax / 20)
     {
-       color = vec4(1. - 2. * k * k , 1. - 2. * k, 2. * k, 1);
+       color = vec4(1 - 10 * k , 1 - 20 * k, 20 * k, 1);
+    }
+    else if (i < nMax / 5)
+    {
+       color = vec4( 1 - 5 * k, 5 * k, 1 - 5 * k, 1);
     }
     else if (i < 2 * nMax / 3)
     {
-       color = vec4(1.0 - 0.2 * k, 0.5 * k, 1. - 0.3 * k, 1);
+       color = vec4(0.8 - 1.1 * k, 0.3 + 1 * k, 1 - 1.5 * k, 1);
     }
     else
     {
-       color = vec4(1. - 2. * k , 1. - 2. * k, 2. * k, 1);
+       color = vec4(k , 0.9 - k, 0.7 - 0.5 * k, 1);
     }
   }
   
