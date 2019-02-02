@@ -16,10 +16,10 @@ private:
   GLint yShiftUniform_ = 0;
   int xPrev_ = 0;
   int yPrev_ = 0;
-  float xShift_ = 640.f / 2;
-  float yShift_ = 480.f / 2;
+  double xShift_ = 640.0 / 2;
+  double yShift_ = 480.0 / 2;
   
-  float fade_ = 0.01f;
+  double fade_ = 0.01;
 
   virtual std::string getVertexShaderCode_() const;
   virtual std::string getFragmentShaderCode_() const;

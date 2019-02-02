@@ -31,9 +31,9 @@ void MondelbrotSprite::init()
   xShiftUniform_ = glGetUniformLocation(programId_, cXShift);
   yShiftUniform_ = glGetUniformLocation(programId_, cYShift);
 
-  glUniform1f(fadeUniform_, fade_);
-  glUniform1f(xShiftUniform_, xShift_);
-  glUniform1f(yShiftUniform_, yShift_);
+  glUniform1d(fadeUniform_, fade_);
+  glUniform1d(xShiftUniform_, xShift_);
+  glUniform1d(yShiftUniform_, yShift_);
 
 }
 
@@ -51,8 +51,8 @@ void MondelbrotSprite::onMouseMove(int x, int y)
   xPrev_ = x;
   yPrev_ = y;
   
-  glUniform1f(xShiftUniform_, xShift_);
-  glUniform1f(yShiftUniform_, yShift_);
+  glUniform1d(xShiftUniform_, xShift_);
+  glUniform1d(yShiftUniform_, yShift_);
   render();
 
 }
@@ -69,7 +69,7 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
 
   auto fadeOld = fade_;
 
-  auto alpha = std::max(-0.5f, velocity / 50.f);
+  auto alpha = std::max(-0.5, velocity / 50.0);
   fade_ *= (1 + alpha);
 
   //(x-xs)f = (x-XS)F
@@ -77,9 +77,9 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
   xShift_ = x - (x - xShift_) * fadeOld / fade_;
   yShift_ = y - (y - yShift_) * fadeOld / fade_;
 
-  glUniform1f(fadeUniform_, fade_);
-  glUniform1f(xShiftUniform_, xShift_);
-  glUniform1f(yShiftUniform_, yShift_);
+  glUniform1d(fadeUniform_, fade_);
+  glUniform1d(xShiftUniform_, xShift_);
+  glUniform1d(yShiftUniform_, yShift_);
 
   render();
 }
@@ -107,18 +107,18 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
 {
   return R"(
 
-  #version 130
+  #version 400
   
   out vec4 color;
-  uniform float fade;
-  uniform float xShift;
-  uniform float yShift;
+  uniform double fade;
+  uniform double xShift;
+  uniform double yShift;
 
 
   struct ComplexNumber
   {
-    float Real;
-    float Imagine;
+    double Real;
+    double Imagine;
   };
   
   ComplexNumber Product(ComplexNumber first, ComplexNumber second)
@@ -137,12 +137,7 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     return result;
   }
   
-  float length(ComplexNumber number)
-  {
-     return sqrt(number.Real * number.Real + number.Imagine * number.Imagine);
-  }
-  
-  float length2(ComplexNumber number)
+  double length2(ComplexNumber number)
   {
      return number.Real * number.Real + number.Imagine * number.Imagine;
   }
@@ -158,7 +153,7 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
        z.Real = 0;
        z.Imagine = 0;
   
-    const int nMax = 500;
+    const int nMax = 300;
     int i = 0;
 
     ComplexNumber c;
@@ -183,7 +178,7 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     const float kThreshold0 = 0.0;
     const float kThreshold1 = 0.1;
     const float kThreshold2 = 0.15;
-    const float kThreshold3 = 1;
+    const float kThreshold3 = 0.9;
 
     if (k < kThreshold1)
     {
@@ -195,7 +190,7 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     }
     else if (k < kThreshold3)
     {
-       color = linearExtrapolation(biruz, black, kThreshold2, kThreshold3, k);
+       color = linearExtrapolation(biruz, blue, kThreshold2, kThreshold3, k);
     }
 
     else
