@@ -80,6 +80,7 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
   glUniform1d(fadeUniform_, fade_);
   glUniform1d(xShiftUniform_, xShift_);
   glUniform1d(yShiftUniform_, yShift_);
+  std::cout << "fade: " << fade_ << std::endl;
 
   render();
 }
@@ -120,8 +121,14 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     double Real;
     double Imagine;
   };
+
+  struct ComplexNumberFast
+  {
+    float Real;
+    float Imagine;
+  };
   
-  ComplexNumber Product(ComplexNumber first, ComplexNumber second)
+  ComplexNumber Product(in ComplexNumber first, in ComplexNumber second)
   {
     ComplexNumber result;  
     result.Real = first.Real * second.Real - first.Imagine * second.Imagine;
@@ -129,7 +136,15 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     return result;
   }
   
-  ComplexNumber Add(ComplexNumber first, ComplexNumber second)
+  ComplexNumberFast Product(in ComplexNumberFast first, in ComplexNumberFast second)
+  {
+    ComplexNumberFast result;  
+    result.Real = first.Real * second.Real - first.Imagine * second.Imagine;
+    result.Imagine = first.Real * second.Imagine + first.Imagine * second.Real;
+    return result;
+  }
+
+  ComplexNumber Add(in ComplexNumber first, in ComplexNumber second)
   {
     ComplexNumber result;  
     result.Real = first.Real + second.Real;
@@ -137,7 +152,20 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     return result;
   }
   
-  double length2(ComplexNumber number)
+  ComplexNumberFast Add(in ComplexNumberFast first, in ComplexNumberFast second)
+  {
+    ComplexNumberFast result;  
+    result.Real = first.Real + second.Real;
+    result.Imagine = first.Imagine + second.Imagine;
+    return result;
+  }
+
+  double length2(in ComplexNumber number)
+  {
+     return number.Real * number.Real + number.Imagine * number.Imagine;
+  }
+
+  float length2(in ComplexNumberFast number)
   {
      return number.Real * number.Real + number.Imagine * number.Imagine;
   }
@@ -147,18 +175,18 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     return first + (x - min) * (last - first) / (max - min);
   }
   
-  void main()
+  float getOutOfBoundsKoeff()
   {
     ComplexNumber z;
-       z.Real = 0;
-       z.Imagine = 0;
+    z.Real = 0;
+    z.Imagine = 0;
   
-    const int nMax = 300;
-    int i = 0;
-
     ComplexNumber c;
     c.Real = (gl_FragCoord.x - xShift ) * fade;
     c.Imagine = (gl_FragCoord.y - yShift) * fade; 
+
+    const int nMax = 300;
+    int i = 0;
 
     for (i = 0; i < nMax; i++)
     {
@@ -167,6 +195,35 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     }
     
     float k = float (i) / nMax;
+    return k;
+  } 
+
+  float getOutOfBoundsKoeffFast()
+  {
+    ComplexNumberFast z;
+    z.Real = 0;
+    z.Imagine = 0;
+  
+    ComplexNumberFast c;
+    c.Real = float((gl_FragCoord.x - xShift ) * fade);
+    c.Imagine = float((gl_FragCoord.y - yShift) * fade); 
+
+    const int nMax = 1000;
+    int i = 0;
+
+    for (i = 0; i < nMax; i++)
+    {
+       z = Add (Product(z,z), c);
+       if (length2(z) > 4) break;
+    }
+    
+    float k = float (i) / nMax;
+    return k;
+  } 
+
+  
+  void main()
+  {
 
     const vec4 blue = vec4(166, 202, 240, 255) / 255;
     const vec4 biruz = vec4(123, 228, 209, 255) / 255;
@@ -179,6 +236,18 @@ std::string MondelbrotSprite::getFragmentShaderCode_() const
     const float kThreshold1 = 0.1;
     const float kThreshold2 = 0.15;
     const float kThreshold3 = 0.9;
+    
+    //const float fadeThreshold = 0.000000001;
+    const float fadeThreshold = 1e-8;
+    float k = 0;
+    if (fade > fadeThreshold)
+    {
+      k = getOutOfBoundsKoeffFast();
+    }
+    else
+    {
+       k = getOutOfBoundsKoeff();
+    }
 
     if (k < kThreshold1)
     {
