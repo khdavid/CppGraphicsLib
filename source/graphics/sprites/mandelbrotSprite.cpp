@@ -69,7 +69,7 @@ void MandelbrotSprite::onMouseScrolling(int velocity)
 
   auto fadeOld = fade_;
 
-  auto alpha = std::max(-0.5, velocity / 50.0);
+  auto alpha = std::max(-0.5, velocity / 20.0);
   fade_ *= (1 + alpha);
 
   xShift_ = x - (x - xShift_) * fadeOld / fade_;
@@ -227,16 +227,16 @@ std::string MandelbrotSprite::getFragmentShaderCode_() const
      
     
     const int nMaxFloatMode = 1000;
-    const int nMaxDoubleMode = 300;
+    const int nMaxDoubleMode = 400;
 
     const float kThreshold0 = 0.0;
     const float kThreshold1 = 100;
     const float kThreshold2 = 150;
     const float kThreshold3 = 250;
-    const float kThreshold4 = 290;
+    const float kThreshold4 = 390;
     
 
-    const float fadeThreshold = 1e-8;
+    const float fadeThreshold = 1e-7;
 
     float k = 0;
     if (fade > fadeThreshold)
