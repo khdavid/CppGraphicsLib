@@ -1,7 +1,7 @@
 #pragma once
 #include "triangleSprite.h"
 
-class MondelbrotSprite : public TriangleSprite
+class MandelbrotSprite : public TriangleSprite
 {
 public:
   using TriangleSprite::TriangleSprite;

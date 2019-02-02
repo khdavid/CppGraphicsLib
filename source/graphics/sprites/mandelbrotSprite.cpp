@@ -3,7 +3,7 @@
 
 #include "nodes/graphicsNode.h"
 #include "utils/SDLUtils.h"
-#include "mondelbrotSprite.h"
+#include "mandelbrotSprite.h"
 
 
 namespace
@@ -24,7 +24,7 @@ namespace
 
 }
 
-void MondelbrotSprite::init()
+void MandelbrotSprite::init()
 {
   init_(cVertices);
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
@@ -37,14 +37,14 @@ void MondelbrotSprite::init()
 
 }
 
-void MondelbrotSprite::onMouseClick(int x, int y)
+void MandelbrotSprite::onMouseClick(int x, int y)
 {
   xPrev_ = x;
   yPrev_ = y;
   render();
 }
 
-void MondelbrotSprite::onMouseMove(int x, int y)
+void MandelbrotSprite::onMouseMove(int x, int y)
 {
   xShift_ += (x - xPrev_);
   yShift_ += -(y - yPrev_);
@@ -57,7 +57,7 @@ void MondelbrotSprite::onMouseMove(int x, int y)
 
 }
 
-void MondelbrotSprite::onMouseScrolling(int velocity)
+void MandelbrotSprite::onMouseScrolling(int velocity)
 {
   auto mouseCoord = SDLUtils::getMouseXY();
   auto x = mouseCoord.first;
@@ -85,7 +85,7 @@ void MondelbrotSprite::onMouseScrolling(int velocity)
   render();
 }
 
-std::string MondelbrotSprite::getVertexShaderCode_() const
+std::string MandelbrotSprite::getVertexShaderCode_() const
 {
   return R"(
 
@@ -104,7 +104,7 @@ std::string MondelbrotSprite::getVertexShaderCode_() const
   )";
 }
 
-std::string MondelbrotSprite::getFragmentShaderCode_() const
+std::string MandelbrotSprite::getFragmentShaderCode_() const
 {
   return R"(
 

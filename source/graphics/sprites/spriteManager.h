@@ -2,7 +2,7 @@
 #include "sprites/coloringSprite.h"
 #include "listeners/inputEventListener.h"
 #include "tools/GLSLShaderToolBase.h"
-#include "sprites/mondelbrotSprite.h"
+#include "sprites/mandelbrotSprite.h"
 
 
 struct SDL_Window;

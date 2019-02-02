@@ -214,7 +214,7 @@
     <ClCompile Include="eventhandlers\eventsManager.cpp" />
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
     <ClCompile Include="utils\SDLUtils.cpp" />
-    <ClCompile Include="sprites\mondelbrotSprite.cpp" />
+    <ClCompile Include="sprites\mandelbrotSprite.cpp" />
     <ClCompile Include="sprites\spriteBase.cpp" />
     <ClCompile Include="tools\GLSLShaderToolBase.cpp" />
     <ClCompile Include="listeners\inputEventListener.cpp" />
@@ -234,7 +234,7 @@
     <ClInclude Include="eventhandlers\eventsManager.h" />
     <ClInclude Include="eventhandlers\mainLoop.h" />
     <ClInclude Include="utils\SDLUtils.h" />
-    <ClInclude Include="sprites\mondelbrotSprite.h" />
+    <ClInclude Include="sprites\mandelbrotSprite.h" />
     <ClInclude Include="nodes\graphicsNode.h" />
     <ClInclude Include="sprites\spriteBase.h" />
     <ClInclude Include="tools\GLSLShaderToolBase.h" />

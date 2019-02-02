@@ -11,7 +11,7 @@ SpriteManager::SpriteManager(SDL_Window& window, InputEventObservable& inputEven
   inputEventObservable_(inputEventObservable)
 {
   inputEventObservable_.addInputListener(this);
-  setActivateSprite_<MondelbrotSprite>();
+  setActivateSprite_<MandelbrotSprite>();
 }
 
 void SpriteManager::onWindowsResized(int x, int y)
@@ -53,6 +53,6 @@ void SpriteManager::onKeyPress(SDL_Keycode keyCode)
   }
   else if (keyCode == SDLK_2)
   {
-    setActivateSprite_<MondelbrotSprite>();
+    setActivateSprite_<MandelbrotSprite>();
   }
 }
