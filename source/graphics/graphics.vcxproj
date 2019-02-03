@@ -213,6 +213,8 @@
     <ClCompile Include="eventhandlers\eventClassifier.cpp" />
     <ClCompile Include="eventhandlers\eventsManager.cpp" />
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
+    <ClCompile Include="sprites\fragmentShaderSprite.cpp" />
+    <ClCompile Include="sprites\rayTracingSprite.cpp" />
     <ClCompile Include="utils\SDLUtils.cpp" />
     <ClCompile Include="sprites\mandelbrotSprite.cpp" />
     <ClCompile Include="sprites\spriteBase.cpp" />
@@ -233,6 +235,8 @@
     <ClInclude Include="eventhandlers\eventClassifier.h" />
     <ClInclude Include="eventhandlers\eventsManager.h" />
     <ClInclude Include="eventhandlers\mainLoop.h" />
+    <ClInclude Include="sprites\fragmentShaderSprite.h" />
+    <ClInclude Include="sprites\rayTracingSprite.h" />
     <ClInclude Include="utils\SDLUtils.h" />
     <ClInclude Include="sprites\mandelbrotSprite.h" />
     <ClInclude Include="nodes\graphicsNode.h" />

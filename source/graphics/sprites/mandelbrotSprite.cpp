@@ -11,22 +11,11 @@ namespace
   const char* cFadeName = "fade";
   const char* cXShift = "xShift";
   const char* cYShift = "yShift";
-
-  std::vector<Vertex> cVertices =
-  {
-    Vertex{Position{-1, 1, 0}, Material{Color{0, 0, 0}}},
-    Vertex{Position{1, -1, 0}, Material{Color{0, 0, 0}}},
-    Vertex{Position{-1, -1, 0}, Material{Color{0, 0, 0}}},
-    Vertex{Position{-1, 1, 0}, Material{Color{0, 0, 0}}},
-    Vertex{Position{1, -1, 0}, Material{Color{0, 0, 0}}},
-    Vertex{Position{1, 1, 0}, Material{Color{0, 0, 0}}},
-  };
-
 }
 
 void MandelbrotSprite::init()
 {
-  init_(cVertices);
+  FragmentShaderSprite::init();
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
   xShiftUniform_ = glGetUniformLocation(programId_, cXShift);
   yShiftUniform_ = glGetUniformLocation(programId_, cYShift);
@@ -54,7 +43,6 @@ void MandelbrotSprite::onMouseMove(int x, int y)
   glUniform1d(xShiftUniform_, xShift_);
   glUniform1d(yShiftUniform_, yShift_);
   render();
-
 }
 
 void MandelbrotSprite::onMouseScrolling(int velocity)
@@ -81,25 +69,6 @@ void MandelbrotSprite::onMouseScrolling(int velocity)
   std::cout << "fade: " << fade_ << std::endl;
 
   render();
-}
-
-std::string MandelbrotSprite::getVertexShaderCode_() const
-{
-  return R"(
-
-  #version 130
-  
-  in vec3 vertexPosition;  
-  
-  void main()
-  {
-    gl_Position.x = vertexPosition[0];
-    gl_Position.y = vertexPosition[1];
-    gl_Position.z = 0.0;
-    gl_Position.w = 1.0;
-  
-  }
-  )";
 }
 
 std::string MandelbrotSprite::getFragmentShaderCode_() const

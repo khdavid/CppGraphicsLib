@@ -1,10 +1,10 @@
 #pragma once
-#include "triangleSprite.h"
+#include "fragmentShaderSprite.h"
 
-class MandelbrotSprite : public TriangleSprite
+class MandelbrotSprite : public FragmentShaderSprite
 {
 public:
-  using TriangleSprite::TriangleSprite;
+  using FragmentShaderSprite::FragmentShaderSprite;
   virtual void init() override;
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
@@ -21,7 +21,6 @@ private:
   
   double fade_ = 0.01;
 
-  virtual std::string getVertexShaderCode_() const;
   virtual std::string getFragmentShaderCode_() const;
 };
 

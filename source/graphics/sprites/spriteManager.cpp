@@ -4,6 +4,7 @@
 #include <vector>
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
+#include "rayTracingSprite.h"
 #include "spriteManager.h"
 
 SpriteManager::SpriteManager(SDL_Window& window, InputEventObservable& inputEventObservable) :
@@ -11,7 +12,7 @@ SpriteManager::SpriteManager(SDL_Window& window, InputEventObservable& inputEven
   inputEventObservable_(inputEventObservable)
 {
   inputEventObservable_.addInputListener(this);
-  setActivateSprite_<MandelbrotSprite>();
+  setActivateSprite_<RayTracingSprite>();
 }
 
 void SpriteManager::onWindowsResized(int x, int y)
@@ -55,4 +56,9 @@ void SpriteManager::onKeyPress(SDL_Keycode keyCode)
   {
     setActivateSprite_<MandelbrotSprite>();
   }
+  else if (keyCode == SDLK_3)
+  {
+    setActivateSprite_<RayTracingSprite>();
+  }
+
 }
