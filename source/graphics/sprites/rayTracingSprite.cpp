@@ -4,6 +4,8 @@
 #include "RayTracingSprite.h"
 
 
+
+
 std::string RayTracingSprite::getFragmentShaderCode_() const
 {
   return R"(
@@ -33,19 +35,18 @@ bool isInsideBall (in vec3 point, in Ball ball)
   return dot(rVector, rVector) <= sqr(ball.radius);
 }
 
-bool isLineHittingBall(in Ray ray, in Ball ball)
-{
-  vec3 rVector = ball.center - ray.point;
-  float scalarProduct = dot(rVector, ray.direction);
-  float dirSqr = dot(ray.direction, ray.direction);
-  float distanceSqr = sqr(scalarProduct);
-  return distanceSqr <= sqr(ball.radius);
-}
-
 bool isRayStartsBeforeBall(in Ray ray, in Ball ball)
 {
   vec3 rVector = ball.center - ray.point;
   return dot(rVector, ray.direction) >= 0;  
+}
+
+bool isLineHittingBall(in Ray ray, in Ball ball)
+{
+  vec3 rVector = ball.center - ray.point;
+  vec3 crossProduct = cross(rVector, ray.direction);
+  float distanceSqr = dot(crossProduct, crossProduct) / dot(ray.direction, ray.direction);
+  return distanceSqr <= sqr(ball.radius);
 }
 
 bool isRayHittingBall(in Ray ray, in Ball ball)
@@ -59,11 +60,11 @@ const vec4 white = vec4(255, 255, 255, 255) / 255;
 void main()
 {
   Ball ball;
-  ball.center = vec3(200, 200, 0);
+  ball.center = vec3(200, 200, 200);
   ball.radius = 100;
 
   Ray ray;
-  ray.point= vec3(gl_FragCoord.xyz);
+  ray.point = gl_FragCoord.xyz;
   ray.direction = vec3(0, 0, 1);
   
   if (isRayHittingBall(ray, ball))
