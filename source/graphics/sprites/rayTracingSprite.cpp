@@ -33,7 +33,7 @@ float sqr(float value)
   return value * value;
 }
 
-float lenSqr(in ver3 value)
+float lenSqr(in vec3 value)
 {
   return dot(value, value);
 }
@@ -64,10 +64,12 @@ bool isRayStartsAfterBall(in Ray ray, in Ball ball)
 
 bool isLineHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection, out vec3 secondIntersection)
 {
-  // vec3 centerVec = ball.center - ray.point;
+  vec3 centerVec = ball.center - ray.point;
+
   // we should solve the quadratic equation:
   // lenSqr(t * ray.direction - centerVec) = sqr(ball.radius);
   // lenSqr(ray.direction) * t^2 - 2 * dot(ray.direction, centerVec) * t - sqr(ball.radius) = 0;
+
   float D = sqr(dot(ray.direction, centerVec)) + lenSqr(ray.direction) * sqr(ball.radius);
   if (D < 0)
   {
@@ -91,7 +93,7 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
   vec3 secondIntersection;
   if (isLineHittingBall(ray, ball, firstIntersection, secondIntersection))
   {
-    if (isInsideBall(ray.point, ball)
+    if (isInsideBall(ray.point, ball))
     {
       firstIntersection = secondIntersection;
     }  
