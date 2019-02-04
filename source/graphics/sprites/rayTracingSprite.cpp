@@ -13,6 +13,9 @@ std::string RayTracingSprite::getFragmentShaderCode_() const
 
 out vec4 color;
 
+const float TOLERANCE = 1e-3;
+const float TOLERANCE_SQR = 1e-6;
+
 struct Ball
 {
   vec3 center;
@@ -21,7 +24,7 @@ struct Ball
 
 struct Ray
 {
-  vec3 direction; 
+  vec3 direction; // normalized vector
   vec3 point;
 };
 
@@ -41,19 +44,46 @@ bool isRayStartsBeforeBall(in Ray ray, in Ball ball)
   return dot(rVector, ray.direction) >= 0;  
 }
 
-bool isLineHittingBall(in Ray ray, in Ball ball)
+vec3 getNormalToCrossSection(in Ray ray, in Ball ball)
 {
   vec3 rVector = ball.center - ray.point;
   vec3 crossProduct = cross(rVector, ray.direction);
-  float distanceSqr = dot(crossProduct, crossProduct) / dot(ray.direction, ray.direction);
-  return distanceSqr <= sqr(ball.radius);
+  float crossProductLenSqr = dot(crossProduct, crossProduct);
+  if (crossProductLenSqr < TOLERANCE_SQR)
+  {
+    return vec3(-ray.direction.y, ray.direction.x, ray.direction.z);
+  }  
+
+  return crossProduct / sqrt(crossProductLenSqr);
 }
 
-bool isRayHittingBall(in Ray ray, in Ball ball)
+bool isLineHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection, out vec3 secondIntersection)
 {
-  return isInsideBall(ray.point, ball) ||
-    (isLineHittingBall(ray, ball) && isRayStartsBeforeBall(ray, ball));
+  vec3 rVector = ball.center - ray.point;
+  vec3 crossProduct = cross(rVector, ray.direction);
+  float distanceSqr = dot(crossProduct, crossProduct);
+  if (distanceSqr <= sqr(ball.radius))
+  {
+    float sinAlpha = sqrt(distanceSqr) / ball.radius;
+    float alpha = asin(sinAlpha);
+    vec3 centerProjOnBallAlongDir = ball.center - ball.radius * ray.direction;
+    vec3 normalToCrossSection = getNormalToCrossSection(ray, ball);
+    
+    return true;
+  }
+  
+  return false;
 }
+
+bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
+{
+  vec3 secondIntersection;
+  isLineHittingBall(ray, ball, firstIntersection, secondIntersection);
+  //return isInsideBall(ray.point, ball) ||
+  //    (isLineHittingBall(ray, ball, firstIntersection, secondIntersection) && isRayStartsBeforeBall(ray, ball));
+  return true;
+}
+
 const vec4 blue = vec4(166, 202, 240, 255) / 255;
 const vec4 white = vec4(255, 255, 255, 255) / 255;
 
@@ -67,7 +97,8 @@ void main()
   ray.point = gl_FragCoord.xyz;
   ray.direction = vec3(0, 0, 1);
   
-  if (isRayHittingBall(ray, ball))
+  vec3 firstIntersectionPoint;  
+  if (isRayHittingBall(ray, ball, firstIntersectionPoint))
   {
     color = blue;
   }
