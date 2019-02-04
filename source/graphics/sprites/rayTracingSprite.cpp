@@ -32,56 +32,74 @@ float sqr(float value)
 {
   return value * value;
 }
-bool isInsideBall (in vec3 point, in Ball ball)
+
+float lenSqr(in ver3 value)
+{
+  return dot(value, value);
+}
+
+bool isInsideBall(in vec3 point, in Ball ball)
 {
   vec3 rVector = point - ball.center;
   return dot(rVector, rVector) <= sqr(ball.radius);
 }
 
-bool isRayStartsBeforeBall(in Ray ray, in Ball ball)
+bool isRayStartsBeforeBallCenter(in Ray ray, in Ball ball)
 {
   vec3 rVector = ball.center - ray.point;
   return dot(rVector, ray.direction) >= 0;  
 }
 
-vec3 getNormalToCrossSection(in Ray ray, in Ball ball)
+bool isRayStartsBeforeBall(in Ray ray, in Ball ball)
 {
-  vec3 rVector = ball.center - ray.point;
-  vec3 crossProduct = cross(rVector, ray.direction);
-  float crossProductLenSqr = dot(crossProduct, crossProduct);
-  if (crossProductLenSqr < TOLERANCE_SQR)
-  {
-    return vec3(-ray.direction.y, ray.direction.x, ray.direction.z);
-  }  
+  return isRayStartsBeforeBallCenter(ray, ball) &&
+    !isInsideBall(ray.point, ball);
+}
 
-  return crossProduct / sqrt(crossProductLenSqr);
+bool isRayStartsAfterBall(in Ray ray, in Ball ball)
+{
+  return !isRayStartsBeforeBallCenter(ray, ball) &&
+    !isInsideBall(ray.point, ball);
 }
 
 bool isLineHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection, out vec3 secondIntersection)
 {
-  vec3 rVector = ball.center - ray.point;
-  vec3 crossProduct = cross(rVector, ray.direction);
-  float distanceSqr = dot(crossProduct, crossProduct);
-  if (distanceSqr <= sqr(ball.radius))
+  // vec3 centerVec = ball.center - ray.point;
+  // we should solve the quadratic equation:
+  // lenSqr(t * ray.direction - centerVec) = sqr(ball.radius);
+  // lenSqr(ray.direction) * t^2 - 2 * dot(ray.direction, centerVec) * t - sqr(ball.radius) = 0;
+  float D = sqr(dot(ray.direction, centerVec)) + lenSqr(ray.direction) * sqr(ball.radius);
+  if (D < 0)
   {
-    float sinAlpha = sqrt(distanceSqr) / ball.radius;
-    float alpha = asin(sinAlpha);
-    vec3 centerProjOnBallAlongDir = ball.center - ball.radius * ray.direction;
-    vec3 normalToCrossSection = getNormalToCrossSection(ray, ball);
-    
-    return true;
+    return false;
   }
+  float t1 = (dot(ray.direction, centerVec) - sqrt(D)) / lenSqr(ray.direction);
+  float t2 = (dot(ray.direction, centerVec) + sqrt(D)) / lenSqr(ray.direction);
   
-  return false;
+  firstIntersection = ray.point + t1 * ray.direction;  
+  secondIntersection = ray.point + t2 * ray.direction;  
+  return true;
 }
 
 bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
 {
+  if (isRayStartsAfterBall(ray, ball))
+  {
+    return false;
+  }
+
   vec3 secondIntersection;
-  isLineHittingBall(ray, ball, firstIntersection, secondIntersection);
-  //return isInsideBall(ray.point, ball) ||
-  //    (isLineHittingBall(ray, ball, firstIntersection, secondIntersection) && isRayStartsBeforeBall(ray, ball));
-  return true;
+  if (isLineHittingBall(ray, ball, firstIntersection, secondIntersection))
+  {
+    if (isInsideBall(ray.point, ball)
+    {
+      firstIntersection = secondIntersection;
+    }  
+    
+    return true;
+  }
+
+  return false;
 }
 
 const vec4 blue = vec4(166, 202, 240, 255) / 255;
