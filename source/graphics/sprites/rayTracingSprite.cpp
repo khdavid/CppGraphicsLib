@@ -68,9 +68,9 @@ bool isLineHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection, out
 
   // we should solve the quadratic equation:
   // lenSqr(t * ray.direction - centerVec) = sqr(ball.radius);
-  // lenSqr(ray.direction) * t^2 - 2 * dot(ray.direction, centerVec) * t - sqr(ball.radius) = 0;
+  // lenSqr(ray.direction) * t^2 - 2 * dot(ray.direction, centerVec) * t + lenSqr(centerVec) - sqr(ball.radius) = 0;
 
-  float D = sqr(dot(ray.direction, centerVec)) + lenSqr(ray.direction) * sqr(ball.radius);
+  float D = sqr(dot(ray.direction, centerVec)) - lenSqr(ray.direction) * (lenSqr(centerVec) - sqr(ball.radius));
   if (D < 0)
   {
     return false;
@@ -120,7 +120,9 @@ void main()
   vec3 firstIntersectionPoint;  
   if (isRayHittingBall(ray, ball, firstIntersectionPoint))
   {
-    color = blue;
+    vec3 n = ball.center - firstIntersectionPoint;
+    n = n / sqrt(lenSqr(n));
+    color = dot(n, ray.direction) * blue;
   }
   else
   {
