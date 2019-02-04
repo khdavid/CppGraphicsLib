@@ -20,6 +20,7 @@ struct Ball
 {
   vec3 center;
   float radius;
+  vec4 color;
 };
 
 struct Ray
@@ -33,9 +34,14 @@ float sqr(float value)
   return value * value;
 }
 
-float lenSqr(in vec3 value)
+float lenSqr(in vec3 vec)
 {
-  return dot(value, value);
+  return dot(vec, vec);
+}
+
+vec3 normalized(in vec3 vec)
+{
+  return vec / sqrt(lenSqr(vec));
 }
 
 bool isInsideBall(in vec3 point, in Ball ball)
@@ -105,28 +111,53 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
 }
 
 const vec4 blue = vec4(166, 202, 240, 255) / 255;
+const vec4 green = vec4(100, 240, 100, 255) / 255;
 const vec4 white = vec4(255, 255, 255, 255) / 255;
 
 void main()
 {
-  Ball ball;
-  ball.center = vec3(200, 200, 200);
-  ball.radius = 100;
+  Ball balls[2];
+
+  balls[0].center = vec3(200, 200, 200);
+  balls[0].radius = 100;
+  balls[0].color = blue;
+
+  balls[1].center = vec3(400, 200, 180);
+  balls[1].radius = 150;
+  balls[1].color = green;
 
   Ray ray;
   ray.point = gl_FragCoord.xyz;
-  ray.direction = vec3(0, 0, 1);
+  ray.direction = vec3(0, 0 , 1);
+  ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
   
-  vec3 firstIntersectionPoint;  
-  if (isRayHittingBall(ray, ball, firstIntersectionPoint))
+  color = white;
+
+  float minDistanceSqr = 1e10;
+  bool closestBallFound = false;
+  vec3 closestIntersectionPoint;
+  Ball closestBall;
+
+  for (int i = 0; i < balls.length(); ++i)
   {
-    vec3 n = ball.center - firstIntersectionPoint;
-    n = n / sqrt(lenSqr(n));
-    color = dot(n, ray.direction) * blue;
+    vec3 firstIntersectionPoint;  
+    if (isRayHittingBall(ray, balls[i], firstIntersectionPoint))
+    {
+      float distanceSqr = lenSqr(firstIntersectionPoint - ray.point);
+      if(distanceSqr < minDistanceSqr)
+      {
+        minDistanceSqr = distanceSqr;
+        closestBall = balls[i];
+        closestIntersectionPoint = firstIntersectionPoint;
+        closestBallFound = true;
+      }
+    }
   }
-  else
+
+  if (closestBallFound)
   {
-    color = white;
+    vec3 n = normalized(closestBall.center - closestIntersectionPoint);
+    color = abs(dot(n, ray.direction)) * closestBall.color;
   }
 
 }
