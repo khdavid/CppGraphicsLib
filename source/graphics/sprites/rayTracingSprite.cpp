@@ -29,6 +29,12 @@ struct Ray
   vec3 point;
 };
 
+struct Light
+{
+  vec3 direction;
+  vec4 color;
+};
+
 float sqr(float value)
 {
   return value * value;
@@ -110,6 +116,7 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
   return false;
 }
 
+
 const vec4 blue = vec4(166, 202, 240, 255) / 255;
 const vec4 green = vec4(100, 240, 100, 255) / 255;
 const vec4 white = vec4(255, 255, 255, 255) / 255;
@@ -130,13 +137,17 @@ void main()
   ray.point = gl_FragCoord.xyz;
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
-  
-  color = white;
 
+  Light light;
+  light.color = white;
+  light.direction = normalized (vec3 (1, 1, 1));
+  
   float minDistanceSqr = 1e10;
   bool closestBallFound = false;
   vec3 closestIntersectionPoint;
   Ball closestBall;
+
+  color = white;
 
   for (int i = 0; i < balls.length(); ++i)
   {
@@ -157,7 +168,7 @@ void main()
   if (closestBallFound)
   {
     vec3 n = normalized(closestBall.center - closestIntersectionPoint);
-    color = abs(dot(n, ray.direction)) * closestBall.color;
+    color = (abs(dot(n, ray.direction))) * closestBall.color;
   }
 
 }
