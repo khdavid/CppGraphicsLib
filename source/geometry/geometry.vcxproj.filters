@@ -7,6 +7,9 @@
     <Filter Include="operations">
       <UniqueIdentifier>{952cd94f-f5fe-4d05-b39a-23825d44d253}</UniqueIdentifier>
     </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{7a37d848-7797-4d78-a540-724b7a47f639}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="operations\operations.h">
@@ -33,6 +36,9 @@
     <ClInclude Include="geometryObjects\geomEntityType.h">
       <Filter>geometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="utils\geometryUtils.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operations\operations.cpp">
@@ -40,6 +46,9 @@
     </ClCompile>
     <ClCompile Include="geometryObjects\matrix.cpp">
       <Filter>geometryObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\geometryUtils.cpp">
+      <Filter>utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

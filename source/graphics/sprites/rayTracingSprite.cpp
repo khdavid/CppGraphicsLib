@@ -1,10 +1,39 @@
 #include <vector>
 
 #include "nodes/graphicsNode.h"
+#include "utils/geometryUtils.h"
 #include "RayTracingSprite.h"
 
+namespace
+{
+const char* cGlobalToCameraName = "globalToCamera";
+}
 
 
+RayTracingSprite::RayTracingSprite(SDL_Window & window): FragmentShaderSprite(window)
+{
+  globalToCamera_ = GeometryUtils::createIdentityMatrix4D();
+  auto glmatrix = GeometryUtils::convertToGL(globalToCamera_);
+}
+
+void RayTracingSprite::init()
+{
+  FragmentShaderSprite::init();
+  
+  globalToCameraUniform_ = glGetUniformLocation(programId_, cGlobalToCameraName);
+}
+
+void RayTracingSprite::onMouseClick(int, int)
+{
+}
+
+void RayTracingSprite::onMouseMove(int, int )
+{
+}
+
+void RayTracingSprite::onMouseScrolling(int)
+{
+}
 
 std::string RayTracingSprite::getFragmentShaderCode_() const
 {
@@ -12,6 +41,7 @@ std::string RayTracingSprite::getFragmentShaderCode_() const
 #version 130
 
 out vec4 outColor;
+uniform mat4 globalToCamera;
 
 const float TOLERANCE = 1e-3;
 const float TOLERANCE_SQR = 1e-6;
@@ -133,8 +163,8 @@ vec3 getPhongColor(vec3 color, vec3 normal, in Light light, in Ray reflectedRay)
 {
   float diffuseFactor = max (0, dot(normal, -light.direction));
   float specularFactor = max(0, dot(reflectedRay.direction, -light.direction));
-  specularFactor = pow(specularFactor, 100);
-  return (0.3 + 0.7 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
+  specularFactor = pow(specularFactor, 200);
+  return (0.6 + 0.4 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
 }
 
 
@@ -144,7 +174,7 @@ const vec3 white = vec3(255, 255, 255) / 255;
 
 void main()
 {
-  Ball balls[2];
+  Ball balls[3];
 
   balls[0].center = vec3(200, 200, 200);
   balls[0].radius = 100;
@@ -153,6 +183,10 @@ void main()
   balls[1].center = vec3(400, 200, 180);
   balls[1].radius = 150;
   balls[1].color = green;
+
+  balls[2].center = vec3(300, 300, 280);
+  balls[2].radius = 150;
+  balls[2].color = white;
 
   Ray ray;
   ray.point = gl_FragCoord.xyz;
@@ -195,7 +229,6 @@ void main()
   }
 
   outColor = vec4(color, 1);
-
 }
   
 )";

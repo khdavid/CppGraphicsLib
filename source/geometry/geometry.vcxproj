@@ -24,12 +24,14 @@
     <ClInclude Include="geometryObjects\indexAccessor.h" />
     <ClInclude Include="geometryObjects\matrix.h" />
     <ClInclude Include="geometryObjects\geomEntityType.h" />
+    <ClInclude Include="utils\geometryUtils.h" />
     <ClInclude Include="operations\operations.h" />
     <ClInclude Include="geometryObjects\triangle.h" />
     <ClInclude Include="operations\operations.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="geometryObjects\matrix.cpp" />
+    <ClCompile Include="utils\geometryUtils.cpp" />
     <ClCompile Include="operations\operations.cpp" />
   </ItemGroup>
   <ItemGroup>
