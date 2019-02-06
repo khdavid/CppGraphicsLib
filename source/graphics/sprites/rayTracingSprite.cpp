@@ -133,8 +133,8 @@ vec3 getPhongColor(vec3 color, vec3 normal, in Light light, in Ray reflectedRay)
 {
   float diffuseFactor = max (0, dot(normal, -light.direction));
   float specularFactor = max(0, dot(reflectedRay.direction, -light.direction));
-  specularFactor = pow(specularFactor, 20);
-  return (0.3 + 0.5 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
+  specularFactor = pow(specularFactor, 100);
+  return (0.3 + 0.7 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
 }
 
 
@@ -161,7 +161,7 @@ void main()
 
   Light light;
   light.color = white;
-  light.direction = normalized(vec3 (1, 1, 1));
+  light.direction = normalized(vec3 (0, -2, -1));
   
   float minDistanceSqr = 1e10;
   bool closestBallFound = false;
