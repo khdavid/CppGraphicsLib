@@ -108,7 +108,7 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
     if (isInsideBall(ray.point, ball))
     {
       firstIntersection = secondIntersection;
-    }  
+    } 
     
     return true;
   }
@@ -116,10 +116,25 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
   return false;
 }
 
-vec3 getPhongColor(vec3 color, vec3 normal, vec3 lightDir)
+bool getReflectedRay(in Ray ray, in Ball ball, out Ray reflected)
 {
-  float diffuseFactor = max (0, dot(normal, lightDir));
-  return (0.3 + 0.7 * diffuseFactor) * color;
+  if (!isRayHittingBall(ray, ball, reflected.point))
+  {
+    return false;
+  }
+
+  vec3 n = normalized(reflected.point - ball.center);  
+  reflected.direction = ray.direction - 2 * dot(ray.direction, n) * n;
+  return true;
+}
+
+
+vec3 getPhongColor(vec3 color, vec3 normal, in Light light, in Ray reflectedRay)
+{
+  float diffuseFactor = max (0, dot(normal, -light.direction));
+  float specularFactor = max(0, dot(reflectedRay.direction, -light.direction));
+  specularFactor = pow(specularFactor, 20);
+  return (0.3 + 0.5 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
 }
 
 
@@ -173,8 +188,10 @@ void main()
 
   if (closestBallFound)
   {
-    vec3 n = normalized(closestBall.center - closestIntersectionPoint);
-    color = getPhongColor(closestBall.color, n, light.direction);
+    Ray reflectedRay;
+    getReflectedRay(ray, closestBall, reflectedRay);
+    vec3 n = normalized(closestIntersectionPoint - closestBall.center);
+    color = getPhongColor(closestBall.color, n, light, reflectedRay);
   }
 
   outColor = vec4(color, 1);
