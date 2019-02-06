@@ -11,7 +11,7 @@ std::string RayTracingSprite::getFragmentShaderCode_() const
   return R"(
 #version 130
 
-out vec4 color;
+out vec4 outColor;
 
 const float TOLERANCE = 1e-3;
 const float TOLERANCE_SQR = 1e-6;
@@ -20,7 +20,7 @@ struct Ball
 {
   vec3 center;
   float radius;
-  vec4 color;
+  vec3 color;
 };
 
 struct Ray
@@ -32,7 +32,7 @@ struct Ray
 struct Light
 {
   vec3 direction;
-  vec4 color;
+  vec3 color;
 };
 
 float sqr(float value)
@@ -116,10 +116,16 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
   return false;
 }
 
+vec3 getPhongColor(vec3 color, vec3 normal, vec3 lightDir)
+{
+  float diffuseFactor = max (0, dot(normal, lightDir));
+  return (0.3 + 0.7 * diffuseFactor) * color;
+}
 
-const vec4 blue = vec4(166, 202, 240, 255) / 255;
-const vec4 green = vec4(100, 240, 100, 255) / 255;
-const vec4 white = vec4(255, 255, 255, 255) / 255;
+
+const vec3 blue = vec3(166, 202, 240) / 255;
+const vec3 green = vec3(100, 240, 100) / 255;
+const vec3 white = vec3(255, 255, 255) / 255;
 
 void main()
 {
@@ -140,14 +146,14 @@ void main()
 
   Light light;
   light.color = white;
-  light.direction = normalized (vec3 (1, 1, 1));
+  light.direction = normalized(vec3 (1, 1, 1));
   
   float minDistanceSqr = 1e10;
   bool closestBallFound = false;
   vec3 closestIntersectionPoint;
   Ball closestBall;
 
-  color = white;
+  vec3 color = white;  
 
   for (int i = 0; i < balls.length(); ++i)
   {
@@ -168,8 +174,10 @@ void main()
   if (closestBallFound)
   {
     vec3 n = normalized(closestBall.center - closestIntersectionPoint);
-    color = (abs(dot(n, ray.direction))) * closestBall.color;
+    color = getPhongColor(closestBall.color, n, light.direction);
   }
+
+  outColor = vec4(color, 1);
 
 }
   
