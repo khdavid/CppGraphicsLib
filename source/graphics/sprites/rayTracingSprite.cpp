@@ -13,7 +13,6 @@ const char* cGlobalToCameraName = "globalToCamera";
 RayTracingSprite::RayTracingSprite(SDL_Window & window): FragmentShaderSprite(window)
 {
   globalToCamera_ = GeometryUtils::createIdentityMatrix4D();
-  auto glmatrix = GeometryUtils::convertToGL(globalToCamera_);
 }
 
 void RayTracingSprite::init()
@@ -21,6 +20,9 @@ void RayTracingSprite::init()
   FragmentShaderSprite::init();
   
   globalToCameraUniform_ = glGetUniformLocation(programId_, cGlobalToCameraName);
+  auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
+  //(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
+  glUniformMatrix4fv(globalToCameraUniform_, GLsizei(glMatrix.size()), false, glMatrix.data());
 }
 
 void RayTracingSprite::onMouseClick(int, int)
@@ -167,6 +169,14 @@ vec3 getPhongColor(vec3 color, vec3 normal, in Light light, in Ray reflectedRay)
   return (0.6 + 0.4 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
 }
 
+Ray transform(in Ray ray, in mat4 transform)
+{
+  Ray result;
+  result.point = (transform * vec4(ray.point, 1)).xyz;
+  result.direction = (transform * vec4(ray.direction, 0)).xyz;
+  result.direction = normalized(result.direction);
+  return result;
+}
 
 const vec3 blue = vec3(166, 202, 240) / 255;
 const vec3 green = vec3(100, 240, 100) / 255;
@@ -192,6 +202,9 @@ void main()
   ray.point = gl_FragCoord.xyz;
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
+  
+  //ray = transform(ray, globalToCamera);
+  
 
   Light light;
   light.color = white;
