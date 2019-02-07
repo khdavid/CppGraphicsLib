@@ -34,12 +34,8 @@ void RayTracingSprite::onMouseMove(int, int )
 
 void RayTracingSprite::onMouseMovePassive(int, int)
 {
-  float dt = 0.001f;
-  auto globalToCameraOld = globalToCamera_;
-  globalToCamera_[0][0] = globalToCameraOld[0][0] * cos(dt) + globalToCameraOld[1][0] * sin(dt);
-  globalToCamera_[0][1] = globalToCameraOld[0][1] * cos(dt) + globalToCameraOld[1][1] * sin(dt);
-  globalToCamera_[1][1] = globalToCameraOld[1][1] * cos(dt) - globalToCameraOld[1][0] * sin(dt);
-  globalToCamera_[1][0] = globalToCameraOld[1][0] * cos(dt) - globalToCameraOld[1][1] * sin(dt);
+  angle_ += 0.01f;
+  globalToCamera_ = GeometryUtils::createAffineRotation(Vector3D(0, 1, 0), Point3D(200, 200, 0), angle_);
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
   render();

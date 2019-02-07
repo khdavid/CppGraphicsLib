@@ -9,6 +9,7 @@ Vector3D normalized(const Vector3D& vector)
   auto scalarProduct = vector * vector;
   return vector / sqrt(scalarProduct);
 }
+
 Matrix4D createIdentityMatrix4D()
 {
   Matrix4D result;
@@ -19,7 +20,18 @@ Matrix4D createIdentityMatrix4D()
   return result;
 }
 
-Matrix4D createMatrix4D(const Matrix3D& rotation, const Vector3D& shift)
+Matrix3D createIdentityMatrix3D()
+{
+  Matrix3D result;
+  for (int i = 0; i < 3; ++i)
+  {
+    result[i][i] = 1;
+  }
+  return result;
+}
+
+
+Matrix4D createAffineTransform(const Matrix3D& rotation, const Vector3D& shift)
 {
   Matrix4D result = createIdentityMatrix4D();
   for (size_t i = 0; i < 3; ++i)
@@ -50,6 +62,18 @@ Matrix3D createRotation(const Vector3D& direction, double angle)
   };
 
   return result;
+}
+
+Matrix4D createAffineRotation(const Vector3D& direction, const Point3D& point, double angle)
+{
+  const auto u = normalized(direction);
+  const Point3D origin;
+
+  auto moveOriginToPoint = createAffineTransform(createIdentityMatrix3D(), point - origin);
+  auto rotation = createRotation(u, angle);
+  auto affineRotationAlongOrigin = createAffineTransform(rotation);
+  auto movePointToOrigin = createAffineTransform(createIdentityMatrix3D(), origin - point);
+  return moveOriginToPoint * affineRotationAlongOrigin * movePointToOrigin;
 }
 
 }// end of namespacde GeometryUtils

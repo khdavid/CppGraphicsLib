@@ -9,8 +9,10 @@ namespace GeometryUtils
 {
 Vector3D normalized(const Vector3D& vector);
 Matrix4D createIdentityMatrix4D();
-Matrix4D createMatrix4D(const Matrix3D& rotation, const Vector3D& shift = {});
+Matrix3D createIdentityMatrix3D();
+Matrix4D createAffineTransform(const Matrix3D& rotation, const Vector3D& shift = {});
 Matrix3D createRotation(const Vector3D& direction, double angle);
+Matrix4D createAffineRotation(const Vector3D& direction, const Point3D& point, double angle);
 
 
 template <class T>
