@@ -55,10 +55,13 @@ Matrix3D createRotation(const Vector3D& direction, double angle)
   const auto u = normalized(direction);
   const auto a = angle;
 
-  Matrix3D result = {
-    cos(a) + sqr(u[0]) * (1 - cos(a)),           u[0] * u[1] * (1 - cos(a)) - u[2] * sin(a),    u[0] * u[2] * (1 - cos(a)) + u[1] * sin(a),
-    u[1] * u[0] * (1 - cos(a)) + u[2] * sin(a),  cos(a) + sqr(u[1]) * (1 - cos(a)),             u[1] * u[2] * (1 - cos(a)) - u[0] * sin(a),
-    u[2] * u[0] * (1 - cos(a)) - u[1] * sin(a),  u[2] * u[1] * (1 - cos(a)) + u[0] * sin(a) ,   cos(a) + sqr(u[2]) * (1 - cos(a))
+  Matrix3D result = 
+  {
+    cos(a) + sqr(u[0]) * (1 - cos(a)),               u[0] * u[1] * (1 - cos(a)) - u[2] * sin(a),       u[0] * u[2] * (1 - cos(a)) + u[1] * sin(a),
+
+    u[1] * u[0] * (1 - cos(a)) + u[2] * sin(a),      cos(a) + sqr(u[1]) * (1 - cos(a)),                u[1] * u[2] * (1 - cos(a)) - u[0] * sin(a),
+
+    u[2] * u[0] * (1 - cos(a)) - u[1] * sin(a),      u[2] * u[1] * (1 - cos(a)) + u[0] * sin(a),       cos(a) + sqr(u[2]) * (1 - cos(a))
   };
 
   return result;
