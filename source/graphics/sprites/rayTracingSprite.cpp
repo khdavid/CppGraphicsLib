@@ -21,8 +21,7 @@ void RayTracingSprite::init()
   
   globalToCameraUniform_ = glGetUniformLocation(programId_, cGlobalToCameraName);
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
-  //(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
-  glUniformMatrix4fv(globalToCameraUniform_, GLsizei(glMatrix.size()), false, glMatrix.data());
+  glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
 }
 
 void RayTracingSprite::onMouseClick(int, int)
@@ -31,6 +30,19 @@ void RayTracingSprite::onMouseClick(int, int)
 
 void RayTracingSprite::onMouseMove(int, int )
 {
+}
+
+void RayTracingSprite::onMouseMovePassive(int, int)
+{
+  float dt = 0.01f;
+  auto globalToCameraOld = globalToCamera_;
+  globalToCamera_[0][0] = globalToCameraOld[0][0] * cos(dt) + globalToCameraOld[1][0] * sin(dt);
+  globalToCamera_[0][1] = globalToCameraOld[0][1] * cos(dt) + globalToCameraOld[1][1] * sin(dt);
+  globalToCamera_[1][1] = globalToCameraOld[1][1] * cos(dt) - globalToCameraOld[1][0] * sin(dt);
+  globalToCamera_[1][0] = globalToCameraOld[1][0] * cos(dt) - globalToCameraOld[1][1] * sin(dt);
+  auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
+  glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
+  render();
 }
 
 void RayTracingSprite::onMouseScrolling(int)
@@ -203,7 +215,7 @@ void main()
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
   
-  //ray = transform(ray, globalToCamera);
+  ray = transform(ray, globalToCamera);
   
 
   Light light;
@@ -242,6 +254,7 @@ void main()
   }
 
   outColor = vec4(color, 1);
+  //outColor = vec4(globalToCamera[0][0], globalToCamera[0][1], globalToCamera[0][2], 1);
 }
   
 )";
