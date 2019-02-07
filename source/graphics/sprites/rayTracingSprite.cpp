@@ -34,7 +34,7 @@ void RayTracingSprite::onMouseMove(int, int )
 
 void RayTracingSprite::onMouseMovePassive(int, int)
 {
-  float dt = 0.01f;
+  float dt = 0.001f;
   auto globalToCameraOld = globalToCamera_;
   globalToCamera_[0][0] = globalToCameraOld[0][0] * cos(dt) + globalToCameraOld[1][0] * sin(dt);
   globalToCamera_[0][1] = globalToCameraOld[0][1] * cos(dt) + globalToCameraOld[1][1] * sin(dt);
