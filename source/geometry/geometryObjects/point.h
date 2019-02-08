@@ -6,19 +6,19 @@
 #include "indexAccessor.h"
 
 
-template <size_t n>
-struct Point : IndexAccessor<double, n>
+template <class T, size_t n>
+struct Point : IndexAccessor<T, n>
 {
   static constexpr GeomEntityType geom_type = GeomEntityType::Point;
   using IndexAccessor<double, n>::IndexAccessor;
 };
 
-struct Point2D : public Point<2>
+struct Point2D : public Point<double, 2>
 {
-  using Point<2>::Point;
+  using Point<double, 2>::Point;
 };
 
-struct Point3D : public Point<3>
+struct Point3D : public Point<double, 3>
 {
-  using Point<3>::Point;
+  using Point<double, 3>::Point;
 };

@@ -15,7 +15,7 @@
 void test()
 {
   Vector2D tv(7);
-  Vector<4> aaa{ 1.0,2.0 };
+  Vector<double, 4> aaa{ 1.0,2.0 };
   IndexAccessor<double, 4> aaab;
   Vector3D zero;
   Vector3D aa(1, 2, 3);

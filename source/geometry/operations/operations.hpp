@@ -109,10 +109,10 @@ enable_if_matrix_t<T> operator*(const T& m1, const T& m2)
   return res;
 }
 
-template <size_t n>
-Vector<n> operator*(const Matrix<double, n>& m, const Vector<n>& v)
+template <class T, size_t n>
+Vector<T, n> operator*(const Matrix<T, n>& m, const Vector<T, n>& v)
 {
-  Vector<n> result;
+  Vector<T, n> result;
   for (size_t i = 0; i < n; ++i)
   {
     for (size_t j = 0; j < n; ++j)

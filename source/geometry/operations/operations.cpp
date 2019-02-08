@@ -18,11 +18,11 @@ int numb()
 }
 void test2()
 {
-  Vector<4> aaa{ 1.0, 2.0, 3.0,4.0 };
-  Vector<4> bbb{ 1.0, 2, 3, 4 };
+  Vector<double, 4> aaa{ 1.0, 2.0, 3.0,4.0 };
+  Vector<double, 4> bbb{ 1.0, 2, 3, 4 };
   const int x = 2;
-  Vector<4> abc{ x,x,x,numb() };
-  Vector<4> ddd;
+  Vector<double, 4> abc{ x,x,x,numb() };
+  Vector<double, 4> ddd;
 
   IndexAccessor<Point2D, 2> tr ( Point2D{1,2},Point2D{1,3} );
   auto ccc = aaa;

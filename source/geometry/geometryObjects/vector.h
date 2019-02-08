@@ -5,19 +5,19 @@
 #include "operations/operations.h"
 #include "indexAccessor.h"
 
-template <size_t n>
-struct Vector : IndexAccessor<double, n>
+template <class T, size_t n>
+struct Vector : IndexAccessor<T, n>
 {
   static constexpr GeomEntityType geom_type = GeomEntityType::Vector;
-  using IndexAccessor<double, n>::IndexAccessor;
+  using IndexAccessor<T, n>::IndexAccessor;
 };
 
-struct Vector2D : public Vector<2>
+struct Vector2D : public Vector<double, 2>
 {
-  using Vector<2>::Vector;
+  using Vector<double, 2>::Vector;
 };
 
-struct Vector3D : public Vector<3>
+struct Vector3D : public Vector<double, 3>
 {
-  using Vector<3>::Vector;
+  using Vector<double, 3>::Vector;
 };
