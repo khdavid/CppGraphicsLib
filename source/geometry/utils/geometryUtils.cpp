@@ -10,6 +10,14 @@ Vector3D normalized(const Vector3D& vector)
   return vector / sqrt(scalarProduct);
 }
 
+Vector3D cross(const Vector3D & first, const Vector3D & second)
+{
+  return Vector3D(
+    first[1] * second[2] - first[2] * second[1],
+    -first[0] * second[2] + first[2] * second[0],
+    first[0] * second[1] - first[1] * second[0]);
+}
+
 Matrix4D createIdentityMatrix4D()
 {
   Matrix4D result;

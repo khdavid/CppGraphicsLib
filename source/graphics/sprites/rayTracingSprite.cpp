@@ -24,27 +24,40 @@ void RayTracingSprite::init()
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
 }
 
-void RayTracingSprite::onMouseClick(int, int)
+void RayTracingSprite::onMouseClick(int x, int y)
 {
+  mousePoint_ = { x, y };
 }
 
-void RayTracingSprite::onMouseMove(int, int )
+void RayTracingSprite::onMouseMove(int x, int y)
 {
-}
-
-void RayTracingSprite::onMouseMovePassive(int x, int y)
-{
-  Vector2DInt coords(x, y);
-  //coords = coords - coords;
-  angle_ += 0.1f;
-  globalToCamera_ = GeometryUtils::createAffineRotation(Vector3D(0, 1, 0), Point3D(350, 200, 500), angle_);
-  auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
-  glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
+  auto mousePointNew = Point2D(-x, y);
+  auto motion = mousePointNew - mousePoint_;
+  Vector3D motion3D = { motion[0], motion[1], 0 };
+  auto rotationDirection = GeometryUtils::cross(motion3D, GeometryUtils::AXIS_Z);
+  mousePoint_ = mousePointNew;
+  auto rotation = GeometryUtils::createAffineRotation(rotationDirection, Point3D(350, 200, 500), 0.3f);
+  globalToCamera_ = globalToCamera_ * rotation;
   render();
+}
+
+void RayTracingSprite::onMouseMovePassive(int , int )
+{
+  //coords = coords - coords;
+  //angle_ += 0.1f;
+  //globalToCamera_ = GeometryUtils::createAffineRotation(Vector3D(0, 1, 0), Point3D(350, 200, 500), angle_);
+  //render();
 }
 
 void RayTracingSprite::onMouseScrolling(int)
 {
+}
+
+void RayTracingSprite::render()
+{
+  auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
+  glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
+  FragmentShaderSprite::render();
 }
 
 std::string RayTracingSprite::getFragmentShaderCode_() const
