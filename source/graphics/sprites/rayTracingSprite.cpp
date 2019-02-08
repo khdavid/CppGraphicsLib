@@ -35,7 +35,7 @@ void RayTracingSprite::onMouseMove(int, int )
 void RayTracingSprite::onMouseMovePassive(int, int)
 {
   angle_ += 0.1f;
-  globalToCamera_ = GeometryUtils::createAffineRotation(Vector3D(0, 0, 1), Point3D(150, 200, 200), angle_);
+  globalToCamera_ = GeometryUtils::createAffineRotation(Vector3D(0, 1, 0), Point3D(350, 200, 500), angle_);
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
   render();
@@ -192,11 +192,19 @@ const vec3 white = vec3(255, 255, 255) / 255;
 
 void main()
 {
-  Ball balls[1];
+  Ball balls[3];
 
-  balls[0].center = vec3(0, 0, 400);
+  balls[0].center = vec3(250, 200, 500);
   balls[0].radius = 100;
   balls[0].color = blue;
+
+  balls[1].center = vec3(450, 200, 480);
+  balls[1].radius = 150;
+  balls[1].color = green;
+
+  balls[2].center = vec3(450, 300, 580);
+  balls[2].radius = 150;
+  balls[2].color = white;
 
 
   Ray ray;
