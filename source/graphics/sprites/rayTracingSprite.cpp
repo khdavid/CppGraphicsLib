@@ -177,12 +177,26 @@ vec3 getPhongColor(vec3 color, vec3 normal, in Light light, in Ray reflectedRay)
   return (0.6 + 0.4 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
 }
 
+vec3 transformVector(in vec3 vector, in mat4 transform)
+{
+  vec3 result;
+  result = (transform * vec4(vector, 0)).xyz;
+  result = normalized(result);
+  return result;
+}
+
+vec3 transformPoint(in vec3 point, in mat4 transform)
+{
+  vec3 result;
+  result = (transform * vec4(point, 1)).xyz;
+  return result;
+}
+
 Ray transform(in Ray ray, in mat4 transform)
 {
   Ray result;
-  result.point = (transform * vec4(ray.point, 1)).xyz;
-  result.direction = (transform * vec4(ray.direction, 0)).xyz;
-  result.direction = normalized(result.direction);
+  result.point = transformPoint(ray.point, transform);
+  result.direction = transformVector(ray.direction, transform);
   return result;
 }
 
@@ -218,6 +232,7 @@ void main()
   Light light;
   light.color = white;
   light.direction = normalized(vec3 (0, -2, -1));
+  //light.direction = transformVector(light.direction, globalToCamera);
   
   float minDistanceSqr = 1e10;
   bool closestBallFound = false;
