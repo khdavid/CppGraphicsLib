@@ -37,7 +37,7 @@ void RayTracingSprite::onMouseMovePassive(int, int)
   angle_ += 0.1f;
   globalToCamera_ = GeometryUtils::createAffineRotation(Vector3D(0, 0, 1), Point3D(150, 200, 200), angle_);
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
-  glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
+  glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
   render();
 }
 
