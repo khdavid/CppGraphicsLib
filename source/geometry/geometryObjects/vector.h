@@ -21,3 +21,9 @@ struct Vector3D : public Vector<double, 3>
 {
   using Vector<double, 3>::Vector;
 };
+
+struct Vector2DInt : public Vector<int, 2>
+{
+  using Vector<int, 2>::Vector;
+};
+
