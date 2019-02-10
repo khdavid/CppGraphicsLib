@@ -24,6 +24,7 @@
     <ClInclude Include="geometryObjects\indexAccessor.h" />
     <ClInclude Include="geometryObjects\matrix.h" />
     <ClInclude Include="geometryObjects\geomEntityType.h" />
+    <ClInclude Include="geometryObjects\sphere.h" />
     <ClInclude Include="utils\geometryUtils.h" />
     <ClInclude Include="operations\operations.h" />
     <ClInclude Include="geometryObjects\triangle.h" />

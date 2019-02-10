@@ -19,12 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="materials\materialsManager.cpp" />
     <ClCompile Include="model\model.cpp" />
+    <ClCompile Include="object\objectsManager.cpp" />
     <ClCompile Include="object\object.cpp" />
+    <ClCompile Include="object\sphereObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="materials\materialsManager.h" />
+    <ClInclude Include="materials\material.h" />
     <ClInclude Include="model\model.h" />
+    <ClInclude Include="object\objectsManager.h" />
     <ClInclude Include="object\object.h" />
+    <ClInclude Include="object\sphereObject.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

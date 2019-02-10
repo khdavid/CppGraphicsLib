@@ -39,6 +39,9 @@
     <ClInclude Include="utils\geometryUtils.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="geometryObjects\sphere.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operations\operations.cpp">
