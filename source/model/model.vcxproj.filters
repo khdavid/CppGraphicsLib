@@ -4,15 +4,24 @@
     <Filter Include="objects">
       <UniqueIdentifier>{2cf2f4c5-f247-42f2-b517-2f46cb28bcae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{9226e9a2-23e1-41f8-b1af-f0aabdb4887f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="object\object.cpp">
       <Filter>objects</Filter>
     </ClCompile>
+    <ClCompile Include="model\model.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object\object.h">
       <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="model\model.h">
+      <Filter>model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
 #pragma once
-class Object
+
+class Model
 {
 public:
+  Model();
 };
 

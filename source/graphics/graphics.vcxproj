@@ -256,6 +256,9 @@
     <ProjectReference Include="..\geometry\geometry.vcxproj">
       <Project>{01971f68-e447-4739-9f7e-91873126db52}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\model\model.vcxproj">
+      <Project>{640147f4-976e-44a9-b69c-ef29fc1b0979}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
