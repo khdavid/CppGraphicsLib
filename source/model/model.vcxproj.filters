@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="objects">
+      <UniqueIdentifier>{2cf2f4c5-f247-42f2-b517-2f46cb28bcae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="object\object.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="object\object.h">
+      <Filter>objects</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -36,7 +36,7 @@ void RayTracingSprite::onMouseMove(int x, int y)
   Vector3D motion3D = { motion[0], motion[1], 0 };
   auto rotationDirection = GeometryUtils::cross(motion3D, GeometryUtils::AXIS_Z);
   mousePoint_ = mousePointNew;
-  auto rotation = GeometryUtils::createAffineRotation(rotationDirection, Point3D(350, 200, 500), 0.3f);
+  auto rotation = GeometryUtils::createAffineRotation(rotationDirection, Point3D(350, 200, 500), 0.04f);
   globalToCamera_ = globalToCamera_ * rotation;
   render();
 }
