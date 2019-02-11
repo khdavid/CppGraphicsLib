@@ -1,0 +1,1 @@
+#include "objectsInitializator.h"

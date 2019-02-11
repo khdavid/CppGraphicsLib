@@ -27,6 +27,10 @@
     <ClCompile Include="object\objectsManager.cpp">
       <Filter>objects</Filter>
     </ClCompile>
+    <ClCompile Include="object\objectsFactory.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
+    <ClCompile Include="objectsInitializator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object\object.h">
@@ -47,5 +51,9 @@
     <ClInclude Include="object\objectsManager.h">
       <Filter>objects</Filter>
     </ClInclude>
+    <ClInclude Include="object\objectsFactory.h">
+      <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="objectsInitializator.h" />
   </ItemGroup>
 </Project>

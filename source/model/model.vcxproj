@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="materials\materialsManager.cpp" />
     <ClCompile Include="model\model.cpp" />
+    <ClCompile Include="objectsInitializator.cpp" />
+    <ClCompile Include="object\objectsFactory.cpp" />
     <ClCompile Include="object\objectsManager.cpp" />
     <ClCompile Include="object\object.cpp" />
     <ClCompile Include="object\sphereObject.cpp" />
@@ -29,6 +31,8 @@
     <ClInclude Include="materials\materialsManager.h" />
     <ClInclude Include="materials\material.h" />
     <ClInclude Include="model\model.h" />
+    <ClInclude Include="objectsInitializator.h" />
+    <ClInclude Include="object\objectsFactory.h" />
     <ClInclude Include="object\objectsManager.h" />
     <ClInclude Include="object\object.h" />
     <ClInclude Include="object\sphereObject.h" />
