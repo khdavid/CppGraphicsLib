@@ -1,8 +1,7 @@
 #pragma once
 #include <memory>
 #include <vector>
-
-class Object;
+#include "object.h"
 
 class ObjectsManager
 {
