@@ -33,6 +33,9 @@
     <ClCompile Include="materials\materialsFactory.cpp">
       <Filter>materials</Filter>
     </ClCompile>
+    <ClCompile Include="materials\material.cpp">
+      <Filter>materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object\object.h">

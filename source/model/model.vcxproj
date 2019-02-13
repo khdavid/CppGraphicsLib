@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="materials\material.cpp" />
     <ClCompile Include="materials\materialsFactory.cpp" />
     <ClCompile Include="model\model.cpp" />
     <ClCompile Include="object\objectsInitializator.cpp" />

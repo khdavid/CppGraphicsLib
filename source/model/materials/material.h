@@ -2,10 +2,13 @@
 
 struct Color
 {
-  wchar_t r;
-  wchar_t g;
-  wchar_t b;
+  int r;
+  int g;
+  int b;
 };
+
+Color operator*(const Color& color, double multiplier);
+Color operator+(const Color& color1, const Color& color2);
 
 struct Material
 {

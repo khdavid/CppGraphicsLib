@@ -1,4 +1,5 @@
 #pragma once
+
 #include "geometryObjects/sphere.h"
 #include "object.h"
 

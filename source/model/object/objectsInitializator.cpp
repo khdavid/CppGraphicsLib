@@ -3,6 +3,5 @@
 
 ObjectsInitializator::ObjectsInitializator()
 {
-  
-  objectsManager_.setObject(ObjectsFactory::createSphereObject())
+  //objectsManager_.setObject(ObjectsFactory::createSphereObject())
 }
