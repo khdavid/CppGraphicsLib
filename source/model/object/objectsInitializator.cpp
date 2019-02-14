@@ -10,7 +10,7 @@ ObjectsInitializator::ObjectsInitializator()
   objectsManager_.setObject(ObjectsFactory::createSphereObject(MaterialsFactory::RedDiffuse(), sphere));
 }
 
-const Model & ObjectsInitializator::getObjectManager() const
+const Model & ObjectsInitializator::getModel() const
 {
   return objectsManager_;
 }

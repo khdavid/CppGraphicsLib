@@ -6,7 +6,7 @@ class ObjectsInitializator
 {
 public:
   ObjectsInitializator();
-  const Model& getObjectManager() const;
+  const Model& getModel() const;
 private:
   Model objectsManager_;
 };
