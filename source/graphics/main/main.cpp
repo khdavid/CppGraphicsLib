@@ -1,13 +1,12 @@
 #include <iostream>
 
-#include "contextProvider.h"
+#include "main/contextProvider.h"
 #include "eventHandlers/mainLoop.h"
 #include "geometryObjects/point.h"
 #include "geometryObjects/vector.h"
 #include "geometryObjects/triangle.h"
 #include "geometryObjects/matrix.h"
 
-#include <initializer_list>
 #include <vector>
 
 

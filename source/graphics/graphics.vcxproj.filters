@@ -25,6 +25,9 @@
     <Filter Include="GLSL">
       <UniqueIdentifier>{44460d8a-607a-42b2-813c-ca55fd00eccc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{c80598fc-8cd9-4821-8369-fa09254ae3dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
@@ -42,8 +45,6 @@
     <ClCompile Include="wrappers\SDL_GLContextWrapper.cpp">
       <Filter>wrappers</Filter>
     </ClCompile>
-    <ClCompile Include="contextProvider.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="observables\inputEventObservable.cpp">
       <Filter>observables</Filter>
     </ClCompile>
@@ -80,6 +81,12 @@
     <ClCompile Include="GLSL\GLSLProgramColoring.cpp">
       <Filter>GLSL</Filter>
     </ClCompile>
+    <ClCompile Include="main\contextProvider.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -91,7 +98,6 @@
     <ClInclude Include="wrappers\SDL_WindowWrapper.h">
       <Filter>wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="contextProvider.h" />
     <ClInclude Include="eventhandlers\eventsManager.h">
       <Filter>eventHandlers</Filter>
     </ClInclude>
@@ -136,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="GLSL\GLSLProgramColoring.h">
       <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="main\contextProvider.h">
+      <Filter>main</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

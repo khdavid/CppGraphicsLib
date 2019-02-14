@@ -209,7 +209,7 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="contextProvider.cpp" />
+    <ClCompile Include="main\contextProvider.cpp" />
     <ClCompile Include="eventhandlers\eventClassifier.cpp" />
     <ClCompile Include="eventhandlers\eventsManager.cpp" />
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
@@ -221,7 +221,7 @@
     <ClCompile Include="GLSL\GLSLShaderCompiler.cpp" />
     <ClCompile Include="listeners\inputEventListener.cpp" />
     <ClCompile Include="listeners\inputEventLogger.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main\main.cpp" />
     <ClCompile Include="observables\inputEventObservable.cpp" />
     <ClCompile Include="GLSL\GLSLProgramsManager.cpp" />
     <ClCompile Include="GLSL\GLSLProgramColoring.cpp" />
@@ -230,7 +230,7 @@
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="contextProvider.h" />
+    <ClInclude Include="main\contextProvider.h" />
     <ClInclude Include="eventhandlers\eventClassifier.h" />
     <ClInclude Include="eventhandlers\eventsManager.h" />
     <ClInclude Include="eventhandlers\mainLoop.h" />
