@@ -11,6 +11,11 @@ Color operator*(const Color& color, double multiplier)
   };
 }
 
+Color operator*(double multiplier, const Color& color)
+{
+  return color * multiplier;
+}
+
 Color operator+(const Color& color1, const Color& color2)
 {
   return {

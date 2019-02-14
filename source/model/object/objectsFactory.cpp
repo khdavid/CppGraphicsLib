@@ -1,7 +1,8 @@
+#include <memory>
+
 #include "materials/material.h"
 #include "geometryObjects/sphere.h"
 #include "objectsFactory.h"
-#include "sphereObject.h"
 
 
 std::unique_ptr<SphereObject> ObjectsFactory::createSphereObject(

@@ -20,6 +20,18 @@ const Color Teal = { 0, 128, 128 };
 const Color Navy = { 0, 0, 128 };
 
 
+Color ambient;
+Color diffuse;
+Color specular;
+float sharpness;
 
-const Material RedDiffuse = {};
+Material RedDiffuse()
+{
+  Material result;
+  result.ambient = 0.2 * Red;
+  result.diffuse = 0.8 * Red;
+  result.sharpness = 30;
+  return result;
+}
+
 }

@@ -1,8 +1,6 @@
 #pragma once
-#include <memory>
-
+#include "sphereObject.h"
 struct Material;
-class SphereObject;
 struct Sphere;
 
 namespace ObjectsFactory

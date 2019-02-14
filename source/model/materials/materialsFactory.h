@@ -21,6 +21,6 @@ extern const Color Purple;
 extern const Color Teal;
 extern const Color Navy;
 
-extern const Material RedDiffuse;
+Material RedDiffuse();
 };
 
