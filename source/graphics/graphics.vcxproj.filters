@@ -44,7 +44,6 @@
     </ClCompile>
     <ClCompile Include="contextProvider.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="pointInSquare.cpp" />
     <ClCompile Include="observables\inputEventObservable.cpp">
       <Filter>observables</Filter>
     </ClCompile>
@@ -93,7 +92,6 @@
       <Filter>wrappers</Filter>
     </ClInclude>
     <ClInclude Include="contextProvider.h" />
-    <ClInclude Include="pointInSquare.h" />
     <ClInclude Include="eventhandlers\eventsManager.h">
       <Filter>eventHandlers</Filter>
     </ClInclude>
