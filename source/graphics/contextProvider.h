@@ -37,4 +37,5 @@ private:
   std::unique_ptr<SDL_GLContextWrapper> context_;
   std::unique_ptr<PointInSquare> pointInSquare_;
   std::unique_ptr<SpriteManager> spriteManager_;
-};
+  std::unique_ptr<ObjectsInitializator> objectsInitializator_;
+  };

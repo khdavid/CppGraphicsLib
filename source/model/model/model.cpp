@@ -1,8 +1,7 @@
+#include "object/object.h"
 #include "model.h"
-#include "geometryObjects/vector.h"
 
-Model::Model()
+void Model::setObject(std::unique_ptr<Object> object)
 {
-  Vector2D a;
-  a = a + a;
+  objects_.push_back(std::move(object));
 }

@@ -25,6 +25,8 @@ ContextProvider::ContextProvider()
   context_ = std::make_unique<SDL_GLContextWrapper>(window_->getNative());
   inputEventLogger_ = std::make_unique<InputEventLogger>();
   pointInSquare_ = std::make_unique<PointInSquare>(*window_->getNative());
+  objectsInitializator_ = std::make_unique<ObjectsInitializator>();
+  
   spriteManager_ = std::make_unique<SpriteManager>(*window_->getNative(), *inputEventObservable_);
   inputEventObservable_->addInputListener(inputEventLogger_.get());
 

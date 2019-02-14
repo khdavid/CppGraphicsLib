@@ -15,13 +15,7 @@
     <ClCompile Include="object\object.cpp">
       <Filter>objects</Filter>
     </ClCompile>
-    <ClCompile Include="model\model.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
     <ClCompile Include="object\sphereObject.cpp">
-      <Filter>objects</Filter>
-    </ClCompile>
-    <ClCompile Include="object\objectsManager.cpp">
       <Filter>objects</Filter>
     </ClCompile>
     <ClCompile Include="object\objectsFactory.cpp">
@@ -36,21 +30,18 @@
     <ClCompile Include="materials\material.cpp">
       <Filter>materials</Filter>
     </ClCompile>
+    <ClCompile Include="model\model.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object\object.h">
       <Filter>objects</Filter>
     </ClInclude>
-    <ClInclude Include="model\model.h">
-      <Filter>model</Filter>
-    </ClInclude>
     <ClInclude Include="materials\material.h">
       <Filter>materials</Filter>
     </ClInclude>
     <ClInclude Include="object\sphereObject.h">
-      <Filter>objects</Filter>
-    </ClInclude>
-    <ClInclude Include="object\objectsManager.h">
       <Filter>objects</Filter>
     </ClInclude>
     <ClInclude Include="object\objectsFactory.h">
@@ -61,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="materials\materialsFactory.h">
       <Filter>materials</Filter>
+    </ClInclude>
+    <ClInclude Include="model\model.h">
+      <Filter>model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

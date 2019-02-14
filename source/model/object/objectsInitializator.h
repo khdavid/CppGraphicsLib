@@ -1,12 +1,13 @@
 #pragma once
 
-#include "objectsManager.h"
+#include "model/model.h"
 
 class ObjectsInitializator
 {
 public:
   ObjectsInitializator();
+  const Model& getObjectManager() const;
 private:
-  ObjectsManager objectsManager_;
+  Model objectsManager_;
 };
 

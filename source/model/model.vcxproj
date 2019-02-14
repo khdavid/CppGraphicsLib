@@ -21,20 +21,18 @@
   <ItemGroup>
     <ClCompile Include="materials\material.cpp" />
     <ClCompile Include="materials\materialsFactory.cpp" />
-    <ClCompile Include="model\model.cpp" />
     <ClCompile Include="object\objectsInitializator.cpp" />
     <ClCompile Include="object\objectsFactory.cpp" />
-    <ClCompile Include="object\objectsManager.cpp" />
+    <ClCompile Include="model\model.cpp" />
     <ClCompile Include="object\object.cpp" />
     <ClCompile Include="object\sphereObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="materials\materialsFactory.h" />
     <ClInclude Include="materials\material.h" />
-    <ClInclude Include="model\model.h" />
     <ClInclude Include="object\objectsInitializator.h" />
     <ClInclude Include="object\objectsFactory.h" />
-    <ClInclude Include="object\objectsManager.h" />
+    <ClInclude Include="model\model.h" />
     <ClInclude Include="object\object.h" />
     <ClInclude Include="object\sphereObject.h" />
   </ItemGroup>
