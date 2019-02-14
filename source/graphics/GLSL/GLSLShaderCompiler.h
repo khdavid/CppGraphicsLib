@@ -4,13 +4,13 @@
 
 #include "listeners/inputEventListener.h"
 
-class GLSLShaderToolBase : public InputEventListener
+class GLSLShaderCompiler
 {
 public:
-  GLSLShaderToolBase::GLSLShaderToolBase(
+  GLSLShaderCompiler::GLSLShaderCompiler(
     const std::string& vertexShaderCode,
     const std::string& fragmentShaderCode);
-    ~GLSLShaderToolBase();
+    ~GLSLShaderCompiler();
 
   GLuint getProgramId() const;
 private:

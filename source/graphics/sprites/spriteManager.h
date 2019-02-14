@@ -1,7 +1,7 @@
 #pragma once
 #include "sprites/coloringSprite.h"
 #include "listeners/inputEventListener.h"
-#include "tools/GLSLShaderToolBase.h"
+#include "GLSL/GLSLShaderCompiler.h"
 #include "sprites/mandelbrotSprite.h"
 
 

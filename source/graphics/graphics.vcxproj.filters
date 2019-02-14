@@ -16,14 +16,14 @@
     <Filter Include="sprites">
       <UniqueIdentifier>{65458949-3fe9-467d-9944-c5162ae28190}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tools">
-      <UniqueIdentifier>{44460d8a-607a-42b2-813c-ca55fd00eccc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="nodes">
       <UniqueIdentifier>{d36b69f6-b8f0-4e85-b524-79d253a2e9fa}</UniqueIdentifier>
     </Filter>
     <Filter Include="utils">
       <UniqueIdentifier>{47a5f65c-e24c-4759-b3ba-e93c42e5248e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLSL">
+      <UniqueIdentifier>{44460d8a-607a-42b2-813c-ca55fd00eccc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,9 +45,6 @@
     <ClCompile Include="contextProvider.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pointInSquare.cpp" />
-    <ClCompile Include="tools\GLSLShaderToolBase.cpp">
-      <Filter>tools</Filter>
-    </ClCompile>
     <ClCompile Include="sprites\spriteBase.cpp">
       <Filter>sprites</Filter>
     </ClCompile>
@@ -81,6 +78,9 @@
     <ClCompile Include="sprites\fragmentShaderSprite.cpp">
       <Filter>sprites</Filter>
     </ClCompile>
+    <ClCompile Include="GLSL\GLSLShaderCompiler.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -99,9 +99,6 @@
     </ClInclude>
     <ClInclude Include="eventhandlers\mainLoop.h">
       <Filter>eventHandlers</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\GLSLShaderToolBase.h">
-      <Filter>tools</Filter>
     </ClInclude>
     <ClInclude Include="nodes\graphicsNode.h">
       <Filter>nodes</Filter>
@@ -138,6 +135,9 @@
     </ClInclude>
     <ClInclude Include="sprites\fragmentShaderSprite.h">
       <Filter>sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLShaderCompiler.h">
+      <Filter>GLSL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

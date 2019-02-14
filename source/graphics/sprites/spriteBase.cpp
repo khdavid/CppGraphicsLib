@@ -2,7 +2,7 @@
 
 void SpriteBase::init_()
 {
-  shaderProgram_ = std::make_unique<GLSLShaderToolBase>(getVertexShaderCode_(), getFragmentShaderCode_());
+  shaderProgram_ = std::make_unique<GLSLShaderCompiler>(getVertexShaderCode_(), getFragmentShaderCode_());
   programId_ = shaderProgram_->getProgramId();
 
   // Enable alpha

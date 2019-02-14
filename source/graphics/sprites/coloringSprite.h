@@ -8,7 +8,7 @@
 #include "spriteBase.h"
 #include "triangleSprite.h"
 
-class GLSLShaderToolBase;
+class GLSLShaderCompiler;
 
 class ColoringSprite : public TriangleSprite
 {

@@ -218,7 +218,7 @@
     <ClCompile Include="utils\SDLUtils.cpp" />
     <ClCompile Include="sprites\mandelbrotSprite.cpp" />
     <ClCompile Include="sprites\spriteBase.cpp" />
-    <ClCompile Include="tools\GLSLShaderToolBase.cpp" />
+    <ClCompile Include="GLSL\GLSLShaderCompiler.cpp" />
     <ClCompile Include="listeners\inputEventListener.cpp" />
     <ClCompile Include="listeners\inputEventLogger.cpp" />
     <ClCompile Include="main.cpp" />
@@ -241,7 +241,7 @@
     <ClInclude Include="sprites\mandelbrotSprite.h" />
     <ClInclude Include="nodes\graphicsNode.h" />
     <ClInclude Include="sprites\spriteBase.h" />
-    <ClInclude Include="tools\GLSLShaderToolBase.h" />
+    <ClInclude Include="GLSL\GLSLShaderCompiler.h" />
     <ClInclude Include="listeners\inputEventListener.h" />
     <ClInclude Include="listeners\inputEventLogger.h" />
     <ClInclude Include="observables\inputEventObservable.h" />

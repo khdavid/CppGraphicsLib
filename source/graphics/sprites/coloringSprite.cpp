@@ -1,7 +1,7 @@
 #include <array>
 
 #include "nodes/graphicsNode.h"
-#include "tools/GLSLShaderToolBase.h"
+#include "GLSL/GLSLShaderCompiler.h"
 #include "coloringSprite.h"
 
 namespace

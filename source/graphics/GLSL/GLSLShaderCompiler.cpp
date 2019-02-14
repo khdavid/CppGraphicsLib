@@ -1,8 +1,8 @@
 #include <vector>
 #include <iostream>
-#include "GLSLShaderToolBase.h"
+#include "GLSLShaderCompiler.h"
 
-GLSLShaderToolBase::GLSLShaderToolBase(
+GLSLShaderCompiler::GLSLShaderCompiler(
   const std::string& vertexShaderCode,
   const std::string& fragmentShaderCode)
 {
@@ -13,12 +13,12 @@ GLSLShaderToolBase::GLSLShaderToolBase(
   glUseProgram(programId_);
 }
 
-GLSLShaderToolBase::~GLSLShaderToolBase()
+GLSLShaderCompiler::~GLSLShaderCompiler()
 {
   glDeleteProgram(programId_);
 }
 
-void GLSLShaderToolBase::compileShader_(GLuint& id, GLuint type, const std::string& shaderCode)
+void GLSLShaderCompiler::compileShader_(GLuint& id, GLuint type, const std::string& shaderCode)
 {
   id = glCreateShader(type);
   if (!id)
@@ -46,7 +46,7 @@ void GLSLShaderToolBase::compileShader_(GLuint& id, GLuint type, const std::stri
   
 }
 
-void GLSLShaderToolBase::linkShaders_()
+void GLSLShaderCompiler::linkShaders_()
 {
 
   glAttachShader(programId_, vertexShaderId_);
@@ -75,7 +75,7 @@ void GLSLShaderToolBase::linkShaders_()
   glDeleteShader(fragmentShaderId_);
 }
 
-GLuint GLSLShaderToolBase::getProgramId() const
+GLuint GLSLShaderCompiler::getProgramId() const
 {
   return programId_;
 }

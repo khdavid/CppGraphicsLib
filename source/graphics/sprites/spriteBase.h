@@ -5,7 +5,7 @@
 #include <glew.h>
 
 #include "listeners/inputEventListener.h"
-#include "tools/GLSLShaderToolBase.h"
+#include "GLSL/GLSLShaderCompiler.h"
 
 class SpriteBase : public InputEventListener
 {
@@ -17,7 +17,7 @@ public:
 protected:
   void init_();
 
-  std::unique_ptr<GLSLShaderToolBase> shaderProgram_;
+  std::unique_ptr<GLSLShaderCompiler> shaderProgram_;
   GLuint programId_ = 0;
 
 private:
