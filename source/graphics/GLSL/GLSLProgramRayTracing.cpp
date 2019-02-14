@@ -2,7 +2,7 @@
 
 #include "nodes/graphicsNode.h"
 #include "utils/geometryUtils.h"
-#include "RayTracingSprite.h"
+#include "GLSLProgramRayTracing.h"
 
 namespace
 {
@@ -10,26 +10,26 @@ const char* cGlobalToCameraName = "globalToCamera";
 }
 
 
-RayTracingSprite::RayTracingSprite(SDL_Window & window): FragmentShaderSprite(window)
+GLSLProgramRayTracing::GLSLProgramRayTracing(SDL_Window & window): GLSLProgramFragmentShader(window)
 {
   globalToCamera_ = GeometryUtils::createIdentityMatrix4D();
 }
 
-void RayTracingSprite::init()
+void GLSLProgramRayTracing::init()
 {
-  FragmentShaderSprite::init();
+  GLSLProgramFragmentShader::init();
   
   globalToCameraUniform_ = glGetUniformLocation(programId_, cGlobalToCameraName);
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
 }
 
-void RayTracingSprite::onMouseClick(int x, int y)
+void GLSLProgramRayTracing::onMouseClick(int x, int y)
 {
   mousePoint_ = { x, y };
 }
 
-void RayTracingSprite::onMouseMove(int x, int y)
+void GLSLProgramRayTracing::onMouseMove(int x, int y)
 {
   auto mousePointNew = Point2D(-x, y);
   auto motion = mousePointNew - mousePoint_;
@@ -41,7 +41,7 @@ void RayTracingSprite::onMouseMove(int x, int y)
   render();
 }
 
-void RayTracingSprite::onMouseMovePassive(int , int )
+void GLSLProgramRayTracing::onMouseMovePassive(int , int )
 {
   //coords = coords - coords;
   //angle_ += 0.1f;
@@ -49,18 +49,18 @@ void RayTracingSprite::onMouseMovePassive(int , int )
   //render();
 }
 
-void RayTracingSprite::onMouseScrolling(int)
+void GLSLProgramRayTracing::onMouseScrolling(int)
 {
 }
 
-void RayTracingSprite::render()
+void GLSLProgramRayTracing::render()
 {
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
-  FragmentShaderSprite::render();
+  GLSLProgramFragmentShader::render();
 }
 
-std::string RayTracingSprite::getFragmentShaderCode_() const
+std::string GLSLProgramRayTracing::getFragmentShaderCode_() const
 {
   return R"(
 #version 130

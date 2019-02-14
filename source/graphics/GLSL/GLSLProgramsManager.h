@@ -1,17 +1,17 @@
 #pragma once
-#include "sprites/coloringSprite.h"
+#include "GLSL/GLSLProgramColoring.h"
 #include "listeners/inputEventListener.h"
 #include "GLSL/GLSLShaderCompiler.h"
-#include "sprites/mandelbrotSprite.h"
+#include "GLSL/GLSLProgramMandelbrot.h"
 
 
 struct SDL_Window;
 class InputEventObservable;
 
-class SpriteManager : public InputEventListener
+class GLSLProgramsManager : public InputEventListener
 {
 public:
-  SpriteManager(SDL_Window& window, InputEventObservable& inputEventObservable);
+  GLSLProgramsManager(SDL_Window& window, InputEventObservable& inputEventObservable);
 
   virtual void onKeyPress(SDL_Keycode keyCode) override;
   virtual void onWindowsResized(int, int) override;
@@ -23,6 +23,6 @@ private:
 
   SDL_Window& window_;
   InputEventObservable& inputEventObservable_;
-  std::unique_ptr<SpriteBase> activeSprite_;
+  std::unique_ptr<GLSLProgramBase> activeSprite_;
 };
 

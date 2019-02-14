@@ -1,14 +1,13 @@
-#include "triangleSprite.h"
-#include "triangleSprite.h"
+#include "GLSLProgramTriangle.h"
 
 namespace
 {
   const char* cVertexPositionName = "vertexPosition";
   const char* cVertexColorName = "vertexColor";
 }
-void TriangleSprite::init_(const std::vector<GLVertex>& vertices)
+void GLSLProgramTriangle::init_(const std::vector<GLVertex>& vertices)
 {
-  SpriteBase::init_();
+  GLSLProgramBase::init_();
   numOfVertices_ = vertices.size();
 
   glGenBuffers(1, &vboVertices_);
@@ -41,7 +40,7 @@ void TriangleSprite::init_(const std::vector<GLVertex>& vertices)
     (const void *)offsetof(GLVertex, material));                // offset of first element
 }
 
-void TriangleSprite::render()
+void GLSLProgramTriangle::render()
 {
   glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
   glClearDepth(1.0f);
@@ -53,11 +52,11 @@ void TriangleSprite::render()
   SDL_GL_SwapWindow(&window_);
 }
 
-TriangleSprite::TriangleSprite(SDL_Window & window):
+GLSLProgramTriangle::GLSLProgramTriangle(SDL_Window & window):
   window_(window)
 {}
 
-TriangleSprite::~TriangleSprite()
+GLSLProgramTriangle::~GLSLProgramTriangle()
 {
   if (shaderProgram_)
   {

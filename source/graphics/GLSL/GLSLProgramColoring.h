@@ -5,15 +5,15 @@
 
 #include "nodes/graphicsNode.h"
 #include "geometryObjects/triangle.h"
-#include "spriteBase.h"
-#include "triangleSprite.h"
+#include "GLSL/GLSLProgramBase.h"
+#include "GLSL/GLSLProgramTriangle.h"
 
 class GLSLShaderCompiler;
 
-class ColoringSprite : public TriangleSprite
+class GLSLProgramColoring : public GLSLProgramTriangle
 {
 public:
-  using TriangleSprite::TriangleSprite;
+  using GLSLProgramTriangle::GLSLProgramTriangle;
   virtual void onMouseMovePassive(int x, int y) override;
   virtual void init() override;
 

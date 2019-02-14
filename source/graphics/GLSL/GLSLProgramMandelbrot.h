@@ -1,10 +1,10 @@
 #pragma once
-#include "fragmentShaderSprite.h"
+#include "GLSL/GLSLProgramFragmentShader.h"
 
-class MandelbrotSprite : public FragmentShaderSprite
+class GLSLProgramMandelbrot : public GLSLProgramFragmentShader
 {
 public:
-  using FragmentShaderSprite::FragmentShaderSprite;
+  using GLSLProgramFragmentShader::GLSLProgramFragmentShader;
   virtual void init() override;
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;

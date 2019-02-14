@@ -3,13 +3,13 @@
 #include <vector>
 
 #include "nodes/graphicsNode.h"
-#include "spriteBase.h"
+#include "GLSLProgramBase.h"
 
-class TriangleSprite : public SpriteBase
+class GLSLProgramTriangle : public GLSLProgramBase
 {
 public:
-  TriangleSprite(SDL_Window& window);
-  ~TriangleSprite();
+  GLSLProgramTriangle(SDL_Window& window);
+  ~GLSLProgramTriangle();
   virtual void render() override;
 protected:
     void init_(const std::vector<GLVertex>& vertices);

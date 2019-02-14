@@ -45,18 +45,6 @@
     <ClCompile Include="contextProvider.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pointInSquare.cpp" />
-    <ClCompile Include="sprites\spriteBase.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="sprites\coloringSprite.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="sprites\triangleSprite.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="sprites\spriteManager.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
     <ClCompile Include="observables\inputEventObservable.cpp">
       <Filter>observables</Filter>
     </ClCompile>
@@ -69,16 +57,28 @@
     <ClCompile Include="utils\SDLUtils.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="sprites\mandelbrotSprite.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="sprites\rayTracingSprite.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="sprites\fragmentShaderSprite.cpp">
-      <Filter>sprites</Filter>
-    </ClCompile>
     <ClCompile Include="GLSL\GLSLShaderCompiler.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramBase.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramsManager.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramTriangle.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramRayTracing.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramMandelbrot.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramFragmentShader.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramColoring.cpp">
       <Filter>GLSL</Filter>
     </ClCompile>
   </ItemGroup>
@@ -103,18 +103,6 @@
     <ClInclude Include="nodes\graphicsNode.h">
       <Filter>nodes</Filter>
     </ClInclude>
-    <ClInclude Include="sprites\spriteBase.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="sprites\coloringSprite.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="sprites\triangleSprite.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="sprites\spriteManager.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
     <ClInclude Include="observables\inputEventObservable.h">
       <Filter>observables</Filter>
     </ClInclude>
@@ -127,16 +115,28 @@
     <ClInclude Include="utils\SDLUtils.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="sprites\mandelbrotSprite.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="sprites\rayTracingSprite.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="sprites\fragmentShaderSprite.h">
-      <Filter>sprites</Filter>
-    </ClInclude>
     <ClInclude Include="GLSL\GLSLShaderCompiler.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramBase.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramsManager.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramTriangle.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramRayTracing.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramMandelbrot.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramFragmentShader.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramColoring.h">
       <Filter>GLSL</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "fragmentShaderSprite.h"
+#include "GLSLProgramFragmentShader.h"
 
 namespace
 {
@@ -13,12 +13,12 @@ std::vector<GLVertex> cVertices =
 };
 }
 
-void FragmentShaderSprite::init()
+void GLSLProgramFragmentShader::init()
 {
   init_(cVertices);
 }
 
-std::string FragmentShaderSprite::getVertexShaderCode_() const
+std::string GLSLProgramFragmentShader::getVertexShaderCode_() const
 {
   return R"(
 

@@ -1,6 +1,6 @@
-#include "SpriteBase.h"
+#include "GLSLProgramBase.h"
 
-void SpriteBase::init_()
+void GLSLProgramBase::init_()
 {
   shaderProgram_ = std::make_unique<GLSLShaderCompiler>(getVertexShaderCode_(), getFragmentShaderCode_());
   programId_ = shaderProgram_->getProgramId();

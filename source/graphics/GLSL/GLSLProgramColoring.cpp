@@ -2,7 +2,7 @@
 
 #include "nodes/graphicsNode.h"
 #include "GLSL/GLSLShaderCompiler.h"
-#include "coloringSprite.h"
+#include "GLSLProgramColoring.h"
 
 namespace
 {
@@ -24,20 +24,20 @@ std::vector<GLVertex> cColoringSpriteVertices =
 };
 }
 
-void ColoringSprite::init()
+void GLSLProgramColoring::init()
 {
   init_(cColoringSpriteVertices);
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
 }
 
-void ColoringSprite::onMouseMovePassive(int, int y)
+void GLSLProgramColoring::onMouseMovePassive(int, int y)
 {
   glUniform1f(fadeUniform_, y / 480.0f);
   render();
 }
 
 
-std::string ColoringSprite::getVertexShaderCode_() const
+std::string GLSLProgramColoring::getVertexShaderCode_() const
 {
   return R"(
 
@@ -61,7 +61,7 @@ std::string ColoringSprite::getVertexShaderCode_() const
   )";
 }
 
-std::string ColoringSprite::getFragmentShaderCode_() const
+std::string GLSLProgramColoring::getFragmentShaderCode_() const
 {
   return R"(
 

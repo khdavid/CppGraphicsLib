@@ -12,7 +12,7 @@
 #include "wrappers/SDL_WindowWrapper.h"
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
-#include "sprites/spriteManager.h"
+#include "GLSL/GLSLProgramsManager.h"
 #include "object/objectsInitializator.h"
 #include "pointInSquare.h"
 
@@ -27,7 +27,7 @@ ContextProvider::ContextProvider()
   pointInSquare_ = std::make_unique<PointInSquare>(*window_->getNative());
   objectsInitializator_ = std::make_unique<ObjectsInitializator>();
   
-  spriteManager_ = std::make_unique<SpriteManager>(*window_->getNative(), *inputEventObservable_);
+  spriteManager_ = std::make_unique<GLSLProgramsManager>(*window_->getNative(), *inputEventObservable_);
   inputEventObservable_->addInputListener(inputEventLogger_.get());
 
 }

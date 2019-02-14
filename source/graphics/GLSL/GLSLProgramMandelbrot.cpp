@@ -3,7 +3,7 @@
 
 #include "nodes/graphicsNode.h"
 #include "utils/SDLUtils.h"
-#include "mandelbrotSprite.h"
+#include "GLSLProgramMandelbrot.h"
 
 
 namespace
@@ -13,9 +13,9 @@ namespace
   const char* cYShift = "yShift";
 }
 
-void MandelbrotSprite::init()
+void GLSLProgramMandelbrot::init()
 {
-  FragmentShaderSprite::init();
+  GLSLProgramFragmentShader::init();
   fadeUniform_ = glGetUniformLocation(programId_, cFadeName);
   xShiftUniform_ = glGetUniformLocation(programId_, cXShift);
   yShiftUniform_ = glGetUniformLocation(programId_, cYShift);
@@ -26,14 +26,14 @@ void MandelbrotSprite::init()
 
 }
 
-void MandelbrotSprite::onMouseClick(int x, int y)
+void GLSLProgramMandelbrot::onMouseClick(int x, int y)
 {
   xPrev_ = x;
   yPrev_ = y;
   render();
 }
 
-void MandelbrotSprite::onMouseMove(int x, int y)
+void GLSLProgramMandelbrot::onMouseMove(int x, int y)
 {
   xShift_ += (x - xPrev_);
   yShift_ += -(y - yPrev_);
@@ -45,7 +45,7 @@ void MandelbrotSprite::onMouseMove(int x, int y)
   render();
 }
 
-void MandelbrotSprite::onMouseScrolling(int velocity)
+void GLSLProgramMandelbrot::onMouseScrolling(int velocity)
 {
   auto mouseCoord = SDLUtils::getMouseXY();
   auto x = mouseCoord.first;
@@ -71,7 +71,7 @@ void MandelbrotSprite::onMouseScrolling(int velocity)
   render();
 }
 
-std::string MandelbrotSprite::getFragmentShaderCode_() const
+std::string GLSLProgramMandelbrot::getFragmentShaderCode_() const
 {
   return R"(
 

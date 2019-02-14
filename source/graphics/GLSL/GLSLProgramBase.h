@@ -7,10 +7,10 @@
 #include "listeners/inputEventListener.h"
 #include "GLSL/GLSLShaderCompiler.h"
 
-class SpriteBase : public InputEventListener
+class GLSLProgramBase : public InputEventListener
 {
 public:
-  virtual ~SpriteBase() = default;
+  virtual ~GLSLProgramBase() = default;
   virtual void render() = 0;
   virtual void init() = 0;
 

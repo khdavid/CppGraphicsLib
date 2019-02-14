@@ -2,12 +2,12 @@
 #include "geometryObjects/matrix.h"
 #include "geometryObjects/point.h"
 
-#include "fragmentShaderSprite.h"
+#include "GLSLProgramFragmentShader.h"
 
-class RayTracingSprite : public FragmentShaderSprite
+class GLSLProgramRayTracing : public GLSLProgramFragmentShader
 {
 public:
-  RayTracingSprite(SDL_Window& window);
+  GLSLProgramRayTracing(SDL_Window& window);
   virtual void init() override;
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;

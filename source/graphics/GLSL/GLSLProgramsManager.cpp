@@ -4,31 +4,31 @@
 #include <vector>
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
-#include "rayTracingSprite.h"
-#include "spriteManager.h"
+#include "GLSL/GLSLProgramRayTracing.h"
+#include "GLSL/GLSLProgramsManager.h"
 
-SpriteManager::SpriteManager(SDL_Window& window, InputEventObservable& inputEventObservable) :
+GLSLProgramsManager::GLSLProgramsManager(SDL_Window& window, InputEventObservable& inputEventObservable) :
   window_(window),
   inputEventObservable_(inputEventObservable)
 {
   inputEventObservable_.addInputListener(this);
-  setActivateSprite_<RayTracingSprite>();
+  setActivateSprite_<GLSLProgramRayTracing>();
 }
 
-void SpriteManager::onWindowsResized(int x, int y)
+void GLSLProgramsManager::onWindowsResized(int x, int y)
 {
   glViewport(0, 0, x, y);
   std::cout << "width: " << x << "height: " << y << std::endl;
   activeSprite_->render();
 }
 
-void SpriteManager::onMouseScrolling(int velocity)
+void GLSLProgramsManager::onMouseScrolling(int velocity)
 {
   activeSprite_->onMouseScrolling(velocity);
 }
 
 template <class T>
-void SpriteManager::setActivateSprite_()
+void GLSLProgramsManager::setActivateSprite_()
 {
   if (activeSprite_)
   {
@@ -46,19 +46,19 @@ void SpriteManager::setActivateSprite_()
   activeSprite_->render();
 }
 
-void SpriteManager::onKeyPress(SDL_Keycode keyCode)
+void GLSLProgramsManager::onKeyPress(SDL_Keycode keyCode)
 {
   if (keyCode == SDLK_1)
   {
-    setActivateSprite_<ColoringSprite>();
+    setActivateSprite_<GLSLProgramColoring>();
   }
   else if (keyCode == SDLK_2)
   {
-    setActivateSprite_<MandelbrotSprite>();
+    setActivateSprite_<GLSLProgramMandelbrot>();
   }
   else if (keyCode == SDLK_3)
   {
-    setActivateSprite_<RayTracingSprite>();
+    setActivateSprite_<GLSLProgramRayTracing>();
   }
 
 }

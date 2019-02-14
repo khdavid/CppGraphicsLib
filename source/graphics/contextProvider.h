@@ -16,7 +16,7 @@ class SDL_WindowWrapper;
 class SDL_GLContextWrapper;
 class InputEventObservable;
 class PointInSquare;
-class SpriteManager;
+class GLSLProgramsManager;
 class ObjectsInitializator;
 
 
@@ -36,6 +36,6 @@ private:
   std::unique_ptr<SDL_WindowWrapper> window_;
   std::unique_ptr<SDL_GLContextWrapper> context_;
   std::unique_ptr<PointInSquare> pointInSquare_;
-  std::unique_ptr<SpriteManager> spriteManager_;
+  std::unique_ptr<GLSLProgramsManager> spriteManager_;
   std::unique_ptr<ObjectsInitializator> objectsInitializator_;
   };
