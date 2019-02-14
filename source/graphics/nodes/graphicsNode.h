@@ -3,7 +3,7 @@
 #include <glew.h>
 #pragma  pack(push, 1)
 
-struct Color
+struct GLColor
 {
   GLubyte r;
   GLubyte g;
@@ -11,27 +11,27 @@ struct Color
   //GLubyte alpha;
 };
 
-struct Material
+struct GLMaterial
 {
-  Color color;
+  GLColor color;
 };
 
-struct Position
+struct GLPosition
 {
   GLfloat x;
   GLfloat y;
   GLfloat z;
 };
 
-struct Vertex
+struct GLVertex
 {
-  Position position;
-  Material material;
+  GLPosition position;
+  GLMaterial material;
 };
 
 struct GLTriangle
 {
-  Vertex vertices[3];
+  GLVertex vertices[3];
 };
 
 #pragma pack(pop)

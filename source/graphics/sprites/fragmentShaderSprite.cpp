@@ -2,14 +2,14 @@
 
 namespace
 {
-std::vector<Vertex> cVertices =
+std::vector<GLVertex> cVertices =
 {
-  Vertex{Position{-1, 1, 0}, Material{Color{0, 0, 0}}},
-  Vertex{Position{1, -1, 0}, Material{Color{0, 0, 0}}},
-  Vertex{Position{-1, -1, 0}, Material{Color{0, 0, 0}}},
-  Vertex{Position{-1, 1, 0}, Material{Color{0, 0, 0}}},
-  Vertex{Position{1, -1, 0}, Material{Color{0, 0, 0}}},
-  Vertex{Position{1, 1, 0}, Material{Color{0, 0, 0}}},
+  GLVertex{GLPosition{-1, 1, 0}, GLMaterial{GLColor{0, 0, 0}}},
+  GLVertex{GLPosition{1, -1, 0}, GLMaterial{GLColor{0, 0, 0}}},
+  GLVertex{GLPosition{-1, -1, 0}, GLMaterial{GLColor{0, 0, 0}}},
+  GLVertex{GLPosition{-1, 1, 0}, GLMaterial{GLColor{0, 0, 0}}},
+  GLVertex{GLPosition{1, -1, 0}, GLMaterial{GLColor{0, 0, 0}}},
+  GLVertex{GLPosition{1, 1, 0}, GLMaterial{GLColor{0, 0, 0}}},
 };
 }
 

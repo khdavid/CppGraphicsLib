@@ -12,7 +12,7 @@ public:
   ~TriangleSprite();
   virtual void render() override;
 protected:
-    void init_(const std::vector<Vertex>& vertices);
+    void init_(const std::vector<GLVertex>& vertices);
 
 private:
   size_t numOfVertices_ = 0;

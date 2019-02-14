@@ -6,14 +6,14 @@ namespace
   const char* cVertexPositionName = "vertexPosition";
   const char* cVertexColorName = "vertexColor";
 }
-void TriangleSprite::init_(const std::vector<Vertex>& vertices)
+void TriangleSprite::init_(const std::vector<GLVertex>& vertices)
 {
   SpriteBase::init_();
   numOfVertices_ = vertices.size();
 
   glGenBuffers(1, &vboVertices_);
   glBindBuffer(GL_ARRAY_BUFFER, vboVertices_);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * numOfVertices_, vertices.data(), GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertex) * numOfVertices_, vertices.data(), GL_STATIC_DRAW);
 
   vertexPositionAttr_ = glGetAttribLocation(programId_, cVertexPositionName);
   vertexColorAttr_ = glGetAttribLocation(programId_, cVertexColorName);
@@ -27,8 +27,8 @@ void TriangleSprite::init_(const std::vector<Vertex>& vertices)
     cVertexPositionDim,              // number of elements per vertex, here (x, y, z)
     GL_FLOAT,          // the type of each element
     GL_FALSE,          // take our values as-is
-    sizeof(Vertex),                 // extra data between each position
-    (const void *)offsetof(Vertex, position));                // offset of first element
+    sizeof(GLVertex),                 // extra data between each position
+    (const void *)offsetof(GLVertex, position));                // offset of first element
 
 
   const int cVertexColorDim = 3;
@@ -37,8 +37,8 @@ void TriangleSprite::init_(const std::vector<Vertex>& vertices)
     cVertexColorDim,              // number of elements per vertex, here (x,y)
     GL_UNSIGNED_BYTE,          // the type of each element
     GL_FALSE,          // take our values as-is
-    sizeof(Vertex),                 // no extra data between each position
-    (const void *)offsetof(Vertex, material));                // offset of first element
+    sizeof(GLVertex),                 // no extra data between each position
+    (const void *)offsetof(GLVertex, material));                // offset of first element
 }
 
 void TriangleSprite::render()

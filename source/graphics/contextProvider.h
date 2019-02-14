@@ -17,6 +17,7 @@ class SDL_GLContextWrapper;
 class InputEventObservable;
 class PointInSquare;
 class SpriteManager;
+class ObjectsInitializator;
 
 
 class ContextProvider

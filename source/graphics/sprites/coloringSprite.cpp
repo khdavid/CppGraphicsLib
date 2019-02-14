@@ -7,20 +7,20 @@
 namespace
 {
 const char* cFadeName = "fade";
-std::vector<Vertex> cColoringSpriteVertices =
+std::vector<GLVertex> cColoringSpriteVertices =
 {
-  Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{255, 0, 0}}},
-  Vertex{Position{0.f, 1.f, 0.2f}, Material{Color{0, 255, 0}}},
-  Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{0, 0, 255}}},
-  Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
-  Vertex{Position{0.f, -1.f, 0.2f}, Material{Color{255, 0, 0}}},
-  Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 255, 0}}},
-  Vertex{Position{-1.f, 1.f, 0.3f}, Material{Color{0, 0, 255}}},
-  Vertex{Position{1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
-  Vertex{Position{-1.f, -1.f, 0.1f}, Material{Color{0, 255, 0}}},
-  Vertex{Position{1.f, 1.f, 0.1f}, Material{Color{0, 0, 255}}},
-  Vertex{Position{-1.f, 0.f, 0.2f}, Material{Color{255, 0, 0}}},
-  Vertex{Position{1.f, -1.f, 0.3f}, Material{Color{255, 255, 255}}}
+  GLVertex{GLPosition{-1.f, -1.f, 0.1f}, GLMaterial{GLColor{255, 0, 0}}},
+  GLVertex{GLPosition{0.f, 1.f, 0.2f}, GLMaterial{GLColor{0, 255, 0}}},
+  GLVertex{GLPosition{1.f, -1.f, 0.3f}, GLMaterial{GLColor{0, 0, 255}}},
+  GLVertex{GLPosition{-1.f, 1.f, 0.3f}, GLMaterial{GLColor{0, 0, 255}}},
+  GLVertex{GLPosition{0.f, -1.f, 0.2f}, GLMaterial{GLColor{255, 0, 0}}},
+  GLVertex{GLPosition{1.f, 1.f, 0.1f}, GLMaterial{GLColor{0, 255, 0}}},
+  GLVertex{GLPosition{-1.f, 1.f, 0.3f}, GLMaterial{GLColor{0, 0, 255}}},
+  GLVertex{GLPosition{1.f, 0.f, 0.2f}, GLMaterial{GLColor{255, 0, 0}}},
+  GLVertex{GLPosition{-1.f, -1.f, 0.1f}, GLMaterial{GLColor{0, 255, 0}}},
+  GLVertex{GLPosition{1.f, 1.f, 0.1f}, GLMaterial{GLColor{0, 0, 255}}},
+  GLVertex{GLPosition{-1.f, 0.f, 0.2f}, GLMaterial{GLColor{255, 0, 0}}},
+  GLVertex{GLPosition{1.f, -1.f, 0.3f}, GLMaterial{GLColor{255, 255, 255}}}
 };
 }
 

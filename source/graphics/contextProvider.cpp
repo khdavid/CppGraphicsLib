@@ -13,6 +13,7 @@
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
 #include "sprites/spriteManager.h"
+#include "object/objectsInitializator.h"
 #include "pointInSquare.h"
 
 #include "contextProvider.h"
