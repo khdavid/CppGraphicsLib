@@ -8,7 +8,7 @@
 #include <sdl.h>
 #include <glew.h>
 
-#include "contextProvider.h"
+#include "main/contextProvider.h"
 #include "eventsManager.h"
 #include "eventClassifier.h"
 #include "mainLoop.h"
