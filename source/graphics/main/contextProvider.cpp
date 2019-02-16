@@ -12,7 +12,7 @@
 #include "wrappers/SDL_WindowWrapper.h"
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
-#include "GLSL/GLSLProgramsManager.h"
+#include "commands/GLSLProgramsManager.h"
 #include "object/objectsInitializator.h"
 
 #include "contextProvider.h"

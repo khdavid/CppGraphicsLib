@@ -28,6 +28,12 @@
     <Filter Include="main">
       <UniqueIdentifier>{c80598fc-8cd9-4821-8369-fa09254ae3dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{e6310d19-4257-4cdc-a49c-b27bf06ee650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="commands">
+      <UniqueIdentifier>{78f40661-d1d1-46ba-937c-80b0f4d20201}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
@@ -63,9 +69,6 @@
     <ClCompile Include="GLSL\GLSLProgramBase.cpp">
       <Filter>GLSL</Filter>
     </ClCompile>
-    <ClCompile Include="GLSL\GLSLProgramsManager.cpp">
-      <Filter>GLSL</Filter>
-    </ClCompile>
     <ClCompile Include="GLSL\GLSLProgramTriangle.cpp">
       <Filter>GLSL</Filter>
     </ClCompile>
@@ -86,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="main\main.cpp">
       <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\sceneRotatingTool.cpp">
+      <Filter>tools</Filter>
+    </ClCompile>
+    <ClCompile Include="commands\GLSLProgramsManager.cpp">
+      <Filter>commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +134,6 @@
     <ClInclude Include="GLSL\GLSLProgramBase.h">
       <Filter>GLSL</Filter>
     </ClInclude>
-    <ClInclude Include="GLSL\GLSLProgramsManager.h">
-      <Filter>GLSL</Filter>
-    </ClInclude>
     <ClInclude Include="GLSL\GLSLProgramTriangle.h">
       <Filter>GLSL</Filter>
     </ClInclude>
@@ -145,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="main\contextProvider.h">
       <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\sceneRotatingTool.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="commands\GLSLProgramsManager.h">
+      <Filter>commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

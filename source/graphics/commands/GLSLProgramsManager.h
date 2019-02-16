@@ -19,10 +19,10 @@ public:
 
 private:
   template <class T>
-  void setActivateSprite_();
+  void setActivateProgram_();
 
   SDL_Window& window_;
   InputEventObservable& inputEventObservable_;
-  std::unique_ptr<GLSLProgramBase> activeSprite_;
+  std::unique_ptr<GLSLProgramBase> activeProgram_;
 };
 

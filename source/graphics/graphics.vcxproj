@@ -215,6 +215,7 @@
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
     <ClCompile Include="GLSL\GLSLProgramFragmentShader.cpp" />
     <ClCompile Include="GLSL\GLSLProgramRayTracing.cpp" />
+    <ClCompile Include="tools\sceneRotatingTool.cpp" />
     <ClCompile Include="utils\SDLUtils.cpp" />
     <ClCompile Include="GLSL\GLSLProgramMandelbrot.cpp" />
     <ClCompile Include="GLSL\GLSLProgramBase.cpp" />
@@ -223,7 +224,7 @@
     <ClCompile Include="listeners\inputEventLogger.cpp" />
     <ClCompile Include="main\main.cpp" />
     <ClCompile Include="observables\inputEventObservable.cpp" />
-    <ClCompile Include="GLSL\GLSLProgramsManager.cpp" />
+    <ClCompile Include="commands\GLSLProgramsManager.cpp" />
     <ClCompile Include="GLSL\GLSLProgramColoring.cpp" />
     <ClCompile Include="GLSL\GLSLProgramTriangle.cpp" />
     <ClCompile Include="wrappers\SDL_GLContextWrapper.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="eventhandlers\mainLoop.h" />
     <ClInclude Include="GLSL\GLSLProgramFragmentShader.h" />
     <ClInclude Include="GLSL\GLSLProgramRayTracing.h" />
+    <ClInclude Include="tools\sceneRotatingTool.h" />
     <ClInclude Include="utils\SDLUtils.h" />
     <ClInclude Include="GLSL\GLSLProgramMandelbrot.h" />
     <ClInclude Include="nodes\graphicsNode.h" />
@@ -244,7 +246,7 @@
     <ClInclude Include="listeners\inputEventListener.h" />
     <ClInclude Include="listeners\inputEventLogger.h" />
     <ClInclude Include="observables\inputEventObservable.h" />
-    <ClInclude Include="GLSL\GLSLProgramsManager.h" />
+    <ClInclude Include="commands\GLSLProgramsManager.h" />
     <ClInclude Include="GLSL\GLSLProgramColoring.h" />
     <ClInclude Include="GLSL\GLSLProgramTriangle.h" />
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h" />

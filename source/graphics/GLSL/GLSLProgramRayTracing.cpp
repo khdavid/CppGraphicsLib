@@ -41,23 +41,21 @@ void GLSLProgramRayTracing::onMouseMove(int x, int y)
   render();
 }
 
-void GLSLProgramRayTracing::onMouseMovePassive(int , int )
-{
-  //coords = coords - coords;
-  //angle_ += 0.1f;
-  //globalToCamera_ = GeometryUtils::createAffineRotation(Vector3D(0, 1, 0), Point3D(350, 200, 500), angle_);
-  //render();
-}
-
-void GLSLProgramRayTracing::onMouseScrolling(int)
-{
-}
-
 void GLSLProgramRayTracing::render()
 {
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
   GLSLProgramFragmentShader::render();
+}
+
+Matrix4D GLSLProgramRayTracing::getGlobalToCamera() const
+{
+  return globalToCamera_;
+}
+
+void GLSLProgramRayTracing::setGlobalToCamera(Matrix4D matrix)
+{
+  globalToCamera_ = std::move(matrix);
 }
 
 std::string GLSLProgramRayTracing::getFragmentShaderCode_() const

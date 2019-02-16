@@ -5,60 +5,60 @@
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
 #include "GLSL/GLSLProgramRayTracing.h"
-#include "GLSL/GLSLProgramsManager.h"
+#include "commands/GLSLProgramsManager.h"
 
 GLSLProgramsManager::GLSLProgramsManager(SDL_Window& window, InputEventObservable& inputEventObservable) :
   window_(window),
   inputEventObservable_(inputEventObservable)
 {
   inputEventObservable_.addInputListener(this);
-  setActivateSprite_<GLSLProgramRayTracing>();
+  setActivateProgram_<GLSLProgramRayTracing>();
 }
 
 void GLSLProgramsManager::onWindowsResized(int x, int y)
 {
   glViewport(0, 0, x, y);
   std::cout << "width: " << x << "height: " << y << std::endl;
-  activeSprite_->render();
+  activeProgram_->render();
 }
 
 void GLSLProgramsManager::onMouseScrolling(int velocity)
 {
-  activeSprite_->onMouseScrolling(velocity);
+  activeProgram_->onMouseScrolling(velocity);
 }
 
 template <class T>
-void GLSLProgramsManager::setActivateSprite_()
+void GLSLProgramsManager::setActivateProgram_()
 {
-  if (activeSprite_)
+  if (activeProgram_)
   {
-    inputEventObservable_.removeMouseListener(activeSprite_.get());
+    inputEventObservable_.removeMouseListener(activeProgram_.get());
   }
 
-  activeSprite_ = std::make_unique<T>(window_);
-  activeSprite_->init();
-  inputEventObservable_.addInputListener(activeSprite_.get());
+  activeProgram_ = std::make_unique<T>(window_);
+  activeProgram_->init();
+  inputEventObservable_.addInputListener(activeProgram_.get());
 
   int x = 0;
   int y = 0;
   SDL_GetMouseState(&x, &y);
-  activeSprite_->onMouseMovePassive(x, y);
-  activeSprite_->render();
+  activeProgram_->onMouseMovePassive(x, y);
+  activeProgram_->render();
 }
 
 void GLSLProgramsManager::onKeyPress(SDL_Keycode keyCode)
 {
   if (keyCode == SDLK_1)
   {
-    setActivateSprite_<GLSLProgramColoring>();
+    setActivateProgram_<GLSLProgramColoring>();
   }
   else if (keyCode == SDLK_2)
   {
-    setActivateSprite_<GLSLProgramMandelbrot>();
+    setActivateProgram_<GLSLProgramMandelbrot>();
   }
   else if (keyCode == SDLK_3)
   {
-    setActivateSprite_<GLSLProgramRayTracing>();
+    setActivateProgram_<GLSLProgramRayTracing>();
   }
 
 }

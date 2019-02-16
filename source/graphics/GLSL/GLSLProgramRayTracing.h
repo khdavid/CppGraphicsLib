@@ -11,9 +11,9 @@ public:
   virtual void init() override;
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
-  virtual void onMouseMovePassive(int x, int y) override;
-  virtual void onMouseScrolling(int velocity) override;
   virtual void render() override;
+  Matrix4D getGlobalToCamera() const;
+  void setGlobalToCamera(Matrix4D matrix);
 
 private:
   virtual std::string getFragmentShaderCode_() const;
