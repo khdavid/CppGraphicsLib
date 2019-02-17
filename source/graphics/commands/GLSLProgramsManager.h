@@ -12,7 +12,7 @@ class GLSLProgramsManager : public InputEventListener
 {
 public:
   GLSLProgramsManager(SDL_Window& window, InputEventObservable& inputEventObservable);
-
+  ~GLSLProgramsManager();
   virtual void onKeyPress(SDL_Keycode keyCode) override;
   virtual void onWindowsResized(int, int) override;
   virtual void onMouseScrolling(int) override;

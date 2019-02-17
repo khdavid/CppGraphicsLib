@@ -209,12 +209,14 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main\contextProvider.cpp" />
+    <ClCompile Include="context\contextManager.cpp" />
+    <ClCompile Include="context\contextProvider.cpp" />
     <ClCompile Include="eventhandlers\eventClassifier.cpp" />
     <ClCompile Include="eventhandlers\eventsManager.cpp" />
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
     <ClCompile Include="GLSL\GLSLProgramFragmentShader.cpp" />
     <ClCompile Include="GLSL\GLSLProgramRayTracing.cpp" />
+    <ClCompile Include="context\rayTracingContextProvider.cpp" />
     <ClCompile Include="tools\sceneRotatingTool.cpp" />
     <ClCompile Include="utils\SDLUtils.cpp" />
     <ClCompile Include="GLSL\GLSLProgramMandelbrot.cpp" />
@@ -231,12 +233,14 @@
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main\contextProvider.h" />
+    <ClInclude Include="context\contextManager.h" />
+    <ClInclude Include="context\contextProvider.h" />
     <ClInclude Include="eventhandlers\eventClassifier.h" />
     <ClInclude Include="eventhandlers\eventsManager.h" />
     <ClInclude Include="eventhandlers\mainLoop.h" />
     <ClInclude Include="GLSL\GLSLProgramFragmentShader.h" />
     <ClInclude Include="GLSL\GLSLProgramRayTracing.h" />
+    <ClInclude Include="context\rayTracingContextProvider.h" />
     <ClInclude Include="tools\sceneRotatingTool.h" />
     <ClInclude Include="utils\SDLUtils.h" />
     <ClInclude Include="GLSL\GLSLProgramMandelbrot.h" />

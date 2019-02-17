@@ -15,6 +15,8 @@ GLSLProgramsManager::GLSLProgramsManager(SDL_Window& window, InputEventObservabl
   setActivateProgram_<GLSLProgramRayTracing>();
 }
 
+GLSLProgramsManager::~GLSLProgramsManager() = default;
+
 void GLSLProgramsManager::onWindowsResized(int x, int y)
 {
   glViewport(0, 0, x, y);

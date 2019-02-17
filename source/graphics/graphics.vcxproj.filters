@@ -34,6 +34,9 @@
     <Filter Include="commands">
       <UniqueIdentifier>{78f40661-d1d1-46ba-937c-80b0f4d20201}</UniqueIdentifier>
     </Filter>
+    <Filter Include="context">
+      <UniqueIdentifier>{75b35e4e-ded4-42f8-aec0-9e85c40d917b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eventhandlers\eventClassifier.cpp">
@@ -84,9 +87,6 @@
     <ClCompile Include="GLSL\GLSLProgramColoring.cpp">
       <Filter>GLSL</Filter>
     </ClCompile>
-    <ClCompile Include="main\contextProvider.cpp">
-      <Filter>main</Filter>
-    </ClCompile>
     <ClCompile Include="main\main.cpp">
       <Filter>main</Filter>
     </ClCompile>
@@ -95,6 +95,15 @@
     </ClCompile>
     <ClCompile Include="commands\GLSLProgramsManager.cpp">
       <Filter>commands</Filter>
+    </ClCompile>
+    <ClCompile Include="context\contextProvider.cpp">
+      <Filter>context</Filter>
+    </ClCompile>
+    <ClCompile Include="context\contextManager.cpp">
+      <Filter>context</Filter>
+    </ClCompile>
+    <ClCompile Include="context\rayTracingContextProvider.cpp">
+      <Filter>context</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,14 +158,20 @@
     <ClInclude Include="GLSL\GLSLProgramColoring.h">
       <Filter>GLSL</Filter>
     </ClInclude>
-    <ClInclude Include="main\contextProvider.h">
-      <Filter>main</Filter>
-    </ClInclude>
     <ClInclude Include="tools\sceneRotatingTool.h">
       <Filter>tools</Filter>
     </ClInclude>
     <ClInclude Include="commands\GLSLProgramsManager.h">
       <Filter>commands</Filter>
+    </ClInclude>
+    <ClInclude Include="context\contextProvider.h">
+      <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="context\contextManager.h">
+      <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="context\rayTracingContextProvider.h">
+      <Filter>context</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

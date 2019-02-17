@@ -12,7 +12,6 @@
 #include "wrappers/SDL_WindowWrapper.h"
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
-#include "commands/GLSLProgramsManager.h"
 #include "object/objectsInitializator.h"
 
 #include "contextProvider.h"
@@ -24,10 +23,7 @@ ContextProvider::ContextProvider()
   context_ = std::make_unique<SDL_GLContextWrapper>(window_->getNative());
   inputEventLogger_ = std::make_unique<InputEventLogger>();
   objectsInitializator_ = std::make_unique<ObjectsInitializator>();
-  
-  spriteManager_ = std::make_unique<GLSLProgramsManager>(*window_->getNative(), *inputEventObservable_);
   inputEventObservable_->addInputListener(inputEventLogger_.get());
-
 }
 
 void ContextProvider::notifyEvent(const SDL_Event& event) const

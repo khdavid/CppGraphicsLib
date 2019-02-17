@@ -29,11 +29,11 @@ public:
   void notifyEvent(const SDL_Event& event) const;
   SDL_Window* getWindow() const;
 
-private:
-  std::unique_ptr<InputEventObservable> inputEventObservable_;
-  std::unique_ptr<InputEventLogger> inputEventLogger_;
+protected:
   std::unique_ptr<SDL_WindowWrapper> window_;
+  std::unique_ptr<InputEventObservable> inputEventObservable_;
+private:
+  std::unique_ptr<InputEventLogger> inputEventLogger_;
   std::unique_ptr<SDL_GLContextWrapper> context_;
-  std::unique_ptr<GLSLProgramsManager> spriteManager_;
   std::unique_ptr<ObjectsInitializator> objectsInitializator_;
   };

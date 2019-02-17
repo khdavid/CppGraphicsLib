@@ -1,14 +1,13 @@
 #include <iostream>
 
-#include "main/contextProvider.h"
 #include "eventHandlers/mainLoop.h"
 #include "geometryObjects/point.h"
 #include "geometryObjects/vector.h"
 #include "geometryObjects/triangle.h"
 #include "geometryObjects/matrix.h"
-
+#include "commands/GLSLProgramsManager.h"
 #include <vector>
-
+#include "context/rayTracingContextProvider.h"
 
 
 void test()
@@ -53,11 +52,11 @@ void test()
 
 
 }
-
 int main(int, char**)
 {
   test();
-  ContextProvider contextProvider;
+  RayTracingContextProvider contextProvider;
   MainLoop(contextProvider).run();
+  std::unique_ptr<GLSLProgramsManager> programManager_;
   return 0;
 }

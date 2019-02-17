@@ -20,4 +20,5 @@ public:
   virtual void onMouseMove(int x, int y);
   virtual void onMouseMovePassive(int x, int y);
   virtual void onMouseScrolling(int velocity);
+  virtual ~InputEventListener();
 };
