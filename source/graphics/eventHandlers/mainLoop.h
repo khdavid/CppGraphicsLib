@@ -8,13 +8,13 @@
 #pragma once
 
 class InputEventListener;
-class ContextProvider;
+class ContextManager;
 
 class MainLoop
 {
 public:
-  MainLoop(const ContextProvider& contextProvider);
+  MainLoop(const ContextManager& contextProvider);
   void run();
 private:
-  const ContextProvider& contextProvider_;
+  const ContextManager& contextProvider_;
 };

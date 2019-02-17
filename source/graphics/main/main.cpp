@@ -4,9 +4,8 @@
 #include "geometryObjects/point.h"
 #include "geometryObjects/vector.h"
 #include "geometryObjects/matrix.h"
-//#include "commands/GLSLProgramsManager.h"
 #include "context/rayTracingContextProvider.h"
-
+#include "context/contextManager.h"
 
 void test()
 {
@@ -53,7 +52,7 @@ void test()
 int main(int, char**)
 {
   test();
-  RayTracingContextProvider rayTracingContextProvider;
-  MainLoop(rayTracingContextProvider).run();
+  ContextManager contextManager;
+  MainLoop(contextManager).run();
   return 0;
 }

@@ -7,11 +7,11 @@
 //
 #include <sdl.h>
 
-#include "context/contextProvider.h"
+#include "context/contextManager.h"
 #include "eventsManager.h"
 #include "mainLoop.h"
 
-MainLoop::MainLoop(const ContextProvider& contextProvider):
+MainLoop::MainLoop(const ContextManager& contextProvider):
   contextProvider_(contextProvider)
 {
 }

@@ -96,13 +96,13 @@
     <ClCompile Include="commands\GLSLProgramsManager.cpp">
       <Filter>commands</Filter>
     </ClCompile>
-    <ClCompile Include="context\contextProvider.cpp">
+    <ClCompile Include="context\rayTracingContextProvider.cpp">
       <Filter>context</Filter>
     </ClCompile>
     <ClCompile Include="context\contextManager.cpp">
       <Filter>context</Filter>
     </ClCompile>
-    <ClCompile Include="context\rayTracingContextProvider.cpp">
+    <ClCompile Include="context\contextProvider.cpp">
       <Filter>context</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,13 +164,13 @@
     <ClInclude Include="commands\GLSLProgramsManager.h">
       <Filter>commands</Filter>
     </ClInclude>
-    <ClInclude Include="context\contextProvider.h">
+    <ClInclude Include="context\rayTracingContextProvider.h">
       <Filter>context</Filter>
     </ClInclude>
     <ClInclude Include="context\contextManager.h">
       <Filter>context</Filter>
     </ClInclude>
-    <ClInclude Include="context\rayTracingContextProvider.h">
+    <ClInclude Include="context\contextProvider.h">
       <Filter>context</Filter>
     </ClInclude>
   </ItemGroup>

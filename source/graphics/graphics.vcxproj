@@ -209,8 +209,8 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="context\contextManager.cpp" />
     <ClCompile Include="context\contextProvider.cpp" />
+    <ClCompile Include="context\contextManager.cpp" />
     <ClCompile Include="eventhandlers\eventClassifier.cpp" />
     <ClCompile Include="eventhandlers\eventsManager.cpp" />
     <ClCompile Include="eventhandlers\mainLoop.cpp" />
@@ -233,8 +233,8 @@
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="context\contextManager.h" />
     <ClInclude Include="context\contextProvider.h" />
+    <ClInclude Include="context\contextManager.h" />
     <ClInclude Include="eventhandlers\eventClassifier.h" />
     <ClInclude Include="eventhandlers\eventsManager.h" />
     <ClInclude Include="eventhandlers\mainLoop.h" />
