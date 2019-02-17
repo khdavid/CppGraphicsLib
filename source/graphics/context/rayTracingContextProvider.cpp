@@ -1,5 +1,5 @@
 #include "rayTracingContextProvider.h"
-#include "commands/GLSLProgramsManager.h"
+#include "GLSL/GLSLProgramsManager.h"
 #include "wrappers/SDL_WindowWrapper.h"
 #include "observables/inputEventObservable.h"
 #include "wrappers/SDL_WindowWrapper.h"

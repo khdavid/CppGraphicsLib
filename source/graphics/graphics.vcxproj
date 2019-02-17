@@ -209,6 +209,7 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="context\coloringContextProvider.cpp" />
     <ClCompile Include="context\contextProvider.cpp" />
     <ClCompile Include="context\contextManager.cpp" />
     <ClCompile Include="eventhandlers\eventClassifier.cpp" />
@@ -217,6 +218,7 @@
     <ClCompile Include="GLSL\GLSLProgramFragmentShader.cpp" />
     <ClCompile Include="GLSL\GLSLProgramRayTracing.cpp" />
     <ClCompile Include="context\rayTracingContextProvider.cpp" />
+    <ClCompile Include="context\mandelbrotContextProvider.cpp" />
     <ClCompile Include="tools\sceneRotatingTool.cpp" />
     <ClCompile Include="utils\SDLUtils.cpp" />
     <ClCompile Include="GLSL\GLSLProgramMandelbrot.cpp" />
@@ -226,13 +228,14 @@
     <ClCompile Include="listeners\inputEventLogger.cpp" />
     <ClCompile Include="main\main.cpp" />
     <ClCompile Include="observables\inputEventObservable.cpp" />
-    <ClCompile Include="commands\GLSLProgramsManager.cpp" />
+    <ClCompile Include="GLSL\GLSLProgramsManager.cpp" />
     <ClCompile Include="GLSL\GLSLProgramColoring.cpp" />
     <ClCompile Include="GLSL\GLSLProgramTriangle.cpp" />
     <ClCompile Include="wrappers\SDL_GLContextWrapper.cpp" />
     <ClCompile Include="wrappers\SDL_WindowWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="context\coloringContextProvider.h" />
     <ClInclude Include="context\contextProvider.h" />
     <ClInclude Include="context\contextManager.h" />
     <ClInclude Include="eventhandlers\eventClassifier.h" />
@@ -241,6 +244,7 @@
     <ClInclude Include="GLSL\GLSLProgramFragmentShader.h" />
     <ClInclude Include="GLSL\GLSLProgramRayTracing.h" />
     <ClInclude Include="context\rayTracingContextProvider.h" />
+    <ClInclude Include="context\mandelbrotContextProvider.h" />
     <ClInclude Include="tools\sceneRotatingTool.h" />
     <ClInclude Include="utils\SDLUtils.h" />
     <ClInclude Include="GLSL\GLSLProgramMandelbrot.h" />
@@ -250,7 +254,7 @@
     <ClInclude Include="listeners\inputEventListener.h" />
     <ClInclude Include="listeners\inputEventLogger.h" />
     <ClInclude Include="observables\inputEventObservable.h" />
-    <ClInclude Include="commands\GLSLProgramsManager.h" />
+    <ClInclude Include="GLSL\GLSLProgramsManager.h" />
     <ClInclude Include="GLSL\GLSLProgramColoring.h" />
     <ClInclude Include="GLSL\GLSLProgramTriangle.h" />
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h" />

@@ -10,6 +10,8 @@
 #include <memory>
 #include <sdl.h>
 
+#include "listeners/inputEventListener.h"
+
 class InputEventLogger;
 class SDL_WindowWrapper;
 class SDL_GLContextWrapper;
@@ -19,7 +21,7 @@ class ObjectsInitializator;
 class ContextProvider;
 
 
-class ContextManager
+class ContextManager : public InputEventListener
 {
 public:
   ContextManager();
@@ -28,6 +30,7 @@ public:
   ContextManager& operator=(const ContextManager&) = delete;
   void notifyEvent(const SDL_Event& event) const;
   SDL_Window* getWindow() const;
+  virtual void onKeyPress(SDL_Keycode keyCode) override;
 
   std::unique_ptr<SDL_WindowWrapper> window_;
   std::unique_ptr<InputEventObservable> inputEventObservable_;

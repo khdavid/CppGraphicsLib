@@ -14,6 +14,8 @@
 #include "observables/inputEventObservable.h"
 #include "object/objectsInitializator.h"
 #include "rayTracingContextProvider.h"
+#include "mandelbrotContextProvider.h"
+#include "coloringContextProvider.h"
 
 #include "contextManager.h"
 
@@ -25,6 +27,7 @@ ContextManager::ContextManager()
   inputEventLogger_ = std::make_unique<InputEventLogger>();
   objectsInitializator_ = std::make_unique<ObjectsInitializator>();
   inputEventObservable_->addInputListener(inputEventLogger_.get());
+  inputEventObservable_->addInputListener(this);
   activeContextProvider_ = std::make_unique<RayTracingContextProvider>(*window_, *inputEventObservable_);
 }
 
@@ -38,7 +41,22 @@ SDL_Window* ContextManager::getWindow() const
   return window_->getNative();
 }
 
+void ContextManager::onKeyPress(SDL_Keycode keyCode)
+{
+  if (keyCode == SDLK_1)
+  {
+    activeContextProvider_ = std::make_unique<RayTracingContextProvider>(*window_, *inputEventObservable_);
+  }
+  else if (keyCode == SDLK_2)
+  {
+    activeContextProvider_ = std::make_unique<MandelbrotContextProvider>();
+  }
+  else if (keyCode == SDLK_3)
+  {
+    activeContextProvider_ = std::make_unique<ColoringContextProvider>();
+  }
 
+}
 
 ContextManager::~ContextManager() = default;
 

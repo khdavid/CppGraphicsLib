@@ -93,9 +93,6 @@
     <ClCompile Include="tools\sceneRotatingTool.cpp">
       <Filter>tools</Filter>
     </ClCompile>
-    <ClCompile Include="commands\GLSLProgramsManager.cpp">
-      <Filter>commands</Filter>
-    </ClCompile>
     <ClCompile Include="context\rayTracingContextProvider.cpp">
       <Filter>context</Filter>
     </ClCompile>
@@ -103,6 +100,15 @@
       <Filter>context</Filter>
     </ClCompile>
     <ClCompile Include="context\contextProvider.cpp">
+      <Filter>context</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramsManager.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="context\mandelbrotContextProvider.cpp">
+      <Filter>context</Filter>
+    </ClCompile>
+    <ClCompile Include="context\coloringContextProvider.cpp">
       <Filter>context</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,9 +167,6 @@
     <ClInclude Include="tools\sceneRotatingTool.h">
       <Filter>tools</Filter>
     </ClInclude>
-    <ClInclude Include="commands\GLSLProgramsManager.h">
-      <Filter>commands</Filter>
-    </ClInclude>
     <ClInclude Include="context\rayTracingContextProvider.h">
       <Filter>context</Filter>
     </ClInclude>
@@ -171,6 +174,15 @@
       <Filter>context</Filter>
     </ClInclude>
     <ClInclude Include="context\contextProvider.h">
+      <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramsManager.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="context\mandelbrotContextProvider.h">
+      <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="context\coloringContextProvider.h">
       <Filter>context</Filter>
     </ClInclude>
   </ItemGroup>
