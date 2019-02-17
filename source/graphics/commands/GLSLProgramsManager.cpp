@@ -1,10 +1,9 @@
 #include <glew.h>
 
 #include <iostream>
-#include <vector>
-#include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
 #include "GLSL/GLSLProgramRayTracing.h"
+#include "GLSL/GLSLProgramMandelbrot.h"
 #include "commands/GLSLProgramsManager.h"
 
 GLSLProgramsManager::GLSLProgramsManager(SDL_Window& window, InputEventObservable& inputEventObservable) :

@@ -1,8 +1,6 @@
 #pragma once
 #include "GLSL/GLSLProgramColoring.h"
 #include "listeners/inputEventListener.h"
-#include "GLSL/GLSLShaderCompiler.h"
-#include "GLSL/GLSLProgramMandelbrot.h"
 
 
 struct SDL_Window;

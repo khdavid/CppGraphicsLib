@@ -7,8 +7,6 @@
 //
 #pragma once
 
-#include <stdio.h>  
-
 struct SDL_Window;
 
 class SDL_WindowWrapper

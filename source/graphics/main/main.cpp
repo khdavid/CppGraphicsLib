@@ -3,10 +3,8 @@
 #include "eventHandlers/mainLoop.h"
 #include "geometryObjects/point.h"
 #include "geometryObjects/vector.h"
-#include "geometryObjects/triangle.h"
 #include "geometryObjects/matrix.h"
 #include "commands/GLSLProgramsManager.h"
-#include <vector>
 #include "context/rayTracingContextProvider.h"
 
 
@@ -55,8 +53,8 @@ void test()
 int main(int, char**)
 {
   test();
-  RayTracingContextProvider contextProvider;
-  MainLoop(contextProvider).run();
+  RayTracingContextProvider rayTracingContextProvider;
+  MainLoop(rayTracingContextProvider).run();
   std::unique_ptr<GLSLProgramsManager> programManager_;
   return 0;
 }

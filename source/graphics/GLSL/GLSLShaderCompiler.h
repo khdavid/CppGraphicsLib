@@ -2,8 +2,6 @@
 
 #include <glew.h>
 
-#include "listeners/inputEventListener.h"
-
 class GLSLShaderCompiler
 {
 public:

@@ -7,8 +7,6 @@
 //
 #pragma once
 
-#include <stdio.h>
-
 class InputEventListener;
 class ContextProvider;
 

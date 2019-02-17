@@ -7,7 +7,6 @@
 //
 #pragma once
 
-#include <stdio.h>
 #include <sdl.h>
 
 enum class EventType

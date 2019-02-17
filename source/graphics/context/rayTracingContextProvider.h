@@ -1,7 +1,6 @@
 #pragma once
 #include <memory>
 #include "contextProvider.h"
-//#include "commands/GLSLProgramsManager.h"
 
 class GLSLProgramsManager;
 

@@ -7,8 +7,6 @@
 //
 #pragma once
 
-#include <stdio.h>
-
 #include "inputEventListener.h"
 
 class InputEventLogger: public InputEventListener

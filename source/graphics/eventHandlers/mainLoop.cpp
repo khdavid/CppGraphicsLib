@@ -6,11 +6,9 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 #include <sdl.h>
-#include <glew.h>
 
 #include "context/contextProvider.h"
 #include "eventsManager.h"
-#include "eventClassifier.h"
 #include "mainLoop.h"
 
 MainLoop::MainLoop(const ContextProvider& contextProvider):

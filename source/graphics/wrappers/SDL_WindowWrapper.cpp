@@ -7,7 +7,6 @@
 //
 #include <iostream>
 #include <sdl.h>
-#include <glew.h>
 
 #include "SDL_WindowWrapper.h"
 

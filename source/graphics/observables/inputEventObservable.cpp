@@ -6,7 +6,6 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 #include <algorithm>
-#include <iostream>
 #include <sdl.h>
 
 #include "listeners/inputEventListener.h"

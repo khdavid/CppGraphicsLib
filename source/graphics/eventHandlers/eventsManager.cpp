@@ -6,7 +6,6 @@
 //  Copyright © 2018 David Khudaverdyan. All rights reserved.
 //
 
-#include <iostream>
 #include <set>
 #include <vector>
 
