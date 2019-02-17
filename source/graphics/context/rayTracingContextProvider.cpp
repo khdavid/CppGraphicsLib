@@ -9,3 +9,7 @@ RayTracingContextProvider::RayTracingContextProvider()
 {
   spriteManager_ = std::make_unique<GLSLProgramsManager>(*window_->getNative(), *inputEventObservable_);
 }
+
+RayTracingContextProvider::~RayTracingContextProvider()
+{
+}
