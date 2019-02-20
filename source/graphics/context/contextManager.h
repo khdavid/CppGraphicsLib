@@ -17,7 +17,6 @@ class SDL_WindowWrapper;
 class SDL_GLContextWrapper;
 class InputEventObservable;
 class GLSLProgramsManager;
-class ObjectsInitializator;
 class ContextProvider;
 
 
@@ -36,6 +35,5 @@ public:
   std::unique_ptr<InputEventObservable> inputEventObservable_;
   std::unique_ptr<InputEventLogger> inputEventLogger_;
   std::unique_ptr<SDL_GLContextWrapper> context_;
-  std::unique_ptr<ObjectsInitializator> objectsInitializator_;
   std::unique_ptr<ContextProvider> activeContextProvider_;
 };

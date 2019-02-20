@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="materials\material.cpp" />
     <ClCompile Include="materials\materialsFactory.cpp" />
-    <ClCompile Include="object\objectsInitializator.cpp" />
+    <ClCompile Include="model\modelInitializator.cpp" />
     <ClCompile Include="object\objectsFactory.cpp" />
     <ClCompile Include="model\model.cpp" />
     <ClCompile Include="object\object.cpp" />
@@ -30,7 +30,7 @@
   <ItemGroup>
     <ClInclude Include="materials\materialsFactory.h" />
     <ClInclude Include="materials\material.h" />
-    <ClInclude Include="object\objectsInitializator.h" />
+    <ClInclude Include="model\modelInitializator.h" />
     <ClInclude Include="object\objectsFactory.h" />
     <ClInclude Include="model\model.h" />
     <ClInclude Include="object\object.h" />

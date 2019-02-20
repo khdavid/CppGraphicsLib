@@ -12,7 +12,6 @@
 #include "wrappers/SDL_WindowWrapper.h"
 #include "wrappers/SDL_GLContextWrapper.h"
 #include "observables/inputEventObservable.h"
-#include "object/objectsInitializator.h"
 #include "rayTracingContextProvider.h"
 #include "mandelbrotContextProvider.h"
 #include "coloringContextProvider.h"
@@ -25,7 +24,6 @@ ContextManager::ContextManager()
   window_ = std::make_unique<SDL_WindowWrapper>();
   context_ = std::make_unique<SDL_GLContextWrapper>(window_->getNative());
   inputEventLogger_ = std::make_unique<InputEventLogger>();
-  objectsInitializator_ = std::make_unique<ObjectsInitializator>();
   inputEventObservable_->addInputListener(inputEventLogger_.get());
   inputEventObservable_->addInputListener(this);
   activeContextProvider_ = std::make_unique<RayTracingContextProvider>(*window_->getNative(), *inputEventObservable_);
