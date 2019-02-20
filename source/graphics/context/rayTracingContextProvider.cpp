@@ -1,15 +1,10 @@
 #include "rayTracingContextProvider.h"
-#include "GLSL/GLSLProgramsManager.h"
-#include "wrappers/SDL_WindowWrapper.h"
 #include "observables/inputEventObservable.h"
-#include "wrappers/SDL_WindowWrapper.h"
+#include "GLSL/GLSLProgramRayTracing.h"
 
-RayTracingContextProvider::RayTracingContextProvider(SDL_WindowWrapper& window,
-  InputEventObservable& inputEventObservable)
+RayTracingContextProvider::RayTracingContextProvider(SDL_Window& window,
+  InputEventObservable& inputEventObservable): ContextProvider(inputEventObservable)
 {
-  programManager_ = std::make_unique<GLSLProgramsManager>(*window.getNative(), inputEventObservable);
-}
-
-RayTracingContextProvider::~RayTracingContextProvider()
-{
+  glslProgram_ = std::make_unique<GLSLProgramRayTracing>(window);
+  init();
 }

@@ -24,7 +24,7 @@ void InputEventObservable::notifyMouseEvent(const SDL_Event& event) const
         mouseListener->onKeyPress(event.key.keysym.sym);
       }
       break;
-    }
+    }  
     case EventType::WindowsResized:
     {
       for (auto& mouseListener : mouseEventListeners_)

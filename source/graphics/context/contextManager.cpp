@@ -28,7 +28,7 @@ ContextManager::ContextManager()
   objectsInitializator_ = std::make_unique<ObjectsInitializator>();
   inputEventObservable_->addInputListener(inputEventLogger_.get());
   inputEventObservable_->addInputListener(this);
-  activeContextProvider_ = std::make_unique<RayTracingContextProvider>(*window_, *inputEventObservable_);
+  activeContextProvider_ = std::make_unique<RayTracingContextProvider>(*window_->getNative(), *inputEventObservable_);
 }
 
 void ContextManager::notifyEvent(const SDL_Event& event) const
@@ -45,15 +45,18 @@ void ContextManager::onKeyPress(SDL_Keycode keyCode)
 {
   if (keyCode == SDLK_1)
   {
-    activeContextProvider_ = std::make_unique<RayTracingContextProvider>(*window_, *inputEventObservable_);
+    activeContextProvider_ = nullptr;
+    activeContextProvider_ = std::make_unique<RayTracingContextProvider>(*window_->getNative(), *inputEventObservable_);
   }
   else if (keyCode == SDLK_2)
   {
-    activeContextProvider_ = std::make_unique<MandelbrotContextProvider>();
+    activeContextProvider_ = nullptr;
+    activeContextProvider_ = std::make_unique<MandelbrotContextProvider>(*window_->getNative(), *inputEventObservable_);
   }
   else if (keyCode == SDLK_3)
   {
-    activeContextProvider_ = std::make_unique<ColoringContextProvider>();
+    activeContextProvider_ = nullptr;
+    activeContextProvider_ = std::make_unique<ColoringContextProvider>(*window_->getNative(), *inputEventObservable_);
   }
 
 }
