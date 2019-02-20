@@ -12,14 +12,14 @@
 #include "inputEventObservable.h"
 #include "../eventHandlers/eventClassifier.h"
 
-void InputEventObservable::notifyMouseEvent(const SDL_Event& event) const
+void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
 {
   auto type = EventClassifier::classify(event);
   switch (type)
   {
     case EventType::KeyDown:
     {
-      for (auto& mouseListener : mouseEventListeners_)
+      for (auto& mouseListener : inputEventListeners_)
       {
         mouseListener->onKeyPress(event.key.keysym.sym);
       }
@@ -27,7 +27,7 @@ void InputEventObservable::notifyMouseEvent(const SDL_Event& event) const
     }  
     case EventType::WindowsResized:
     {
-      for (auto& mouseListener : mouseEventListeners_)
+      for (auto& mouseListener : inputEventListeners_)
       {
         mouseListener->onWindowsResized(event.window.data1, event.window.data2);
       }
@@ -35,7 +35,7 @@ void InputEventObservable::notifyMouseEvent(const SDL_Event& event) const
     }
     case EventType::MouseScrolling:
     {
-      for (auto& mouseListener : mouseEventListeners_)
+      for (auto& mouseListener : inputEventListeners_)
       {
         mouseListener->onMouseScrolling(event.wheel.y);
       }
@@ -64,27 +64,27 @@ void InputEventObservable::applyMouseEvent_(
   std::function<void(InputEventListener&, int, int)> func,
   const SDL_MouseButtonEvent& event) const
 {
-  for (auto& mouseListener : mouseEventListeners_)
+  for (auto& mouseListener : inputEventListeners_)
   {
     func(*mouseListener, event.x, event.y);
   }
 }
 
-void InputEventObservable::addInputListener(InputEventListener* mouseListener)
+void InputEventObservable::addInputListener(InputEventListener* inputListener)
 {
-  if (std::find(std::begin(mouseEventListeners_), std::end(mouseEventListeners_), mouseListener) ==
-    std::end(mouseEventListeners_))
+  if (std::find(std::begin(inputEventListeners_), std::end(inputEventListeners_), inputListener) ==
+    std::end(inputEventListeners_))
   {
-    mouseEventListeners_.push_back(mouseListener);
+    inputEventListeners_.push_back(inputListener);
   }
 }
 
-void InputEventObservable::removeMouseListener(InputEventListener* mouselistener)
+void InputEventObservable::removeInputListener(InputEventListener* inputListener)
 {
-  mouseEventListeners_.erase(std::remove(
-    std::begin(mouseEventListeners_),
-    std::end(mouseEventListeners_),
-    mouselistener),
-    std::end(mouseEventListeners_));
+  inputEventListeners_.erase(std::remove(
+    std::begin(inputEventListeners_),
+    std::end(inputEventListeners_),
+    inputListener),
+    std::end(inputEventListeners_));
 }
 

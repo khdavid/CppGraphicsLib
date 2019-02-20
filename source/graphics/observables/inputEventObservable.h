@@ -20,9 +20,9 @@ class InputEventObservable
 public:
   InputEventObservable(const InputEventObservable&) = delete;
   InputEventObservable() = default;
-  void addInputListener(InputEventListener* mouselistener);
-  void removeMouseListener(InputEventListener* mouselistener);
-  void notifyMouseEvent(const SDL_Event& mouseEvent) const;
+  void addInputListener(InputEventListener* inputListener);
+  void removeInputListener(InputEventListener* inputListener);
+  void notifyInputEvent(const SDL_Event& inputEvent) const;
 private:
   void applyMouseEvent_(std::function<void(InputEventListener&, int, int)> func,
     const SDL_MouseButtonEvent&) const;
@@ -31,5 +31,5 @@ private:
   void onMouseMove_(const SDL_MouseMotionEvent& mouseEvent) const;
   void onMouseMovePassive_(const SDL_MouseMotionEvent& mouseEvent) const;
 
-  std::vector<InputEventListener*> mouseEventListeners_;
+  std::vector<InputEventListener*> inputEventListeners_;
 };

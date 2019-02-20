@@ -228,7 +228,6 @@
     <ClCompile Include="listeners\inputEventLogger.cpp" />
     <ClCompile Include="main\main.cpp" />
     <ClCompile Include="observables\inputEventObservable.cpp" />
-    <ClCompile Include="GLSL\GLSLProgramsManager.cpp" />
     <ClCompile Include="GLSL\GLSLProgramColoring.cpp" />
     <ClCompile Include="GLSL\GLSLProgramTriangle.cpp" />
     <ClCompile Include="wrappers\SDL_GLContextWrapper.cpp" />
@@ -254,7 +253,6 @@
     <ClInclude Include="listeners\inputEventListener.h" />
     <ClInclude Include="listeners\inputEventLogger.h" />
     <ClInclude Include="observables\inputEventObservable.h" />
-    <ClInclude Include="GLSL\GLSLProgramsManager.h" />
     <ClInclude Include="GLSL\GLSLProgramColoring.h" />
     <ClInclude Include="GLSL\GLSLProgramTriangle.h" />
     <ClInclude Include="wrappers\SDL_GLContextWrapper.h" />

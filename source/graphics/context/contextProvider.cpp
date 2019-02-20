@@ -22,5 +22,5 @@ ContextProvider::ContextProvider(InputEventObservable& inputEventObservable):
 
 ContextProvider::~ContextProvider()
 {
-  inputEventObservable_.removeMouseListener(glslProgram_.get());
+  inputEventObservable_.removeInputListener(glslProgram_.get());
 }

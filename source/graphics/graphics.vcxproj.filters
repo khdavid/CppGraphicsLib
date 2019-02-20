@@ -102,9 +102,6 @@
     <ClCompile Include="context\contextProvider.cpp">
       <Filter>context</Filter>
     </ClCompile>
-    <ClCompile Include="GLSL\GLSLProgramsManager.cpp">
-      <Filter>GLSL</Filter>
-    </ClCompile>
     <ClCompile Include="context\mandelbrotContextProvider.cpp">
       <Filter>context</Filter>
     </ClCompile>
@@ -175,9 +172,6 @@
     </ClInclude>
     <ClInclude Include="context\contextProvider.h">
       <Filter>context</Filter>
-    </ClInclude>
-    <ClInclude Include="GLSL\GLSLProgramsManager.h">
-      <Filter>GLSL</Filter>
     </ClInclude>
     <ClInclude Include="context\mandelbrotContextProvider.h">
       <Filter>context</Filter>

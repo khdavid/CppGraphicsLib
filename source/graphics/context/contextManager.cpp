@@ -33,7 +33,7 @@ ContextManager::ContextManager()
 
 void ContextManager::notifyEvent(const SDL_Event& event) const
 {
-  inputEventObservable_->notifyMouseEvent(event);
+  inputEventObservable_->notifyInputEvent(event);
 }
 
 SDL_Window* ContextManager::getWindow() const
