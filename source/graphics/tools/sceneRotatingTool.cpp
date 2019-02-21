@@ -2,10 +2,18 @@
 #include "geometryObjects/vector.h"
 #include "utils/geometryUtils.h"
 #include "GLSL/GLSLProgramRayTracing.h"
+#include "observables/inputEventObservable.h"
 
-SceneRotatingTool::SceneRotatingTool(GLSLProgramRayTracing & rayTracingProgram) :
-  rayTracingProgram_(rayTracingProgram)
+SceneRotatingTool::SceneRotatingTool(GLSLProgramRayTracing & rayTracingProgram, InputEventObservable& inputEventObservable) :
+  rayTracingProgram_(rayTracingProgram),
+  inputEventObservable_(inputEventObservable)
 {
+  inputEventObservable_.addInputListener(this);
+}
+
+SceneRotatingTool::~SceneRotatingTool()
+{
+  inputEventObservable_.removeInputListener(this);
 }
 
 void SceneRotatingTool::onMouseClick(int x , int y)

@@ -4,14 +4,14 @@
 
 void ContextProvider::init()
 {
-  glslProgram_->init();
-  inputEventObservable_.addInputListener(glslProgram_.get());
+  GLSLProgram_->init();
+  inputEventObservable_.addInputListener(GLSLProgram_.get());
 
   int x = 0;
   int y = 0;
   SDL_GetMouseState(&x, &y);
-  glslProgram_->onMouseMovePassive(x, y);
-  glslProgram_->render();
+  GLSLProgram_->onMouseMovePassive(x, y);
+  GLSLProgram_->render();
 
 }
 
@@ -22,5 +22,5 @@ ContextProvider::ContextProvider(InputEventObservable& inputEventObservable):
 
 ContextProvider::~ContextProvider()
 {
-  inputEventObservable_.removeInputListener(glslProgram_.get());
+  inputEventObservable_.removeInputListener(GLSLProgram_.get());
 }

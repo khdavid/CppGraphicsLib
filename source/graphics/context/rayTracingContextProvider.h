@@ -4,6 +4,7 @@
 
 class InputEventObservable;
 class Model;
+class SceneRotatingTool;
 
 class RayTracingContextProvider : public ContextProvider
 {
@@ -12,5 +13,6 @@ public:
   ~RayTracingContextProvider();
 private:
   std::unique_ptr<Model> model_;
+  std::unique_ptr<SceneRotatingTool> sceneRotatingTool_;
 };
 

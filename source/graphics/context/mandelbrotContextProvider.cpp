@@ -5,6 +5,6 @@
 MandelbrotContextProvider::MandelbrotContextProvider(SDL_Window& window,
   InputEventObservable& inputEventObservable) : ContextProvider(inputEventObservable)
 {
-  glslProgram_ = std::make_unique<GLSLProgramMandelbrot>(window);
+  GLSLProgram_ = std::make_unique<GLSLProgramMandelbrot>(window);
   init();
 }

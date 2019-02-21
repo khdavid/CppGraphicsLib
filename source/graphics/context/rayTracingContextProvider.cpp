@@ -3,12 +3,15 @@
 #include "GLSL/GLSLProgramRayTracing.h"
 #include "model/model.h"
 #include "model/modelInitializator.h"
+#include "tools/sceneRotatingTool.h"
 
 RayTracingContextProvider::RayTracingContextProvider(SDL_Window& window,
   InputEventObservable& inputEventObservable): ContextProvider(inputEventObservable)
 {
   model_ = ModelInitializator::ConstructModel();
-  glslProgram_ = std::make_unique<GLSLProgramRayTracing>(window);
+  auto rayTracingProgram = std::make_unique<GLSLProgramRayTracing>(window);
+  sceneRotatingTool_ = std::make_unique<SceneRotatingTool>(*rayTracingProgram, inputEventObservable);
+  GLSLProgram_ = std::move(rayTracingProgram);
   init();
 }
 

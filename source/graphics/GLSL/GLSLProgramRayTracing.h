@@ -9,8 +9,6 @@ class GLSLProgramRayTracing : public GLSLProgramFragmentShader
 public:
   GLSLProgramRayTracing(SDL_Window& window);
   virtual void init() override;
-  virtual void onMouseClick(int x, int y) override;
-  virtual void onMouseMove(int x, int y) override;
   virtual void render() override;
   Matrix4D getGlobalToCamera() const;
   void setGlobalToCamera(Matrix4D matrix);

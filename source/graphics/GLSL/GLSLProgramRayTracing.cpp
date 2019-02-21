@@ -24,23 +24,6 @@ void GLSLProgramRayTracing::init()
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
 }
 
-void GLSLProgramRayTracing::onMouseClick(int x, int y)
-{
-  mousePoint_ = { x, y };
-}
-
-void GLSLProgramRayTracing::onMouseMove(int x, int y)
-{
-  auto mousePointNew = Point2D(-x, y);
-  auto motion = mousePointNew - mousePoint_;
-  Vector3D motion3D = { motion[0], motion[1], 0 };
-  auto rotationDirection = GeometryUtils::cross(motion3D, GeometryUtils::AXIS_Z);
-  mousePoint_ = mousePointNew;
-  auto rotation = GeometryUtils::createAffineRotation(rotationDirection, Point3D(350, 200, 500), 0.04f);
-  globalToCamera_ = globalToCamera_ * rotation;
-  render();
-}
-
 void GLSLProgramRayTracing::render()
 {
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
