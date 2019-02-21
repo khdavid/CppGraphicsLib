@@ -8,7 +8,7 @@ class ContextProvider
 {
 public:
   ContextProvider(InputEventObservable& inputEventObservable);
-  ~ContextProvider();
+  virtual ~ContextProvider();
   void init();
 protected:
   std::unique_ptr<GLSLProgramBase> GLSLProgram_;

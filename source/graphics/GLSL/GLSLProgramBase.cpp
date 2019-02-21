@@ -1,5 +1,10 @@
 #include "GLSLProgramBase.h"
 
+GLSLProgramBase::~GLSLProgramBase()
+{
+  int x = 5; x;
+}
+
 void GLSLProgramBase::init_()
 {
   shaderProgram_ = std::make_unique<GLSLShaderCompiler>(getVertexShaderCode_(), getFragmentShaderCode_());

@@ -44,4 +44,6 @@ void InputEventListener::onMouseScrolling(int)
   //should be implemented in a child class;
 }
 
+InputEventListener::~InputEventListener() = default;
+
 

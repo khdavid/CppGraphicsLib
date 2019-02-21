@@ -9,7 +9,7 @@
 class GLSLProgramBase : public InputEventListener
 {
 public:
-  virtual ~GLSLProgramBase() = default;
+  virtual ~GLSLProgramBase();
   virtual void render() = 0;
   virtual void init() = 0;
 
