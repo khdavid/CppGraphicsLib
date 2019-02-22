@@ -19,25 +19,25 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
   {
     case EventType::KeyDown:
     {
-      for (auto& mouseListener : inputEventListeners_)
+      for (auto& inputEventListener : inputEventListeners_)
       {
-        mouseListener->onKeyPress(event.key.keysym.sym);
+        inputEventListener->onKeyPress(event.key.keysym.sym);
       }
       break;
     }  
     case EventType::WindowsResized:
     {
-      for (auto& mouseListener : inputEventListeners_)
+      for (auto& inputEventListener : inputEventListeners_)
       {
-        mouseListener->onWindowsResized(event.window.data1, event.window.data2);
+        inputEventListener->onWindowsResized(event.window.data1, event.window.data2);
       }
       break;
     }
     case EventType::MouseScrolling:
     {
-      for (auto& mouseListener : inputEventListeners_)
+      for (auto& inputEventListener : inputEventListeners_)
       {
-        mouseListener->onMouseScrolling(event.wheel.y);
+        inputEventListener->onMouseScrolling(event.wheel.y);
       }
       break;
     }
@@ -75,16 +75,12 @@ void InputEventObservable::addInputListener(InputEventListener* inputListener)
   if (std::find(std::begin(inputEventListeners_), std::end(inputEventListeners_), inputListener) ==
     std::end(inputEventListeners_))
   {
-    inputEventListeners_.push_back(inputListener);
+    inputEventListeners_.insert(inputListener);
   }
 }
 
 void InputEventObservable::removeInputListener(InputEventListener* inputListener)
 {
-  inputEventListeners_.erase(std::remove(
-    std::begin(inputEventListeners_),
-    std::end(inputEventListeners_),
-    inputListener),
-    std::end(inputEventListeners_));
+  inputEventListeners_.erase(inputListener);
 }
 

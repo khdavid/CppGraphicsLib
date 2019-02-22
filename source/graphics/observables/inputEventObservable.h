@@ -7,8 +7,8 @@
 //
 #pragma once
 
-#include <vector>
 #include <functional>
+#include <set>
 
 class InputEventListener;
 struct SDL_MouseButtonEvent;
@@ -31,5 +31,5 @@ private:
   void onMouseMove_(const SDL_MouseMotionEvent& mouseEvent) const;
   void onMouseMovePassive_(const SDL_MouseMotionEvent& mouseEvent) const;
 
-  std::vector<InputEventListener*> inputEventListeners_;
+  std::set<InputEventListener*> inputEventListeners_;
 };
