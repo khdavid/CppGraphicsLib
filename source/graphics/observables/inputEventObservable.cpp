@@ -74,6 +74,7 @@ void InputEventObservable::applyMouseEvent_(
 size_t InputEventObservable::findMinNonExistedKey_() const
 {
   size_t result = 0;
+
   for (const auto& pair : inputEventListeners_)
   {
     if (pair.first != result)
@@ -82,6 +83,7 @@ size_t InputEventObservable::findMinNonExistedKey_() const
     }
     result++;
   }
+
   return result;
 }
 

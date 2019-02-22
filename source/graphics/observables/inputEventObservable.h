@@ -33,5 +33,6 @@ private:
 
   size_t findMinNonExistedKey_() const;
 
+  //we use the keys here to ensure the determenistic order of listeners
   std::map<size_t, InputEventListener*> inputEventListeners_;
 };
