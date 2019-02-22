@@ -8,7 +8,7 @@
 #pragma once
 
 #include <functional>
-#include <set>
+#include <map>
 
 class InputEventListener;
 struct SDL_MouseButtonEvent;
@@ -31,5 +31,7 @@ private:
   void onMouseMove_(const SDL_MouseMotionEvent& mouseEvent) const;
   void onMouseMovePassive_(const SDL_MouseMotionEvent& mouseEvent) const;
 
-  std::set<InputEventListener*> inputEventListeners_;
+  size_t findMinNonExistedKey_() const;
+
+  std::map<size_t, InputEventListener*> inputEventListeners_;
 };

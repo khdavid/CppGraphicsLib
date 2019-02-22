@@ -12,6 +12,7 @@
 #include "inputEventObservable.h"
 #include "../eventHandlers/eventClassifier.h"
 
+
 void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
 {
   auto type = EventClassifier::classify(event);
@@ -21,7 +22,7 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
     {
       for (auto& inputEventListener : inputEventListeners_)
       {
-        inputEventListener->onKeyPress(event.key.keysym.sym);
+        inputEventListener.second->onKeyPress(event.key.keysym.sym);
       }
       break;
     }  
@@ -29,7 +30,7 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
     {
       for (auto& inputEventListener : inputEventListeners_)
       {
-        inputEventListener->onWindowsResized(event.window.data1, event.window.data2);
+        inputEventListener.second->onWindowsResized(event.window.data1, event.window.data2);
       }
       break;
     }
@@ -37,7 +38,7 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
     {
       for (auto& inputEventListener : inputEventListeners_)
       {
-        inputEventListener->onMouseScrolling(event.wheel.y);
+        inputEventListener.second->onMouseScrolling(event.wheel.y);
       }
       break;
     }
@@ -66,21 +67,38 @@ void InputEventObservable::applyMouseEvent_(
 {
   for (auto& mouseListener : inputEventListeners_)
   {
-    func(*mouseListener, event.x, event.y);
+    func(*mouseListener.second, event.x, event.y);
   }
+}
+
+size_t InputEventObservable::findMinNonExistedKey_() const
+{
+  size_t result = 0;
+  for (const auto& pair : inputEventListeners_)
+  {
+    if (pair.first != result)
+    {
+      return result;
+    }
+    result++;
+  }
+  return result;
 }
 
 void InputEventObservable::addInputListener(InputEventListener* inputListener)
 {
-  if (std::find(std::begin(inputEventListeners_), std::end(inputEventListeners_), inputListener) ==
-    std::end(inputEventListeners_))
-  {
-    inputEventListeners_.insert(inputListener);
-  }
+  inputEventListeners_.emplace(findMinNonExistedKey_(), inputListener );
 }
 
 void InputEventObservable::removeInputListener(InputEventListener* inputListener)
 {
-  inputEventListeners_.erase(inputListener);
+  for (auto& pair : inputEventListeners_)
+  {
+    if (pair.second == inputListener)
+    {
+      inputEventListeners_.erase(pair.first);
+      return;
+    }
+  }
 }
 
