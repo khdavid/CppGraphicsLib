@@ -87,4 +87,17 @@ Matrix4D createAffineRotation(const Vector3D& direction, const Point3D& point, d
   return moveOriginToPoint * affineRotationAlongOrigin * movePointToOrigin;
 }
 
+Matrix4D createAffineScaling(const Point3D& centerPoint, double scale)
+{
+  const Point3D origin;
+
+  auto moveOriginToCenterPoint = createAffineTransform(createIdentityMatrix3D(), centerPoint - origin);
+  auto scalingMatrix = createIdentityMatrix3D() * scale;
+  auto affineScalingAlongOrigin = createAffineTransform(scalingMatrix);
+
+  auto moveCenterPointToOrigin = createAffineTransform(createIdentityMatrix3D(), origin - centerPoint);
+  return moveOriginToCenterPoint * affineScalingAlongOrigin * moveCenterPointToOrigin;
+}
+
+
 }// end of namespacde GeometryUtils

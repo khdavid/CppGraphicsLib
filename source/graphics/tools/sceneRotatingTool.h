@@ -13,10 +13,13 @@ public:
   ~SceneRotatingTool();
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
+  virtual void onMouseScrolling(int velocity) override;
+
 
 private:
   GLSLProgramRayTracing& rayTracingProgram_;
   Point2D mousePoint_;
   InputEventObservable& inputEventObservable_;
+  double scale_ = 1.0;
 };
 

@@ -18,7 +18,7 @@ Matrix3D createIdentityMatrix3D();
 Matrix4D createAffineTransform(const Matrix3D& rotation, const Vector3D& shift = {});
 Matrix3D createRotation(const Vector3D& direction, double angle);
 Matrix4D createAffineRotation(const Vector3D& direction, const Point3D& point, double angle);
-
+Matrix4D createAffineScaling(const Point3D& centerPoint, double scale);
 
 template <class T>
 T sqr(const T& element)
