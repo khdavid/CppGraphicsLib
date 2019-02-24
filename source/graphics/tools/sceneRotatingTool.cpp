@@ -10,6 +10,9 @@ namespace
 {
 const float ROTATION_SPEED = 0.08f;
 const Point3D CENTER_OF_ROTATION = Point3D(350, 200, 500);
+const double SCROLLING_FACTOR = 50.0;
+const double MIN_SCROLLING_FRACTION = 0.8;
+
 }
 
 SceneRotatingTool::SceneRotatingTool(GLSLProgramRayTracing & rayTracingProgram, InputEventObservable& inputEventObservable) :
@@ -44,9 +47,8 @@ void SceneRotatingTool::onMouseMove(int x , int y)
 
 void SceneRotatingTool::onMouseScrolling(int velocity)
 {
-  const double minFraction = 0.8;
-  auto fraction = 1 + velocity / 50.;
-  fraction = std::max(minFraction, fraction);
+  auto fraction = 1 + velocity / SCROLLING_FACTOR;
+  fraction = std::max(MIN_SCROLLING_FRACTION, fraction);
   
   auto globalToCamera = rayTracingProgram_.getGlobalToCamera();
   auto scalingMatrix = GeometryUtils::createAffineScaling(CENTER_OF_ROTATION, fraction);
