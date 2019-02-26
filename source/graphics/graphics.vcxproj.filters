@@ -108,6 +108,9 @@
     <ClCompile Include="context\coloringContextProvider.cpp">
       <Filter>context</Filter>
     </ClCompile>
+    <ClCompile Include="tools\objectsMovingTool.cpp">
+      <Filter>tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="context\coloringContextProvider.h">
       <Filter>context</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\objectsMovingTool.h">
+      <Filter>tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

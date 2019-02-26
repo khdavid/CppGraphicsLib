@@ -219,6 +219,7 @@
     <ClCompile Include="GLSL\GLSLProgramRayTracing.cpp" />
     <ClCompile Include="context\rayTracingContextProvider.cpp" />
     <ClCompile Include="context\mandelbrotContextProvider.cpp" />
+    <ClCompile Include="tools\objectsMovingTool.cpp" />
     <ClCompile Include="tools\sceneRotatingTool.cpp" />
     <ClCompile Include="utils\SDLUtils.cpp" />
     <ClCompile Include="GLSL\GLSLProgramMandelbrot.cpp" />
@@ -244,6 +245,7 @@
     <ClInclude Include="GLSL\GLSLProgramRayTracing.h" />
     <ClInclude Include="context\rayTracingContextProvider.h" />
     <ClInclude Include="context\mandelbrotContextProvider.h" />
+    <ClInclude Include="tools\objectsMovingTool.h" />
     <ClInclude Include="tools\sceneRotatingTool.h" />
     <ClInclude Include="utils\SDLUtils.h" />
     <ClInclude Include="GLSL\GLSLProgramMandelbrot.h" />
