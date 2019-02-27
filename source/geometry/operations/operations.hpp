@@ -3,7 +3,7 @@ enable_if_vector_t<T, K> operator+(const K& first, const T& second)
 {
   static_assert(K::dim == T::dim, "Dimensions are not the same");
   K result = first;
-  for (int i = 0; i < result.size(); ++i)
+  for (size_t i = 0; i < result.size(); ++i)
   {
     result[i] += second[i];
   }
@@ -14,7 +14,7 @@ template <class T>
 enable_if_vector_t<T> operator*(const T& first, double multiplier)
 {
   T result = first;
-  for (int i = 0; i < result.size(); ++i)
+  for (size_t i = 0; i < result.size(); ++i)
   {
     result[i] *= multiplier;
   }

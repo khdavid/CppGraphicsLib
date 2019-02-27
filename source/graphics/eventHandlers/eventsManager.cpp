@@ -25,13 +25,13 @@ struct EventInfo
 {
   SDL_Event event;
   EventType type;
-  int idx;
+  size_t idx;
 };
 
 std::vector<EventInfo> getKnownEventsInfo(const std::vector<SDL_Event>& events)
 {
   std::vector<EventInfo> result;
-  for (int i = 0; i < events.size(); ++i)
+  for (size_t i = 0; i < events.size(); ++i)
   {
     auto type = EventClassifier::classify(events[i]);
     if (type != EventType::Unknown)
@@ -51,7 +51,7 @@ std::vector<EventInfo> getFirstContiguousPart(const std::vector<EventInfo> known
   }
   
   const auto& firstEventInfo = knownEventsInfo.front();
-  for (int i = 0; i < knownEventsInfo.size(); ++i)
+  for (size_t i = 0; i < knownEventsInfo.size(); ++i)
   {
     const auto& nextEventInfo = knownEventsInfo[i];
     if (nextEventInfo.type == firstEventInfo.type)
