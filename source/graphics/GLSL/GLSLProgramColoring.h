@@ -3,7 +3,6 @@
 #include <vector>
 #include <glew.h>
 
-#include "nodes/graphicsNode.h"
 #include "geometryObjects/triangle.h"
 #include "GLSL/GLSLProgramBase.h"
 #include "GLSL/GLSLProgramTriangle.h"

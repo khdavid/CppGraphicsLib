@@ -2,7 +2,7 @@
 #include <glew.h>
 #include <vector>
 
-#include "nodes/graphicsNode.h"
+#include "GLSL/GLObjects.h"
 #include "GLSLProgramBase.h"
 
 class GLSLProgramTriangle : public GLSLProgramBase

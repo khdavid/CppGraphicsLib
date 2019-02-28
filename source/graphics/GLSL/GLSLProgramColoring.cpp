@@ -1,6 +1,6 @@
 #include <array>
 
-#include "nodes/graphicsNode.h"
+#include "GLSL/GLObjects.h"
 #include "GLSL/GLSLShaderCompiler.h"
 #include "GLSLProgramColoring.h"
 
