@@ -31,7 +31,6 @@
     <ClInclude Include="operations\operations.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="geometryObjects\matrix.cpp" />
     <ClCompile Include="utils\geometryUtils.cpp" />
     <ClCompile Include="operations\operations.cpp" />
   </ItemGroup>
