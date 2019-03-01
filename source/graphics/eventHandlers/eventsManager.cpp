@@ -102,5 +102,5 @@ bool EventsManager::popEvent(SDL_Event& event, bool allowSwallowing /* = true */
   }
   
   return SDL_PollEvent(&event);
-}
+} 
 
