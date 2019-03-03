@@ -9,7 +9,7 @@ RayTracingContextProvider::RayTracingContextProvider(SDL_Window& window,
   InputEventObservable& inputEventObservable): ContextProvider(inputEventObservable)
 {
   model_ = ModelInitializator::ConstructModel();
-  auto rayTracingProgram = std::make_unique<GLSLProgramRayTracing>(window);
+  auto rayTracingProgram = std::make_unique<GLSLProgramRayTracing>(window, *model_);
   sceneRotatingTool_ = std::make_unique<SceneRotatingTool>(*rayTracingProgram, inputEventObservable);
   GLSLProgram_ = std::move(rayTracingProgram);
   init();

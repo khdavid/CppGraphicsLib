@@ -3,14 +3,18 @@
 #include "GLSL/GLObjects.h"
 #include "utils/geometryUtils.h"
 #include "GLSLProgramRayTracing.h"
+#include "model/model.h"
 
 namespace
 {
 const char* cGlobalToCameraName = "globalToCamera";
+const char* cRGBColorsName = "RGBColors";
+const size_t cMaxNumberOfSpheres = 100;
 }
 
 
-GLSLProgramRayTracing::GLSLProgramRayTracing(SDL_Window & window): GLSLProgramFragmentShader(window)
+GLSLProgramRayTracing::GLSLProgramRayTracing(
+  SDL_Window& window, const Model& model): GLSLProgramFragmentShader(window), model_(model)
 {
   globalToCamera_ = GeometryUtils::createIdentityMatrix4D();
 }
@@ -22,6 +26,10 @@ void GLSLProgramRayTracing::init()
   globalToCameraUniform_ = glGetUniformLocation(programId_, cGlobalToCameraName);
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
+
+  RGBColorsUniform_ = glGetUniformLocation(programId_, cRGBColorsName);
+  std::vector<float> colors(cMaxNumberOfSpheres * 3, 0.1f);
+  glUniform3fv(RGBColorsUniform_, cMaxNumberOfSpheres, colors.data());
 }
 
 void GLSLProgramRayTracing::render()
@@ -48,6 +56,8 @@ std::string GLSLProgramRayTracing::getFragmentShaderCode_() const
 
 out vec4 outColor;
 uniform mat4 globalToCamera;
+const int maxNumberOfSpheres = 100;
+uniform vec3 RGBColors[maxNumberOfSpheres];
 
 const float TOLERANCE = 1e-3;
 const float TOLERANCE_SQR = 1e-6;
@@ -206,7 +216,7 @@ void main()
 
   balls[0].center = vec3(250, 200, 500);
   balls[0].radius = 100;
-  balls[0].color = blue;
+  balls[0].color = RGBColors[0];
 
   balls[1].center = vec3(450, 200, 480);
   balls[1].radius = 150;
