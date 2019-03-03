@@ -1,6 +1,6 @@
 #include <vector>
 
-#include "nodes/graphicsNode.h"
+#include "GLSL/GLObjects.h"
 #include "utils/geometryUtils.h"
 #include "GLSLProgramRayTracing.h"
 

@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
 
-#include "nodes/graphicsNode.h"
+#include "GLSL/GLObjects.h"
 #include "utils/SDLUtils.h"
 #include "GLSLProgramMandelbrot.h"
 
