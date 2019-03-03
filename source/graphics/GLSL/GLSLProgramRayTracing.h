@@ -16,10 +16,6 @@ public:
 private:
   virtual std::string getFragmentShaderCode_() const;
   Matrix4D globalToCamera_;
-  double angle_ = 0;
   GLint globalToCameraUniform_ = 0;
-  Point2D mousePoint_;
-
-
 };
 
