@@ -6,6 +6,8 @@
 #include "geometryObjects/matrix.h"
 #include "context/rayTracingContextProvider.h"
 #include "context/contextManager.h"
+#include <typeinfo>
+
 
 int main(int, char**)
 {

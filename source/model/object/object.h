@@ -5,6 +5,7 @@ class Object
 {
 public:
   Object(Material material);
+  virtual ~Object() = default;
 private:
   Material material_;
 };
