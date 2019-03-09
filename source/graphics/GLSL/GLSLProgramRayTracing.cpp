@@ -10,11 +10,13 @@ namespace
 // All the constants here have the counterparts on the GLSL side.
 // So the changes should be done on both sides.
 const char* cGlobalToCameraName = "globalToCamera";
-const char* cSphereColorsName = "sphereColors";
+const char* cSphereDiffuseColorsName = "sphereDiffuseColors";
+const char* cSphereSpecularColorsName = "sphereSpecularColors";
+const char* cSphereAmbientColorsName = "sphereAmbientColors";
 const char* cSphereRadiusesName = "sphereRadiuses";
 const char* cSphereCentersName = "sphereCenters";
 const char* cSpheresCount = "spheresCount";
-const size_t cMaxNumberOfSpheres = 100; 
+const size_t cMaxNumberOfSpheres = 3; 
 }
 
 
@@ -37,7 +39,9 @@ void GLSLProgramRayTracing::init()
 
 void GLSLProgramRayTracing::initSpheresUniforms_()
 {
-  sphereColorsUniform_ = glGetUniformLocation(programId_, cSphereColorsName);
+  sphereDiffuseColorsUniform_ = glGetUniformLocation(programId_, cSphereDiffuseColorsName);
+  sphereSpecularColorsUniform_ = glGetUniformLocation(programId_, cSphereSpecularColorsName);
+  sphereAmbientColorsUniform_ = glGetUniformLocation(programId_, cSphereAmbientColorsName);
   sphereRadiusesUniform_ = glGetUniformLocation(programId_, cSphereRadiusesName);
   sphereCentersUniform_ = glGetUniformLocation(programId_, cSphereCentersName);
   spheresCountUniform_ = glGetUniformLocation(programId_, cSpheresCount);
@@ -51,7 +55,9 @@ void GLSLProgramRayTracing::renderSpheres_()
 
   std::vector<GLPosition> centers;
   std::vector<GLfloat> radiuses;
-  std::vector<GLColor> colors;
+  std::vector<GLColor> diffuseColors;
+  std::vector<GLColor> specularColors;
+  std::vector<GLColor> ambientColors;
   for (const auto& sphereObject : sphereObjects)
   {
     const auto& sphere = sphereObject->getSphere();
@@ -65,13 +71,25 @@ void GLSLProgramRayTracing::renderSpheres_()
 
     radiuses.push_back(GLfloat(sphere.radius));
 
-    colors.push_back({
+    diffuseColors.push_back({
       material.diffuse.r,
       material.diffuse.g,
       material.diffuse.b });
+
+    specularColors.push_back({
+      material.specular.r,
+      material.specular.g,
+      material.specular.b });
+
+    ambientColors.push_back({
+      material.ambient.r,
+      material.ambient.g,
+      material.ambient.b });
   }
   glUniform1fv(sphereRadiusesUniform_, (GLsizei)spheresCount, (GLfloat*)radiuses.data());
-  glUniform3iv(sphereColorsUniform_, (GLsizei)spheresCount, (GLint*)colors.data());
+  glUniform3iv(sphereDiffuseColorsUniform_, (GLsizei)spheresCount, (GLint*)diffuseColors.data());
+  glUniform3iv(sphereAmbientColorsUniform_, (GLsizei)spheresCount, (GLint*)ambientColors.data());
+  glUniform3iv(sphereSpecularColorsUniform_, (GLsizei)spheresCount, (GLint*)specularColors.data());
   glUniform3fv(sphereCentersUniform_, (GLsizei)spheresCount, (GLfloat*)centers.data());
 }
 
@@ -102,21 +120,31 @@ std::string GLSLProgramRayTracing::getFragmentShaderCode_() const
 out vec4 outColor;
 uniform mat4 globalToCamera;
 
-const int cMaxNumberOfSpheres = 100; // has a copy counterpart on the C++ part
+const int cMaxNumberOfSpheres = 3; // has a copy counterpart on the C++ part
 uniform int spheresCount = 0;
 
-uniform ivec3 sphereColors[cMaxNumberOfSpheres];
+uniform ivec3 sphereDiffuseColors[cMaxNumberOfSpheres];
+uniform ivec3 sphereSpecularColors[cMaxNumberOfSpheres];
+uniform ivec3 sphereAmbientColors[cMaxNumberOfSpheres];
+
 uniform vec3 sphereCenters[cMaxNumberOfSpheres];
 uniform float sphereRadiuses[cMaxNumberOfSpheres];
 
 const float TOLERANCE = 1e-3;
 const float TOLERANCE_SQR = 1e-6;
 
+struct Material
+{
+  vec3 diffuse;
+  vec3 specular;
+  vec3 ambient;
+};
+
 struct Ball
 {
   vec3 center;
   float radius;
-  vec3 color;
+  Material material;
 };
 
 struct Ray
@@ -225,12 +253,15 @@ bool getReflectedRay(in Ray ray, in Ball ball, out Ray reflected)
 }
 
 
-vec3 getPhongColor(vec3 color, vec3 normal, in Light light, in Ray reflectedRay)
+vec3 getPhongColor(Material material, vec3 normal, in Light light, in Ray reflectedRay)
 {
   float diffuseFactor = max (0, dot(normal, -light.direction));
   float specularFactor = max(0, dot(reflectedRay.direction, -light.direction));
   specularFactor = pow(specularFactor, 200);
-  return (0.6 + 0.4 * diffuseFactor) * color + 0.5 * specularFactor * light.color;
+  return 
+    material.ambient + 
+    material.diffuse * diffuseFactor + 
+    material.specular * specularFactor;
 }
 
 vec3 transformVector(in vec3 vector, in mat4 transform)
@@ -269,7 +300,9 @@ void main()
   {
     balls[i].center = sphereCenters[i];
     balls[i].radius = sphereRadiuses[i];
-    balls[i].color = sphereColors[i] / 255.0;
+    balls[i].material.diffuse = sphereDiffuseColors[i] / 255.0;
+    balls[i].material.ambient = sphereAmbientColors[i] / 255.0;
+    balls[i].material.specular = sphereSpecularColors[i] / 255.0;
   }
 
 
@@ -315,7 +348,7 @@ void main()
     Ray reflectedRay;
     getReflectedRay(ray, closestBall, reflectedRay);
     vec3 n = normalized(closestIntersectionPoint - closestBall.center);
-    color = getPhongColor(closestBall.color, n, light, reflectedRay);
+    color = getPhongColor(closestBall.material, n, light, reflectedRay);
   }
 
   outColor = vec4(color, 1);
