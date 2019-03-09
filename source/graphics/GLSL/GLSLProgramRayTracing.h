@@ -17,6 +17,8 @@ public:
 
 private:
   virtual std::string getFragmentShaderCode_() const;
+  void initSphereObjects_();
+
   const Model& model_;
   Matrix4D globalToCamera_;
   GLint globalToCameraUniform_ = 0;

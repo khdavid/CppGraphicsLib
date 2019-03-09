@@ -8,8 +8,8 @@
 namespace
 {
 const char* cGlobalToCameraName = "globalToCamera";
-const char* cRGBColorsName = "RGBColors";
-const size_t cMaxNumberOfSpheres = 100;
+const char* cRGBColorsName = "sphereColors";
+const size_t cMaxNumberOfSpheres = 100; // has a copy on the shader code
 }
 
 
@@ -28,7 +28,7 @@ void GLSLProgramRayTracing::init()
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
 
   RGBColorsUniform_ = glGetUniformLocation(programId_, cRGBColorsName);
-  std::vector<float> colors(cMaxNumberOfSpheres * 3, 0.1f);
+  std::vector<float> colors(cMaxNumberOfSpheres * 2, 0.1f);
   glUniform3fv(RGBColorsUniform_, cMaxNumberOfSpheres, colors.data());
 
   initSphereObjects_();
@@ -37,6 +37,10 @@ void GLSLProgramRayTracing::init()
 void GLSLProgramRayTracing::initSphereObjects_()
 {
   auto sphereObjects = model_.getSphereObjects();
+  for (const auto& sphere : sphereObjects)
+  {
+    sphere->getSphere();
+  }
 }
 
 void GLSLProgramRayTracing::render()
@@ -63,8 +67,13 @@ std::string GLSLProgramRayTracing::getFragmentShaderCode_() const
 
 out vec4 outColor;
 uniform mat4 globalToCamera;
-const int maxNumberOfSpheres = 100;
-uniform vec3 RGBColors[maxNumberOfSpheres];
+
+const int cMaxNumberOfSpheres = 100; // has a copy counterpart on the C++ part
+uniform int spheresCount = 0;
+
+uniform vec3 sphereColors[cMaxNumberOfSpheres];
+uniform vec3 sphereCenters[cMaxNumberOfSpheres];
+uniform vec3 sphereRadius[cMaxNumberOfSpheres];
 
 const float TOLERANCE = 1e-3;
 const float TOLERANCE_SQR = 1e-6;
@@ -223,7 +232,7 @@ void main()
 
   balls[0].center = vec3(250, 200, 500);
   balls[0].radius = 100;
-  balls[0].color = RGBColors[0];
+  balls[0].color = sphereColors[0];
 
   balls[1].center = vec3(450, 200, 480);
   balls[1].radius = 150;

@@ -8,8 +8,19 @@ namespace ModelInitializator
 std::unique_ptr<Model> ConstructModel()
 {
   std::unique_ptr<Model> model = std::make_unique<Model>();
-  Sphere sphere{ Point3D(200, 200, 200), 100 };
-  model->setObject(ObjectsFactory::createSphereObject(MaterialsFactory::RedDiffuse(), sphere));
+  
+  model->setObject(
+    ObjectsFactory::createSphereObject(MaterialsFactory::RedDiffuse(),
+    Sphere{ Point3D(250, 200, 500), 100 }));
+
+  model->setObject(
+    ObjectsFactory::createSphereObject(MaterialsFactory::RedDiffuse(),
+      Sphere{ Point3D(450, 200, 480), 150 }));
+
+  model->setObject(
+    ObjectsFactory::createSphereObject(MaterialsFactory::RedDiffuse(),
+      Sphere{ Point3D(450, 300, 580), 150 }));
+
   return model;
 }
 }
