@@ -49,9 +49,9 @@ void GLSLProgramRayTracing::renderSpheres_()
   auto spheresCount = sphereObjects.size();
   glUniform1i(spheresCountUniform_, (GLint)spheresCount);
 
-  std::vector<GLPosition> centers(spheresCount);
-  std::vector<GLfloat> radiuses(spheresCount);
-  std::vector<GLColor> colors(spheresCount);
+  std::vector<GLPosition> centers;
+  std::vector<GLfloat> radiuses;
+  std::vector<GLColor> colors;
   for (const auto& sphereObject : sphereObjects)
   {
     const auto& sphere = sphereObject->getSphere();
@@ -63,16 +63,16 @@ void GLSLProgramRayTracing::renderSpheres_()
       GLfloat(center[1]),
       GLfloat(center[2]) });
 
-    radiuses.push_back(float(sphere.radius));
+    radiuses.push_back(GLfloat(sphere.radius));
 
     colors.push_back({
       material.diffuse.r,
       material.diffuse.g,
       material.diffuse.b });
   }
-  glUniform3fv(sphereCentersUniform_, (GLsizei)spheresCount, (GLfloat*)centers.data());
+  glUniform1fv(sphereRadiusesUniform_, (GLsizei)spheresCount, (GLfloat*)radiuses.data());
   glUniform3iv(sphereColorsUniform_, (GLsizei)spheresCount, (GLint*)colors.data());
-  glGetUniformfv(sphereRadiusesUniform_, (GLsizei)spheresCount, (GLfloat*)radiuses.data());
+  glUniform3fv(sphereCentersUniform_, (GLsizei)spheresCount, (GLfloat*)centers.data());
 }
 
 void GLSLProgramRayTracing::render()
@@ -105,7 +105,7 @@ uniform mat4 globalToCamera;
 const int cMaxNumberOfSpheres = 100; // has a copy counterpart on the C++ part
 uniform int spheresCount = 0;
 
-uniform vec3 sphereColors[cMaxNumberOfSpheres];
+uniform ivec3 sphereColors[cMaxNumberOfSpheres];
 uniform vec3 sphereCenters[cMaxNumberOfSpheres];
 uniform float sphereRadiuses[cMaxNumberOfSpheres];
 
@@ -262,19 +262,16 @@ const vec3 white = vec3(255, 255, 255) / 255;
 
 void main()
 {
-  Ball balls[3];
+  
+  Ball balls[cMaxNumberOfSpheres];
 
-  balls[0].center = vec3(250, 200, 500);
-  balls[0].radius = 100;
-  balls[0].color = sphereColors[0];
+  for (int i = 0; i < spheresCount; ++i)
+  {
+    balls[i].center = sphereCenters[i];
+    balls[i].radius = sphereRadiuses[i];
+    balls[i].color = sphereColors[i] / 255.0;
+  }
 
-  balls[1].center = vec3(450, 200, 480);
-  balls[1].radius = 150;
-  balls[1].color = green;
-
-  balls[2].center = vec3(450, 300, 580);
-  balls[2].radius = 150;
-  balls[2].color = white;
 
 
   Ray ray;
@@ -297,7 +294,7 @@ void main()
 
   vec3 color = white;  
 
-  for (int i = 0; i < balls.length(); ++i)
+  for (int i = 0; i < spheresCount; ++i)
   {
     vec3 firstIntersectionPoint;  
     if (isRayHittingBall(ray, balls[i], firstIntersectionPoint))
