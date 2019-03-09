@@ -30,6 +30,13 @@ void GLSLProgramRayTracing::init()
   RGBColorsUniform_ = glGetUniformLocation(programId_, cRGBColorsName);
   std::vector<float> colors(cMaxNumberOfSpheres * 3, 0.1f);
   glUniform3fv(RGBColorsUniform_, cMaxNumberOfSpheres, colors.data());
+
+  initSphereObjects_();
+}
+
+void GLSLProgramRayTracing::initSphereObjects_()
+{
+  auto sphereObjects = model_.getSphereObjects();
 }
 
 void GLSLProgramRayTracing::render()
