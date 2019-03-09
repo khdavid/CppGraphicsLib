@@ -34,7 +34,7 @@ void GLSLProgramTriangle::init_(const std::vector<GLVertex>& vertices)
   glVertexAttribPointer(
     vertexColorAttr_, // attribute
     cVertexColorDim,              // number of elements per vertex, here (x,y)
-    GL_UNSIGNED_BYTE,          // the type of each element
+    GL_INT,          // the type of each element
     GL_FALSE,          // take our values as-is
     sizeof(GLVertex),                 // no extra data between each position
     (const void *)offsetof(GLVertex, material));                // offset of first element

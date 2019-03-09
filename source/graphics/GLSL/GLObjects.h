@@ -5,9 +5,9 @@
 
 struct GLColor
 {
-  GLubyte r;
-  GLubyte g;
-  GLubyte b;
+  GLint r;
+  GLint g;
+  GLint b;
   //GLubyte alpha;
 };
 

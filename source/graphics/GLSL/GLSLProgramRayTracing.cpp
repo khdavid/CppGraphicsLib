@@ -45,14 +45,34 @@ void GLSLProgramRayTracing::initSpheresUniforms_()
 
 void GLSLProgramRayTracing::renderSpheres_()
 {
-  auto spheres = model_.getSphereObjects();
-  auto spheresCount = spheres.size();
+  auto sphereObjects = model_.getSphereObjects();
+  auto spheresCount = sphereObjects.size();
   glUniform1i(spheresCountUniform_, (GLint)spheresCount);
 
-  for (const auto& sphere : spheres)
+  std::vector<GLPosition> centers(spheresCount);
+  std::vector<GLfloat> radiuses(spheresCount);
+  std::vector<GLColor> colors(spheresCount);
+  for (const auto& sphereObject : sphereObjects)
   {
-    sphere;
+    const auto& sphere = sphereObject->getSphere();
+    const auto& center = sphere.center;
+    const auto& material = sphereObject->getMaterial();
+
+    centers.push_back({
+      GLfloat(center[0]),
+      GLfloat(center[1]),
+      GLfloat(center[2]) });
+
+    radiuses.push_back(float(sphere.radius));
+
+    colors.push_back({
+      material.diffuse.r,
+      material.diffuse.g,
+      material.diffuse.b });
   }
+  glUniform3fv(sphereCentersUniform_, (GLsizei)spheresCount, (GLfloat*)centers.data());
+  glUniform3iv(sphereColorsUniform_, (GLsizei)spheresCount, (GLint*)colors.data());
+  glGetUniformfv(sphereRadiusesUniform_, (GLsizei)spheresCount, (GLfloat*)radiuses.data());
 }
 
 void GLSLProgramRayTracing::render()
