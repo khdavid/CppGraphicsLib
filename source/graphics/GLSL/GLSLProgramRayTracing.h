@@ -17,13 +17,16 @@ public:
 
 private:
   virtual std::string getFragmentShaderCode_() const;
-  void initSphereObjects_();
+  void initSpheresUniforms_();
+  void renderSpheres_();
 
   const Model& model_;
   Matrix4D globalToCamera_;
   GLint globalToCameraUniform_ = 0;
-  GLint RGBColorsUniform_ = 0;
-
+  GLint sphereColorsUniform_ = 0;
+  GLint sphereRadiusesUniform_ = 0;
+  GLint sphereCentersUniform_ = 0;
+  GLint spheresCountUniform_ = 0;
 
 };
 

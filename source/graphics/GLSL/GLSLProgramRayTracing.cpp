@@ -7,9 +7,14 @@
 
 namespace
 {
+// All the constants here have the counterparts on the GLSL side.
+// So the changes should be done on both sides.
 const char* cGlobalToCameraName = "globalToCamera";
-const char* cRGBColorsName = "sphereColors";
-const size_t cMaxNumberOfSpheres = 100; // has a copy on the shader code
+const char* cSphereColorsName = "sphereColors";
+const char* cSphereRadiusesName = "sphereRadiuses";
+const char* cSphereCentersName = "sphereCenters";
+const char* cSpheresCount = "spheresCount";
+const size_t cMaxNumberOfSpheres = 100; 
 }
 
 
@@ -27,19 +32,26 @@ void GLSLProgramRayTracing::init()
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
 
-  RGBColorsUniform_ = glGetUniformLocation(programId_, cRGBColorsName);
-  std::vector<float> colors(cMaxNumberOfSpheres * 2, 0.1f);
-  glUniform3fv(RGBColorsUniform_, cMaxNumberOfSpheres, colors.data());
-
-  initSphereObjects_();
+  initSpheresUniforms_();
 }
 
-void GLSLProgramRayTracing::initSphereObjects_()
+void GLSLProgramRayTracing::initSpheresUniforms_()
 {
-  auto sphereObjects = model_.getSphereObjects();
-  for (const auto& sphere : sphereObjects)
+  sphereColorsUniform_ = glGetUniformLocation(programId_, cSphereColorsName);
+  sphereRadiusesUniform_ = glGetUniformLocation(programId_, cSphereRadiusesName);
+  sphereCentersUniform_ = glGetUniformLocation(programId_, cSphereCentersName);
+  spheresCountUniform_ = glGetUniformLocation(programId_, cSpheresCount);
+}
+
+void GLSLProgramRayTracing::renderSpheres_()
+{
+  auto spheres = model_.getSphereObjects();
+  auto spheresCount = spheres.size();
+  glUniform1i(spheresCountUniform_, (GLint)spheresCount);
+
+  for (const auto& sphere : spheres)
   {
-    sphere->getSphere();
+    sphere;
   }
 }
 
@@ -47,6 +59,8 @@ void GLSLProgramRayTracing::render()
 {
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
+  renderSpheres_();
+
   GLSLProgramFragmentShader::render();
 }
 
@@ -73,7 +87,7 @@ uniform int spheresCount = 0;
 
 uniform vec3 sphereColors[cMaxNumberOfSpheres];
 uniform vec3 sphereCenters[cMaxNumberOfSpheres];
-uniform vec3 sphereRadius[cMaxNumberOfSpheres];
+uniform float sphereRadiuses[cMaxNumberOfSpheres];
 
 const float TOLERANCE = 1e-3;
 const float TOLERANCE_SQR = 1e-6;
