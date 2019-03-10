@@ -120,7 +120,7 @@ std::string GLSLProgramRayTracing::getFragmentShaderCode_() const
 out vec4 outColor;
 uniform mat4 globalToCamera;
 
-const int cMaxNumberOfSpheres = 3; // has a copy counterpart on the C++ part
+const int cMaxNumberOfSpheres = 100; // has a copy counterpart on the C++ part
 uniform int spheresCount = 0;
 
 uniform ivec3 sphereDiffuseColors[cMaxNumberOfSpheres];
@@ -287,26 +287,23 @@ Ray transform(in Ray ray, in mat4 transform)
   return result;
 }
 
+Ball constructBall(int i)
+{
+  Ball result;
+  result.center = sphereCenters[i];
+  result.radius = sphereRadiuses[i];
+  result.material.diffuse = sphereDiffuseColors[i] / 255.0;
+  result.material.ambient = sphereAmbientColors[i] / 255.0;
+  result.material.specular = sphereSpecularColors[i] / 255.0;
+  return result;
+}
+
 const vec3 blue = vec3(166, 202, 240) / 255;
 const vec3 green = vec3(100, 240, 100) / 255;
 const vec3 white = vec3(255, 255, 255) / 255;
 
 void main()
 {
-  
-  Ball balls[cMaxNumberOfSpheres];
-
-  for (int i = 0; i < spheresCount; ++i)
-  {
-    balls[i].center = sphereCenters[i];
-    balls[i].radius = sphereRadiuses[i];
-    balls[i].material.diffuse = sphereDiffuseColors[i] / 255.0;
-    balls[i].material.ambient = sphereAmbientColors[i] / 255.0;
-    balls[i].material.specular = sphereSpecularColors[i] / 255.0;
-  }
-
-
-
   Ray ray;
   ray.point = gl_FragCoord.xyz;
   ray.direction = vec3(0, 0 , 1);
@@ -329,14 +326,15 @@ void main()
 
   for (int i = 0; i < spheresCount; ++i)
   {
+    Ball ball = constructBall(i);
     vec3 firstIntersectionPoint;  
-    if (isRayHittingBall(ray, balls[i], firstIntersectionPoint))
+    if (isRayHittingBall(ray, ball, firstIntersectionPoint))
     {
       float distanceSqr = lenSqr(firstIntersectionPoint - ray.point);
       if(distanceSqr < minDistanceSqr)
       {
         minDistanceSqr = distanceSqr;
-        closestBall = balls[i];
+        closestBall = ball;
         closestIntersectionPoint = firstIntersectionPoint;
         closestBallFound = true;
       }
