@@ -108,6 +108,9 @@
     <ClCompile Include="tools\objectsMovingTool.cpp">
       <Filter>tools</Filter>
     </ClCompile>
+    <ClCompile Include="tools\tool.cpp">
+      <Filter>tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eventhandlers\eventClassifier.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="GLSL\GLObjects.h">
       <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\tool.h">
+      <Filter>tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

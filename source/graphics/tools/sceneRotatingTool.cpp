@@ -12,20 +12,7 @@ const float ROTATION_SPEED = 0.08f;
 const Point3D CENTER_OF_ROTATION = Point3D(350, 200, 500);
 const double SCROLLING_FACTOR = 50.0;
 const double MIN_SCROLLING_FRACTION = 0.8;
-
-}
-
-SceneRotatingTool::SceneRotatingTool(GLSLProgramRayTracing & rayTracingProgram, InputEventObservable& inputEventObservable) :
-  rayTracingProgram_(rayTracingProgram),
-  inputEventObservable_(inputEventObservable)
-{
-  inputEventObservable_.addInputListener(this);
-}
-
-SceneRotatingTool::~SceneRotatingTool()
-{
-  inputEventObservable_.removeInputListener(this);
-}
+}//end of unnamed namespace
 
 void SceneRotatingTool::onMouseClick(int x , int y)
 {
