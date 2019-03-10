@@ -42,12 +42,21 @@
     <ClInclude Include="geometryObjects\sphere.h">
       <Filter>geometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="geometryObjects\ray.h">
+      <Filter>geometryObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\rayIntersectionUtil.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operations\operations.cpp">
       <Filter>operations</Filter>
     </ClCompile>
     <ClCompile Include="utils\geometryUtils.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\rayIntersectionUtil.cpp">
       <Filter>utils</Filter>
     </ClCompile>
   </ItemGroup>

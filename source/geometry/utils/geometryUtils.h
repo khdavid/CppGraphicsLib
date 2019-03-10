@@ -21,7 +21,7 @@ Matrix4D createAffineRotation(const Vector3D& direction, const Point3D& point, d
 Matrix4D createAffineScaling(const Point3D& centerPoint, double scale);
 
 template <class T>
-T sqr(const T& element)
+double sqr(const T& element)
 {
   return element * element;
 }
