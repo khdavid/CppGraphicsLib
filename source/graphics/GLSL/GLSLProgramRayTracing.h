@@ -23,10 +23,14 @@ private:
   const Model& model_;
   Matrix4D globalToCamera_;
   GLint globalToCameraUniform_ = 0;
+
   GLint sphereColorsUniform_ = 0;
   GLint sphereRadiusesUniform_ = 0;
   GLint sphereCentersUniform_ = 0;
   GLint spheresCountUniform_ = 0;
+  GLint sphereDiffuseColorsUniform_ = 0;
+  GLint sphereSpecularColorsUniform_ = 0;
+  GLint sphereAmbientColorsUniform_ = 0;
 
 };
 
