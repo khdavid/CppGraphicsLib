@@ -12,8 +12,11 @@
 #include "inputEventObservable.h"
 #include "../eventHandlers/eventClassifier.h"
 
-
-void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
+namespace
+{
+const Uint32 cTimeDelta = 100;
+}
+void InputEventObservable::notifyInputEvent(const SDL_Event& event)
 {
   auto type = EventClassifier::classify(event);
   switch (type)
@@ -36,11 +39,18 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
     }
     case EventType::MouseScrolling:
     {
-      for (auto& inputEventListener : inputEventListeners_)
+      auto time = event.wheel.timestamp;
+      int dt = time - scrollingTimeOld_;
+      if (dt < cTimeDelta)
       {
-        inputEventListener.second->onMouseScrolling(event.wheel.y);
+        for (auto& inputEventListener : inputEventListeners_)
+        {
+          auto speed = int(event.wheel.y * dt);
+          inputEventListener.second->onMouseScrolling(speed);
+        }
       }
-      break;
+      scrollingTimeOld_ = time;
+      break; 
     }
 
     case EventType::MouseClick:
@@ -63,7 +73,7 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event) const
 
 void InputEventObservable::applyMouseEvent_(
   std::function<void(InputEventListener&, int, int)> func,
-  const SDL_MouseButtonEvent& event) const
+  const SDL_MouseButtonEvent& event) 
 {
   for (auto& mouseListener : inputEventListeners_)
   {

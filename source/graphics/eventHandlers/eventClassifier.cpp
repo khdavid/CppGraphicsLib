@@ -7,6 +7,7 @@
 //
 
 #include "eventClassifier.h"
+#include <iostream>
 
 namespace
 {
