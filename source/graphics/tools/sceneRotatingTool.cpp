@@ -23,7 +23,7 @@ void SceneRotatingTool::onMouseMove(int x , int y)
 {
   auto mousePointNew = Point2D(-x, y);
   auto motion = mousePointNew - mousePoint_;
-  Vector3D motion3D = { motion[0], motion[1], 0 };
+  auto motion3D = Vector3D{ motion[0], motion[1], 0 };
   auto rotationDirection = GeometryUtils::cross(motion3D, GeometryUtils::AXIS_Z);
   mousePoint_ = mousePointNew;
   auto rotation = GeometryUtils::createAffineRotation(rotationDirection, CENTER_OF_ROTATION, ROTATION_SPEED);

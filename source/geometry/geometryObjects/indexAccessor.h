@@ -9,7 +9,7 @@ class IndexAccessor : public std::array<T, N>
 public:
   static constexpr size_t dim = N;
   template <class ...E>
-  IndexAccessor(const E&...args) : std::array<T,N>{T(args)...}
+  explicit IndexAccessor(const E&...args) : std::array<T,N>{T(args)...}
   {
 
   }
