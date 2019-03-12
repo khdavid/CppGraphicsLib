@@ -46,6 +46,15 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event)
     case EventType::MouseMove:
       applyMouseEvent_(&InputEventListener::onMouseMove, event.button);
       break;
+    case EventType::MouseClickRight:
+      applyMouseEvent_(&InputEventListener::onMouseClickRight, event.button);
+      break;
+    case EventType::MouseReleaseRight:
+      applyMouseEvent_(&InputEventListener::onMouseReleaseRight, event.button);
+      break;
+    case EventType::MouseMoveRight:
+      applyMouseEvent_(&InputEventListener::onMouseMoveRight, event.button);
+      break;
     case EventType::MouseMovePassive:
       applyMouseEvent_(&InputEventListener::onMouseMovePassive, event.button);
       break;

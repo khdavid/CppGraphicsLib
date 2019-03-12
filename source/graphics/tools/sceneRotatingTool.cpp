@@ -13,12 +13,17 @@ const Point3D CENTER_OF_ROTATION = Point3D(350, 200, 500);
 const double MIN_SCROLLING_FRACTION = 0.8;
 }//end of unnamed namespace
 
-void SceneRotatingTool::onMouseClick(int x , int y)
+void SceneRotatingTool::onKeyPress(SDL_Keycode /*keyCode*/)
+{
+// to do rotation with ctrl here
+}
+
+void SceneRotatingTool::onMouseClickRight(int x , int y)
 {
   mousePoint_ = { x, y };
 }
 
-void SceneRotatingTool::onMouseMove(int x , int y)
+void SceneRotatingTool::onMouseMoveRight(int x , int y)
 {
   auto mousePointNew = Point2D(-x, y);
   auto motion = mousePointNew - mousePoint_;

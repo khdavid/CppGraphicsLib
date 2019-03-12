@@ -29,6 +29,21 @@ void InputEventListener::onMouseMove(int, int)
   //should be implemented in a child class;
 }
 
+void InputEventListener::onMouseClickRight(int, int)
+{
+  //should be implemented in a child class;
+}
+
+void InputEventListener::onMouseReleaseRight(int, int)
+{
+  //should be implemented in a child class;
+}
+
+void InputEventListener::onMouseMoveRight(int, int)
+{
+  //should be implemented in a child class;
+}
+
 void InputEventListener::onMouseClick(int, int)
 {
   //should be implemented in a child class;

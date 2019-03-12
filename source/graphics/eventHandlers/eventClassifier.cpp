@@ -34,17 +34,35 @@ EventType classifyMouseButton(const SDL_MouseButtonEvent& event)
       return EventType::MouseRelease;
     }
   }
+  if (event.button == SDL_BUTTON_RIGHT)
+  {
+    if (event.state == SDL_PRESSED)
+    {
+      return EventType::MouseClickRight;
+    }
+    else
+    {
+      return EventType::MouseReleaseRight;
+    }
+  }
+
   return EventType::Unknown;
 }
 
 EventType classifyMouseMotion()
 {
-  bool leftKeyPressed = SDL_BUTTON(SDL_GetMouseState(nullptr, nullptr)) &
-    SDL_BUTTON_LMASK;
+  auto mouseState = SDL_BUTTON(SDL_GetMouseState(nullptr, nullptr));
+  bool leftKeyPressed = mouseState & SDL_BUTTON_LMASK;
+  bool rightKeyPressed = mouseState & SDL_BUTTON_RMASK;
 
   if (leftKeyPressed)
   {
     return EventType::MouseMove;
+  }
+
+  if (rightKeyPressed)
+  {
+    return EventType::MouseMoveRight;
   }
 
   return EventType::MouseMovePassive;

@@ -17,6 +17,9 @@ public:
   virtual void onMouseClick(int x, int y);
   virtual void onMouseRelease(int x, int y);
   virtual void onMouseMove(int x, int y);
+  virtual void onMouseClickRight(int x, int y);
+  virtual void onMouseReleaseRight(int x, int y);
+  virtual void onMouseMoveRight(int x, int y);
   virtual void onMouseMovePassive(int x, int y);
   virtual void onMouseScrolling(double velocity);
   virtual ~InputEventListener();

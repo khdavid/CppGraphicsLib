@@ -12,8 +12,9 @@ class SceneRotatingTool : public Tool
 public:
   using Tool::Tool;
 
-  virtual void onMouseClick(int x, int y) override;
-  virtual void onMouseMove(int x, int y) override;
+  virtual void onKeyPress(SDL_Keycode keyCode) override;
+  virtual void onMouseClickRight(int x, int y) override;
+  virtual void onMouseMoveRight(int x, int y) override;
   virtual void onMouseScrolling(double velocity) override;
 private:
   Point2D mousePoint_;
