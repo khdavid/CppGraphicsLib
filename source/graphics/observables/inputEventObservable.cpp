@@ -77,7 +77,7 @@ void InputEventObservable::applyMouseScrolling_(const SDL_MouseWheelEvent& wheel
 
   const int cTimeDelta = 100;
   const int cMinDelta = 10;
-  const double SCROLLING_FACTOR = 3.0;
+  const double SCROLLING_FACTOR = 150.0;
 
   dt = dt < cTimeDelta ? dt : cMinDelta;
   std::cout << "dt: " << dt << std::endl;

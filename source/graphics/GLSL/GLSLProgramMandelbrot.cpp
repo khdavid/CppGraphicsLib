@@ -57,7 +57,7 @@ void GLSLProgramMandelbrot::onMouseScrolling(double velocity)
 
   auto fadeOld = fade_;
 
-  auto alpha = std::max(-0.5, velocity / 20.0);
+  auto alpha = std::max(-0.5, velocity);
   fade_ *= (1 + alpha);
 
   xShift_ = x - (x - xShift_) * fadeOld / fade_;

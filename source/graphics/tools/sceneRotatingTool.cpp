@@ -10,7 +10,6 @@ namespace
 {
 const float ROTATION_SPEED = 0.08f;
 const Point3D CENTER_OF_ROTATION = Point3D(350, 200, 500);
-const double SCROLLING_FACTOR = 50.0;
 const double MIN_SCROLLING_FRACTION = 0.8;
 }//end of unnamed namespace
 
@@ -34,7 +33,7 @@ void SceneRotatingTool::onMouseMove(int x , int y)
 
 void SceneRotatingTool::onMouseScrolling(double velocity)
 {
-  auto fraction = 1 + velocity / SCROLLING_FACTOR;
+  auto fraction = 1 + velocity;
   fraction = std::max(MIN_SCROLLING_FRACTION, fraction);
   
   auto globalToCamera = rayTracingProgram_.getGlobalToCamera();
