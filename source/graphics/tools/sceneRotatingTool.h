@@ -14,7 +14,7 @@ public:
 
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
-  virtual void onMouseScrolling(int velocity) override;
+  virtual void onMouseScrolling(double velocity) override;
 private:
   Point2D mousePoint_;
   double scale_ = 1.0;

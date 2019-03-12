@@ -8,7 +8,7 @@ public:
   virtual void init() override;
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
-  virtual void onMouseScrolling(int velocity) override;
+  virtual void onMouseScrolling(double velocity) override;
 
 private:
   GLint fadeUniform_ = 0;

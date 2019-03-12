@@ -45,7 +45,7 @@ void GLSLProgramMandelbrot::onMouseMove(int x, int y)
   render();
 }
 
-void GLSLProgramMandelbrot::onMouseScrolling(int velocity)
+void GLSLProgramMandelbrot::onMouseScrolling(double velocity)
 {
   auto mouseCoord = SDLUtils::getMouseXY();
   auto x = mouseCoord.first;

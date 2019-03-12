@@ -27,6 +27,8 @@ public:
 private:
   void applyMouseEvent_(std::function<void(InputEventListener&, int, int)> func,
     const SDL_MouseButtonEvent&);
+  void applyMouseScrolling_(const SDL_MouseWheelEvent& wheel);
+
   void onMouseClick_(const SDL_MouseButtonEvent& mouseEvent);
   void onMouseRelease_(const SDL_MouseButtonEvent& mouseEvent);
   void onMouseMove_(const SDL_MouseMotionEvent& mouseEvent);
@@ -37,4 +39,5 @@ private:
   //we use the keys here to ensure the determenistic order of listeners
   std::map<size_t, InputEventListener*> inputEventListeners_;
   Uint32 scrollingTimeOld_ = 0;
+  int scrollingSign_ = 1;
 };

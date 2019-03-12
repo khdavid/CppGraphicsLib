@@ -32,7 +32,7 @@ void SceneRotatingTool::onMouseMove(int x , int y)
   rayTracingProgram_.render();
 }
 
-void SceneRotatingTool::onMouseScrolling(int velocity)
+void SceneRotatingTool::onMouseScrolling(double velocity)
 {
   auto fraction = 1 + velocity / SCROLLING_FACTOR;
   fraction = std::max(MIN_SCROLLING_FRACTION, fraction);

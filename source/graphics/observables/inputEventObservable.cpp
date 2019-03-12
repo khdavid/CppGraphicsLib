@@ -14,7 +14,7 @@
 
 namespace
 {
-const Uint32 cTimeDelta = 100;
+const int cTimeDelta = 500;
 }
 void InputEventObservable::notifyInputEvent(const SDL_Event& event)
 {
@@ -38,21 +38,8 @@ void InputEventObservable::notifyInputEvent(const SDL_Event& event)
       break;
     }
     case EventType::MouseScrolling:
-    {
-      auto time = event.wheel.timestamp;
-      int dt = time - scrollingTimeOld_;
-      if (dt < cTimeDelta)
-      {
-        for (auto& inputEventListener : inputEventListeners_)
-        {
-          auto speed = int(event.wheel.y * dt);
-          inputEventListener.second->onMouseScrolling(speed);
-        }
-      }
-      scrollingTimeOld_ = time;
-      break; 
-    }
-
+      applyMouseScrolling_(event.wheel);
+      break;
     case EventType::MouseClick:
       applyMouseEvent_(&InputEventListener::onMouseClick, event.button);
       break;
@@ -79,6 +66,27 @@ void InputEventObservable::applyMouseEvent_(
   {
     func(*mouseListener.second, event.x, event.y);
   }
+}
+
+void InputEventObservable::applyMouseScrolling_(const SDL_MouseWheelEvent& wheel)
+{
+  auto time = wheel.timestamp;
+  int dt = time - scrollingTimeOld_;
+  auto ySign = (wheel.y > 0) ? 1 : -1;
+  if (ySign != 0)
+  {
+    scrollingSign_ = ySign;
+  }
+
+  if (dt < cTimeDelta)
+  {
+    for (auto& inputEventListener : inputEventListeners_)
+    {
+      double speed = (scrollingSign_ * dt / 5.0);
+      inputEventListener.second->onMouseScrolling(speed);
+    }
+  }
+  scrollingTimeOld_ = time;
 }
 
 size_t InputEventObservable::findMinNonExistedKey_() const
