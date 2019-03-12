@@ -75,11 +75,11 @@ void InputEventObservable::applyMouseScrolling_(const SDL_MouseWheelEvent& wheel
     scrollingSign_ = ySign;
   }
 
-  const int cTimeDelta = 100;
-  const int cMinDelta = 10;
+  const int TIME_DELTA = 100;
+  const int MIN_DELTA = 10;
   const double SCROLLING_FACTOR = 150.0;
 
-  dt = dt < cTimeDelta ? dt : cMinDelta;
+  dt = dt < TIME_DELTA ? dt : MIN_DELTA;
   std::cout << "dt: " << dt << std::endl;
   for (auto& inputEventListener : inputEventListeners_)
   {
