@@ -7,15 +7,12 @@
 //
 #include <algorithm>
 #include <sdl.h>
+#include <iostream>
 
 #include "listeners/inputEventListener.h"
 #include "inputEventObservable.h"
 #include "../eventHandlers/eventClassifier.h"
 
-namespace
-{
-const int cTimeDelta = 500;
-}
 void InputEventObservable::notifyInputEvent(const SDL_Event& event)
 {
   auto type = EventClassifier::classify(event);
@@ -78,13 +75,16 @@ void InputEventObservable::applyMouseScrolling_(const SDL_MouseWheelEvent& wheel
     scrollingSign_ = ySign;
   }
 
-  if (dt < cTimeDelta)
+  const int cTimeDelta = 100;
+  const int cMinDelta = 10;
+  const double SCROLLING_FACTOR = 3.0;
+
+  dt = dt < cTimeDelta ? dt : cMinDelta;
+  std::cout << "dt: " << dt << std::endl;
+  for (auto& inputEventListener : inputEventListeners_)
   {
-    for (auto& inputEventListener : inputEventListeners_)
-    {
-      double speed = (scrollingSign_ * dt / 5.0);
-      inputEventListener.second->onMouseScrolling(speed);
-    }
+    double speed = (scrollingSign_ * dt / SCROLLING_FACTOR);
+    inputEventListener.second->onMouseScrolling(speed);
   }
   scrollingTimeOld_ = time;
 }
