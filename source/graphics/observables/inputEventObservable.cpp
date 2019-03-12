@@ -69,10 +69,10 @@ void InputEventObservable::applyMouseScrolling_(const SDL_MouseWheelEvent& wheel
 {
   auto time = wheel.timestamp;
   int dt = time - scrollingTimeOld_;
-  auto ySign = (wheel.y > 0) ? 1 : -1;
-  if (ySign != 0)
+
+  if (wheel.y == 0)
   {
-    scrollingSign_ = ySign;
+    return;
   }
 
   const int TIME_DELTA = 100;
@@ -80,10 +80,11 @@ void InputEventObservable::applyMouseScrolling_(const SDL_MouseWheelEvent& wheel
   const double SCROLLING_FACTOR = 150.0;
 
   dt = dt < TIME_DELTA ? dt : MIN_DELTA;
-  std::cout << "dt: " << dt << std::endl;
+  std::cout << "y: " << wheel.y << " scrolling sign: " << scrollingSign_ <<" dt: " << dt << std::endl;
   for (auto& inputEventListener : inputEventListeners_)
   {
-    double speed = (scrollingSign_ * dt / SCROLLING_FACTOR);
+    auto sign = wheel.y > 0 ? 1 : -1;
+    double speed = (sign * dt / SCROLLING_FACTOR);
     inputEventListener.second->onMouseScrolling(speed);
   }
   scrollingTimeOld_ = time;
