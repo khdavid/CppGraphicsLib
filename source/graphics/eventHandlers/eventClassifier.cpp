@@ -51,7 +51,7 @@ EventType classifyMouseButton(const SDL_MouseButtonEvent& event)
 
 EventType classifyMouseMotion()
 {
-  auto mouseState = SDL_BUTTON(SDL_GetMouseState(nullptr, nullptr));
+  auto mouseState = SDL_GetMouseState(nullptr, nullptr);
   bool leftKeyPressed = mouseState & SDL_BUTTON_LMASK;
   bool rightKeyPressed = mouseState & SDL_BUTTON_RMASK;
 
