@@ -53,7 +53,7 @@ void GLSLProgramMandelbrot::onMouseScrolling(double velocity)
   std::cout << "scrolling " << "x " << mouseCoord.first << "y " << mouseCoord.second << std::endl;
   
   auto sizes = SDLUtils::getScreenSizes();
-  y = sizes.second - y;
+  y = sizes[1] - y;
 
   auto fadeOld = fade_;
 

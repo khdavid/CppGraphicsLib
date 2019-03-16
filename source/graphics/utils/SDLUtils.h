@@ -1,10 +1,9 @@
 #pragma once
-
-#include "geometryObjects/vector.h"
+#include "geometryObjects/point.h"
 
 namespace SDLUtils
 {
 std::pair<int, int> getMouseXY();
-std::pair<int, int> getScreenSizes();
+Point2DInt getScreenSizes();
 } //end of namespace SDLUtils
 

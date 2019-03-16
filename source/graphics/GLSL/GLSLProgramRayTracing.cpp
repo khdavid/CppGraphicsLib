@@ -4,12 +4,14 @@
 #include "utils/geometryUtils.h"
 #include "GLSLProgramRayTracing.h"
 #include "model/model.h"
+#include "utils/SDLUtils.h"
 
 namespace
 {
 // All the constants here have the counterparts on the GLSL side.
 // So the changes should be done on both sides.
 const char* cGlobalToCameraName = "globalToCamera";
+const char* cScreenSize = "screenSize";
 const char* cSphereDiffuseColorsName = "sphereDiffuseColors";
 const char* cSphereSpecularColorsName = "sphereSpecularColors";
 const char* cSphereAmbientColorsName = "sphereAmbientColors";
@@ -31,8 +33,11 @@ void GLSLProgramRayTracing::init()
   GLSLProgramFragmentShader::init();
   
   globalToCameraUniform_ = glGetUniformLocation(programId_, cGlobalToCameraName);
+  screenSizeUniform_ = glGetUniformLocation(programId_, cScreenSize);
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
+  auto screenSizes = SDLUtils::getScreenSizes();
+  glUniform2i(screenSizeUniform_, screenSizes[0], screenSizes[1]);
 
   initSpheresUniforms_();
 }
@@ -51,6 +56,7 @@ void GLSLProgramRayTracing::renderSpheres_()
 {
   auto sphereObjects = model_.getSphereObjects();
   auto spheresCount = sphereObjects.size();
+  
   glUniform1i(spheresCountUniform_, (GLint)spheresCount);
 
   std::vector<GLPosition> centers;
@@ -102,6 +108,11 @@ void GLSLProgramRayTracing::render()
   GLSLProgramFragmentShader::render();
 }
 
+void GLSLProgramRayTracing::onWindowsResized(int x, int y)
+{
+  glUniform2i(screenSizeUniform_, x, y);
+}
+
 Matrix4D GLSLProgramRayTracing::getGlobalToCamera() const
 {
   return globalToCamera_;
@@ -119,6 +130,7 @@ std::string GLSLProgramRayTracing::getFragmentShaderCode_() const
 
 out vec4 outColor;
 uniform mat4 globalToCamera;
+uniform ivec2 screenSize;
 
 const int cMaxNumberOfSpheres = 100; // has a copy counterpart on the C++ part
 uniform int spheresCount = 0;
@@ -302,10 +314,19 @@ const vec3 blue = vec3(166, 202, 240) / 255;
 const vec3 green = vec3(100, 240, 100) / 255;
 const vec3 white = vec3(255, 255, 255) / 255;
 
+vec2 getSDLCoordinates()
+{
+  vec2 result = gl_FragCoord.xy;
+  result.y = screenSize.y - result.y;
+  return result;
+}
+
 void main()
 {
   Ray ray;
-  ray.point = gl_FragCoord.xyz;
+  vec2 SDLCoordinates = getSDLCoordinates();
+  ray.point = vec3(SDLCoordinates, 0);
+
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
   

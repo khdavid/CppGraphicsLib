@@ -20,15 +20,15 @@ void SceneRotatingTool::onKeyPress(SDL_Keycode /*keyCode*/)
 
 void SceneRotatingTool::onMouseClickRight(int x , int y)
 {
-  mousePoint_ = { -x, y };
+  mousePoint_ = { x, y };
 }
 
 void SceneRotatingTool::onMouseMoveRight(int x , int y)
 {
-  auto mousePointNew = Point2D(-x, y);
+  auto mousePointNew = Point2D(x, y);
   auto motion = mousePointNew - mousePoint_;
   auto motion3D = Vector3D{ motion[0], motion[1], 0 };
-  auto rotationDirection = GeometryUtils::cross(motion3D, GeometryUtils::AXIS_Z);
+  auto rotationDirection = GeometryUtils::cross(GeometryUtils::AXIS_Z, motion3D);
   mousePoint_ = mousePointNew;
   auto rotation = GeometryUtils::createAffineRotation(rotationDirection, CENTER_OF_ROTATION, ROTATION_SPEED);
   auto globalToCamera = rayTracingProgram_.getGlobalToCamera();

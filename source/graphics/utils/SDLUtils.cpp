@@ -1,7 +1,7 @@
 #include <SDL.h>
 #include <glew.h>
-
 #include "SDLUtils.h"
+
 
 namespace SDLUtils
 {
@@ -13,12 +13,12 @@ std::pair<int, int> getMouseXY()
   return { x, y };
 }
 
-std::pair<int, int> getScreenSizes()
+Point2DInt getScreenSizes()
 {
   GLint m_viewport[4];
 
   glGetIntegerv(GL_VIEWPORT, m_viewport);
-  return { m_viewport[2], m_viewport[3] };
+  return Point2DInt( m_viewport[2], m_viewport[3] );
 }
 
 } //end of namespace SDLUtils

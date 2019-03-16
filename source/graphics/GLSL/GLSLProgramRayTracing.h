@@ -12,6 +12,7 @@ public:
   GLSLProgramRayTracing(SDL_Window& window, const Model& model);
   virtual void init() override;
   virtual void render() override;
+  virtual void onWindowsResized(int x, int y) override;
   Matrix4D getGlobalToCamera() const;
   void setGlobalToCamera(Matrix4D matrix);
 
@@ -23,6 +24,7 @@ private:
   const Model& model_;
   Matrix4D globalToCamera_;
   GLint globalToCameraUniform_ = 0;
+  GLint screenSizeUniform_ = 0;
 
   GLint sphereColorsUniform_ = 0;
   GLint sphereRadiusesUniform_ = 0;
