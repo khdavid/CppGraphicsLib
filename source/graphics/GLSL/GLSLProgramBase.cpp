@@ -5,6 +5,12 @@ GLSLProgramBase::~GLSLProgramBase()
   int x = 5; x;
 }
 
+void GLSLProgramBase::onWindowsResized(int x, int y)
+{
+  glViewport(0, 0, x, y);
+  render();
+}
+
 void GLSLProgramBase::init_()
 {
   shaderProgram_ = std::make_unique<GLSLShaderCompiler>(getVertexShaderCode_(), getFragmentShaderCode_());

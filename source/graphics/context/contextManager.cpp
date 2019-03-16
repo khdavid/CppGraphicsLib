@@ -7,6 +7,7 @@
 //
 
 #include <sdl.h>
+#include <glew.h>
  
 #include "listeners/inputEventLogger.h"
 #include "wrappers/SDL_WindowWrapper.h"

@@ -12,6 +12,8 @@ public:
   virtual ~GLSLProgramBase();
   virtual void render() = 0;
   virtual void init() = 0;
+  virtual void onWindowsResized(int x, int y) override;
+
 
 protected:
   void init_();

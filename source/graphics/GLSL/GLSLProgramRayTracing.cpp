@@ -111,6 +111,7 @@ void GLSLProgramRayTracing::render()
 void GLSLProgramRayTracing::onWindowsResized(int x, int y)
 {
   glUniform2i(screenSizeUniform_, x, y);
+  GLSLProgramBase::onWindowsResized(x, y);
 }
 
 Matrix4D GLSLProgramRayTracing::getGlobalToCamera() const
