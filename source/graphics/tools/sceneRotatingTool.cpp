@@ -20,7 +20,7 @@ void SceneRotatingTool::onKeyPress(SDL_Keycode /*keyCode*/)
 
 void SceneRotatingTool::onMouseClickRight(int x , int y)
 {
-  mousePoint_ = { x, y };
+  mousePoint_ = { -x, y };
 }
 
 void SceneRotatingTool::onMouseMoveRight(int x , int y)
