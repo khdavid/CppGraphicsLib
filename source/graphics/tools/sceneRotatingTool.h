@@ -16,8 +16,12 @@ public:
   virtual void onMouseClickRight(int x, int y) override;
   virtual void onMouseMoveRight(int x, int y) override;
   virtual void onMouseScrolling(double velocity) override;
+
 private:
+  Point3D getCenterOfRotation_() const;
+
   Point2D mousePoint_;
+  Point3D centerOfRotation_;
   double scale_ = 1.0;
 };
 

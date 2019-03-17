@@ -17,6 +17,9 @@ struct Matrix;
 template <class T, class K>
 enable_if_vector_t<T, K> operator+(const K& first, const T& second);
 
+template <class T, class K>
+enable_if_vector_t<T, K&> operator+=(K& first, const T& second);
+
 template <class T>
 enable_if_vector_t<T> operator*(const T& first, double multiplier);
 

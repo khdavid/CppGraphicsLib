@@ -6,15 +6,6 @@
 #include "utils/geometryUtils.h"
 
 
-ObjectsMovingTool::ObjectsMovingTool(
-  GLSLProgramRayTracing& rayTracingProgram, 
-  InputEventObservable& inputEventObservable,
-  Model& model):
-  Tool(rayTracingProgram, inputEventObservable),
-  model_(model)
-{
-}
-
 void ObjectsMovingTool::onMouseClick(int x, int y)
 {
   mousePoint_ = Point3D(x, y, 0);

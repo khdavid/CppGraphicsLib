@@ -10,6 +10,7 @@ namespace GeometryUtils
 const auto AXIS_X = Vector3D(1, 0, 0);
 const auto AXIS_Y = Vector3D(0, 1, 0);
 const auto AXIS_Z = Vector3D(0, 0, 1);
+const auto ZERO_POINT = Point3D(0, 0, 0);
 
 Vector3D normalized(const Vector3D& vector);
 Vector3D cross(const Vector3D& first, const Vector3D& second);

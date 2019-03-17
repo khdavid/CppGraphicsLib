@@ -14,10 +14,7 @@ struct Sphere;
 class ObjectsMovingTool : public Tool
 {
 public:  
-  ObjectsMovingTool(
-    GLSLProgramRayTracing& rayTracingProgram, 
-    InputEventObservable& inputEventObservable,
-    Model& model);
+  using Tool::Tool;
   virtual void onMouseClick(int x, int y) override;
   virtual void onMouseMove(int x, int y) override;
   virtual void onMouseRelease(int x, int y) override;
@@ -27,6 +24,5 @@ private:
   
   Point3D mousePoint_;
   std::optional<Sphere*> pickedSphere_;
-  Model& model_;
 };
 

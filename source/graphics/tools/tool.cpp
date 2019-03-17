@@ -5,9 +5,11 @@
 
 Tool::Tool(
   GLSLProgramRayTracing& rayTracingProgram,
-  InputEventObservable& inputEventObservable) :
+  InputEventObservable& inputEventObservable,
+  Model& model) :
   rayTracingProgram_(rayTracingProgram),
-  inputEventObservable_(inputEventObservable)
+  inputEventObservable_(inputEventObservable),
+  model_(model)
 {
   inputEventObservable_.addInputListener(this);
 }

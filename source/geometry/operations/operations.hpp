@@ -10,6 +10,13 @@ enable_if_vector_t<T, K> operator+(const K& first, const T& second)
   return result;
 }
 
+template <class T, class K>
+enable_if_vector_t<T, K&> operator+=(K& first, const T& second)
+{
+  first = first + second;
+  return first;
+}
+
 template <class T>
 enable_if_vector_t<T> operator*(const T& first, double multiplier)
 {
