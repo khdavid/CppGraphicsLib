@@ -7,7 +7,8 @@ class SphereObject : public Object
 {
 public:
   SphereObject(Material material, Sphere sphere);
-  Sphere getSphere() const;
+  const Sphere& getSphere() const;
+  Sphere& getSphere();
 private:
   Sphere sphere_;
 };

@@ -6,7 +6,12 @@ SphereObject::SphereObject(Material material, Sphere sphere) :
 {
 }
 
-Sphere SphereObject::getSphere() const
+const Sphere& SphereObject::getSphere() const
+{
+  return sphere_;
+}
+
+Sphere& SphereObject::getSphere()
 {
   return sphere_;
 }

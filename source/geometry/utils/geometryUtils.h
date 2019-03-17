@@ -26,6 +26,21 @@ double sqr(const T& element)
   return element * element;
 }
 
+template <class T>
+double distanceSqr(const T& el1, const T& el2)
+{
+  auto diff = el1 - el2;
+  return sqr(diff);
+}
+
+template <class T>
+double distance(const T& el1, const T& el2)
+{
+  auto diff = el1 - el2;
+  return sqrt(sqr(diff));
+}
+
+
 template <size_t n, class T>
 std::array<float, n * n> convertToGL(const Matrix<T, n>& matrix)
 {

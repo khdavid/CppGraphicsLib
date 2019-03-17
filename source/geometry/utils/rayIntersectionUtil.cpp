@@ -1,5 +1,7 @@
 #include "rayIntersectionUtil.h"
 #include "geometryUtils.h"
+#include "geometryObjects/point.h"
+#include "geometryObjects/matrix.h"
 
 namespace
 {
@@ -75,5 +77,16 @@ std::optional<Point3D> isRayHittingSphere(const Ray& ray, const Sphere& sphere)
   }
 
   return std::nullopt;
+}
+
+Ray getPickRay(const Point3D& coords, const Matrix4D& transform)
+{
+  auto point = Point3D(coords[0], coords[1], 0);
+  auto direction = GeometryUtils::AXIS_Z;
+
+  Ray result;
+  result.point = transform * point;
+  result.direction = transform * direction;
+  return result;
 }
 }//end of RayIntersectionUtil namespace
