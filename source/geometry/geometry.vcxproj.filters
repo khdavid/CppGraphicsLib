@@ -48,6 +48,9 @@
     <ClInclude Include="utils\rayIntersectionUtil.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="utils\geometryUtils.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operations\operations.cpp">

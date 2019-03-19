@@ -22,38 +22,18 @@ Matrix4D createAffineRotation(const Vector3D& direction, const Point3D& point, d
 Matrix4D createAffineScaling(const Point3D& centerPoint, double scale);
 
 template <class T>
-double sqr(const T& element)
-{
-  return element * element;
-}
+double sqr(const T& element);
 
 template <class T>
-double distanceSqr(const T& el1, const T& el2)
-{
-  auto diff = el1 - el2;
-  return sqr(diff);
-}
+double distanceSqr(const T& el1, const T& el2);
 
 template <class T>
-double distance(const T& el1, const T& el2)
-{
-  auto diff = el1 - el2;
-  return sqrt(sqr(diff));
-}
+double distance(const T& el1, const T& el2);
 
 
 template <size_t n, class T>
-std::array<float, n * n> convertToGL(const Matrix<T, n>& matrix)
-{
-  std::array<float, n * n > result;
-  for (size_t i = 0; i < n; ++i)
-  {
-    for (size_t j = 0; j < n; ++j)
-    {
-      result[i * n + j] = float(matrix[i][j]);
-    }
-  }
-  return result;
-}
+std::array<float, n * n> convertToGL(const Matrix<T, n>& matrix);
 }//end of namespace GeometryUtils
+
+#include "geometryUtils.hpp"
 
