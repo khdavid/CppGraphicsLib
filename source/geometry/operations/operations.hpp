@@ -119,7 +119,10 @@ enable_if_matrix_t<T> operator*(const T& m1, const T& m2)
 template <class MatType, class VecType>
 enable_if_vector_t<VecType> operator*(const MatType& m, const VecType& v)
 {
-  auto n = v.dim;
+  static_assert(MatType::dim == VecType::dim, "Dimensions are not the same");
+  static_assert(MatType::geom_type == GeomEntityType::Matrix, "Matrix required for as the first argument");
+
+  auto n = VecType::dim;
   VecType result;
   for (size_t i = 0; i < n; ++i)
   {
