@@ -8,14 +8,14 @@
 
 void ObjectsMovingTool::onMouseClick(int x, int y)
 {
-  mousePoint_ = Point3D(x, y, 0);
+  mousePoint_ = Point3D(x, y, -1e4);
   auto ray = RayIntersectionUtil::getPickRay(mousePoint_, rayTracingProgram_.getGlobalToCamera());
   pickedSphere_ = pickHittingSphere_(ray);
 }
 
 void ObjectsMovingTool::onMouseMove(int x, int y)
 {
-  auto mousePoint = Point3D(x, y, 0);
+  auto mousePoint = Point3D(x, y, -1e4);
   auto motion = mousePoint - mousePoint_;
   mousePoint_ = mousePoint;
 

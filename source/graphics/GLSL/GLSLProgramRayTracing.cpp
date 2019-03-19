@@ -129,6 +129,7 @@ std::string GLSLProgramRayTracing::getFragmentShaderCode_() const
   return R"(
 #version 130
 
+#define FLT_MAX 3.402823466e+38;
 out vec4 outColor;
 uniform mat4 globalToCamera;
 uniform ivec2 screenSize;
@@ -326,7 +327,7 @@ void main()
 {
   Ray ray;
   vec2 SDLCoordinates = getSDLCoordinates();
-  ray.point = vec3(SDLCoordinates, 0);
+  ray.point = vec3(SDLCoordinates, -1e4);
 
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
@@ -339,7 +340,7 @@ void main()
   light.direction = normalized(vec3 (0, -2, -1));
   //light.direction = transformVector(light.direction, globalToCamera);
   
-  float minDistanceSqr = 1e10;
+  float minDistanceSqr = FLT_MAX;
   bool closestBallFound = false;
   vec3 closestIntersectionPoint;
   Ball closestBall;
