@@ -116,10 +116,11 @@ enable_if_matrix_t<T> operator*(const T& m1, const T& m2)
   return res;
 }
 
-template <class T, size_t n>
-Vector<T, n> operator*(const Matrix<T, n>& m, const Vector<T, n>& v)
+template <class MatType, class VecType>
+enable_if_vector_t<VecType> operator*(const MatType& m, const VecType& v)
 {
-  Vector<T, n> result;
+  auto n = v.dim;
+  VecType result;
   for (size_t i = 0; i < n; ++i)
   {
     for (size_t j = 0; j < n; ++j)

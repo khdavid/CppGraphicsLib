@@ -31,4 +31,16 @@ struct Matrix4D : Matrix <double, 4>
   using Matrix<double, 4>::Matrix;
 };
 
+struct ScaleAndRotationMatrix3D : Matrix3D
+{
+  using Matrix3D::Matrix3D;
+};
+
+//represents scaling/rotation of 3D affince space
+struct AffineMatrix : Matrix4D
+{
+  using Matrix4D::Matrix4D;
+};
+
+
 

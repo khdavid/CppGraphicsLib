@@ -50,8 +50,8 @@ enable_if_vector_t<T, double> operator*(const T& v1, const T& v2);
 template <class T>
 enable_if_matrix_t<T> operator*(const T& m1, const T& m2);
 
-template <class T, size_t n>
-Vector<T, n> operator*(const Matrix<T, n>& m, const Vector<T, n>& v);
+template <class MatType, class VecType>
+enable_if_vector_t<VecType> operator*(const MatType& m, const VecType& v);
 
 Point3D operator*(const Matrix4D& transformation, const Point3D& point);
 Vector3D operator*(const Matrix4D& transformation, const Vector3D& point);
