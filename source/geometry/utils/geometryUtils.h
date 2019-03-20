@@ -21,6 +21,12 @@ Matrix3D createRotation(const Vector3D& direction, double angle);
 Matrix4D createAffineRotation(const Vector3D& direction, const Point3D& point, double angle);
 Matrix4D createAffineScaling(const Point3D& centerPoint, double scale);
 
+template<class T>
+T det(const Matrix<T, 1>& m);
+
+template <class T, size_t n>
+T det(const Matrix<T, n>& m);
+
 template <class T>
 double sqr(const T& element);
 
@@ -29,7 +35,6 @@ double distanceSqr(const T& el1, const T& el2);
 
 template <class T>
 double distance(const T& el1, const T& el2);
-
 
 template <size_t n, class T>
 std::array<float, n * n> convertToGL(const Matrix<T, n>& matrix);
