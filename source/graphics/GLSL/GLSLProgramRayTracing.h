@@ -26,13 +26,21 @@ private:
   GLint globalToCameraUniform_ = 0;
   GLint screenSizeUniform_ = 0;
 
-  GLint sphereColorsUniform_ = 0;
-  GLint sphereRadiusesUniform_ = 0;
-  GLint sphereCentersUniform_ = 0;
-  GLint spheresCountUniform_ = 0;
-  GLint sphereDiffuseColorsUniform_ = 0;
-  GLint sphereSpecularColorsUniform_ = 0;
-  GLint sphereAmbientColorsUniform_ = 0;
+  struct MaterialsUniform
+  {
+    GLint diffuse = 0;
+    GLint specular = 0;
+    GLint ambient = 0;
+  };
+  struct SpheresGeometryUniform
+  {
+    GLint radius = 0;
+    GLint center = 0;
+    GLint count = 0;
+  };
+
+  MaterialsUniform sphereMaterialUniform_;
+  SpheresGeometryUniform spheresGeometryUniform_;
 
 };
 

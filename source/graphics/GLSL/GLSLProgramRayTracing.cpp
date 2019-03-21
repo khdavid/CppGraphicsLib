@@ -44,20 +44,18 @@ void GLSLProgramRayTracing::init()
 
 void GLSLProgramRayTracing::initSpheresUniforms_()
 {
-  sphereDiffuseColorsUniform_ = glGetUniformLocation(programId_, cSphereDiffuseColorsName);
-  sphereSpecularColorsUniform_ = glGetUniformLocation(programId_, cSphereSpecularColorsName);
-  sphereAmbientColorsUniform_ = glGetUniformLocation(programId_, cSphereAmbientColorsName);
-  sphereRadiusesUniform_ = glGetUniformLocation(programId_, cSphereRadiusesName);
-  sphereCentersUniform_ = glGetUniformLocation(programId_, cSphereCentersName);
-  spheresCountUniform_ = glGetUniformLocation(programId_, cSpheresCount);
+  sphereMaterialUniform_.diffuse = glGetUniformLocation(programId_, cSphereDiffuseColorsName);
+  sphereMaterialUniform_.specular = glGetUniformLocation(programId_, cSphereSpecularColorsName);
+  sphereMaterialUniform_.ambient = glGetUniformLocation(programId_, cSphereAmbientColorsName);
+  spheresGeometryUniform_.radius = glGetUniformLocation(programId_, cSphereRadiusesName);
+  spheresGeometryUniform_.center = glGetUniformLocation(programId_, cSphereCentersName);
+  spheresGeometryUniform_.count = glGetUniformLocation(programId_, cSpheresCount);
 }
 
 void GLSLProgramRayTracing::renderSpheres_()
 {
   auto sphereObjects = model_.getSphereObjects();
   auto spheresCount = sphereObjects.size();
-  
-  glUniform1i(spheresCountUniform_, (GLint)spheresCount);
 
   std::vector<GLPosition> centers;
   std::vector<GLfloat> radiuses;
@@ -92,11 +90,13 @@ void GLSLProgramRayTracing::renderSpheres_()
       material.ambient.g,
       material.ambient.b });
   }
-  glUniform1fv(sphereRadiusesUniform_, (GLsizei)spheresCount, (GLfloat*)radiuses.data());
-  glUniform3iv(sphereDiffuseColorsUniform_, (GLsizei)spheresCount, (GLint*)diffuseColors.data());
-  glUniform3iv(sphereAmbientColorsUniform_, (GLsizei)spheresCount, (GLint*)ambientColors.data());
-  glUniform3iv(sphereSpecularColorsUniform_, (GLsizei)spheresCount, (GLint*)specularColors.data());
-  glUniform3fv(sphereCentersUniform_, (GLsizei)spheresCount, (GLfloat*)centers.data());
+  glUniform3iv(sphereMaterialUniform_.diffuse, (GLsizei)spheresCount, (GLint*)diffuseColors.data());
+  glUniform3iv(sphereMaterialUniform_.ambient, (GLsizei)spheresCount, (GLint*)ambientColors.data());
+  glUniform3iv(sphereMaterialUniform_.specular, (GLsizei)spheresCount, (GLint*)specularColors.data());
+  glUniform3fv(spheresGeometryUniform_.center, (GLsizei)spheresCount, (GLfloat*)centers.data());
+  glUniform1fv(spheresGeometryUniform_.radius, (GLsizei)spheresCount, (GLfloat*)radiuses.data());
+  glUniform1i(spheresGeometryUniform_.count, (GLint)spheresCount);
+
 }
 
 void GLSLProgramRayTracing::render()
