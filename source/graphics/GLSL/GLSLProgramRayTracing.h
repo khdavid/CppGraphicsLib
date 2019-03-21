@@ -23,8 +23,12 @@ private:
 
   const Model& model_;
   Matrix4D globalToCamera_;
-  GLint globalToCameraUniform_ = 0;
-  GLint screenSizeUniform_ = 0;
+
+  struct GlobalUniform
+  {
+    GLint globalToCamera = 0;
+    GLint screenSize = 0;
+  };
 
   struct MaterialsUniform
   {
@@ -41,6 +45,7 @@ private:
 
   MaterialsUniform sphereMaterialUniform_;
   SpheresGeometryUniform spheresGeometryUniform_;
+  GlobalUniform globalUniform_;
 
 };
 

@@ -16,12 +16,12 @@ void GLSLProgramRayTracing::init()
 {
   GLSLProgramFragmentShader::init();
   
-  globalToCameraUniform_ = glGetUniformLocation(programId_, "globalToCamera");
-  screenSizeUniform_ = glGetUniformLocation(programId_, "screenSize");
+  globalUniform_.globalToCamera = glGetUniformLocation(programId_, "globalToCamera");
+  globalUniform_.screenSize = glGetUniformLocation(programId_, "screenSize");
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
-  glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
   auto screenSizes = SDLUtils::getScreenSizes();
-  glUniform2i(screenSizeUniform_, screenSizes[0], screenSizes[1]);
+  glUniform2i(globalUniform_.screenSize, screenSizes[0], screenSizes[1]);
+  glUniformMatrix4fv(globalUniform_.globalToCamera, 1, false, glMatrix.data());
 
   initSpheresUniforms_();
 }
@@ -86,7 +86,7 @@ void GLSLProgramRayTracing::renderSpheres_()
 void GLSLProgramRayTracing::render()
 {
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
-  glUniformMatrix4fv(globalToCameraUniform_, 1, true, glMatrix.data());
+  glUniformMatrix4fv(globalUniform_.globalToCamera, 1, true, glMatrix.data());
   renderSpheres_();
 
   GLSLProgramFragmentShader::render();
@@ -94,7 +94,7 @@ void GLSLProgramRayTracing::render()
 
 void GLSLProgramRayTracing::onWindowsResized(int x, int y)
 {
-  glUniform2i(screenSizeUniform_, x, y);
+  glUniform2i(globalUniform_.screenSize, x, y);
   GLSLProgramBase::onWindowsResized(x, y);
 }
 
