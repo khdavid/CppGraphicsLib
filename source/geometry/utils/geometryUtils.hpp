@@ -30,24 +30,51 @@ Matrix<T, n - 1> adj(const Matrix<T, n>& m, size_t iExcl, size_t jExcl)
 }
 namespace GeometryUtils
 {
-template<class T>
-T det(const Matrix<T, 1>& m) 
-{
-  return m[0][0];
-}
-
 template <class T, size_t n>
 T det(const Matrix<T, n>& m)
 {
-
-  T result = 0;
-  for (size_t j = 0; j < n; j++)
+  if constexpr (n == 1)
   {
-    auto sign = (j % 2 == 0) ? 1 : -1;
-    result += sign * m[0][j] * det(adj(m, 0, j));
+    return m[0][0];
+  }
+  else
+  {
+    T result = 0; 
+    for (size_t j = 0; j < n; j++)
+    {
+      auto sign = (j % 2 == 0) ? 1 : -1;
+      result += sign * m[0][j] * det(adj(m, 0, j));
+    }
+    return result;
+  }
+
+}
+
+template <class T>
+enable_if_matrix_t<T> inverse(const T& m)
+{
+  T result;
+  if constexpr (T::dim == 1)
+  {
+    result[0][0] = 1 / m[0][0];
+  }
+  else
+  {
+    auto detOriginal = det(m);
+    for (size_t i = 0; i < m.size(); ++i)
+    {
+      for (size_t j = 0; j < m.size(); ++j)
+      {
+        auto sign = ((i + j) % 2 == 0) ? 1 : -1;
+        auto adjMatrix = adj(m, j, i);
+        auto detAdj = det(adjMatrix);
+        result[i][j] = sign * detAdj / detOriginal;
+      }
+    }
   }
   return result;
 }
+
 
 template <class T>
 double sqr(const T& element)
