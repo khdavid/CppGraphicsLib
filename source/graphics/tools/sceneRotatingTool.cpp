@@ -33,8 +33,8 @@ void SceneRotatingTool::onMouseMoveRight(int x , int y)
   mousePoint_ = mousePointNew;
   std::cout << "centerOfRotation: " << centerOfRotation_[0] << " " <<
     centerOfRotation_[1] << " " << centerOfRotation_[2] << std::endl;
-  auto rotation = GeometryUtils::createAffineRotation(rotationDirection, centerOfRotation_, ROTATION_SPEED);
   auto globalToCamera = rayTracingProgram_.getGlobalToCamera();
+  auto rotation = GeometryUtils::createAffineRotation(rotationDirection, GeometryUtils::inverse(globalToCamera) * centerOfRotation_, ROTATION_SPEED);
   rayTracingProgram_.setGlobalToCamera(globalToCamera * rotation);
   rayTracingProgram_.render();
 }
