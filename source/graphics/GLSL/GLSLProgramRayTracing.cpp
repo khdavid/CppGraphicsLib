@@ -6,22 +6,6 @@
 #include "model/model.h"
 #include "utils/SDLUtils.h"
 
-namespace
-{
-// All the constants here have the counterparts on the GLSL side.
-// So the changes should be done on both sides.
-const char* cGlobalToCameraName = "globalToCamera";
-const char* cScreenSize = "screenSize";
-const char* cSphereDiffuseColorsName = "sphereDiffuseColors";
-const char* cSphereSpecularColorsName = "sphereSpecularColors";
-const char* cSphereAmbientColorsName = "sphereAmbientColors";
-const char* cSphereRadiusesName = "sphereRadiuses";
-const char* cSphereCentersName = "sphereCenters";
-const char* cSpheresCount = "spheresCount";
-const size_t cMaxNumberOfSpheres = 3; 
-}
-
-
 GLSLProgramRayTracing::GLSLProgramRayTracing(
   SDL_Window& window, const Model& model): GLSLProgramFragmentShader(window), model_(model)
 {
@@ -32,8 +16,8 @@ void GLSLProgramRayTracing::init()
 {
   GLSLProgramFragmentShader::init();
   
-  globalToCameraUniform_ = glGetUniformLocation(programId_, cGlobalToCameraName);
-  screenSizeUniform_ = glGetUniformLocation(programId_, cScreenSize);
+  globalToCameraUniform_ = glGetUniformLocation(programId_, "globalToCamera");
+  screenSizeUniform_ = glGetUniformLocation(programId_, "screenSize");
   auto glMatrix = GeometryUtils::convertToGL(globalToCamera_);
   glUniformMatrix4fv(globalToCameraUniform_, 1, false, glMatrix.data());
   auto screenSizes = SDLUtils::getScreenSizes();
@@ -44,12 +28,12 @@ void GLSLProgramRayTracing::init()
 
 void GLSLProgramRayTracing::initSpheresUniforms_()
 {
-  sphereMaterialUniform_.diffuse = glGetUniformLocation(programId_, cSphereDiffuseColorsName);
-  sphereMaterialUniform_.specular = glGetUniformLocation(programId_, cSphereSpecularColorsName);
-  sphereMaterialUniform_.ambient = glGetUniformLocation(programId_, cSphereAmbientColorsName);
-  spheresGeometryUniform_.radius = glGetUniformLocation(programId_, cSphereRadiusesName);
-  spheresGeometryUniform_.center = glGetUniformLocation(programId_, cSphereCentersName);
-  spheresGeometryUniform_.count = glGetUniformLocation(programId_, cSpheresCount);
+  sphereMaterialUniform_.diffuse = glGetUniformLocation(programId_, "sphereDiffuseColors");
+  sphereMaterialUniform_.specular = glGetUniformLocation(programId_, "sphereSpecularColors");
+  sphereMaterialUniform_.ambient = glGetUniformLocation(programId_, "sphereAmbientColors");
+  spheresGeometryUniform_.radius = glGetUniformLocation(programId_, "sphereRadiuses");
+  spheresGeometryUniform_.center = glGetUniformLocation(programId_, "sphereCenters");
+  spheresGeometryUniform_.count = glGetUniformLocation(programId_, "spheresCount");
 }
 
 void GLSLProgramRayTracing::renderSpheres_()
