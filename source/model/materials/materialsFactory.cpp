@@ -20,22 +20,22 @@ const Color Teal = { 0, 128, 128 };
 const Color Navy = { 0, 0, 128 };
 
 
-Material Specular(const Color& color)
+Material Specular(const Color& color, float sharpness)
 {
   Material result;
   result.ambient = 0.5 * color;
   result.diffuse = 0.3 * color;
   result.specular = 0.7 * color;
-  result.sharpness = 30;
+  result.sharpness = sharpness;
   return result;
 }
 
-Material Diffuse(const Color & color)
+Material Diffuse(const Color & color, float sharpness)
 {
   Material result;
   result.ambient = 0.2 * color;
   result.diffuse = 0.8 * color;
-  result.sharpness = 30;
+  result.sharpness = sharpness;
   return result;
 }
 

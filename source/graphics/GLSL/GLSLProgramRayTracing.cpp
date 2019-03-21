@@ -31,6 +31,8 @@ void GLSLProgramRayTracing::initSpheresUniforms_()
   sphereMaterialUniform_.diffuse = glGetUniformLocation(programId_, "sphereDiffuseColors");
   sphereMaterialUniform_.specular = glGetUniformLocation(programId_, "sphereSpecularColors");
   sphereMaterialUniform_.ambient = glGetUniformLocation(programId_, "sphereAmbientColors");
+  sphereMaterialUniform_.sharpness = glGetUniformLocation(programId_, "sphereSharpnessColors");
+
   spheresGeometryUniform_.radius = glGetUniformLocation(programId_, "sphereRadiuses");
   spheresGeometryUniform_.center = glGetUniformLocation(programId_, "sphereCenters");
   spheresGeometryUniform_.count = glGetUniformLocation(programId_, "spheresCount");
@@ -43,6 +45,7 @@ void GLSLProgramRayTracing::renderSpheres_()
 
   std::vector<GLPosition> centers;
   std::vector<GLfloat> radiuses;
+  std::vector<GLfloat> sharpnesses;
   std::vector<GLColor> diffuseColors;
   std::vector<GLColor> specularColors;
   std::vector<GLColor> ambientColors;
@@ -73,10 +76,14 @@ void GLSLProgramRayTracing::renderSpheres_()
       material.ambient.r,
       material.ambient.g,
       material.ambient.b });
+
+    sharpnesses.push_back(material.sharpness);
   }
   glUniform3iv(sphereMaterialUniform_.diffuse, (GLsizei)spheresCount, (GLint*)diffuseColors.data());
   glUniform3iv(sphereMaterialUniform_.ambient, (GLsizei)spheresCount, (GLint*)ambientColors.data());
   glUniform3iv(sphereMaterialUniform_.specular, (GLsizei)spheresCount, (GLint*)specularColors.data());
+  glUniform1fv(sphereMaterialUniform_.sharpness, (GLsizei)spheresCount, (GLfloat*)sharpnesses.data());
+
   glUniform3fv(spheresGeometryUniform_.center, (GLsizei)spheresCount, (GLfloat*)centers.data());
   glUniform1fv(spheresGeometryUniform_.radius, (GLsizei)spheresCount, (GLfloat*)radiuses.data());
   glUniform1i(spheresGeometryUniform_.count, (GLint)spheresCount);
@@ -124,6 +131,7 @@ uniform int spheresCount = 0;
 uniform ivec3 sphereDiffuseColors[cMaxNumberOfSpheres];
 uniform ivec3 sphereSpecularColors[cMaxNumberOfSpheres];
 uniform ivec3 sphereAmbientColors[cMaxNumberOfSpheres];
+uniform float sphereSharpnessColors[cMaxNumberOfSpheres];
 
 uniform vec3 sphereCenters[cMaxNumberOfSpheres];
 uniform float sphereRadiuses[cMaxNumberOfSpheres];
@@ -136,6 +144,7 @@ struct Material
   vec3 diffuse;
   vec3 specular;
   vec3 ambient;
+  float sharpness;
 };
 
 struct Ball
@@ -255,7 +264,7 @@ vec3 getPhongColor(Material material, vec3 normal, in Light light, in Ray reflec
 {
   float diffuseFactor = max (0, dot(normal, -light.direction));
   float specularFactor = max(0, dot(reflectedRay.direction, -light.direction));
-  specularFactor = pow(specularFactor, 200);
+  specularFactor = pow(specularFactor, material.sharpness);
   return 
     material.ambient + 
     material.diffuse * diffuseFactor + 
@@ -293,6 +302,7 @@ Ball constructBall(int i)
   result.material.diffuse = sphereDiffuseColors[i] / 255.0;
   result.material.ambient = sphereAmbientColors[i] / 255.0;
   result.material.specular = sphereSpecularColors[i] / 255.0;
+  result.material.sharpness = sphereSharpnessColors[i];
   return result;
 }
 

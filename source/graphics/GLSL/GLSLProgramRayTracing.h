@@ -35,6 +35,7 @@ private:
     GLint diffuse = 0;
     GLint specular = 0;
     GLint ambient = 0;
+    GLint sharpness = 0;
   };
   struct SpheresGeometryUniform
   {

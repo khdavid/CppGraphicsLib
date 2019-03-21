@@ -16,6 +16,6 @@ struct Material
   Color ambient;
   Color diffuse;
   Color specular;
-  float sharpness;
+  float sharpness = 0;
 };
 

@@ -21,7 +21,7 @@ extern const Color Purple;
 extern const Color Teal;
 extern const Color Navy;
 
-Material Specular(const Color& color);
-Material Diffuse(const Color& color);
+Material Specular(const Color& color, float sharpness = 500);
+Material Diffuse(const Color& color, float sharpness = 500);
 };
 
