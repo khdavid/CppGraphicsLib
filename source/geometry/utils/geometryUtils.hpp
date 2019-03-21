@@ -7,14 +7,14 @@ Matrix<T, n - 1> adj(const Matrix<T, n>& m, size_t iExcl, size_t jExcl)
 {
   static_assert(n > 1, "Dimension should be greater than 1");
   Matrix<T, n - 1> result;
-  size_t iAdj = 0;
-  size_t jAdj = 0;
 
+  size_t iAdj = 0;
   for (auto i = 0; i < n; ++i)
   {
     if (i == iExcl) 
       continue;
 
+    size_t jAdj = 0;
     for (auto j = 0; j < n; ++j)
     {
       if (j == jExcl) 
