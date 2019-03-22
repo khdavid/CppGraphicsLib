@@ -8,14 +8,14 @@
 
 void ObjectsMovingTool::onMouseClick(int x, int y)
 {
-  mousePoint_ = Point3D(x, y, -1e4);
+  mousePoint_ = Point3D(x, y, 0);
   auto ray = RayIntersectionUtil::getPickRay(mousePoint_, rayTracingProgram_.getGlobalToCamera());
   pickedSphere_ = pickHittingSphere_(ray);
 }
 
 void ObjectsMovingTool::onMouseMove(int x, int y)
 {
-  auto mousePoint = Point3D(x, y, -1e4);
+  auto mousePoint = Point3D(x, y, 0);
   auto motion = mousePoint - mousePoint_;
   mousePoint_ = mousePoint;
 
@@ -35,18 +35,18 @@ void ObjectsMovingTool::onMouseRelease(int, int)
 
 std::optional<Sphere*> ObjectsMovingTool::pickHittingSphere_(const Ray& ray) const
 {
-  auto minDistanceSqr = std::numeric_limits<double>::infinity();
+  auto minDistance = std::numeric_limits<double>::infinity();
   std::optional<Sphere*> sphere;
   
   for (auto& sphereObject : model_.getSphereObjects())
   {
-    auto intersectionPoint = RayIntersectionUtil::isRayHittingSphere(ray, sphereObject->getSphere());
-    if (intersectionPoint)
+    auto intersectionPoints = RayIntersectionUtil::isLineHittingSphere(ray, sphereObject->getSphere());
+    if (intersectionPoints)
     {
-      auto distSqr = GeometryUtils::distanceSqr(*intersectionPoint, ray.point);
-      if (distSqr < minDistanceSqr)
+      auto dist = (intersectionPoints->first - ray.point) * ray.direction;
+      if (dist < minDistance)
       {
-        minDistanceSqr = distSqr;
+        minDistance = dist;
         sphere = &sphereObject->getSphere();
       }
     }

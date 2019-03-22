@@ -30,6 +30,12 @@ bool isRayStartsAfterSphere(const Ray& ray, const Sphere& sphere)
     !isInsideSphere(ray.point, sphere);
 }
 
+
+
+}//end of unnamed namespace
+
+namespace RayIntersectionUtil
+{
 std::optional<std::pair<Point3D, Point3D>> isLineHittingSphere(const Ray& ray, const Sphere& sphere)
 {
   auto centerVec = sphere.center - ray.point;
@@ -38,7 +44,7 @@ std::optional<std::pair<Point3D, Point3D>> isLineHittingSphere(const Ray& ray, c
   // lenSqr(t * ray.direction - centerVec) = sqr(ball.radius);
   // lenSqr(ray.direction) * t^2 - 2 * dot(ray.direction, centerVec) * t + lenSqr(centerVec) - sqr(ball.radius) = 0;
   using namespace GeometryUtils;
-  auto D = sqr(ray.direction * centerVec ) - sqr(ray.direction) * (sqr(centerVec) - sqr(sphere.radius));
+  auto D = sqr(ray.direction * centerVec) - sqr(ray.direction) * (sqr(centerVec) - sqr(sphere.radius));
 
   if (D < 0)
   {
@@ -49,15 +55,10 @@ std::optional<std::pair<Point3D, Point3D>> isLineHittingSphere(const Ray& ray, c
 
   auto firstIntersection = ray.point + t1 * ray.direction;
   auto secondIntersection = ray.point + t2 * ray.direction;
-  
+
   return std::pair<Point3D, Point3D>{firstIntersection, secondIntersection};
 }
 
-
-}//end of unnamed namespace
-
-namespace RayIntersectionUtil
-{
 std::optional<Point3D> isRayHittingSphere(const Ray& ray, const Sphere& sphere)
 {
   if (isRayStartsAfterSphere(ray, sphere))
@@ -65,7 +66,6 @@ std::optional<Point3D> isRayHittingSphere(const Ray& ray, const Sphere& sphere)
     return std::nullopt;
   }
 
-  Point3D secondIntersection;
   auto intersectionPoints = isLineHittingSphere(ray, sphere);
   if (intersectionPoints)
   {
