@@ -330,7 +330,7 @@ void main()
 {
   Ray ray;
   vec2 SDLCoordinates = getSDLCoordinates();
-  ray.point = vec3(SDLCoordinates, -1e4);
+  ray.point = vec3(SDLCoordinates, 1000);
 
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
@@ -343,7 +343,7 @@ void main()
   light.direction = normalized(vec3 (0, -2, -1));
   //light.direction = transformVector(light.direction, globalToCamera);
   
-  float minDistanceSqr = FLT_MAX;
+  float minDistance = FLT_MAX;
   bool closestBallFound = false;
   vec3 closestIntersectionPoint;
   Ball closestBall;
@@ -353,13 +353,13 @@ void main()
   for (int i = 0; i < spheresCount; ++i)
   {
     Ball ball = constructBall(i);
-    vec3 firstIntersectionPoint;  
-    if (isRayHittingBall(ray, ball, firstIntersectionPoint))
+    vec3 firstIntersectionPoint, secondIntersection;  
+    if (isLineHittingBall(ray, ball, firstIntersectionPoint, secondIntersection))
     {
-      float distanceSqr = lenSqr(firstIntersectionPoint - ray.point);
-      if(distanceSqr < minDistanceSqr)
+      float distance = dot(firstIntersectionPoint - ray.point, ray.direction);
+      if(distance < minDistance)
       {
-        minDistanceSqr = distanceSqr;
+        minDistance = distance;
         closestBall = ball;
         closestIntersectionPoint = firstIntersectionPoint;
         closestBallFound = true;
