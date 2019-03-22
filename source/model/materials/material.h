@@ -17,5 +17,6 @@ struct Material
   Color diffuse;
   Color specular;
   float sharpness = 0;
+  bool transparent = false;
 };
 

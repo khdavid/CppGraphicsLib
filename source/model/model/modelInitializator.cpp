@@ -15,11 +15,14 @@ std::unique_ptr<Model> ConstructModel()
 
   model->setObject(
     ObjectsFactory::createSphereObject(MaterialsFactory::Specular(MaterialsFactory::Lime),
-      Sphere{ Point3D(450, 200, 480), 150 }));
+    Sphere{ Point3D(450, 200, 480), 150 }));
+
+  auto material = MaterialsFactory::Specular(MaterialsFactory::White);
+  material.transparent = true;
 
   model->setObject(
-    ObjectsFactory::createSphereObject(MaterialsFactory::Specular(MaterialsFactory::White),
-      Sphere{ Point3D(450, 300, 580), 150 }));
+    ObjectsFactory::createSphereObject(material,
+    Sphere{ Point3D(450, 300, 580), 150 }));
 
   return model;
 }
