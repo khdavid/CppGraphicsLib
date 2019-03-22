@@ -254,6 +254,26 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
   return false;
 }
 
+vec3 getReflectedDirection(in Ray ray, in vec3 intersectionPoint, in Ball ball)
+{
+  vec3 n = normalized(intersectionPoint - ball.center);  
+  vec3 direction = ray.direction - 2 * dot(ray.direction, n) * n;
+  return direction;
+}
+
+//an infinite line is define by ray
+bool getReflectedLine(in Ray ray, in Ball ball, out Ray reflected)
+{
+  vec3 secondIntersection;
+  if (!isLineHittingBall(ray, ball, reflected.point, secondIntersection))
+  {
+    return false;
+  }
+
+  reflected.direction = getReflectedDirection(ray, reflected.point, ball);
+  return true;
+}
+
 bool getReflectedRay(in Ray ray, in Ball ball, out Ray reflected)
 {
   if (!isRayHittingBall(ray, ball, reflected.point))
@@ -261,8 +281,7 @@ bool getReflectedRay(in Ray ray, in Ball ball, out Ray reflected)
     return false;
   }
 
-  vec3 n = normalized(reflected.point - ball.center);  
-  reflected.direction = ray.direction - 2 * dot(ray.direction, n) * n;
+  reflected.direction = getReflectedDirection(ray, reflected.point, ball);
   return true;
 }
 
@@ -370,13 +389,12 @@ void main()
   if (closestBallFound)
   {
     Ray reflectedRay;
-    getReflectedRay(ray, closestBall, reflectedRay);
+    getReflectedLine(ray, closestBall, reflectedRay);
     vec3 n = normalized(closestIntersectionPoint - closestBall.center);
     color = getPhongColor(closestBall.material, n, light, reflectedRay);
   }
 
   outColor = vec4(color, 1);
-  //outColor = vec4(globalToCamera[0][0], globalToCamera[0][1], globalToCamera[0][2], 1);
 }
   
 )";
