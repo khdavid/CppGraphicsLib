@@ -46,7 +46,7 @@ void SceneRotatingTool::onMouseScrolling(double velocity)
   
   auto globalToCamera = rayTracingProgram_.getGlobalToCamera();
   centerOfRotation_ = getCenterOfRotation_();
-  auto scalingMatrix = GeometryUtils::createAffineScaling(centerOfRotation_, fraction);
+  auto scalingMatrix = GeometryUtils::createAffineScaling(GeometryUtils::inverse(globalToCamera) * centerOfRotation_, fraction);
   rayTracingProgram_.setGlobalToCamera(globalToCamera * scalingMatrix);
   rayTracingProgram_.render();
 }
