@@ -369,7 +369,7 @@ bool findClosestBallAlongLine(in Ray ray, out Ball ballFound, out vec3 closestIn
   return closestBallFound;
 }
 
-void main()
+Ray createRay()
 {
   Ray ray;
   vec2 SDLCoordinates = getSDLCoordinates();
@@ -377,11 +377,21 @@ void main()
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
   ray = transform(ray, globalToCamera);
-  
-
+  return ray;
+}
+Light createLight()
+{
   Light light;
   light.color = white;
   light.direction = normalized(vec3 (0, -2, -1));
+  return light;
+}
+
+
+void main()
+{
+  Ray ray = createRay();
+  Light light = createLight();
   
   vec3 color = white;  
   vec3 closestIntersectionPoint;
