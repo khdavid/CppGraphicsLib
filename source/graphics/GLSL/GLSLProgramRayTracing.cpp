@@ -345,29 +345,10 @@ vec2 getSDLCoordinates()
   return result;
 }
 
-void main()
+bool findClosestBallAlongLine(in Ray ray, out Ball ballFound, out vec3 closestIntersectionPoint)
 {
-  Ray ray;
-  vec2 SDLCoordinates = getSDLCoordinates();
-  ray.point = vec3(SDLCoordinates, 1000);
-
-  ray.direction = vec3(0, 0 , 1);
-  ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
-  
-  ray = transform(ray, globalToCamera);
-  
-
-  Light light;
-  light.color = white;
-  light.direction = normalized(vec3 (0, -2, -1));
-  //light.direction = transformVector(light.direction, globalToCamera);
-  
   float minDistance = FLT_MAX;
   bool closestBallFound = false;
-  vec3 closestIntersectionPoint;
-  Ball closestBall;
-
-  vec3 color = white;  
 
   for (int i = 0; i < spheresCount; ++i)
   {
@@ -379,14 +360,33 @@ void main()
       if(distance < minDistance)
       {
         minDistance = distance;
-        closestBall = ball;
+        ballFound = ball;
         closestIntersectionPoint = firstIntersectionPoint;
         closestBallFound = true;
       }
     }
   }
+  return closestBallFound;
+}
 
-  if (closestBallFound)
+void main()
+{
+  Ray ray;
+  vec2 SDLCoordinates = getSDLCoordinates();
+  ray.point = vec3(SDLCoordinates, 1000);
+  ray.direction = vec3(0, 0 , 1);
+  ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
+  ray = transform(ray, globalToCamera);
+  
+
+  Light light;
+  light.color = white;
+  light.direction = normalized(vec3 (0, -2, -1));
+  
+  vec3 color = white;  
+  vec3 closestIntersectionPoint;
+  Ball closestBall;
+  if (findClosestBallAlongLine(ray, closestBall, closestIntersectionPoint))
   {
     Ray reflectedRay;
     getReflectedLine(ray, closestBall, reflectedRay);
