@@ -254,6 +254,16 @@ bool isRayHittingBall(in Ray ray, in Ball ball, out vec3 firstIntersection)
   return false;
 }
 
+bool isRayHittingBall(in Ray ray, bool rayIsLine, in Ball ball, out vec3 firstIntersection)
+{
+  if (rayIsLine)
+  {
+    vec3 secondIntersection;
+    return isLineHittingBall(ray, ball, firstIntersection, secondIntersection);
+  }
+  return isRayHittingBall(ray, ball, firstIntersection);
+}
+
 vec3 getReflectedDirection(in Ray ray, in vec3 intersectionPoint, in Ball ball)
 {
   vec3 n = normalized(intersectionPoint - ball.center);  
@@ -345,7 +355,7 @@ vec2 getSDLCoordinates()
   return result;
 }
 
-bool findClosestBallAlongLine(in Ray ray, out Ball ballFound, out vec3 closestIntersectionPoint)
+bool findClosestBall(in Ray ray, bool isInfiniteLine, out Ball ballFound, out vec3 closestIntersectionPoint)
 {
   float minDistance = FLT_MAX;
   bool closestBallFound = false;
@@ -353,8 +363,8 @@ bool findClosestBallAlongLine(in Ray ray, out Ball ballFound, out vec3 closestIn
   for (int i = 0; i < spheresCount; ++i)
   {
     Ball ball = constructBall(i);
-    vec3 firstIntersectionPoint, secondIntersection;  
-    if (isLineHittingBall(ray, ball, firstIntersectionPoint, secondIntersection))
+    vec3 firstIntersectionPoint;  
+    if (isRayHittingBall(ray, isInfiniteLine, ball, firstIntersectionPoint))
     {
       float distance = dot(firstIntersectionPoint - ray.point, ray.direction);
       if(distance < minDistance)
@@ -373,7 +383,7 @@ Ray createRay()
 {
   Ray ray;
   vec2 SDLCoordinates = getSDLCoordinates();
-  ray.point = vec3(SDLCoordinates, 1000);
+  ray.point = vec3(SDLCoordinates, 0);
   ray.direction = vec3(0, 0 , 1);
   ray.direction = ray.direction / sqrt(lenSqr(ray.direction));
   ray = transform(ray, globalToCamera);
@@ -396,7 +406,7 @@ void main()
   vec3 color = white;  
   vec3 closestIntersectionPoint;
   Ball closestBall;
-  if (findClosestBallAlongLine(ray, closestBall, closestIntersectionPoint))
+  if (findClosestBall(ray, true, closestBall, closestIntersectionPoint))
   {
     Ray reflectedRay;
     getReflectedLine(ray, closestBall, reflectedRay);
