@@ -403,8 +403,32 @@ Light createLight()
 vec3 getColor(in Ray ray, bool isInfiniteLine, in Light light)
 {
   vec3 color = white;   
+
+ /* in progress 
+  const int cMaxIter = 5;
+  for (int i = 0; i < cMaxIter; ++i)
+  {
+    vec3 closestIntersectionPoint;
+    int closestBallIdx;
+    if (findClosestBall(ray, true, closestBallIdx, closestIntersectionPoint))
+    {
+      Ray reflectedRay;
+      Ball closestBall = constructBall(closestBallIdx);
+      getReflectedRay(ray, isInfiniteLine, closestBall, reflectedRay);
+
+      bool isBallTransparent = closestBall.material.transparent;
+      if (isBallTransparent)
+      {
+        
+      }      
+      vec3 n = normalized(closestIntersectionPoint - closestBall.center);
+    }
+  
+  }
+  */
+
   vec3 closestIntersectionPoint;
-  int closestBallIdx = 0;
+  int closestBallIdx;
   if (findClosestBall(ray, true, closestBallIdx, closestIntersectionPoint))
   {
     Ray reflectedRay;
