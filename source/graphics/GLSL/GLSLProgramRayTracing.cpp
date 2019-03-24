@@ -400,23 +400,26 @@ Light createLight()
   return light;
 }
 
-
-void main()
+vec3 getColor(in Ray ray, bool isInfiniteLine, in Light light)
 {
-  Ray ray = createRay();
-  Light light = createLight();
-  
   vec3 color = white;   
   vec3 closestIntersectionPoint;
   Ball closestBall;
   if (findClosestBall(ray, true, closestBall, closestIntersectionPoint))
   {
     Ray reflectedRay;
-    getReflectedRay(ray, true, closestBall, reflectedRay);
+    getReflectedRay(ray, isInfiniteLine, closestBall, reflectedRay);
     vec3 n = normalized(closestIntersectionPoint - closestBall.center);
     color = getPhongColor(closestBall.material, n, light, reflectedRay);
   }
+  return color;
+}
 
+void main()
+{
+  Ray ray = createRay();
+  Light light = createLight();
+  vec3 color = getColor(ray, true, light);
   outColor = vec4(color, 1);
 }
   
