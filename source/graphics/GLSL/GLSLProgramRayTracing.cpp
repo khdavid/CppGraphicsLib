@@ -295,18 +295,6 @@ bool getReflectedRay(in Ray ray, in Ball ball, out Ray reflected)
   return true;
 }
 
-
-vec3 getPhongColor(Material material, vec3 normal, in Light light, in Ray reflectedRay)
-{
-  float diffuseFactor = max (0, dot(normal, -light.direction));
-  float specularFactor = max(0, dot(reflectedRay.direction, -light.direction));
-  specularFactor = pow(specularFactor, material.sharpness);
-  return 
-    material.ambient + 
-    material.diffuse * diffuseFactor + 
-    material.specular * specularFactor;
-}
-
 vec3 transformVector(in vec3 vector, in mat4 transform)
 {
   vec3 result;
@@ -379,6 +367,33 @@ bool findClosestBall(in Ray ray, bool isInfiniteLine, out Ball ballFound, out ve
   return closestBallFound;
 }
 
+bool existsObstacle(in Light light, in vec3 point)
+{
+  Ray rayToLight;
+  float epsilon =1e-3;
+  rayToLight.direction = -light.direction;
+  rayToLight.point = point + epsilon * rayToLight.direction;
+  Ball closestBall;
+  vec3 intersectionPoint;
+  return findClosestBall(rayToLight, false, closestBall, intersectionPoint);
+}
+
+vec3 getPhongColor(Material material, vec3 normal, in Light light, in Ray reflectedRay)
+{
+  if (existsObstacle(light, reflectedRay.point))
+  {
+    return material.ambient;
+  }
+
+  float diffuseFactor = max (0, dot(normal, -light.direction));
+  float specularFactor = max(0, dot(reflectedRay.direction, -light.direction));
+  specularFactor = pow(specularFactor, material.sharpness);
+  return 
+    material.ambient + 
+    material.diffuse * diffuseFactor + 
+    material.specular * specularFactor;
+}
+
 Ray createRay()
 {
   Ray ray;
@@ -403,7 +418,7 @@ void main()
   Ray ray = createRay();
   Light light = createLight();
   
-  vec3 color = white;  
+  vec3 color = white;   
   vec3 closestIntersectionPoint;
   Ball closestBall;
   if (findClosestBall(ray, true, closestBall, closestIntersectionPoint))
