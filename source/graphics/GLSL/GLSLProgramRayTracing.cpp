@@ -271,22 +271,10 @@ vec3 getReflectedDirection(in Ray ray, in vec3 intersectionPoint, in Ball ball)
   return direction;
 }
 
-//an infinite line is define by ray
-bool getReflectedLine(in Ray ray, in Ball ball, out Ray reflected)
-{
-  vec3 secondIntersection;
-  if (!isLineHittingBall(ray, ball, reflected.point, secondIntersection))
-  {
-    return false;
-  }
 
-  reflected.direction = getReflectedDirection(ray, reflected.point, ball);
-  return true;
-}
-
-bool getReflectedRay(in Ray ray, in Ball ball, out Ray reflected)
+bool getReflectedRay(in Ray ray, bool isRayInfinite, in Ball ball, out Ray reflected)
 {
-  if (!isRayHittingBall(ray, ball, reflected.point))
+  if (!isRayHittingBall(ray, isRayInfinite, ball, reflected.point))
   {
     return false;
   }
@@ -370,7 +358,7 @@ bool findClosestBall(in Ray ray, bool isInfiniteLine, out Ball ballFound, out ve
 bool existsObstacle(in Light light, in vec3 point)
 {
   Ray rayToLight;
-  float epsilon =1e-3;
+  float epsilon =1e-1;
   rayToLight.direction = -light.direction;
   rayToLight.point = point + epsilon * rayToLight.direction;
   Ball closestBall;
@@ -424,7 +412,7 @@ void main()
   if (findClosestBall(ray, true, closestBall, closestIntersectionPoint))
   {
     Ray reflectedRay;
-    getReflectedLine(ray, closestBall, reflectedRay);
+    getReflectedRay(ray, true, closestBall, reflectedRay);
     vec3 n = normalized(closestIntersectionPoint - closestBall.center);
     color = getPhongColor(closestBall.material, n, light, reflectedRay);
   }
