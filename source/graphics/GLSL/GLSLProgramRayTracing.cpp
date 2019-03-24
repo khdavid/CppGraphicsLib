@@ -331,7 +331,7 @@ vec2 getSDLCoordinates()
   return result;
 }
 
-bool findClosestBall(in Ray ray, bool isInfiniteLine, out Ball ballFound, out vec3 closestIntersectionPoint)
+bool findClosestBall(in Ray ray, bool isInfiniteLine, out int ballFoundIdx, out vec3 closestIntersectionPoint)
 {
   float minDistance = FLT_MAX;
   bool closestBallFound = false;
@@ -346,7 +346,7 @@ bool findClosestBall(in Ray ray, bool isInfiniteLine, out Ball ballFound, out ve
       if(distance < minDistance)
       {
         minDistance = distance;
-        ballFound = ball;
+        ballFoundIdx = i;
         closestIntersectionPoint = firstIntersectionPoint;
         closestBallFound = true;
       }
@@ -361,9 +361,9 @@ bool existsObstacle(in Light light, in vec3 point)
   float epsilon =1e-1;
   rayToLight.direction = -light.direction;
   rayToLight.point = point + epsilon * rayToLight.direction;
-  Ball closestBall;
+  int closestBallIdx;
   vec3 intersectionPoint;
-  return findClosestBall(rayToLight, false, closestBall, intersectionPoint);
+  return findClosestBall(rayToLight, false, closestBallIdx, intersectionPoint);
 }
 
 vec3 getPhongColor(Material material, vec3 normal, in Light light, in Ray reflectedRay)
@@ -404,10 +404,11 @@ vec3 getColor(in Ray ray, bool isInfiniteLine, in Light light)
 {
   vec3 color = white;   
   vec3 closestIntersectionPoint;
-  Ball closestBall;
-  if (findClosestBall(ray, true, closestBall, closestIntersectionPoint))
+  int closestBallIdx = 0;
+  if (findClosestBall(ray, true, closestBallIdx, closestIntersectionPoint))
   {
     Ray reflectedRay;
+    Ball closestBall = constructBall(closestBallIdx);
     getReflectedRay(ray, isInfiniteLine, closestBall, reflectedRay);
     vec3 n = normalized(closestIntersectionPoint - closestBall.center);
     color = getPhongColor(closestBall.material, n, light, reflectedRay);
