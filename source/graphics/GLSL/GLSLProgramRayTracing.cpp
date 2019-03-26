@@ -400,12 +400,12 @@ Light createLight()
   return light;
 }
 
-vec3 getColor(in Ray ray, bool isInfiniteLine, in Light light)
+vec3 getColor(in Ray ray, in Light light)
 {
   vec3 color = white;   
 
- /* in progress 
-  const int cMaxIter = 5;
+  const int cMaxIter = 10;
+  bool isInfiniteLine = true;
   for (int i = 0; i < cMaxIter; ++i)
   {
     vec3 closestIntersectionPoint;
@@ -417,26 +417,20 @@ vec3 getColor(in Ray ray, bool isInfiniteLine, in Light light)
       getReflectedRay(ray, isInfiniteLine, closestBall, reflectedRay);
 
       bool isBallTransparent = closestBall.material.transparent;
-      if (isBallTransparent)
+      if (!isBallTransparent)
       {
-        
-      }      
-      vec3 n = normalized(closestIntersectionPoint - closestBall.center);
+        vec3 n = normalized(closestIntersectionPoint - closestBall.center);
+        color = getPhongColor(closestBall.material, n, light, reflectedRay);
+        break;
+      }
+      float epsilon =1e-1;
+      ray = reflectedRay;
+      ray.point += epsilon * ray.direction;
+      ray.direction = -ray.direction;
+      isInfiniteLine = false;
     }
-  
   }
-  */
 
-  vec3 closestIntersectionPoint;
-  int closestBallIdx;
-  if (findClosestBall(ray, true, closestBallIdx, closestIntersectionPoint))
-  {
-    Ray reflectedRay;
-    Ball closestBall = constructBall(closestBallIdx);
-    getReflectedRay(ray, isInfiniteLine, closestBall, reflectedRay);
-    vec3 n = normalized(closestIntersectionPoint - closestBall.center);
-    color = getPhongColor(closestBall.material, n, light, reflectedRay);
-  }
   return color;
 }
 
@@ -444,7 +438,7 @@ void main()
 {
   Ray ray = createRay();
   Light light = createLight();
-  vec3 color = getColor(ray, true, light);
+  vec3 color = getColor(ray, light);
   outColor = vec4(color, 1);
 }
   
