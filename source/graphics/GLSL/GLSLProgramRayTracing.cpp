@@ -410,11 +410,15 @@ vec3 getColor(in Ray ray, in Light light)
   {
     vec3 closestIntersectionPoint;
     int closestBallIdx;
-    if (findClosestBall(ray, true, closestBallIdx, closestIntersectionPoint))
+    if (findClosestBall(ray, isInfiniteLine, closestBallIdx, closestIntersectionPoint))
     {
       Ray reflectedRay;
       Ball closestBall = constructBall(closestBallIdx);
-      getReflectedRay(ray, isInfiniteLine, closestBall, reflectedRay);
+
+      if (!getReflectedRay(ray, isInfiniteLine, closestBall, reflectedRay))
+      {
+        break;
+      }
 
       bool isBallTransparent = closestBall.material.transparent;
       if (!isBallTransparent)
@@ -426,8 +430,9 @@ vec3 getColor(in Ray ray, in Light light)
       float epsilon =1e-1;
       ray = reflectedRay;
       ray.point += epsilon * ray.direction;
-      ray.direction = -ray.direction;
       isInfiniteLine = false;
+
+
     }
   }
 
