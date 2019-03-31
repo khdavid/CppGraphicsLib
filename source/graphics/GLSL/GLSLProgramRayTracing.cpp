@@ -382,12 +382,6 @@ vec3 getPhongColor(Material material, vec3 normal, in Light light, in Ray reflec
     material.specular * specularFactor;
 }
 
-vec3 getSphereicalColor(in Ray ray)
-{
-  return vec3(sin(ray.direction.x), sin(ray.direction.y), sin(ray.direction.z ));
-}
-
-
 Ray createRay()
 {
   Ray ray;
@@ -430,7 +424,7 @@ vec3 getColor(in Ray ray, in Light light)
       if (!isBallTransparent)
       {
         vec3 n = normalized(closestIntersectionPoint - closestBall.center);
-        return getPhongColor(closestBall.material, n, light, reflectedRay);
+        color = getPhongColor(closestBall.material, n, light, reflectedRay);
         break;
       }
       float epsilon =1e-1;
@@ -438,10 +432,11 @@ vec3 getColor(in Ray ray, in Light light)
       ray.point += epsilon * ray.direction;
       isInfiniteLine = false;
 
+
     }
   }
 
-  return getSphereicalColor(ray);
+  return color;
 }
 
 void main()
