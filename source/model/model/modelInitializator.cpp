@@ -9,17 +9,16 @@ std::unique_ptr<Model> ConstructModel()
 {
   std::unique_ptr<Model> model = std::make_unique<Model>();
   
-  auto material = MaterialsFactory::Specular(MaterialsFactory::White);
-  material.transparent = true;
-
   model->setObject(
-    ObjectsFactory::createSphereObject(material,
+    ObjectsFactory::createSphereObject(MaterialsFactory::Specular(MaterialsFactory::Aqua),
     Sphere{ Point3D(250, 200, 500), 100 }));
 
   model->setObject(
     ObjectsFactory::createSphereObject(MaterialsFactory::Specular(MaterialsFactory::Lime),
     Sphere{ Point3D(450, 200, 480), 150 }));
 
+  auto material = MaterialsFactory::Specular(MaterialsFactory::White);
+  material.transparent = true;
 
   model->setObject(
     ObjectsFactory::createSphereObject(material,
