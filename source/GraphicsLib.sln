@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "geometry", "geometry\geomet
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "model", "model\model.vcxproj", "{640147F4-976E-44A9-B69C-EF29FC1B0979}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neuro", "neuro\neuro.vcxproj", "{03255A20-0C1D-4AE8-B13A-ACCA5A7C71CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -27,6 +29,10 @@ Global
 		{640147F4-976E-44A9-B69C-EF29FC1B0979}.Debug|x64.Build.0 = Debug|x64
 		{640147F4-976E-44A9-B69C-EF29FC1B0979}.Release|x64.ActiveCfg = Release|x64
 		{640147F4-976E-44A9-B69C-EF29FC1B0979}.Release|x64.Build.0 = Release|x64
+		{03255A20-0C1D-4AE8-B13A-ACCA5A7C71CF}.Debug|x64.ActiveCfg = Debug|x64
+		{03255A20-0C1D-4AE8-B13A-ACCA5A7C71CF}.Debug|x64.Build.0 = Debug|x64
+		{03255A20-0C1D-4AE8-B13A-ACCA5A7C71CF}.Release|x64.ActiveCfg = Release|x64
+		{03255A20-0C1D-4AE8-B13A-ACCA5A7C71CF}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
