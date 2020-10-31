@@ -71,6 +71,30 @@ private:
   T* prototype_;
 };
 
+template <class T>
+class WidgetManager : public T
+{
+
+};
+
+template <class T>
+class WidgetManager2 : public OpNewCreator<T>
+{
+
+};
+
+template <template <class> class CreationPolicy> 
+struct WidgetManager3 : public CreationPolicy<Widget>
+{
+  static void foo()
+  {
+    std::cout << "foo" << std::endl;
+  }
+}; 
+
+
+
+
 
 }
 int main()
@@ -80,5 +104,11 @@ int main()
   auto object1 = MallocCreator<Widget>::Create();
   auto object2 = OpNewCreator<Widget>::Create();
   auto object3 = PrototypeCreator<Widget>(&Widget()).Create();
+
+  WidgetManager<MallocCreator<int>>::Create();
+  WidgetManager2<int>::Create();
+  WidgetManager3<MallocCreator>::Create();
+  WidgetManager3<MallocCreator>::foo();
+
 }
 
