@@ -7,9 +7,9 @@ namespace
 {
 size_t gWidgetName = 0;
 
-struct Widget
+class Widget
 {
-
+public:
   Widget()
   {
     std::cout << name << ": widget constructed" << std::endl;
@@ -28,31 +28,38 @@ private:
 };
 
 template<class T>
-struct OpNewCreator
+class OpNewCreator
 {
+public:
   static T* Create()
   {
     return new(T);
   }
+protected:
+  ~OpNewCreator() = default;
 };
 
 template<class T>
-struct MallocCreator
+class MallocCreator
 {
+public:
   static T* Create()
   {
     auto buf = std::malloc(sizeof(T));
     auto address = new(buf) T;
     return address;
   }
+protected:
+  ~MallocCreator() = default;
 };
 
 template<class T>
-struct PrototypeCreator
+class PrototypeCreator
 {
+public:
   PrototypeCreator(T* obj = nullptr): prototype_(obj)
   {
-
+    std::cout << "Constructor: PrototypeCreator" << std::endl;
   }
   T* Create()
   {
@@ -66,26 +73,19 @@ struct PrototypeCreator
   {
     return prototype_;
   }
+protected:
+  ~PrototypeCreator() = default;
 
 private:
+
   T* prototype_;
 };
 
-template <class T>
-class WidgetManager : public T
-{
-
-};
-
-template <class T>
-class WidgetManager2 : public OpNewCreator<T>
-{
-
-};
 
 template <template <class> class CreationPolicy> 
-struct WidgetManager3 : public CreationPolicy<Widget>
+class WidgetManager : public CreationPolicy<Widget>
 {
+public:
   static void foo()
   {
     std::cout << "foo" << std::endl;
@@ -97,18 +97,23 @@ struct WidgetManager3 : public CreationPolicy<Widget>
 
 
 }
-int main()
+
+void oldTests()
 {
   OpNewCreator<int>::Create();
   MallocCreator<int>::Create();
   auto object1 = MallocCreator<Widget>::Create();
   auto object2 = OpNewCreator<Widget>::Create();
-  auto object3 = PrototypeCreator<Widget>(&Widget()).Create();
 
-  WidgetManager<MallocCreator<int>>::Create();
-  WidgetManager2<int>::Create();
-  WidgetManager3<MallocCreator>::Create();
-  WidgetManager3<MallocCreator>::foo();
+
+  WidgetManager<MallocCreator>::Create();
+  WidgetManager<MallocCreator>::foo(); 
+  auto widgetManager = new(WidgetManager<PrototypeCreator>);
+
+}
+
+int main()
+{
 
 }
 
