@@ -2,6 +2,8 @@
 
 #include <glew.h>
 
+#include <string>
+
 class GLSLShaderCompiler
 {
 public:
